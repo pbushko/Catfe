@@ -14,11 +14,15 @@ public class PlayerScript : MonoBehaviour {
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
     List<Ingreds> itemsInHand = new List<Ingreds>();
 
+    static Recipe plateInHand = null;
+
     //stores all the recipes
-    List<Recipe> recipes = new List<Recipe>();
+    static List<Recipe> recipes = new List<Recipe>();
 
     //the countdown for the time between tasks being done
     float countdown = 3.0f;
+
+    Recipe slop = new Recipe("slop", null, CookingUten.none);
 
     // Use this for initialization
     void Start () {
@@ -39,28 +43,33 @@ public class PlayerScript : MonoBehaviour {
 
         recipes.Add(new Recipe("Chicken + Beef", otherI, CookingUten.Stove));
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         countdown -= Time.deltaTime;
 
         //if enough time has passed, put the next item in the queue into the player's hand
-        if (countdown <= 0.0f)
+        if (countdown <= 0.0f && playerQueue.Count > 0)
         {
             countdown = 3.0f;
             //putting the ingredient into the player's hand
             if (playerQueue.Peek().GetType() == typeof(Ingreds))
             {
                 itemsInHand.Add((Ingreds) playerQueue.Dequeue());
-                Debug.Log("got ingredient");
+                //Debug.Log("got ingredient");
             }
             //"using" the kitchen utensil.  must check if the recipe exists
             else
             {
-                if (isRecipe(itemsInHand.ToArray(), (CookingUten)playerQueue.Dequeue())) {
-                    
+                Recipe r = getRecipe(itemsInHand.ToArray(), (CookingUten)playerQueue.Dequeue());
+                if (r != null)
+                {
+                    plateInHand = r;
                 }
-                
+                else
+                {
+                    plateInHand = slop;
+                }
                 //clearing the ingredients
                 itemsInHand.Clear();
             }
@@ -79,20 +88,58 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
-    bool isRecipe(Ingreds[] items, CookingUten uten)
+    Recipe getRecipe(Ingreds[] items, CookingUten uten)
     {
         foreach (Recipe r in recipes)
         {
-            //Debug.Log("Checking... " + r.getRecipeName());
             if (r.sameRecipe(items, uten))
             {
                 Debug.Log("Found the right recipe!  It is: " + r.getRecipeName());
-                return true;
+                return r;
             }
         }
 
         Debug.Log("Doesn't match any recipe.");
 
-        return false;
+        return null;
+    }
+
+    public void throwPlateAway()
+    {
+        plateInHand = null;
+        Debug.Log("thrown away");
+    }
+
+    public void givePlateToCustomer()
+    {
+        if (plateInHand == null)
+        {
+            Debug.Log("nothing to give the customer!");
+            return;
+        }
+        Customer[] cs = CustomerGenerator.getCustomers().ToArray();
+
+        for (int i = 0; i < cs.Length; i++)
+        {
+            if (cs[i].rightRecipe(plateInHand))
+            {
+                Debug.Log("Yay! The customer got his meal!");
+                plateInHand = null;
+                CustomerGenerator.removeCustomer(cs[i]);
+                return;
+            }
+        }
+        //if this is reached, the plate doesn't match any customers
+        Debug.Log("doesn't match what any of the customers want!");
+        
+    }
+
+    public static Recipe getRandomRecipe()
+    {
+        int rand = Random.Range(0, recipes.Count);
+
+        Recipe[] r = recipes.ToArray();
+
+        return r[rand];
     }
 }

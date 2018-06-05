@@ -14,6 +14,8 @@ public class Recipe {
     private Ingreds[] ingredients;
     //the utensils have an order; like needing to chop up food before putting it into the oven
     private CookingUten utensils;
+
+    private Dishes dish;
 	
     //the constructor to make a new recipe
     public Recipe(string name, Ingreds[] i, CookingUten c)
@@ -74,4 +76,10 @@ public class Recipe {
         }
         return false;
     }
+
+    public static bool compareRecipes(Recipe r1, Recipe r2)
+    {
+        return r1.getRecipeName() == r2.getRecipeName();
+    }
+
 }
