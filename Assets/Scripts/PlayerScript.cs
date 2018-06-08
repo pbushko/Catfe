@@ -73,6 +73,8 @@ public class PlayerScript : MonoBehaviour {
                 //clearing the ingredients
                 itemsInHand.Clear();
             }
+            //to change the sprite of the plate the chefcat holds
+            this.GetComponentInChildren<SpriteRenderer>().sprite = Sprite;
         }
 	}
 
