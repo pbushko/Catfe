@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Body
+    uniqueID: 3855100887
+    locked: 0
+  - name: Face
+    uniqueID: 3051482517
+    locked: 0
+  - name: Accessory
+    uniqueID: 3291717067
+    locked: 0
