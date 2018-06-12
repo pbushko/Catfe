@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class boxScript : MonoBehaviour {
 
-    public Ingreds ingredient;
+    public Ingredients ingredient;
 
     // Use this for initialization
     void Start () {
@@ -14,7 +14,7 @@ public class boxScript : MonoBehaviour {
     public void pushed()
     {
 
-        PlayerScript.addToPlayerQueue(ingredient, CookingUten.none);
+        PlayerScript.addIngredientToPlayerQueue(ingredient);
 
     }
 

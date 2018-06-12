@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Ingreds { Carrot, Lettuce, Potato, Beef, Chicken, Milk, none };
-public enum CookingUten { Knife, Oven, Stove, Blender, none };
+public enum Ingredients { Carrot, Lettuce, Potato, Beef, Chicken, Milk, none };
+public enum CookingTools { Knife, Oven, Stove, Blender, none };
 public enum Dishes { };
 
 //a recipe object; stores what is needed for each recipe
@@ -11,18 +11,21 @@ public class Recipe {
 
     private string recipeName;
 
-    private Ingreds[] ingredients;
+    private Ingredients[] ingredients;
     //the utensils have an order; like needing to chop up food before putting it into the oven
-    private CookingUten utensils;
+    private CookingTools utensils;
 
     private Dishes dish;
+
+    private int price;
 	
     //the constructor to make a new recipe
-    public Recipe(string name, Ingreds[] i, CookingUten c)
+    public Recipe(string name, Ingredients[] i, CookingTools c, int p)
     {
         recipeName = name;
         ingredients = i;
         utensils = c;
+        price = p;
     }
 
     public string getRecipeName()
@@ -30,17 +33,22 @@ public class Recipe {
         return recipeName;
     }
 
-    public Ingreds[] getIngreds()
+    public Ingredients[] getIngreds()
     {
         return ingredients;
     }
 
-    public CookingUten getUten()
+    public CookingTools getUten()
     {
         return utensils;
     }
 
-    private bool sameIngredients(Ingreds[] ins)
+    public int getPrice()
+    {
+        return price;
+    }
+
+    private bool sameIngredients(Ingredients[] ins)
     {
         int inLen = ingredients.Length;
         int j;
@@ -49,7 +57,7 @@ public class Recipe {
         {
             return false;
         }
-        foreach (Ingreds i in ins)
+        foreach (Ingredients i in ins)
         {
             for (j = 0; j < inLen; j++)
             {
@@ -68,7 +76,7 @@ public class Recipe {
         return true;
     }
         
-    public bool sameRecipe(Ingreds[] ins, CookingUten c)
+    public bool sameRecipe(Ingredients[] ins, CookingTools c)
     {
         if (sameIngredients(ins))
         {

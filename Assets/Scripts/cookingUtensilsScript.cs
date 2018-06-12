@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class cookingUtensilsScript : MonoBehaviour {
 
-    public CookingUten utensil;
+    public CookingTools utensil;
 
     public void pushed()
     {
-        PlayerScript.addToPlayerQueue(Ingreds.none, utensil);
+        PlayerScript.addCookingToolToPlayerQueue(utensil);
     }
 
 	// Use this for initialization

@@ -106,10 +106,10 @@ TextureImporter:
       name: Oven_0
       rect:
         serializedVersion: 2
-        x: 680
-        y: 1311
-        width: 446
-        height: 429
+        x: 696
+        y: 1354
+        width: 402
+        height: 363
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,13 +120,13 @@ TextureImporter:
       name: Stove_Oven_0
       rect:
         serializedVersion: 2
-        x: 674
-        y: 729
-        width: 457
-        height: 502
+        x: 688
+        y: 744
+        width: 406
+        height: 445
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 4, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -134,13 +134,13 @@ TextureImporter:
       name: Counter_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 889
-        width: 440
-        height: 400
+        x: 99
+        y: 909
+        width: 399
+        height: 380
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 2, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
