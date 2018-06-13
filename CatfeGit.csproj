@@ -300,11 +300,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\boxScript.cs" />
     <Compile Include="Assets\Scripts\cookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
     <Compile Include="Assets\Scripts\CustomerScript.cs" />
+    <Compile Include="Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\MoneyTracker.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Ingredients { Carrot, Lettuce, Potato, Beef, Chicken, Milk, none };
 public enum CookingTools { Knife, Oven, Stove, Blender, none };
-public enum Dishes { };
+public enum Dishes { CarrotSalad, ChickenAndBeef, CarrotSoup, none };
 
 //a recipe object; stores what is needed for each recipe
 public class Recipe {

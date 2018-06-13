@@ -6,14 +6,15 @@ public class cookingUtensilsScript : MonoBehaviour {
 
     public CookingTools utensil;
 
+    public GameObject loader;
+
     public void pushed()
     {
-        PlayerScript.addCookingToolToPlayerQueue(utensil);
+        PlayerScript.addCookingToolToPlayerQueue(utensil, loader);
     }
 
 	// Use this for initialization
 	void Start () {
-        
 
     }
 	

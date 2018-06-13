@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviour {
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     static Queue playerQueue = new Queue();
 
+    //stores the LoadingBar for the utensils
+    static Queue<GameObject> loaders = new Queue<GameObject>();
+
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
     List<Ingredients> itemsInHand = new List<Ingredients>();
 
@@ -79,36 +82,40 @@ public class PlayerScript : MonoBehaviour {
             //"using" the kitchen utensil.  must check if the recipe exists
             else
             {
-                //cannot make anything if there is nothing in your hand.
-                if (itemsInHand.Count > 0)
+                Recipe r = getRecipe(itemsInHand.ToArray(), (CookingTools)playerQueue.Dequeue());
+
+                //either putting a recipe in or finding what we should get from clicking on the utensil
+                Recipe temp = loaders.Dequeue().GetComponent<LoadingBar>().loading(1f, getFoodSprite(r), r);
+
+                //we picked up a plate
+                if (temp != null)
                 {
-                    Recipe r = getRecipe(itemsInHand.ToArray(), (CookingTools)playerQueue.Dequeue());
-
-                    changePlateInHand(r);
-
-                    //clearing the ingredients
+                    changePlateInHand(temp);
+                }
+                //we placed an order at the utensil
+                else
+                {
                     itemsInHand.Clear();
                 }
+                    
             }
+
         }
 	}
 
     private void changePlateInHand(Recipe r)
     {
-        int index = 0;
-        if (r != null)
+        plateInHand = r;
+        plate.sprite = getFoodSprite(r);
+    }
+
+    private Sprite getFoodSprite(Recipe food)
+    {
+        if (food != null)
         {
-            plateInHand = r;
-            //to change the sprite of the plate the chefcat holds
-            index = foodNames.IndexOf(r.getRecipeName());
-            plate.sprite = foods[index];
+            return foods[foodNames.IndexOf(food.getRecipeName())];
         }
-        else
-        {
-            plateInHand = slop;
-            index = foodNames.IndexOf("None");
-            plate.sprite = foods[index];
-        }
+        return foods[foodNames.IndexOf("None")];
     }
 
     //allows the buttons from the crates/cooking utens to be added into the player queue
@@ -117,9 +124,10 @@ public class PlayerScript : MonoBehaviour {
         playerQueue.Enqueue(i);
     }
 
-    public static void addCookingToolToPlayerQueue(CookingTools c)
+    public static void addCookingToolToPlayerQueue(CookingTools c, GameObject l)
     {
         playerQueue.Enqueue(c);
+        loaders.Enqueue(l);
     }
 
     Recipe getRecipe(Ingredients[] items, CookingTools uten)
@@ -172,4 +180,5 @@ public class PlayerScript : MonoBehaviour {
 
         return r[rand];
     }
+
 }
