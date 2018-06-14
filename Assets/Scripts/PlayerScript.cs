@@ -30,15 +30,12 @@ public class PlayerScript : MonoBehaviour {
 
     Recipe slop = new Recipe("slop", null, CookingTools.none, 0);
 
-    SpriteRenderer plate;
+    static SpriteRenderer plate;
 
     // Use this for initialization
     void Start () {
         foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
         plate = GameObject.Find("plate").GetComponent<SpriteRenderer>();
-
-        Debug.Log(plate.name);
-        Debug.Log(foods[0].name);
 
         Ingredients[] i = new Ingredients[1];
 
@@ -111,7 +108,7 @@ public class PlayerScript : MonoBehaviour {
         }
 	}
 
-    private void changePlateInHand(Recipe r)
+    private static void changePlateInHand(Recipe r)
     {
         plateInHand = r;
         plate.sprite = getFoodSprite(r);
@@ -156,7 +153,7 @@ public class PlayerScript : MonoBehaviour {
         MoneyTracker.addMoney(-5);
     }
 
-    public void givePlateToCustomer()
+    public static void givePlateToCustomer()
     {
         if (plateInHand == null)
         {
@@ -172,7 +169,7 @@ public class PlayerScript : MonoBehaviour {
                 Debug.Log("Yay! The customer got his meal!");
                 MoneyTracker.addMoney(plateInHand.getPrice());
                 changePlateInHand(null);
-                CustomerGenerator.removeCustomer(cs[i]);
+                CustomerGenerator.removeCustomer(i);
                 return;
             }
         }

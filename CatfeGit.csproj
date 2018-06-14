@@ -302,8 +302,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\boxScript.cs" />
     <Compile Include="Assets\Scripts\cookingUtensilsScript.cs" />
+    <Compile Include="Assets\Scripts\Customer.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
-    <Compile Include="Assets\Scripts\CustomerScript.cs" />
     <Compile Include="Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\MoneyTracker.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
