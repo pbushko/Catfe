@@ -11,7 +11,7 @@ public class LoadingBar : MonoBehaviour {
     bool finished;
     bool processing;
     Sprite food;
-    public Image foodRenderer;
+    public SpriteRenderer foodRenderer;
     Recipe recipe;
     float fill;
     float time;
@@ -42,7 +42,6 @@ public class LoadingBar : MonoBehaviour {
                 finished = true;
                 
                 foodRenderer.sprite = food;
-                //Debug.Log("got here..." + foodRenderer.sprite);
             }
             foregroundImage.fillAmount = fill;
         }

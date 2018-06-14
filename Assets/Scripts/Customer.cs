@@ -5,15 +5,14 @@ using UnityEngine;
 public class Customer {
 
     private Recipe order;
-    private Sprite orderSprite;
-    private Sprite bubbleSprite;
-    private Sprite customerSprite;
+    private int number;
+    private GameObject customerPrefab;
 
-    public Customer(Sprite customer)
+    public Customer(GameObject customer, int customerNumber)
     {
         order = PlayerScript.getRandomRecipe();
-        orderSprite = PlayerScript.getFoodSprite(order);
-        customerSprite = customer;
+        customerPrefab = customer;
+        number = customerNumber;
     }
 
     public Recipe getOrder()
@@ -21,19 +20,29 @@ public class Customer {
         return order;
     }
 
-    public Sprite getOrderSprite()
+    public GameObject getCustomerPrefab()
     {
-        return orderSprite;
+        return customerPrefab;
     }
 
-    public Sprite getCustomerSprite()
+    public int getCustomerNumber()
     {
-        return customerSprite;
+        return number;
+    }
+
+    public void setNumber(int n)
+    {
+        number = n;
     }
 
     public bool rightRecipe(Recipe r)
     {
         return Recipe.compareRecipes(order, r);
+    }
+
+    public void pushed()
+    {
+        PlayerScript.givePlateToCustomer(order, customerPrefab, number);
     }
 
 }

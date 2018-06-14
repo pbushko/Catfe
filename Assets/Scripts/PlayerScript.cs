@@ -65,6 +65,27 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.up);
+            if (hit.collider)
+            {
+                if(hit.collider.tag == "ingredients")
+                {
+                    boxScript b = hit.collider.GetComponent<boxScript>();
+                    Debug.Log(b.ingredient);
+                    b.pushed();
+                }
+                else if(hit.collider.tag == "utensil")
+                {
+                    cookingUtensilsScript c = hit.collider.GetComponent<cookingUtensilsScript>();
+                    c.pushed();
+                }
+                Debug.Log(hit.collider.gameObject.name);
+            }
+        }
+
         countdown -= Time.deltaTime;
 
         //if enough time has passed, put the next item in the queue into the player's hand
@@ -153,28 +174,21 @@ public class PlayerScript : MonoBehaviour {
         MoneyTracker.addMoney(-5);
     }
 
-    public static void givePlateToCustomer()
+    public static void givePlateToCustomer(Recipe order, GameObject customerPrefab, int n)
     {
         if (plateInHand == null)
         {
-            Debug.Log("nothing to give the customer!");
             return;
         }
-        Customer[] cs = CustomerGenerator.getCustomers().ToArray();
 
-        for (int i = 0; i < cs.Length; i++)
+        if (Recipe.compareRecipes(plateInHand, order))
         {
-            if (cs[i].rightRecipe(plateInHand))
-            {
-                Debug.Log("Yay! The customer got his meal!");
-                MoneyTracker.addMoney(plateInHand.getPrice());
-                changePlateInHand(null);
-                CustomerGenerator.removeCustomer(i);
-                return;
-            }
+            MoneyTracker.addMoney(plateInHand.getPrice());
+
+            changePlateInHand(null);
+
+            CustomerGenerator.removeCustomer(customerPrefab, n);
         }
-        //if this is reached, the plate doesn't match any customers
-        Debug.Log("doesn't match what any of the customers want!");        
     }
 
     public static Recipe getRandomRecipe()
