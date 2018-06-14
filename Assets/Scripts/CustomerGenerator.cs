@@ -8,10 +8,13 @@ public class CustomerGenerator : MonoBehaviour {
     static int curCustomers;
     float countdown;
     Customer temp;
-    public static List<Customer> customers = new List<Customer>();
+    public static List<Customer> customers;
+    public static List<Sprite> customerSprites;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        customers = new List<Customer>();
+        customerSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Patrons"));
         countdown = 1.0f;
         curCustomers = 0;
 	}
@@ -35,7 +38,7 @@ public class CustomerGenerator : MonoBehaviour {
 
     private void addCustomer()
     {
-        temp = new Customer();
+        temp = new Customer(customerSprites[0]);
         customers.Add(temp);
         Debug.Log("a new customer!  They want: " + temp.getOrder().getRecipeName());
     }

@@ -17,8 +17,8 @@ public class PlayerScript : MonoBehaviour {
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
     List<Ingredients> itemsInHand = new List<Ingredients>();
 
-    List<Sprite> foods;
-    List<string> foodNames = new List<string>();
+    static List<Sprite> foods;
+    static List<string> foodNames = new List<string>();
 
     static Recipe plateInHand = null;
 
@@ -82,22 +82,30 @@ public class PlayerScript : MonoBehaviour {
             //"using" the kitchen utensil.  must check if the recipe exists
             else
             {
-                Recipe r = getRecipe(itemsInHand.ToArray(), (CookingTools)playerQueue.Dequeue());
+                CookingTools tool = (CookingTools)playerQueue.Dequeue();
+                LoadingBar loader = loaders.Dequeue().GetComponent<LoadingBar>();
 
-                //either putting a recipe in or finding what we should get from clicking on the utensil
-                Recipe temp = loaders.Dequeue().GetComponent<LoadingBar>().loading(1f, getFoodSprite(r), r);
-
-                //we picked up a plate
-                if (temp != null)
+                //if there is a plate for us to pick up.
+                if (loader.hasPlate())
                 {
-                    changePlateInHand(temp);
+                    //can only pick up the plate if there is no other plate in our hand
+                    if (plateInHand == null)
+                    {
+                        //we picked up a plate
+                        changePlateInHand(loader.pickUpPlate());
+                    }
                 }
-                //we placed an order at the utensil
-                else
+                //if no plate, we will place the recipe as long as we have items to cook and there is nothing on the stove
+                else if (itemsInHand.Count > 0)
                 {
+                    Recipe r = getRecipe(itemsInHand.ToArray(), tool);
+
+                    //either putting a recipe in or finding what we should get from clicking on the utensil
+                    loader.loading(1f, getFoodSprite(r), r);
+
                     itemsInHand.Clear();
                 }
-                    
+ 
             }
 
         }
@@ -109,7 +117,7 @@ public class PlayerScript : MonoBehaviour {
         plate.sprite = getFoodSprite(r);
     }
 
-    private Sprite getFoodSprite(Recipe food)
+    public static Sprite getFoodSprite(Recipe food)
     {
         if (food != null)
         {

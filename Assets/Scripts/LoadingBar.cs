@@ -11,7 +11,7 @@ public class LoadingBar : MonoBehaviour {
     bool finished;
     bool processing;
     Sprite food;
-    public SpriteRenderer foodRenderer;
+    public Image foodRenderer;
     Recipe recipe;
     float fill;
     float time;
@@ -42,13 +42,13 @@ public class LoadingBar : MonoBehaviour {
                 finished = true;
                 
                 foodRenderer.sprite = food;
-                Debug.Log("got here..." + foodRenderer.sprite);
+                //Debug.Log("got here..." + foodRenderer.sprite);
             }
             foregroundImage.fillAmount = fill;
         }
 	}
 
-    public Recipe loading(float fillTime, Sprite f, Recipe r)
+    public void loading(float fillTime, Sprite f, Recipe r)
     {
         if (!finished && !processing)
         {
@@ -57,12 +57,23 @@ public class LoadingBar : MonoBehaviour {
             foreground.SetActive(true);
             background.SetActive(true);
             time = fillTime;
-            return null;
-        }
-        else if (finished)
-        {
-            foodRenderer.sprite = null;
             reset();
+        }
+    }
+
+    //checks if there is a plate
+    public bool hasPlate()
+    {
+        return finished;
+    }
+
+    //takes the plate off of the utensil
+    public Recipe pickUpPlate()
+    {
+        if (finished)
+        {
+            foodRenderer.sprite = PlayerScript.getFoodSprite(null);
+            finished = false;
             return recipe;
         }
         return null;
@@ -72,6 +83,5 @@ public class LoadingBar : MonoBehaviour {
     {
         fill = 0f;
         foregroundImage.fillAmount = fill;
-        finished = false;
     }
 }
