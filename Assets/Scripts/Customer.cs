@@ -2,27 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Customer {
+public class Customer : MonoBehaviour {
 
-    private Recipe order;
-    private int number;
-    private GameObject customerPrefab;
-
-    public Customer(GameObject customer, int customerNumber)
-    {
-        order = PlayerScript.getRandomRecipe();
-        customerPrefab = customer;
-        number = customerNumber;
-    }
+    public Recipe order;
+    public int number;
 
     public Recipe getOrder()
     {
         return order;
-    }
-
-    public GameObject getCustomerPrefab()
-    {
-        return customerPrefab;
     }
 
     public int getCustomerNumber()
@@ -42,7 +29,8 @@ public class Customer {
 
     public void pushed()
     {
-        PlayerScript.givePlateToCustomer(order, customerPrefab, number);
+        PlayerScript.addCustomerToPlayerQueue(number);
+        PlayerScript.givePlateToCustomer(order, number);
     }
 
 }

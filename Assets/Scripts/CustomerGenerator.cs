@@ -9,16 +9,16 @@ public class CustomerGenerator : MonoBehaviour {
     static int curCustomers;
     float countdown;
     Customer temp;
-    static int offset = 60;
+    static float offset = 1.5f;
     static Vector3 LinePosition;
     public GameObject customerLine;
     public GameObject buttonPrefab;
-    public static List<Customer> customers;
+    public static List<GameObject> customers;
     public static List<Sprite> customerSprites;
 
     // Use this for initialization
     void Start () {
-        customers = new List<Customer>();
+        customers = new List<GameObject>();
         customerSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Patrons"));
         countdown = 1.0f;
         curCustomers = 0;
@@ -50,27 +50,26 @@ public class CustomerGenerator : MonoBehaviour {
         //depending on what # customer this is, we want to offset the position
         c.transform.position = 
             new Vector3(LinePosition.x + (curCustomers * offset), LinePosition.y + (curCustomers * offset), LinePosition.z);
-                
-        Customer temp = new Customer(c, curCustomers);
+        
+        c.GetComponent<Customer>().number = curCustomers;
+        Recipe order = PlayerScript.getRandomRecipe();
+        c.GetComponent<Customer>().order = order;
+        c.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerScript.getFoodSprite(order);
+
         curCustomers++;
 
-        customers.Add(temp);
-
-        c.transform.GetChild(1).GetComponent<Image>().sprite = PlayerScript.getFoodSprite(temp.getOrder());
-        c.GetComponent<Button>().onClick.AddListener(temp.pushed);
-
+        customers.Add(c);
     }
 
-    public static List<Customer> getCustomers()
+    public static List<GameObject> getCustomers()
     {
         return customers;
     }
 
-    public static void removeCustomer(GameObject c, int n)
+    public static void removeCustomer(int n)
     {
-        Debug.Log(n);
         curCustomers--;
-        GameObject button = c;
+        GameObject button = customers[n];
         customers.Remove(customers[n]);
         if (curCustomers > 0)
         {
@@ -82,20 +81,20 @@ public class CustomerGenerator : MonoBehaviour {
     private static void shiftPositions()
     {
         //just setting the 1st customer's position to the start of the line
-        customers[0].getCustomerPrefab().transform.position = LinePosition;
-        customers[0].setNumber(0);
+        customers[0].transform.position = LinePosition;
+        customers[0].GetComponent<Customer>().setNumber(0);
         //already checked the 1st position
         for (int i = 1; i < curCustomers; i++)
         {
-            customers[i].setNumber(i);
+            customers[i].GetComponent<Customer>().setNumber(i);
             //if the position is more than the offset, then it's not in the right spot
-            if (customers[i].getCustomerPrefab().transform.position.x > customers[i-1].getCustomerPrefab().transform.position.x + offset)
+            if (customers[i].transform.position.x > customers[i-1].transform.position.x + offset)
             {
                 //change all of the positions for the remaining buttons
                 while (i < curCustomers)
                 {
-                    customers[i].setNumber(i);
-                    customers[i].getCustomerPrefab().transform.position = getNewPosition(customers[i].getCustomerPrefab());
+                    customers[i].GetComponent<Customer>().setNumber(i);
+                    customers[i].transform.position = getNewPosition(customers[i]);
                     i++;
                 }
             }

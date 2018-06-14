@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
 
+    public GameObject cat;
+
     private static int numIngreds = 3;
     private static int numUtens = 2;
 
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     static Queue playerQueue = new Queue();
-
     //stores the LoadingBar for the utensils
     static Queue<GameObject> loaders = new Queue<GameObject>();
+    //stores the location of the next thing in the queue so the cat can move to it
+    static Queue<Vector3> locations = new Queue<Vector3>();
+    static Vector3 nextLocation;
 
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
     List<Ingredients> itemsInHand = new List<Ingredients>();
@@ -36,6 +40,8 @@ public class PlayerScript : MonoBehaviour {
     void Start () {
         foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
         plate = GameObject.Find("plate").GetComponent<SpriteRenderer>();
+
+        nextLocation = cat.transform.position;
 
         Ingredients[] i = new Ingredients[1];
 
@@ -73,16 +79,19 @@ public class PlayerScript : MonoBehaviour {
             {
                 if(hit.collider.tag == "ingredients")
                 {
-                    boxScript b = hit.collider.GetComponent<boxScript>();
-                    Debug.Log(b.ingredient);
-                    b.pushed();
+                    hit.collider.GetComponent<boxScript>().pushed();
+                    locations.Enqueue(hit.collider.transform.position);
                 }
                 else if(hit.collider.tag == "utensil")
                 {
-                    cookingUtensilsScript c = hit.collider.GetComponent<cookingUtensilsScript>();
-                    c.pushed();
+                    hit.collider.GetComponent<cookingUtensilsScript>().pushed();
+                    locations.Enqueue(hit.collider.transform.position);
                 }
-                Debug.Log(hit.collider.gameObject.name);
+                else if(hit.collider.tag == "customer")
+                {
+                    locations.Enqueue(hit.collider.transform.position);
+                    hit.collider.GetComponent<Customer>().pushed();
+                }
             }
         }
 
@@ -91,6 +100,8 @@ public class PlayerScript : MonoBehaviour {
         //if enough time has passed, put the next item in the queue into the player's hand
         if (countdown <= 0.0f && playerQueue.Count > 0)
         {
+            nextLocation = locations.Dequeue();
+            Debug.Log(nextLocation);
             countdown = 1.0f;
             //putting the ingredient into the player's hand
             if (playerQueue.Peek().GetType() == typeof(Ingredients))
@@ -98,7 +109,7 @@ public class PlayerScript : MonoBehaviour {
                 itemsInHand.Add((Ingredients)playerQueue.Dequeue());
             }
             //"using" the kitchen utensil.  must check if the recipe exists
-            else
+            else if (playerQueue.Peek().GetType() == typeof(CookingTools))
             {
                 CookingTools tool = (CookingTools)playerQueue.Dequeue();
                 LoadingBar loader = loaders.Dequeue().GetComponent<LoadingBar>();
@@ -125,9 +136,15 @@ public class PlayerScript : MonoBehaviour {
                 }
  
             }
-
+            //clicked on a customer
+            else
+            {
+                playerQueue.Dequeue();
+            }
         }
-	}
+
+        cat.transform.position = Vector3.MoveTowards(cat.transform.position, nextLocation, 0.1f);
+    }
 
     private static void changePlateInHand(Recipe r)
     {
@@ -156,6 +173,11 @@ public class PlayerScript : MonoBehaviour {
         loaders.Enqueue(l);
     }
 
+    public static void addCustomerToPlayerQueue(int i)
+    {
+        playerQueue.Enqueue(i);
+    }
+
     Recipe getRecipe(Ingredients[] items, CookingTools uten)
     {
         foreach (Recipe r in recipes)
@@ -174,7 +196,7 @@ public class PlayerScript : MonoBehaviour {
         MoneyTracker.addMoney(-5);
     }
 
-    public static void givePlateToCustomer(Recipe order, GameObject customerPrefab, int n)
+    public static void givePlateToCustomer(Recipe order, int n)
     {
         if (plateInHand == null)
         {
@@ -187,7 +209,7 @@ public class PlayerScript : MonoBehaviour {
 
             changePlateInHand(null);
 
-            CustomerGenerator.removeCustomer(customerPrefab, n);
+            CustomerGenerator.removeCustomer(n);
         }
     }
 

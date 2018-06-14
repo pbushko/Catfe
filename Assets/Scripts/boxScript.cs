@@ -8,14 +8,12 @@ public class boxScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       // Debug.Log("start ");
+
     }
 
     public void pushed()
     {
-
         PlayerScript.addIngredientToPlayerQueue(ingredient);
-
     }
 
     void Update()
