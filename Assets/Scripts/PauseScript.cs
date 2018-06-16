@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour {
 
-    private bool isEnabled;
     PlayerScript player;
     CustomerGenerator customer;
 
 	// Use this for initialization
-	void Start () {
-        isEnabled = true;
-        player = GameObject.Find("chefcat").GetComponent<PlayerScript>();
-        customer = GameObject.Find("chefcat").GetComponent<CustomerGenerator>();
+	void Start ()
+    {
+        player = GameObject.Find("Cat").GetComponent<PlayerScript>();
+        customer = GameObject.Find("Cat").GetComponent<CustomerGenerator>();
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 
 	}
 
-    public void pause()
+    public void Pause()
     {
-        isEnabled = !isEnabled;
-        player.enabled = isEnabled;
-        customer.enabled = isEnabled;
+        player.enabled = !player.enabled;
+        customer.enabled = !customer.enabled;
     }
 }

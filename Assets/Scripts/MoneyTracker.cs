@@ -3,27 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyTracker : MonoBehaviour {
-
-    public static int money;
-
-    static Text moneyText;
+public class MoneyTracker : MonoBehaviour
+{
+    private Text moneyText;
+    public int money;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         moneyText = GetComponent<Text>();
         money = 30;
 
         //Writing the money into the canvas
         moneyText.text = "Money: $" + money;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public static void addMoney(int m)
+    public void AddMoney(int m)
     {
         money += m;
         moneyText.text = "Money: $" + money;

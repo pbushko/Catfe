@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Customer : MonoBehaviour {
+public class Customer : MonoBehaviour
+{
+    public Recipe m_order;
+    public int m_number;
 
-    public Recipe order;
-    public int number;
-
-    public Recipe getOrder()
+    public Recipe GetOrder()
     {
-        return order;
+        return m_order;
     }
 
-    public int getCustomerNumber()
+    public int GetCustomerNumber()
     {
-        return number;
+        return m_number;
     }
 
-    public void setNumber(int n)
+    public void SetCustomerNumber(int n)
     {
-        number = n;
+        m_number = n;
     }
 
-    public bool rightRecipe(Recipe r)
+    public bool CorrectRecipe(Recipe r)
     {
-        return Recipe.compareRecipes(order, r);
+        return Recipe.CompareRecipe(m_order, r);
     }
 
-    public void pushed()
+    public void OnClick()
     {
-        PlayerScript.addCustomerToPlayerQueue(number);
-        PlayerScript.givePlateToCustomer(order, number);
+        PlayerScript.AddCustomerToPlayerQueue(m_number);
+        //PlayerScript.GivePlateToCustomer(m_order, m_number);
     }
 
 }

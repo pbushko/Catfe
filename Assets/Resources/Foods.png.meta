@@ -8,7 +8,7 @@ TextureImporter:
     21300002: Beef and Chicken
     21300004: Carrot Salad
     21300006: None
-    21300008: slop
+    21300008: Slop
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -161,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: slop
+      name: Slop
       rect:
         serializedVersion: 2
         x: 69

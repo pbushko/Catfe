@@ -28,27 +28,27 @@ public class Recipe {
         price = p;
     }
 
-    public string getRecipeName()
+    public string GetRecipeName()
     {
         return recipeName;
     }
 
-    public Ingredients[] getIngreds()
+    public Ingredients[] GetIngredients()
     {
         return ingredients;
     }
 
-    public CookingTools getUten()
+    public CookingTools GetUtensils()
     {
         return utensils;
     }
 
-    public int getPrice()
+    public int GetPrice()
     {
         return price;
     }
 
-    private bool sameIngredients(Ingredients[] ins)
+    private bool SameIngredients(Ingredients[] ins)
     {
         int inLen = ingredients.Length;
         int j;
@@ -76,18 +76,18 @@ public class Recipe {
         return true;
     }
         
-    public bool sameRecipe(Ingredients[] ins, CookingTools c)
+    public bool SameRecipe(Ingredients[] ins, CookingTools c)
     {
-        if (sameIngredients(ins))
+        if (SameIngredients(ins))
         {
             return (c == utensils);
         }
         return false;
     }
 
-    public static bool compareRecipes(Recipe r1, Recipe r2)
+    public static bool CompareRecipe(Recipe r1, Recipe r2)
     {
-        return r1.getRecipeName() == r2.getRecipeName();
+        return r1.GetRecipeName() == r2.GetRecipeName();
     }
 
 }

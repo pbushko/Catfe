@@ -3,84 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingBar : MonoBehaviour {
-
+public class LoadingBar : MonoBehaviour
+{
+    // In the prefab
     public GameObject foreground;
     public GameObject background;
-    Image foregroundImage;
-    bool finished;
-    bool processing;
-    Sprite food;
     public SpriteRenderer foodRenderer;
-    Recipe recipe;
-    float fill;
-    float time;
+
+    private Image m_foregroundImage;
+    private Sprite m_food;
+
+    private bool m_finished;
+    private bool m_processing;
+
+    private Recipe m_recipe;
+    private float m_fill;
+    private float m_time;
 
 	// Use this for initialization
-	void Start () {
-        foregroundImage = foreground.GetComponent<Image>();
+	void Start ()
+    {
         foreground.SetActive(false);
         background.SetActive(false);
-        finished = false;
-        processing = false;
+
+        m_foregroundImage = foreground.GetComponent<Image>();
+        m_finished = false;
+        m_processing = false;
     }
 	
 	// Update is called once per frame
-	void Update () {
-        if (foregroundImage.IsActive())
+	void Update ()
+    {
+        if (m_foregroundImage.IsActive())
         {
-            if (fill <= 1f)
+            if (m_fill <= 1f)
             {
-                processing = true;
-                fill += 0.01f/time;
+                m_processing = true;
+                m_fill += 0.01f/m_time;
             }
             else
             {
-                processing = false;
+                m_processing = false;
                 foreground.SetActive(false);
                 background.SetActive(false);
-                finished = true;
+                m_finished = true;
                 
-                foodRenderer.sprite = food;
+                foodRenderer.sprite = m_food;
             }
-            foregroundImage.fillAmount = fill;
+            m_foregroundImage.fillAmount = m_fill;
         }
 	}
 
-    public void loading(float fillTime, Sprite f, Recipe r)
+    public void Loading(float fillTime, Sprite f, Recipe r)
     {
-        if (!finished && !processing)
+        if (!m_finished && !m_processing)
         {
-            food = f;
-            recipe = r;
+            m_food = f;
+            m_recipe = r;
             foreground.SetActive(true);
             background.SetActive(true);
-            time = fillTime;
-            reset();
+            m_time = fillTime;
+            Reset();
         }
     }
 
     //checks if there is a plate
-    public bool hasPlate()
+    public bool HasPlate()
     {
-        return finished;
+        return m_finished;
     }
 
     //takes the plate off of the utensil
-    public Recipe pickUpPlate()
+    public Recipe PickUpPlate()
     {
-        if (finished)
+        if (m_finished)
         {
-            foodRenderer.sprite = PlayerScript.getFoodSprite(null);
-            finished = false;
-            return recipe;
+            foodRenderer.sprite = PlayerScript.GetFoodSprite(null);
+            m_finished = false;
+            return m_recipe;
         }
         return null;
     }
 
-    public void reset()
+    public void Reset()
     {
-        fill = 0f;
-        foregroundImage.fillAmount = fill;
+        m_fill = 0f;
+        m_foregroundImage.fillAmount = m_fill;
     }
 }

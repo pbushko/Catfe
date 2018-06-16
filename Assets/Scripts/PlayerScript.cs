@@ -3,45 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerScript : MonoBehaviour {
-
-    public GameObject cat;
-
-    private static int numIngreds = 3;
-    private static int numUtens = 2;
+public class PlayerScript : MonoBehaviour
+{
+    public MoneyTracker moneyTracker;
 
     //stores what the player will be doing.  can contain both ingreds and cookinguten
-    static Queue playerQueue = new Queue();
+    private static Queue m_playerQueue = new Queue();
     //stores the LoadingBar for the utensils
-    static Queue<GameObject> loaders = new Queue<GameObject>();
+    private static Queue<GameObject> m_loaders = new Queue<GameObject>();
     //stores the location of the next thing in the queue so the cat can move to it
-    static Queue<Vector3> locations = new Queue<Vector3>();
-    static Vector3 nextLocation;
+    private static Queue<Vector3> m_locations = new Queue<Vector3>();
+    private static Vector3 m_nextLocation;
+    private static bool m_needsToMove;
 
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
-    List<Ingredients> itemsInHand = new List<Ingredients>();
+    private List<Ingredients> m_itemsInHand = new List<Ingredients>();
 
-    static List<Sprite> foods;
-    static List<string> foodNames = new List<string>();
+    private static List<Sprite> m_foods;
+    private static List<string> m_foodNames = new List<string>();
 
-    static Recipe plateInHand = null;
+    private static Recipe m_plateInHand = null;
 
     //stores all the recipes
-    static List<Recipe> recipes = new List<Recipe>();
+    private static List<Recipe> m_recipes = new List<Recipe>();
 
     //the countdown for the time between tasks being done
-    float countdown = 3.0f;
+    private float m_countdown = 3.0f;
 
-    Recipe slop = new Recipe("slop", null, CookingTools.none, 0);
+    private Recipe m_slop = new Recipe("slop", null, CookingTools.none, 0);
 
-    static SpriteRenderer plate;
+    private static SpriteRenderer m_plate;
 
     // Use this for initialization
-    void Start () {
-        foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
-        plate = GameObject.Find("plate").GetComponent<SpriteRenderer>();
+    void Start ()
+    {
+        m_foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
+        m_plate = GameObject.Find("plate").GetComponent<SpriteRenderer>();
 
-        nextLocation = cat.transform.position;
+        m_nextLocation = transform.position;
+        m_needsToMove = false;
 
         Ingredients[] i = new Ingredients[1];
 
@@ -54,18 +54,15 @@ public class PlayerScript : MonoBehaviour {
         otherI[1] = Ingredients.Chicken;
 
         //loading all of the recipes; this will have to be done on a level-by level basis
-        recipes.Add(new Recipe("Carrot Salad", i, CookingTools.Knife, 5));
-
-        recipes.Add(new Recipe("Carrot Soup", i, CookingTools.Stove, 6));
-
-        recipes.Add(new Recipe("Beef and Chicken", otherI, CookingTools.Stove, 10));
+        m_recipes.Add(new Recipe("Carrot Salad", i, CookingTools.Knife, 5));
+        m_recipes.Add(new Recipe("Carrot Soup", i, CookingTools.Stove, 6));
+        m_recipes.Add(new Recipe("Beef and Chicken", otherI, CookingTools.Stove, 10));
 
         //Adding the food names to allow us to search for the sprite
-        foreach (Sprite s in foods)
+        foreach (Sprite s in m_foods)
         {
-            foodNames.Add(s.name);
+            m_foodNames.Add(s.name);
         }
-        
     }
 
 	// Update is called once per frame
@@ -77,149 +74,158 @@ public class PlayerScript : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.up);
             if (hit.collider)
             {
-                if(hit.collider.tag == "ingredients")
+                Vector3 loc = hit.collider.transform.position;
+                if (hit.collider.tag == "ingredients")
                 {
-                    hit.collider.GetComponent<boxScript>().pushed();
-                    locations.Enqueue(hit.collider.transform.position);
+                    hit.collider.GetComponent<BoxScript>().OnClick();
+                    m_locations.Enqueue(new Vector3(loc.x, loc.y + 2, loc.z));
                 }
                 else if(hit.collider.tag == "utensil")
                 {
-                    hit.collider.GetComponent<cookingUtensilsScript>().pushed();
-                    locations.Enqueue(hit.collider.transform.position);
+                    hit.collider.GetComponent<CookingUtensilsScript>().OnClick();
+                    m_locations.Enqueue(new Vector3(loc.x - 0.5f, loc.y - 1, loc.z));
                 }
                 else if(hit.collider.tag == "customer")
                 {
-                    locations.Enqueue(hit.collider.transform.position);
-                    hit.collider.GetComponent<Customer>().pushed();
+                    hit.collider.GetComponent<Customer>().OnClick();
+                    m_locations.Enqueue(new Vector3(loc.x - 5, loc.y + 1, loc.z));
                 }
             }
         }
 
-        countdown -= Time.deltaTime;
+        m_countdown -= Time.deltaTime;
 
         //if enough time has passed, put the next item in the queue into the player's hand
-        if (countdown <= 0.0f && playerQueue.Count > 0)
+        if (m_countdown <= 0.0f && m_playerQueue.Count > 0)
         {
-            nextLocation = locations.Dequeue();
-            Debug.Log(nextLocation);
-            countdown = 1.0f;
+            m_nextLocation = m_locations.Dequeue();
+            m_needsToMove = true;
+            Debug.Log(m_nextLocation);
+            m_countdown = 1.0f;
             //putting the ingredient into the player's hand
-            if (playerQueue.Peek().GetType() == typeof(Ingredients))
+            if (m_playerQueue.Peek().GetType() == typeof(Ingredients))
             {
-                itemsInHand.Add((Ingredients)playerQueue.Dequeue());
+                m_itemsInHand.Add((Ingredients)m_playerQueue.Dequeue());
             }
             //"using" the kitchen utensil.  must check if the recipe exists
-            else if (playerQueue.Peek().GetType() == typeof(CookingTools))
+            else if (m_playerQueue.Peek().GetType() == typeof(CookingTools))
             {
-                CookingTools tool = (CookingTools)playerQueue.Dequeue();
-                LoadingBar loader = loaders.Dequeue().GetComponent<LoadingBar>();
+                CookingTools tool = (CookingTools)m_playerQueue.Dequeue();
+                LoadingBar loader = m_loaders.Dequeue().GetComponent<LoadingBar>();
 
                 //if there is a plate for us to pick up.
-                if (loader.hasPlate())
+                if (loader.HasPlate())
                 {
                     //can only pick up the plate if there is no other plate in our hand
-                    if (plateInHand == null)
+                    if (m_plateInHand == null)
                     {
                         //we picked up a plate
-                        changePlateInHand(loader.pickUpPlate());
+                        ChangePlateInHand(loader.PickUpPlate());
                     }
                 }
                 //if no plate, we will place the recipe as long as we have items to cook and there is nothing on the stove
-                else if (itemsInHand.Count > 0)
+                else if (m_itemsInHand.Count > 0)
                 {
-                    Recipe r = getRecipe(itemsInHand.ToArray(), tool);
+                    Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool);
 
                     //either putting a recipe in or finding what we should get from clicking on the utensil
-                    loader.loading(1f, getFoodSprite(r), r);
+                    loader.Loading(1f, GetFoodSprite(r), r);
 
-                    itemsInHand.Clear();
+                    m_itemsInHand.Clear();
                 }
  
             }
             //clicked on a customer
             else
             {
-                playerQueue.Dequeue();
+                m_playerQueue.Dequeue();
             }
         }
 
-        cat.transform.position = Vector3.MoveTowards(cat.transform.position, nextLocation, 0.1f);
+        if (m_needsToMove)
+        {
+            Vector3 catPos = transform.position;
+            if (catPos == m_nextLocation)
+            {
+                m_needsToMove = false;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(catPos, m_nextLocation, 0.2f);
+            }
+        }
     }
 
-    private static void changePlateInHand(Recipe r)
+    private static void ChangePlateInHand(Recipe r)
     {
-        plateInHand = r;
-        plate.sprite = getFoodSprite(r);
+        m_plateInHand = r;
+        m_plate.sprite = GetFoodSprite(r);
     }
 
-    public static Sprite getFoodSprite(Recipe food)
+    public static Sprite GetFoodSprite(Recipe food)
     {
         if (food != null)
         {
-            return foods[foodNames.IndexOf(food.getRecipeName())];
+            return m_foods[m_foodNames.IndexOf(food.GetRecipeName())];
         }
-        return foods[foodNames.IndexOf("None")];
+        return m_foods[m_foodNames.IndexOf("None")];
     }
 
     //allows the buttons from the crates/cooking utens to be added into the player queue
-    public static void addIngredientToPlayerQueue(Ingredients i)
+    public static void AddIngredientToPlayerQueue(Ingredients i)
     {
-        playerQueue.Enqueue(i);
+        m_playerQueue.Enqueue(i);
     }
 
-    public static void addCookingToolToPlayerQueue(CookingTools c, GameObject l)
+    public static void AddCookingToolToPlayerQueue(CookingTools c, GameObject l)
     {
-        playerQueue.Enqueue(c);
-        loaders.Enqueue(l);
+        m_playerQueue.Enqueue(c);
+        m_loaders.Enqueue(l);
     }
 
-    public static void addCustomerToPlayerQueue(int i)
+    public static void AddCustomerToPlayerQueue(int i)
     {
-        playerQueue.Enqueue(i);
+        m_playerQueue.Enqueue(i);
     }
 
-    Recipe getRecipe(Ingredients[] items, CookingTools uten)
+    Recipe GetRecipe(Ingredients[] items, CookingTools uten)
     {
-        foreach (Recipe r in recipes)
+        foreach (Recipe r in m_recipes)
         {
-            if (r.sameRecipe(items, uten))
+            if (r.SameRecipe(items, uten))
             {
                 return r;
             }
         }
-        return slop;
+        return m_slop;
     }
 
-    public void throwPlateAway()
+    public void ThrowPlateAway()
     {
-        changePlateInHand(null);
-        MoneyTracker.addMoney(-5);
+        ChangePlateInHand(null);
+        moneyTracker.AddMoney(-5);
     }
 
-    public static void givePlateToCustomer(Recipe order, int n)
+    public void GivePlateToCustomer(Recipe order, int n)
     {
-        if (plateInHand == null)
+        if (m_plateInHand == null)
         {
             return;
         }
 
-        if (Recipe.compareRecipes(plateInHand, order))
+        if (Recipe.CompareRecipe(m_plateInHand, order))
         {
-            MoneyTracker.addMoney(plateInHand.getPrice());
+            moneyTracker.AddMoney(m_plateInHand.GetPrice());
+            ChangePlateInHand(null);
 
-            changePlateInHand(null);
-
-            CustomerGenerator.removeCustomer(n);
+            //CustomerGenerator.RemoveCustomer(n);
         }
     }
 
-    public static Recipe getRandomRecipe()
+    public static Recipe GetRandomRecipe()
     {
-        int rand = Random.Range(0, recipes.Count);
-
-        Recipe[] r = recipes.ToArray();
-
-        return r[rand];
+        int rand = Random.Range(0, m_recipes.Count);
+        return m_recipes[rand];
     }
 
 }

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boxScript : MonoBehaviour {
+public class BoxScript : MonoBehaviour {
 
     public Ingredients ingredient;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 
     }
 
-    public void pushed()
+    public void OnClick()
     {
-        PlayerScript.addIngredientToPlayerQueue(ingredient);
+        PlayerScript.AddIngredientToPlayerQueue(ingredient);
     }
 
     void Update()
