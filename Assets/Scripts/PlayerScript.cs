@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public MoneyTracker moneyTracker;
+    public static MoneyTracker moneyTracker;
 
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     private static Queue m_playerQueue = new Queue();
@@ -42,6 +42,8 @@ public class PlayerScript : MonoBehaviour
 
         m_nextLocation = transform.position;
         m_needsToMove = false;
+
+        moneyTracker = GameObject.Find("Money Tracker").GetComponent<MoneyTracker>();
 
         Ingredients[] i = new Ingredients[1];
 
@@ -91,17 +93,22 @@ public class PlayerScript : MonoBehaviour
                     m_locations.Enqueue(new Vector3(loc.x - 5, loc.y + 1, loc.z));
                 }
             }
+            //setting the player to move if there is only one location to go to
+            if (!m_needsToMove && m_locations.Count == 1)
+            {
+                m_nextLocation = m_locations.Dequeue();
+                m_needsToMove = true;
+            }
         }
 
-        m_countdown -= Time.deltaTime;
-
         //if enough time has passed, put the next item in the queue into the player's hand
-        if (m_countdown <= 0.0f && m_playerQueue.Count > 0)
+        if (!m_needsToMove && m_playerQueue.Count > 0)
         {
-            m_nextLocation = m_locations.Dequeue();
-            m_needsToMove = true;
-            Debug.Log(m_nextLocation);
-            m_countdown = 1.0f;
+            if (m_locations.Count > 0)
+            {
+                m_nextLocation = m_locations.Dequeue();
+                m_needsToMove = true;
+            }
             //putting the ingredient into the player's hand
             if (m_playerQueue.Peek().GetType() == typeof(Ingredients))
             {
@@ -138,7 +145,8 @@ public class PlayerScript : MonoBehaviour
             //clicked on a customer
             else
             {
-                m_playerQueue.Dequeue();
+                Customer c = CustomerGenerator.GetCustomer((int)m_playerQueue.Dequeue());
+                GivePlateToCustomer(c.GetOrder(), c.GetCustomerNumber());
             }
         }
 
@@ -206,19 +214,21 @@ public class PlayerScript : MonoBehaviour
         moneyTracker.AddMoney(-5);
     }
 
-    public void GivePlateToCustomer(Recipe order, int n)
+    public static void GivePlateToCustomer(Recipe order, int n)
     {
         if (m_plateInHand == null)
         {
             return;
         }
 
+        Debug.Log(order.GetRecipeName());
+
         if (Recipe.CompareRecipe(m_plateInHand, order))
         {
             moneyTracker.AddMoney(m_plateInHand.GetPrice());
             ChangePlateInHand(null);
 
-            //CustomerGenerator.RemoveCustomer(n);
+            CustomerGenerator.RemoveCustomer(n);
         }
     }
 

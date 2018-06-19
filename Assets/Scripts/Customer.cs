@@ -30,7 +30,6 @@ public class Customer : MonoBehaviour
     public void OnClick()
     {
         PlayerScript.AddCustomerToPlayerQueue(m_number);
-        //PlayerScript.GivePlateToCustomer(m_order, m_number);
     }
 
 }

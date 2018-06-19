@@ -701,7 +701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f65d927f158b94b93d8c5c96609cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyTracker: {fileID: 163569867}
 --- !u!224 &532049983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2226,7 +2225,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 532049981}
-        m_MethodName: throwPlateAway
+        m_MethodName: ThrowPlateAway
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

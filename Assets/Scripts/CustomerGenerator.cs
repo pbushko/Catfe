@@ -12,7 +12,7 @@ public class CustomerGenerator : MonoBehaviour {
     private Customer m_temp;
 
     private static Vector3 m_linePosition;
-    private List<GameObject> m_customers;
+    private static List<GameObject> m_customers;
     private List<Sprite> m_customerSprites;
 
     // Use this for initialization
@@ -59,12 +59,12 @@ public class CustomerGenerator : MonoBehaviour {
         m_customers.Add(c);
     }
 
-    public List<GameObject> GetCustomers()
+    public static Customer GetCustomer(int n)
     {
-        return m_customers;
+        return m_customers[n].GetComponent<Customer>();
     }
 
-    public void RemoveCustomer(int n)
+    public static void RemoveCustomer(int n)
     {
         GameObject button = m_customers[n];
         m_customers.Remove(m_customers[n]);
@@ -75,7 +75,7 @@ public class CustomerGenerator : MonoBehaviour {
         Destroy(button);   
     }
 
-    private void ShiftPositions()
+    private static void ShiftPositions()
     {
         //just setting the 1st customer's position to the start of the line
         m_customers[0].transform.position = m_linePosition;
