@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/restaurant.unity
+    guid: ca5ade2a9c4b90049a5e23e306b399b7
+  - enabled: 1
+    path: Assets/LevelSelect.unity
+    guid: 29358bea092974648827580364303ed2
