@@ -302,6 +302,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BoxScript.cs" />
     <Compile Include="Assets\Scripts\Cafe.cs" />
+    <Compile Include="Assets\Scripts\CatfeCustomer.cs" />
+    <Compile Include="Assets\Scripts\CatfeCustomerGenerator.cs" />
+    <Compile Include="Assets\Scripts\CatfePlayerScript.cs" />
+    <Compile Include="Assets\Scripts\CatToyScript.cs" />
     <Compile Include="Assets\Scripts\CookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\Customer.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />

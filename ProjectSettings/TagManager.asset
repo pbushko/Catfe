@@ -7,6 +7,8 @@ TagManager:
   - ingredients
   - utensil
   - customer
+  - CatToy
+  - cat
   layers:
   - Default
   - TransparentFX

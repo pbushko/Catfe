@@ -27,9 +27,6 @@ public class PlayerScript : MonoBehaviour
     //stores all the recipes
     private static List<Recipe> m_recipes = new List<Recipe>();
 
-    //the countdown for the time between tasks being done
-    private float m_countdown = 3.0f;
-
     private Recipe m_slop = new Recipe("slop", null, CookingTools.none, 0);
 
     private static SpriteRenderer m_plate;
@@ -234,8 +231,7 @@ public class PlayerScript : MonoBehaviour
 
     public static Recipe GetRandomRecipe()
     {
-        int rand = Random.Range(0, m_recipes.Count);
-        return m_recipes[rand];
+        return m_recipes[Random.Range(0, m_recipes.Count)];
     }
 
 }

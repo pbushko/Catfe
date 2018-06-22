@@ -32,11 +32,27 @@ public class CustomerGenerator : MonoBehaviour {
         {
             m_countdown -= Time.deltaTime;
 
-            //if enough time has passed, put the next item in the queue into the player's hand
+            //if enough time has passed, get the next customer
             if (m_countdown <= 0.0f)
             {
                 m_countdown = 2.0f;
                 AddCustomer();
+            }
+        }
+
+        //update the patience of all the customers and make ones leave if they run out
+        for (int i = 0; i < m_customers.Count; i++)
+        {
+            Customer c = m_customers[i].GetComponent<Customer>();
+            int heartsLeft = c.UpdatePatience();
+            //if out of patience, they leave
+            if (heartsLeft < 0)
+            {
+                RemoveCustomer(i);
+            }
+            else if (heartsLeft <= 3)
+            {
+                m_customers[i].transform.GetChild(2).transform.GetChild(heartsLeft).GetComponent<SpriteRenderer>().sprite = null;
             }
         }
 	}
