@@ -6,8 +6,8 @@ public class Customer : MonoBehaviour
 {
     public Recipe m_order;
     public int m_number;
-    private float m_patience = 20f;
-    private int heartCount = 4;
+    private float m_patience = 15f;
+    public int m_heartCount = 3;
 
     public Recipe GetOrder()
     {
@@ -37,9 +37,10 @@ public class Customer : MonoBehaviour
     public int UpdatePatience() 
     {
         m_patience -= Time.deltaTime;
-        if (m_patience/4 < heartCount)
+        if (m_patience <= 0)
         {
-            return --heartCount;
+            m_patience = 15f;
+            return --m_heartCount;
         }
         //don't want to return the heart count every time or it will keep setting the sprites; unnecessary getting the sprites otherwise
         else

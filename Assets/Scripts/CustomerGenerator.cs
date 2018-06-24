@@ -67,10 +67,25 @@ public class CustomerGenerator : MonoBehaviour {
         c.transform.position = 
             new Vector3(m_linePosition.x + (m_customers.Count * Variables.CUSTOMER_OFFSET), m_linePosition.y + (m_customers.Count * Variables.CUSTOMER_OFFSET), m_linePosition.z);
         
-        c.GetComponent<Customer>().m_number = m_customers.Count;
+        Customer temp = c.GetComponent<Customer>();
+        temp.m_number = m_customers.Count;
         Recipe order = PlayerScript.GetRandomRecipe();
-        c.GetComponent<Customer>().m_order = order;
+        temp.m_order = order;
         c.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerScript.GetFoodSprite(order);
+
+        //changing the style of the customer to be random
+        int rand = Random.Range(0, 2);
+        c.GetComponent<SpriteRenderer>().sprite = m_customerSprites[rand];
+        c.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = m_customerSprites[Random.Range(2, 4)];
+        //changing the patience
+        if (rand == 1)
+        {
+            temp.m_heartCount += rand;
+        }
+        else
+        {
+            temp.transform.GetChild(2).transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = null;
+        }
 
         m_customers.Add(c);
     }

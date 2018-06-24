@@ -7,6 +7,9 @@ TextureImporter:
     21300000: Patron_0
     21300002: thought_bubble
     21300004: speech_bubble
+    21300006: Patron_1
+    21300008: Patron_Face_0
+    21300010: Patron_Face_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -106,12 +109,12 @@ TextureImporter:
       name: Patron_0
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 1383
-        width: 215
-        height: 384
+        width: 214
+        height: 366
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,7 +128,7 @@ TextureImporter:
         width: 212
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +142,49 @@ TextureImporter:
         width: 187
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Patron_1
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1032
+        width: 239
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Patron_Face_0
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 1411
+        width: 70
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Patron_Face_1
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 1411
+        width: 69
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

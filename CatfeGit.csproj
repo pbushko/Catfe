@@ -316,6 +316,7 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Recipes.cs" />
+    <Compile Include="Assets\Scripts\RestaurantMain.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

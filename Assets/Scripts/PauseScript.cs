@@ -11,7 +11,7 @@ public class PauseScript : MonoBehaviour {
 	void Start ()
     {
         player = GameObject.Find("Cat").GetComponent<PlayerScript>();
-        customer = GameObject.Find("Cat").GetComponent<CustomerGenerator>();
+        customer = GameObject.Find("Customer Line").GetComponent<CustomerGenerator>();
     }
 	
 	// Update is called once per frame
@@ -20,9 +20,5 @@ public class PauseScript : MonoBehaviour {
 
 	}
 
-    public void Pause()
-    {
-        player.enabled = !player.enabled;
-        customer.enabled = !customer.enabled;
-    }
+    
 }

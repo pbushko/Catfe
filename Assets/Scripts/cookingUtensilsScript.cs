@@ -8,6 +8,8 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public GameObject loader;
 
+    public int upgradeCost;
+
     public void OnClick()
     {
         PlayerScript.AddCookingToolToPlayerQueue(utensil, loader);
@@ -16,7 +18,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-
+        upgradeCost = 10;
     }
 	
 	// Update is called once per frame
