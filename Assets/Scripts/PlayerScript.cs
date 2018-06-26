@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     //stores all the recipes
     private static List<Recipe> m_recipes = new List<Recipe>();
 
-    private Recipe m_slop = new Recipe("slop", null, CookingTools.none, 0);
+    private Recipe m_slop = new Recipe("Slop", null, CookingTools.none, 0);
 
     private static SpriteRenderer m_plate;
 
@@ -217,8 +217,6 @@ public class PlayerScript : MonoBehaviour
         {
             return;
         }
-
-        Debug.Log(order.GetRecipeName());
 
         if (Recipe.CompareRecipe(m_plateInHand, order))
         {

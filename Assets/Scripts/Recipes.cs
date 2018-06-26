@@ -78,9 +78,9 @@ public class Recipe {
         
     public bool SameRecipe(Ingredients[] ins, CookingTools c)
     {
-        if (SameIngredients(ins))
+        if (c == utensils)
         {
-            return (c == utensils);
+            return (SameIngredients(ins));
         }
         return false;
     }

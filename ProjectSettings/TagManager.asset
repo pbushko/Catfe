@@ -9,6 +9,8 @@ TagManager:
   - customer
   - CatToy
   - cat
+  - yesButton
+  - noButton
   layers:
   - Default
   - TransparentFX
@@ -54,4 +56,10 @@ TagManager:
     locked: 0
   - name: Accessory
     uniqueID: 3291717067
+    locked: 0
+  - name: PopUp
+    uniqueID: 1835946473
+    locked: 0
+  - name: PopUp Button
+    uniqueID: 1940606551
     locked: 0
