@@ -5,22 +5,18 @@ using UnityEngine.UI;
 
 public class MoneyTracker : MonoBehaviour
 {
-    private Text moneyText;
-    public int money;
+    private static Text moneyText;
 
 	// Use this for initialization
 	void Start ()
     {
         moneyText = GetComponent<Text>();
-        money = 30;
 
-        //Writing the money into the canvas
-        moneyText.text = "Money: $" + money;
+        moneyText.text = "Money: $" + RestaurantMain.playerMoney;
 	}
 
-    public void AddMoney(int m)
+    public static void ChangeMoneyCount()
     {
-        money += m;
-        moneyText.text = "Money: $" + money;
+        moneyText.text = "Money: $" + RestaurantMain.playerMoney;
     }
 }

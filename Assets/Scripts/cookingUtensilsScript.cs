@@ -8,17 +8,20 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public GameObject loader;
 
-    public int upgradeCost;
+    private int upgradeCost;
+
+    private float cookTime;
 
     public void OnClick()
     {
-        PlayerScript.AddCookingToolToPlayerQueue(utensil, loader);
+        PlayerScript.AddCookingToolToPlayerQueue(utensil, loader, cookTime);
     }
 
 	// Use this for initialization
 	void Start ()
     {
         upgradeCost = 10;
+        cookTime = 1f;
     }
 	
 	// Update is called once per frame
@@ -26,4 +29,21 @@ public class CookingUtensilsScript : MonoBehaviour {
     {
 		
 	}
+
+    public void Upgrade()
+    {
+        RestaurantMain.AddMoney(-upgradeCost);
+        cookTime /= 2;
+        Debug.Log("upgraded!");
+    }
+
+    public int GetUpgradeCost()
+    {
+        return upgradeCost;
+    }
+
+    public float GetCookTime()
+    {
+        return cookTime;
+    }
 }

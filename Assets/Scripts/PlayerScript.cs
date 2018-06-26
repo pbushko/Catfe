@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public static MoneyTracker moneyTracker;
-
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     private static Queue m_playerQueue = new Queue();
     //stores the LoadingBar for the utensils
     private static Queue<GameObject> m_loaders = new Queue<GameObject>();
+    private static Queue<float> m_cookTimes = new Queue<float>();
     //stores the location of the next thing in the queue so the cat can move to it
     private static Queue<Vector3> m_locations = new Queue<Vector3>();
     private static Vector3 m_nextLocation;
@@ -39,8 +38,6 @@ public class PlayerScript : MonoBehaviour
 
         m_nextLocation = transform.position;
         m_needsToMove = false;
-
-        moneyTracker = GameObject.Find("Money Tracker").GetComponent<MoneyTracker>();
 
         Ingredients[] i = new Ingredients[1];
 
@@ -116,6 +113,7 @@ public class PlayerScript : MonoBehaviour
             {
                 CookingTools tool = (CookingTools)m_playerQueue.Dequeue();
                 LoadingBar loader = m_loaders.Dequeue().GetComponent<LoadingBar>();
+                float time = m_cookTimes.Dequeue();
 
                 //if there is a plate for us to pick up.
                 if (loader.HasPlate())
@@ -133,7 +131,7 @@ public class PlayerScript : MonoBehaviour
                     Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool);
 
                     //either putting a recipe in or finding what we should get from clicking on the utensil
-                    loader.Loading(1f, GetFoodSprite(r), r);
+                    loader.Loading(time, GetFoodSprite(r), r);
 
                     m_itemsInHand.Clear();
                 }
@@ -182,10 +180,11 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(i);
     }
 
-    public static void AddCookingToolToPlayerQueue(CookingTools c, GameObject l)
+    public static void AddCookingToolToPlayerQueue(CookingTools c, GameObject l, float n)
     {
         m_playerQueue.Enqueue(c);
         m_loaders.Enqueue(l);
+        m_cookTimes.Enqueue(n);
     }
 
     public static void AddCustomerToPlayerQueue(int i)
@@ -208,7 +207,7 @@ public class PlayerScript : MonoBehaviour
     public void ThrowPlateAway()
     {
         ChangePlateInHand(null);
-        moneyTracker.AddMoney(-5);
+        RestaurantMain.AddMoney(-5);
     }
 
     public static void GivePlateToCustomer(Recipe order, int n)
@@ -220,7 +219,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Recipe.CompareRecipe(m_plateInHand, order))
         {
-            moneyTracker.AddMoney(m_plateInHand.GetPrice());
+            RestaurantMain.AddMoney(m_plateInHand.GetPrice());
             ChangePlateInHand(null);
 
             CustomerGenerator.RemoveCustomer(n);

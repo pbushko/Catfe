@@ -11,15 +11,21 @@ public class RestaurantMain : MonoBehaviour {
 	private PlayerScript playerScript;
 	private CustomerGenerator customerGenerator;
 
-	//private System.Action<GameObject> yesButtonAction;
+	public static int playerMoney;
+
 	public GameObject popUp;
 	public GameObject curPopUp;
 	public Text popUpText;
+
+	private Collider2D curUtensil;
 
 	// Use this for initialization
 	void Start () {
 		//always start the scene with buying upgrades
 		currentState = State.upgrades;
+
+		playerMoney = 100;
+		MoneyTracker.ChangeMoneyCount();
 
 		popUpText.enabled = false;
 
@@ -34,8 +40,8 @@ public class RestaurantMain : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.up);
-			if (hit.collider)
+			Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
+			if (hit)
 			{
 				//Vector3 loc = hit.collider.transform.position;
 				//nothing should happen unless a utensil is clcicked
@@ -47,24 +53,36 @@ public class RestaurantMain : MonoBehaviour {
 				//access the utensil and check if the player wants to upgrade it
 				if (currentState == State.upgrades)
 				{
-					if(hit.collider.tag == "utensil")
+					if(hit.tag == "utensil")
 					{
-					//will go into choosing to upgrade or not on the popup
-					currentState = State.popup;
-					setPopUp(true);
+						//will go into choosing to upgrade or not on the popup
+						currentState = State.popup;
+						setPopUp(true);
+						curUtensil = hit;
 					}
 				}
 				if (currentState == State.popup)
 				{
 					//don't want to buy the upgrade
-					if (hit.collider.tag == "noButton")
+					if (hit.tag == "noButton")
 					{
 						currentState = State.upgrades;
 						setPopUp(false);
 					}
-					else if (hit.collider.tag == "yesButton")
+					else if (hit.tag == "yesButton")
 					{
-
+						currentState = State.upgrades;
+						CookingUtensilsScript temp = curUtensil.GetComponent<CookingUtensilsScript>();
+						if (playerMoney >= temp.GetUpgradeCost())
+						{
+							temp.Upgrade();
+							curUtensil = null;
+						}
+						else
+						{
+							Debug.Log("not enough money!");
+						}
+						setPopUp(false);
 					}
 				}
 			}
@@ -96,8 +114,13 @@ public class RestaurantMain : MonoBehaviour {
 	public void FinishedUpgrades() {
 		currentState = State.gameplay;
 		Destroy(GameObject.Find("UpgradesFinishedButton"));
-		Destroy(popUp);
-		popUpText.enabled = false;
+		setPopUp(false);
 		Pause();
+	}
+
+	public static void AddMoney(int n)
+	{
+		playerMoney += n;
+		MoneyTracker.ChangeMoneyCount();
 	}
 }
