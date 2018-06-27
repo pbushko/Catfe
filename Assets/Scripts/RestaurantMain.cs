@@ -13,6 +13,9 @@ public class RestaurantMain : MonoBehaviour {
 
 	public static int playerMoney;
 
+	private static List<Sprite> m_utensilSprites;
+	private static List<string> m_utensilSpriteNames;
+
 	public GameObject popUp;
 	public GameObject curPopUp;
 	public Text popUpText;
@@ -24,6 +27,9 @@ public class RestaurantMain : MonoBehaviour {
 		//always start the scene with buying upgrades
 		currentState = State.upgrades;
 
+		m_utensilSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Kitchen Utensils"));
+		m_utensilSpriteNames = new List<string>();
+
 		playerMoney = 100;
 		MoneyTracker.ChangeMoneyCount();
 
@@ -33,6 +39,11 @@ public class RestaurantMain : MonoBehaviour {
 		playerScript = GameObject.Find("Cat").GetComponent<PlayerScript>();
         customerGenerator = GameObject.Find("Customer Line").GetComponent<CustomerGenerator>();
 		Pause();
+
+		foreach (Sprite s in m_utensilSprites)
+        {
+            m_utensilSpriteNames.Add(s.name);
+        }
 	}
 	
 	// Update is called once per frame
@@ -122,5 +133,24 @@ public class RestaurantMain : MonoBehaviour {
 	{
 		playerMoney += n;
 		MoneyTracker.ChangeMoneyCount();
+	}
+
+	public static Sprite GetUpgradeSprite(Sprite sprite)
+	{
+		string s = sprite.name;
+		//getting the number of the utensil
+		int num = (int)char.GetNumericValue(s[s.Length - 1]);
+		num ++;
+		string temp = s.Substring(0, s.Length - 1) + num;
+		Debug.Log(temp);
+		Sprite toRet = m_utensilSprites[m_utensilSpriteNames.IndexOf(temp)];
+		if (toRet != null)
+		{
+			return toRet;
+		}
+		else
+		{
+			return sprite;
+		}
 	}
 }

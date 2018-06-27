@@ -12,6 +12,8 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     private float cookTime;
 
+    private SpriteRenderer objectSprite;
+
     public void OnClick()
     {
         PlayerScript.AddCookingToolToPlayerQueue(utensil, loader, cookTime);
@@ -22,6 +24,7 @@ public class CookingUtensilsScript : MonoBehaviour {
     {
         upgradeCost = 10;
         cookTime = 1f;
+        objectSprite = GetComponent<SpriteRenderer>();
     }
 	
 	// Update is called once per frame
@@ -34,6 +37,8 @@ public class CookingUtensilsScript : MonoBehaviour {
     {
         RestaurantMain.AddMoney(-upgradeCost);
         cookTime /= 2;
+        upgradeCost *= 5;
+        objectSprite.sprite = RestaurantMain.GetUpgradeSprite(objectSprite.sprite);
         Debug.Log("upgraded!");
     }
 

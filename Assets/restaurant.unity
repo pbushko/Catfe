@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd702fb21948dc740bb3be67947f03b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
 --- !u!114 &163569868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,6 +1124,12 @@ Prefab:
       propertyPath: m_Name
       value: Stove
       objectReference: {fileID: 0}
+    - target: {fileID: 212819294290954536, guid: 809119fca04c1b24089e212032beb33e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 704406a8a26115c4eb8845b6334c72bf,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 809119fca04c1b24089e212032beb33e, type: 2}
   m_IsPrefabParent: 0
