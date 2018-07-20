@@ -309,6 +309,7 @@
     <Compile Include="Assets\Scripts\CookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\Customer.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
+    <Compile Include="Assets\Scripts\LevelButtonData.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\MoneyTracker.cs" />

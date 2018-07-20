@@ -11,6 +11,7 @@ TagManager:
   - cat
   - yesButton
   - noButton
+  - levelButton
   layers:
   - Default
   - TransparentFX

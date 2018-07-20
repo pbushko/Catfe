@@ -9,4 +9,7 @@ static class Variables
     // Used in CustomerGenerator
     public static int MAX_CUSTOMERS = 4;
     public static float CUSTOMER_OFFSET = 1.5f;
+
+    public static float INGREDIENT_OFFSET = 3f;
+    public static float UTENSIL_OFFSET = 3f;
 }

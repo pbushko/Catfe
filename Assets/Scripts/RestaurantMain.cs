@@ -7,14 +7,28 @@ public enum State {upgrades, popup, gameplay}
 
 public class RestaurantMain : MonoBehaviour {
 
+	public static RestaurantMain restMain;
+
+	public GameObject ingredientBox;
+	public GameObject ingredientLine;
+
+	public GameObject utensilLine;
+
 	private State currentState;
 	private PlayerScript playerScript;
 	private CustomerGenerator customerGenerator;
 
-	public static int playerMoney;
-
 	private static List<Sprite> m_utensilSprites;
 	private static List<string> m_utensilSpriteNames;
+	private static List<Sprite> m_ingredientSprites;
+	private static List<string> m_ingredientSpriteNames;
+
+	private Vector3 m_ingredientLinePosition;
+	private Vector3 m_utensilLinePosition;
+
+	public static List<Ingredients> ingredients;
+	//cooking utensil prefabs
+	public static List<GameObject> utensils;
 
 	public GameObject popUp;
 	public GameObject curPopUp;
@@ -24,14 +38,17 @@ public class RestaurantMain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		restMain = this;
 		//always start the scene with buying upgrades
 		currentState = State.upgrades;
 
 		m_utensilSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Kitchen Utensils"));
 		m_utensilSpriteNames = new List<string>();
+		m_ingredientSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Ingredients"));
+		m_ingredientSpriteNames = new List<string>();
 
-		playerMoney = 100;
-		MoneyTracker.ChangeMoneyCount();
+		m_ingredientLinePosition = ingredientLine.transform.position;
+		m_utensilLinePosition = utensilLine.transform.position;
 
 		popUpText.enabled = false;
 
@@ -44,6 +61,12 @@ public class RestaurantMain : MonoBehaviour {
         {
             m_utensilSpriteNames.Add(s.name);
         }
+		foreach (Sprite s in m_ingredientSprites)
+        {
+            m_ingredientSpriteNames.Add(s.name);
+        }
+
+		setIngredientBoxes();
 	}
 	
 	// Update is called once per frame
@@ -54,13 +77,6 @@ public class RestaurantMain : MonoBehaviour {
 			Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
 			if (hit)
 			{
-				//Vector3 loc = hit.collider.transform.position;
-				//nothing should happen unless a utensil is clcicked
-				// if (hit.collider.tag == "ingredients")
-				// {
-				// 	hit.collider.GetComponent<BoxScript>().OnClick();
-				// 	m_locations.Enqueue(new Vector3(loc.x, loc.y + 2, loc.z));
-				// }
 				//access the utensil and check if the player wants to upgrade it
 				if (currentState == State.upgrades)
 				{
@@ -84,7 +100,7 @@ public class RestaurantMain : MonoBehaviour {
 					{
 						currentState = State.upgrades;
 						CookingUtensilsScript temp = curUtensil.GetComponent<CookingUtensilsScript>();
-						if (playerMoney >= temp.GetUpgradeCost())
+						if (PlayerData.playerData.playerMoney >= temp.GetUpgradeCost())
 						{
 							temp.Upgrade();
 							curUtensil = null;
@@ -127,11 +143,14 @@ public class RestaurantMain : MonoBehaviour {
 		Destroy(GameObject.Find("UpgradesFinishedButton"));
 		setPopUp(false);
 		Pause();
+		//adding the upgrades purchased to the save file, doesn't auto save it here
+		//only saves once the level has been completed
+		PlayerData.playerData.utensils = utensils;
 	}
 
 	public static void AddMoney(int n)
 	{
-		playerMoney += n;
+		PlayerData.playerData.playerMoney += n;
 		MoneyTracker.ChangeMoneyCount();
 	}
 
@@ -153,4 +172,59 @@ public class RestaurantMain : MonoBehaviour {
 			return sprite;
 		}
 	}
+
+	//set up the ingredient boxes for the level
+	private void setIngredientBoxes()
+	{
+		int n = ingredients.Count;
+		//setting each box
+		for(int i = 0; i < n; i++)
+		{
+			GameObject box = (GameObject)Instantiate(ingredientBox);
+			//setting the location
+			box.transform.SetParent(ingredientLine.transform);
+
+			//setting the ingredient
+			box.GetComponent<BoxScript>().ingredient = ingredients[i];
+			box.transform.position = 
+            	new Vector3(m_ingredientLinePosition.x + (i * Variables.INGREDIENT_OFFSET), m_ingredientLinePosition.y, m_ingredientLinePosition.z);
+
+			SpriteRenderer s = box.transform.GetChild(0).GetComponent<SpriteRenderer>();
+			//setting the sprite
+			switch (ingredients[i]) 
+			{
+				case Ingredients.Carrot:
+					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
+					break;
+				case Ingredients.Lettuce:
+					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Lettuce")];
+					break;
+				case Ingredients.Beef:
+					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Beef")];
+					break;
+				case Ingredients.Chicken:
+					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Chicken")];
+					break;
+				default:
+					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
+					break;
+			}
+		}
+	}
+
+	private void setUtensils()
+	{
+		int n = utensils.Count;
+		//setting each box
+		for(int i = 0; i < n; i++)
+		{
+			GameObject utensil = (GameObject)Instantiate(utensils[i]);
+			//setting the location
+			utensil.transform.SetParent(utensilLine.transform);
+
+			utensil.transform.position = 
+            	new Vector3(m_utensilLinePosition.x + (i * Variables.UTENSIL_OFFSET), m_utensilLinePosition.y, m_utensilLinePosition.z);
+		}
+	}
+
 }

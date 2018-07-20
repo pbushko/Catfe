@@ -12,11 +12,11 @@ public class MoneyTracker : MonoBehaviour
     {
         moneyText = GetComponent<Text>();
 
-        moneyText.text = "Money: $" + RestaurantMain.playerMoney;
+        moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
 	}
 
     public static void ChangeMoneyCount()
     {
-        moneyText.text = "Money: $" + RestaurantMain.playerMoney;
+        moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
     }
 }
