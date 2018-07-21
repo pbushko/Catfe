@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class LevelSelect : MonoBehaviour {
 
-	public GameObject defaultStove;
-	public GameObject defaultKnife;
-
 	//save once you reach the level select screen; that is before you choose
 	//a level and after you finish a level
 	void Start() {
@@ -25,16 +22,9 @@ public class LevelSelect : MonoBehaviour {
 					int level = hit.GetComponent<LevelButtonData>().levelNum;
 					List<Ingredients> ingreds = new List<Ingredients>();
 					//if there are not even the default utensils, put them in
-					if (PlayerData.playerData.utensils.Count < 2)
+					if (PlayerData.playerData.utensils.Count >= 2)
 					{
-						List<GameObject> utens = new List<GameObject>();
-						utens.Add(defaultKnife);
-						utens.Add(defaultStove);
-						RestaurantMain.utensils = utens;
-					}
-					else
-					{
-						RestaurantMain.utensils = PlayerData.playerData.utensils;
+						//RestaurantMain.utensils = PlayerData.playerData.utensils;
 					}
 					//load the lettuce and carrot
 					if (level == 0)

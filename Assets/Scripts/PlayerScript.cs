@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     private static Queue m_playerQueue = new Queue();
     //stores the LoadingBar for the utensils
-    private static Queue<GameObject> m_loaders = new Queue<GameObject>();
+    private static Queue<LoadingBar> m_loaders = new Queue<LoadingBar>();
     private static Queue<float> m_cookTimes = new Queue<float>();
     //stores the location of the next thing in the queue so the cat can move to it
     private static Queue<Vector3> m_locations = new Queue<Vector3>();
@@ -115,7 +115,7 @@ public class PlayerScript : MonoBehaviour
             else if (m_playerQueue.Peek().GetType() == typeof(CookingTools))
             {
                 CookingTools tool = (CookingTools)m_playerQueue.Dequeue();
-                LoadingBar loader = m_loaders.Dequeue().GetComponent<LoadingBar>();
+                LoadingBar loader = m_loaders.Dequeue();
                 float time = m_cookTimes.Dequeue();
 
                 //if there is a plate for us to pick up.
@@ -183,7 +183,7 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(i);
     }
 
-    public static void AddCookingToolToPlayerQueue(CookingTools c, GameObject l, float n)
+    public static void AddCookingToolToPlayerQueue(CookingTools c, LoadingBar l, float n)
     {
         m_playerQueue.Enqueue(c);
         m_loaders.Enqueue(l);

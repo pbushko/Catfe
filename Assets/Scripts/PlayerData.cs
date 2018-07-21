@@ -12,7 +12,9 @@ public class PlayerData : MonoBehaviour
 
 	public int playerMoney;
 
-	public List<GameObject> utensils;
+	//the number of times the utensils have been upgraded
+	public List<int> utensils;
+	//the ingredients that have been unlocked? -> do we need this?
 	public List<Ingredients> ingredients;
 	public List<GameObject> catEmployees;
 	public List<GameObject> catToys;
@@ -33,12 +35,10 @@ public class PlayerData : MonoBehaviour
 		}
 	}
 
-	/*
 	void OnApplicationQuit()
 	{
 		Save();
 	}
-	*/
 
 	public void Save()
 	{
@@ -96,7 +96,7 @@ class SaveData {
 	public int money;
 
 	//the setup of the restaurant
-	public List<GameObject> utensils;
+	public List<int> utensils;
 
 	//the ingredients that can be used for the level
 	public List<Ingredients> ingredients;

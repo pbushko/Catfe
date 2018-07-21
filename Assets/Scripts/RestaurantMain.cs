@@ -29,6 +29,8 @@ public class RestaurantMain : MonoBehaviour {
 	public static List<Ingredients> ingredients;
 	//cooking utensil prefabs
 	public static List<GameObject> utensils;
+	public GameObject defaultKnife;
+	public GameObject defaultStove;
 
 	public GameObject popUp;
 	public GameObject curPopUp;
@@ -67,6 +69,7 @@ public class RestaurantMain : MonoBehaviour {
         }
 
 		setIngredientBoxes();
+		setUtensils();
 	}
 	
 	// Update is called once per frame
@@ -102,6 +105,7 @@ public class RestaurantMain : MonoBehaviour {
 						CookingUtensilsScript temp = curUtensil.GetComponent<CookingUtensilsScript>();
 						if (PlayerData.playerData.playerMoney >= temp.GetUpgradeCost())
 						{
+							AddMoney(temp.GetUpgradeCost() * -1);
 							temp.Upgrade();
 							curUtensil = null;
 						}
@@ -145,7 +149,7 @@ public class RestaurantMain : MonoBehaviour {
 		Pause();
 		//adding the upgrades purchased to the save file, doesn't auto save it here
 		//only saves once the level has been completed
-		PlayerData.playerData.utensils = utensils;
+		//PlayerData.playerData.utensils = utensils;
 	}
 
 	public static void AddMoney(int n)
@@ -214,9 +218,15 @@ public class RestaurantMain : MonoBehaviour {
 
 	private void setUtensils()
 	{
-		int n = utensils.Count;
+		//if this is the first time we are opening the kitchen, then we need to use the defaults
+		if (utensils == null)
+		{
+			utensils = new List<GameObject>();
+			utensils.Add(defaultKnife);
+			utensils.Add(defaultStove);
+		}
 		//setting each box
-		for(int i = 0; i < n; i++)
+		for(int i = 0; i < utensils.Count; i++)
 		{
 			GameObject utensil = (GameObject)Instantiate(utensils[i]);
 			//setting the location

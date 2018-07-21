@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   utensil: 2
-  loader: {fileID: 1435619379265372}
+  loader: {fileID: 114950155136433644}
 --- !u!114 &114950155136433644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,8 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e44c4677c53872489f7683d484dff52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foreground: {fileID: 0}
-  background: {fileID: 0}
   foodRenderer: {fileID: 212557725743957024}
 --- !u!212 &212557725743957024
 SpriteRenderer:

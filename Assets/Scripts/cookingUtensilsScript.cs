@@ -6,9 +6,12 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public CookingTools utensil;
 
-    public GameObject loader;
+    public LoadingBar loader;
 
     private int upgradeCost;
+
+    //the current upgrade of the utensil
+    private int upgradeNum;
 
     private float cookTime;
 
@@ -22,6 +25,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        upgradeCost = 0;
         upgradeCost = 10;
         cookTime = 1f;
         objectSprite = GetComponent<SpriteRenderer>();
@@ -35,7 +39,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public void Upgrade()
     {
-        RestaurantMain.AddMoney(-upgradeCost);
+        upgradeNum++;
         cookTime /= 2;
         upgradeCost *= 5;
         objectSprite.sprite = RestaurantMain.GetUpgradeSprite(objectSprite.sprite);
