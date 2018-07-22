@@ -16,6 +16,7 @@ public class PlayerData : MonoBehaviour
 	public List<int> utensils;
 	//the ingredients that have been unlocked? -> do we need this?
 	public List<Ingredients> ingredients;
+	public List<Recipe> recipies;
 	public List<GameObject> catEmployees;
 	public List<GameObject> catToys;
 
@@ -100,6 +101,9 @@ class SaveData {
 
 	//the ingredients that can be used for the level
 	public List<Ingredients> ingredients;
+
+	//recipies that are unlocked
+	public List<Recipe> recipies;
 
 	//cat employees and toys for the catfe levels
 	public List<GameObject> catEmployees;

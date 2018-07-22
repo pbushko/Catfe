@@ -4,14 +4,20 @@ timeCreated: 1528575346
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Orange Cat
-    21300002: Black Cat
-    21300004: Calico Cat
-    21300006: Elby Cat
-    21300008: Grey Cat
-    21300010: White Cat
-    21300012: Yuna Cat
+    21300000: cat_orange
+    21300002: cat_black
+    21300004: cat_calico
+    21300006: cat_elby
+    21300008: cat_grey
+    21300010: cat_white
+    21300012: cat_yuna
     21300014: face_0
+    21300016: face_1
+    21300018: face_2
+    21300020: face_3
+    21300022: face_4
+    21300024: face_5
+    21300026: face_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -108,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Orange Cat
+      name: cat_orange
       rect:
         serializedVersion: 2
         x: 57
@@ -116,13 +122,13 @@ TextureImporter:
         width: 360
         height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Black Cat
+      name: cat_black
       rect:
         serializedVersion: 2
         x: 57
@@ -130,27 +136,27 @@ TextureImporter:
         width: 360
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Calico Cat
+      name: cat_calico
       rect:
         serializedVersion: 2
-        x: 57
-        y: 511
+        x: 61
+        y: 515
         width: 326
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Elby Cat
+      name: cat_elby
       rect:
         serializedVersion: 2
         x: 74
@@ -158,13 +164,13 @@ TextureImporter:
         width: 320
         height: 377
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Grey Cat
+      name: cat_grey
       rect:
         serializedVersion: 2
         x: 480
@@ -172,13 +178,13 @@ TextureImporter:
         width: 337
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: White Cat
+      name: cat_white
       rect:
         serializedVersion: 2
         x: 469
@@ -186,13 +192,13 @@ TextureImporter:
         width: 342
         height: 371
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Yuna Cat
+      name: cat_yuna
       rect:
         serializedVersion: 2
         x: 469
@@ -200,7 +206,7 @@ TextureImporter:
         width: 342
         height: 389
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,6 +219,90 @@ TextureImporter:
         y: 1574
         width: 171
         height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_1
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 1422
+        width: 171
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_2
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1275
+        width: 165
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_3
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 1124
+        width: 158
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_4
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 970
+        width: 158
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_5
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 823
+        width: 173
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: face_6
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 665
+        width: 140
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

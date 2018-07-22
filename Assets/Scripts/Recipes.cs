@@ -19,7 +19,9 @@ public class Recipe {
     private Dishes dish;
 
     private int price;
-	
+
+    private RestaurantType foodType;
+
     //the constructor to make a new recipe
     public Recipe(string name, Ingredients[] i, CookingTools c, int p)
     {

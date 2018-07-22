@@ -309,6 +309,8 @@
     <Compile Include="Assets\Scripts\CookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\Customer.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
+    <Compile Include="Assets\Scripts\Employee.cs" />
+    <Compile Include="Assets\Scripts\EmployeeGenerator.cs" />
     <Compile Include="Assets\Scripts\LevelButtonData.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\LoadingBar.cs" />
@@ -317,6 +319,7 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Recipes.cs" />
+    <Compile Include="Assets\Scripts\RestaurantData.cs" />
     <Compile Include="Assets\Scripts\RestaurantMain.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
   </ItemGroup>

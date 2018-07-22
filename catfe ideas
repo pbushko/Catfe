@@ -1,5 +1,5 @@
 possible features:
-    minigames -> the real money makers
+    minigames -> the real money maker, like how you need to battle to get all the resources in dominations
     idle money making
         expand shop
         hire more waiters
@@ -9,8 +9,9 @@ possible features:
             make better quality food overall
             be better at certain types of cuisine
         buy shop decorations
-        buy ads, get more idle income -> paid dfor with premium currency
+        buy ads, get more idle income -> paid for with premium currency
         tables generate tips to manually collect
+            can get better tables that hold more tips
         you open the shop to generate money and can collect tips while its open
             if you interract with the customers, then they give more tips
                 have to use your waiters to interract, takes time, so more waiters = more interractions
@@ -18,11 +19,13 @@ possible features:
     dosh and cat food cans as currency
     can only rank up restaurant with exp gained through doing levels
     restaurants:
-        cafe -> tutorial time
-        pizzaria    sandwitch shop      catfe       burger joint    asian fusion    indian      bakery
+        cafe -> tutorial time, then you choose the type of restaurant you want to focus on first
+        pizzaria    sandwich shop      catfe       burger joint    asian fusion    indian      bakery
     can buy multiple of the same type, like 3 pizzarias can make a chain and give bonuses
         chained restaurants give a boost to new restuarants of the same type
     can do the minigame free once a day per restaurant, but can do more with catnip/catfood
-    get a percentage of a star to rank up every time you open the restaurant, but forgetting will take away the start progress
+    get a percentage of a star to rank up every time you open the restaurant, but forgetting will take away the star progress
         once a full star is achieved, it cant be taken away
     buy new recipies
+
+    the minigame will only have the ingredients used to make the featured recipes

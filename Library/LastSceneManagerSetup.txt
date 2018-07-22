@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/restaurant.unity
+- path: Assets/Catfe.unity
   isLoaded: 1
   isActive: 1
