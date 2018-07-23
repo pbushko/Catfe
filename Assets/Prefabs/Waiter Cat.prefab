@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4867685603064186}
   - component: {fileID: 212912257946360784}
   - component: {fileID: 61278385793585228}
+  - component: {fileID: 114763077752412690}
   m_Layer: 0
   m_Name: Waiter Cat
   m_TagString: cat
@@ -126,6 +127,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 3.77}
   m_EdgeRadius: 0
+--- !u!114 &114763077752412690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029294747059142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c587b03ab19004e81f8fe73cb6c8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 212912257946360784}
+  face: {fileID: 212137664432355176}
+  accessory: {fileID: 212298321958474818}
 --- !u!212 &212137664432355176
 SpriteRenderer:
   m_ObjectHideFlags: 1

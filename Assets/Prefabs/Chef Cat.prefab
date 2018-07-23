@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4465789888019108}
   - component: {fileID: 212544338986693606}
   - component: {fileID: 61851734093900780}
+  - component: {fileID: 114998102508574876}
   m_Layer: 0
   m_Name: Chef Cat
   m_TagString: cat
@@ -126,6 +127,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 3.77}
   m_EdgeRadius: 0
+--- !u!114 &114998102508574876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494927854942702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462a4916b56997c46aa4acd1a5b9cab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 212544338986693606}
+  face: {fileID: 212080412879154930}
+  accessory: {fileID: 212389234128684622}
 --- !u!212 &212080412879154930
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,22 +5,25 @@ using UnityEngine;
 public class EmployeeGenerator {
 
 	//the name of the cat
-	string name;
-	int rarity;
-	int income;
+	private static string name;
+	private static int rarity;
+	private static int income;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	List<Sprite> sprites;
+	private static List<Sprite> sprites;
 	//the best dish type the chef makes
-	List<RestaurantType> specialties;
+	private static List<RestaurantType> specialties;
 
-	public WaiterData GenerateWaiter()
+	private static List<Sprite> bodies = null;
+	private static List<Sprite> faces = null;
+
+	public static WaiterData GenerateWaiter()
 	{
 		GenerateSharedData();
 		return new WaiterData(name, rarity, sprites, income);
 	}
 
-	public ChefData GenerateChef()
+	public static ChefData GenerateChef()
 	{
 		GenerateSharedData();
 		specialties = new List<RestaurantType>();
@@ -42,7 +45,7 @@ public class EmployeeGenerator {
 
 	}
 
-	private void GenerateSharedData()
+	private static void GenerateSharedData()
 	{
 		//get a name from the file of potential names:
 		//for now, just lb
@@ -75,11 +78,12 @@ public class EmployeeGenerator {
 		income = (int) (income * (1f + rand));
 
 		//get sprites for the cat
-
+		sprites = new List<Sprite>();
+		GenerateSprites();
 		
 	}
 
-	private RestaurantType GetRandomRestaurantType()
+	private static RestaurantType GetRandomRestaurantType()
 	{
 		int i = (int) RestaurantType.NumOfRestaurantTypes;
 		int n = 0;	//keeps track of the current enum we're checking
@@ -101,6 +105,32 @@ public class EmployeeGenerator {
 		}
 		//if for some reason nothing was found, just return the catfe type
 		return RestaurantType.Catfe;
+	}
+
+	private static void GenerateSprites()
+	{
+		//first generate the body, then generate the face
+		//if the body and face sprites haven't been separated yet, do that now
+		if (bodies == null || faces == null)
+		{
+			List<Sprite> temp = new List<Sprite>(Resources.LoadAll<Sprite>("cats"));
+			bodies = temp.FindAll(FindBodies);
+			faces = temp.FindAll(FindFaces);
+		}
+
+		//get a random face and body to add to the cat data
+		sprites.Add(bodies[Random.Range(0, bodies.Count - 1)]);
+		sprites.Add(faces[Random.Range(0, faces.Count - 1)]);
+	}
+
+	//helper methods to separate the bodies from the faces
+	private static bool FindBodies(Sprite s)
+	{
+		return s.name.Contains("cat_");
+	}
+	private static bool FindFaces(Sprite s)
+	{
+		return s.name.Contains("face_");
 	}
 
 }

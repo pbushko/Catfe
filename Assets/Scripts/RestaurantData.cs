@@ -112,6 +112,24 @@ public class ChefData
 		specialties = sp;
 	}
 
+	public string ToString()
+	{
+		string s = "Name: " + name + "\n" +
+				"Rarity: " + rarity + "\n" +
+				"timesTrained: " + timesTrained + "\n" +
+				"Income: " + income;
+		if (specialties.Count > 0)
+		{
+			s = s + "\n" + "Specialties: " + specialties[0];
+			if (specialties.Count == 2)
+			{
+				s = s + ", " + specialties[1];
+			}
+		}
+
+		return s;
+	}
+
 }
 
 [System.Serializable]
