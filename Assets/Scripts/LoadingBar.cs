@@ -70,7 +70,7 @@ public class LoadingBar : MonoBehaviour
     //checks if there is a plate
     public bool HasPlate()
     {
-        Debug.Log(m_finished);
+        //Debug.Log(m_finished);
         return m_finished;
     }
 

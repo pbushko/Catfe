@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Cafe : MonoBehaviour
 {
-    public PlayerScript player;
-    public CustomerGenerator customerGenerator;
+    //public PlayerScript player;
+    //public CustomerGenerator customerGenerator;
+
+    public Waiter w;
 
     //stores the LoadingBar for the utensils
     private static Queue<GameObject> m_loaders = new Queue<GameObject>();
@@ -15,7 +17,7 @@ public class Cafe : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		
+		Debug.Log(w.PrintIncome());
 	}
 	
 	// Update is called once per frame

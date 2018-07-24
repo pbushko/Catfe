@@ -22,18 +22,20 @@ public class Chef : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		//just some testing code
-		if (m_fill <= 1.0f)
+		if (m_fill <= 5.0f)
         {
             m_fill += 0.05f;
         }
 		else
 		{
 			ChefData temp = EmployeeGenerator.GenerateChef();
-			//Debug.Log(temp.ToString());
+			Debug.Log(temp.ToString());
 			body.sprite = temp.sprites[0];
 			face.sprite = temp.sprites[1];
 			m_fill = 0;
 		}
+		*/
 	}
 }

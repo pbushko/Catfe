@@ -4,13 +4,13 @@ timeCreated: 1528575346
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cat_orange
-    21300002: cat_black
-    21300004: cat_calico
-    21300006: cat_elby
-    21300008: cat_grey
-    21300010: cat_white
-    21300012: cat_yuna
+    21300000: coat_orange
+    21300002: coat_black
+    21300004: coat_calico
+    21300006: coat_elby
+    21300008: coat_grey
+    21300010: coat_white
+    21300012: coat_yuna
     21300014: face_0
     21300016: face_1
     21300018: face_2
@@ -114,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cat_orange
+      name: coat_orange
       rect:
         serializedVersion: 2
         x: 57
@@ -128,7 +128,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_black
+      name: coat_black
       rect:
         serializedVersion: 2
         x: 57
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_calico
+      name: coat_calico
       rect:
         serializedVersion: 2
         x: 61
@@ -156,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_elby
+      name: coat_elby
       rect:
         serializedVersion: 2
         x: 74
@@ -170,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_grey
+      name: coat_grey
       rect:
         serializedVersion: 2
         x: 480
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_white
+      name: coat_white
       rect:
         serializedVersion: 2
         x: 469
@@ -198,7 +198,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cat_yuna
+      name: coat_yuna
       rect:
         serializedVersion: 2
         x: 469
@@ -248,7 +248,7 @@ TextureImporter:
         width: 165
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
         width: 158
         height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,7 +276,7 @@ TextureImporter:
         width: 158
         height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -290,7 +290,7 @@ TextureImporter:
         width: 173
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,7 +304,7 @@ TextureImporter:
         width: 140
         height: 151
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

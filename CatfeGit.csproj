@@ -307,6 +307,7 @@
     <Compile Include="Assets\Scripts\CatfePlayerScript.cs" />
     <Compile Include="Assets\Scripts\CatToyScript.cs" />
     <Compile Include="Assets\Scripts\Chef.cs" />
+    <Compile Include="Assets\Scripts\CookingUtensil.cs" />
     <Compile Include="Assets\Scripts\CookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\Customer.cs" />
     <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
@@ -323,6 +324,9 @@
     <Compile Include="Assets\Scripts\RestaurantMain.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
     <Compile Include="Assets\Scripts\Waiter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\decorations.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

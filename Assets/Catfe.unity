@@ -570,7 +570,7 @@ Transform:
   - {fileID: 1832348733}
   - {fileID: 1970839623}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1650931181
 Prefab:
@@ -609,7 +609,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4465789888019108, guid: 34ac3ed9e64c0f042b5788b4459e01f0, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34ac3ed9e64c0f042b5788b4459e01f0, type: 2}
@@ -623,6 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1663079330}
   - component: {fileID: 1663079329}
+  - component: {fileID: 1663079331}
   m_Layer: 0
   m_Name: Restaurant Background
   m_TagString: Untagged
@@ -685,8 +686,21 @@ Transform:
   m_LocalScale: {x: 0.8625, y: 0.5742186, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1663079331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663079328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993c194c2e8156a4a99c85fa5c82440a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  customerGenerator: {fileID: 0}
 --- !u!1001 &1832348732
 Prefab:
   m_ObjectHideFlags: 0

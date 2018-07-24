@@ -22,6 +22,26 @@ public class Waiter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
+		//just some testing code
+		if (m_fill <= 5.0f)
+        {
+            m_fill += 0.05f;
+        }
+		else
+		{
+			WaiterData temp = EmployeeGenerator.GenerateWaiter();
+			Debug.Log(temp.ToString());
+			body.sprite = temp.sprites[0];
+			face.sprite = temp.sprites[1];
+			m_fill = 0;
+		}
+		*/
+	
+	}
+
+	public string PrintIncome()
+	{
+		return waiter.income;
 	}
 }

@@ -76,6 +76,16 @@ public class WaiterData
 		income = i;
 	}
 
+	public string ToString()
+	{
+		string s = "Waiter \nName: " + name + "\n" +
+				"Rarity: " + rarity + "\n" +
+				"timesTrained: " + timesTrained + "\n" +
+				"Income: " + income;
+
+		return s;
+	}
+
 }
 
 [System.Serializable]
@@ -114,7 +124,7 @@ public class ChefData
 
 	public string ToString()
 	{
-		string s = "Name: " + name + "\n" +
+		string s = "Chef \nName: " + name + "\n" +
 				"Rarity: " + rarity + "\n" +
 				"timesTrained: " + timesTrained + "\n" +
 				"Income: " + income;

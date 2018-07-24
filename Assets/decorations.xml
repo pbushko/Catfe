@@ -1,0 +1,57 @@
+<decorations>
+    <decor name = "French Cat" location = "wall" star_level = 5 >
+        <desc text = "This cat was drawn like a french cat." restaurant_type = "Catfe" atmosphere = 10 price = 1000000 >
+    </decor>
+    <decor name = "KATT" location = "wall" star_level = 3 >
+        <desc text = "KATT." restaurant_type = "Catfe" atmosphere = 8 price = 100000 >
+    </decor>
+    <decor name = "Plastic Catnip Plant" location = "floor" star_level = 0 >
+        <desc text = "A fake plant, but still gets the cats riled up." restaurant_type = "Catfe" atmosphere = 1 price = 500 >
+    </decor>
+    <decor name = "Catnip Plant" location = "floor" star_level = 3 >
+        <desc text = "Fresh catnip!" restaurant_type = "Catfe" atmosphere = 4 price = 50000 >
+    </decor>
+    <decor name = "Fish Statue" location = "floor" star_level = 2 >
+        <desc text = "Makes the restaurant a bit more fishy." restaurant_type = "Catfe" atmosphere = 2 price = 1000 >
+    </decor>
+    <decor name = "Fish Fountain" location = "floor" star_level = 4 >
+        <desc text = "Gives the place a nice atmosphere." restaurant_type = "Catfe" atmosphere = 5 price = 10000 >
+    </decor>
+    <decor name = "Fish Wallpaper" location = "wallpaper" star_level = 2 >
+        <desc text = "Cute fish for your wall." restaurant_type = "Catfe" atmosphere = 2 price = 1500 >
+    </decor>
+    <decor name = "Talking Bass" location = "wall" star_level = 2 >
+        <desc text = "Let's hope it doesn't become a singing bass." restaurant_type = "Catfe" atmosphere = 3 price = 3000 >
+    </decor>
+    <decor name = "Golden Cat Statue" location = "floor" star_level = 4 >
+        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
+    </decor>
+    <decor name = "Cat Food Can" location = "table" star_level = >
+        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
+    </decor>
+    <decor name = "Fish Lamp" location = "table" star_level = >
+        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
+    </decor>
+    <decor name = "Catnip Mouse" location = "table" star_level = >
+        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
+    </decor>
+    <decor name = "Candle" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+    <decor name = "" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+    <decor name = "" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+    <decor name = "" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+    <decor name = "" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+    <decor name = "" location = "" star_level = >
+        <desc text = "" restaurant_type = "" atmosphere = price = >
+    </decor>
+
+</decorations>

@@ -126,7 +126,7 @@ public class EmployeeGenerator {
 	//helper methods to separate the bodies from the faces
 	private static bool FindBodies(Sprite s)
 	{
-		return s.name.Contains("cat_");
+		return s.name.Contains("coat_");
 	}
 	private static bool FindFaces(Sprite s)
 	{

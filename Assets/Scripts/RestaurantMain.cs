@@ -218,9 +218,11 @@ public class RestaurantMain : MonoBehaviour {
 
 	private void setUtensils()
 	{
+		bool first = false;
 		//if this is the first time we are opening the kitchen, then we need to use the defaults
 		if (utensils == null)
 		{
+			first = true;
 			utensils = new List<GameObject>();
 			utensils.Add(defaultKnife);
 			utensils.Add(defaultStove);
@@ -234,6 +236,14 @@ public class RestaurantMain : MonoBehaviour {
 
 			utensil.transform.position = 
             	new Vector3(m_utensilLinePosition.x + (i * Variables.UTENSIL_OFFSET), m_utensilLinePosition.y, m_utensilLinePosition.z);
+			if (first && i == 1)
+			{
+				CookingUtensilsScript temp = utensil.GetComponent<CookingUtensilsScript>();
+
+				Debug.Log(temp.GetUpgradeCost());
+				
+				temp.SetUtensil(CookingTools.Stove);
+			}
 		}
 	}
 
