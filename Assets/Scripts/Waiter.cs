@@ -40,8 +40,4 @@ public class Waiter : MonoBehaviour {
 	
 	}
 
-	public string PrintIncome()
-	{
-		return waiter.income;
-	}
 }

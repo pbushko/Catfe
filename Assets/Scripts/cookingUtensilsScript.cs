@@ -6,7 +6,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public LoadingBar loader;
 
-    private CookingUtensil utensil;
+    public CookingUtensil utensil;
 
     public void OnClick()
     {
@@ -17,7 +17,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        utensil = new CookingUtensil(CookingTools.Knife, 0, 10, 1f, GetComponent<SpriteRenderer>());
+        utensil = new CookingUtensil(CookingTools.Knife, 10, 0, 1f, GetComponent<SpriteRenderer>());
         Debug.Log(utensil.utensil);
     }
 	
@@ -48,9 +48,7 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public void SetUtensil(CookingTools c)
     {
-        Debug.Log(c);
-        utensil.utensil = c;
-        Debug.Log(utensil.utensil);
+        utensil = new CookingUtensil(c, utensil.upgradeCost, utensil.upgradeNum, utensil.cookTime, utensil.objectSprite);
        
     }
 }

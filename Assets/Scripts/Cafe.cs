@@ -7,8 +7,6 @@ public class Cafe : MonoBehaviour
     //public PlayerScript player;
     //public CustomerGenerator customerGenerator;
 
-    public Waiter w;
-
     //stores the LoadingBar for the utensils
     private static Queue<GameObject> m_loaders = new Queue<GameObject>();
     //stores the location of the next thing in the queue so the cat can move to it
@@ -17,7 +15,7 @@ public class Cafe : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		Debug.Log(w.PrintIncome());
+
 	}
 	
 	// Update is called once per frame

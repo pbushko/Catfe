@@ -25,4 +25,9 @@ public class CookingUtensil {
 		objectSprite = s;
 	}
 
+	public void SetUtensil(CookingTools c)
+	{
+		utensil = c;
+	}
+
 }
