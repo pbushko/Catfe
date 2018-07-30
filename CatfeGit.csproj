@@ -303,6 +303,10 @@
       <Project>{07A21C90-D344-AE1A-8456-9910C203B41A}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
+      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
+      <Name>UnityEditor.StandardEvents</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BoxScript.cs" />
@@ -310,8 +314,10 @@
     <Compile Include="Assets\Scripts\CatfeCustomer.cs" />
     <Compile Include="Assets\Scripts\CatfeCustomerGenerator.cs" />
     <Compile Include="Assets\Scripts\CatfePlayerScript.cs" />
+    <Compile Include="Assets\Scripts\CatRecruiter.cs" />
     <Compile Include="Assets\Scripts\CatToyScript.cs" />
     <Compile Include="Assets\Scripts\Chef.cs" />
+    <Compile Include="Assets\Scripts\ChefCatRecruitStats.cs" />
     <Compile Include="Assets\Scripts\CookingUtensil.cs" />
     <Compile Include="Assets\Scripts\CookingUtensilsScript.cs" />
     <Compile Include="Assets\Scripts\Customer.cs" />
@@ -329,7 +335,6 @@
     <Compile Include="Assets\Scripts\RestaurantMain.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
     <Compile Include="Assets\Scripts\Waiter.cs" />
-    <Compile Include="Assets\Scripts\WaiterCatRecruiter.cs" />
     <Compile Include="Assets\Scripts\WaiterCatRecruitStats.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +353,7 @@
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\PackagesLoading.uxml" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Unity.PackageManagerUI.Editor.asmdef" />
     <None Include="Packages\com.unity.package-manager-ui\Tests\Editor\Unity.PackageManagerUI.EditorTests.asmdef" />
+    <None Include="Packages\com.unity.standardevents\Editor\Editor.asmdef" />
     <None Include="Packages\com.unity.textmeshpro\Scripts\Editor\Unity.TextMeshPro.Editor.asmdef" />
     <None Include="Packages\com.unity.textmeshpro\Scripts\Runtime\Unity.TextMeshPro.asmdef" />
     <None Include="Packages\com.unity.textmeshpro\Tests\Editor\Unity.TextMeshPro.Editor.Tests.asmdef" />

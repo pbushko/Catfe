@@ -128,15 +128,21 @@ public class ChefData
 				"Rarity: " + rarity + "\n" +
 				"timesTrained: " + timesTrained + "\n" +
 				"Income: " + income;
+
+		return s + "\n" + SpecialtiesToString();
+	}
+
+	public string SpecialtiesToString()
+	{
+		string s = "Specialties: None";
 		if (specialties.Count > 0)
 		{
-			s = s + "\n" + "Specialties: " + specialties[0];
+			s = "Specialties: " + specialties[0];
 			if (specialties.Count == 2)
 			{
 				s = s + ", " + specialties[1];
 			}
 		}
-
 		return s;
 	}
 
