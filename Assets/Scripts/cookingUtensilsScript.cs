@@ -17,8 +17,8 @@ public class CookingUtensilsScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        utensil = new CookingUtensil(CookingTools.Knife, 10, 0, 1f, GetComponent<SpriteRenderer>());
-        Debug.Log(utensil.utensil);
+        utensil = new CookingUtensil(utensil.utensil, 10, 0, 1f, GetComponent<SpriteRenderer>());
+        
     }
 	
 	// Update is called once per frame
@@ -48,7 +48,9 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public void SetUtensil(CookingTools c)
     {
-        utensil = new CookingUtensil(c, utensil.upgradeCost, utensil.upgradeNum, utensil.cookTime, utensil.objectSprite);
+        utensil.utensil = c;
+        Debug.Log(utensil.utensil);
+        //utensil.upgradeCost++;
        
     }
 }

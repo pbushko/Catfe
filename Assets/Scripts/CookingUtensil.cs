@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CookingUtensil {
 
-	public CookingTools utensil;
+	public CookingTools utensil = CookingTools.Knife;
 
     public int upgradeCost;
 

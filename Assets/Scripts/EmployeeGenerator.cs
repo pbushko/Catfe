@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class EmployeeGenerator {
 
@@ -13,6 +14,8 @@ public class EmployeeGenerator {
 	private static List<Sprite> sprites;
 	//the best dish type the chef makes
 	private static List<RestaurantType> specialties;
+	//the names for cats
+	private static List<string> names;
 
 	private static List<Sprite> bodies = null;
 	private static List<Sprite> faces = null;
@@ -48,8 +51,9 @@ public class EmployeeGenerator {
 	private static void GenerateSharedData()
 	{
 		//get a name from the file of potential names:
+		GetNames(Application.dataPath + "/" + "cat_names.txt");
 		//for now, just lb
-		name = "lb";
+		name = names[Random.Range(0, names.Count)];
 
 		//randomly get a rarity, harder to get higher rarities
 		float rand = Random.Range(0f, 1.0f);
@@ -131,6 +135,24 @@ public class EmployeeGenerator {
 	private static bool FindFaces(Sprite s)
 	{
 		return s.name.Contains("face_");
+	}
+
+	private static void GetNames(string file_path)
+	{
+		//only do this if not done before
+		if(names == null)
+		{
+			StreamReader stream = new StreamReader(file_path);
+		
+			names = new List<string>();
+			//add each name to the names list
+			while(!stream.EndOfStream)
+			{
+				names.Add(stream.ReadLine()); 
+			}
+			//clcose the stream once we have finished reading everything in it
+			stream.Close( );  
+		}
 	}
 
 }
