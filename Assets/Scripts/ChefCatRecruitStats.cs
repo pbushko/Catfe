@@ -36,5 +36,7 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	{
 		//check if there is enough money... for now, auto buy
 		PlayerData.playerData.chefs.Add(data);
+		CatInventory.catInv.AddCat(data, null);
+		CatInventory.catInv.ResetChefInv();
 	}
 }

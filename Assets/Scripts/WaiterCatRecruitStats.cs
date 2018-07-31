@@ -34,6 +34,8 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	{
 		//check if there is enough money... for now, auto buy
 		PlayerData.playerData.waiters.Add(data);
+		CatInventory.catInv.AddCat(null, data);
+		CatInventory.catInv.ResetWaiterInv();
 	}
 	
 }
