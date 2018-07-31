@@ -15,7 +15,7 @@ public class RestaurantData
 	//the type of the restuarant
 	public RestaurantType type;
 
-	//keeps track of your employees
+	//keeps track of your employees currently at the restaurant
 	public List<WaiterData> waiters;
 	public List<ChefData> chefs;
 
@@ -60,13 +60,13 @@ public class WaiterData
 	public int timesTrained;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	public List<Sprite> sprites;
+	public List<string> sprites;
 
 	//the amount this cat makes per hour
 	public int income;
 
 	//constructor
-	public WaiterData(string n, int r, List<Sprite> s, int i)
+	public WaiterData(string n, int r, List<string> s, int i)
 	{
 		name = n;
 		rarity = r;
@@ -89,7 +89,7 @@ public class WaiterData
 }
 
 [System.Serializable]
-public class ChefData 
+public class ChefData
 {
 
 	//the name of the cat
@@ -102,7 +102,7 @@ public class ChefData
 	public int timesTrained;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	public List<Sprite> sprites;
+	public List<string> sprites;
 
 	//the amount this cat makes per hour
 	public int income;
@@ -111,7 +111,7 @@ public class ChefData
 	public List<RestaurantType> specialties;
 
 	//constructor
-	public ChefData(string n, int r, List<Sprite> s, int i, List<RestaurantType> sp)
+	public ChefData(string n, int r, List<string> s, int i, List<RestaurantType> sp)
 	{
 		name = n;
 		rarity = r;

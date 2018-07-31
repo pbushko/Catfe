@@ -28,7 +28,13 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		rarity.text = "Rarity: " + newData.rarity;
 		income.text = "Income: " + newData.income;
 		specialties.text = newData.SpecialtiesToString();
-		body.sprite = newData.sprites[0];
-		face.sprite = newData.sprites[1];
+		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[1]);
+	}
+
+	public void RecruitChef()
+	{
+		//check if there is enough money... for now, auto buy
+		PlayerData.playerData.chefs.Add(data);
 	}
 }

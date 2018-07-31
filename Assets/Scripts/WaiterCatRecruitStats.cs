@@ -26,8 +26,14 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		name.text = newData.name;
 		rarity.text = "Rarity: " + newData.rarity;
 		income.text = "Income: " + newData.income;
-		body.sprite = newData.sprites[0];
-		face.sprite = newData.sprites[1];
+		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[1]);
+	}
+
+	public void RecruitWaiter()
+	{
+		//check if there is enough money... for now, auto buy
+		PlayerData.playerData.waiters.Add(data);
 	}
 	
 }

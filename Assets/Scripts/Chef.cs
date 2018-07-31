@@ -15,8 +15,8 @@ public class Chef : MonoBehaviour {
 	void Start () {
 		m_fill = 0;
 		chef = EmployeeGenerator.GenerateChef();
-		body.sprite = chef.sprites[0];
-		face.sprite = chef.sprites[1];
+		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
 		Debug.Log(chef.ToString());
 	}
 	

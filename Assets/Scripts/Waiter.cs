@@ -15,8 +15,8 @@ public class Waiter : MonoBehaviour {
 	void Start () {
 		m_fill = 0;
 		waiter = EmployeeGenerator.GenerateWaiter();
-		body.sprite = waiter.sprites[0];
-		face.sprite = waiter.sprites[1];
+		body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
 		Debug.Log(waiter.ToString());
 	}
 	

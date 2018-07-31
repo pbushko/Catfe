@@ -11,7 +11,7 @@ public class EmployeeGenerator {
 	private static int income;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	private static List<Sprite> sprites;
+	private static List<string> sprites;
 	//the best dish type the chef makes
 	private static List<RestaurantType> specialties;
 	//the names for cats
@@ -82,7 +82,7 @@ public class EmployeeGenerator {
 		income = (int) (income * (1f + rand));
 
 		//get sprites for the cat
-		sprites = new List<Sprite>();
+		sprites = new List<string>();
 		GenerateSprites();
 		
 	}
@@ -123,8 +123,8 @@ public class EmployeeGenerator {
 		}
 
 		//get a random face and body to add to the cat data
-		sprites.Add(bodies[Random.Range(0, bodies.Count - 1)]);
-		sprites.Add(faces[Random.Range(0, faces.Count - 1)]);
+		sprites.Add(bodies[Random.Range(0, bodies.Count - 1)].name);
+		sprites.Add(faces[Random.Range(0, faces.Count - 1)].name);
 	}
 
 	//helper methods to separate the bodies from the faces

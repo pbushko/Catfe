@@ -21,11 +21,7 @@ public class LevelSelect : MonoBehaviour {
 				{
 					int level = hit.GetComponent<LevelButtonData>().levelNum;
 					List<Ingredients> ingreds = new List<Ingredients>();
-					//if there are not even the default utensils, put them in
-					if (PlayerData.playerData.utensils.Count >= 2)
-					{
-						//RestaurantMain.utensils = PlayerData.playerData.utensils;
-					}
+
 					//load the lettuce and carrot
 					if (level == 0)
 					{

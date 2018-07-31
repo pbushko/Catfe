@@ -12,13 +12,12 @@ public class PlayerData : MonoBehaviour
 
 	public int playerMoney;
 
-	//the number of times the utensils have been upgraded
-	public List<int> utensils;
-	//the ingredients that have been unlocked? -> do we need this?
-	public List<Ingredients> ingredients;
+	public List<Sprite> catSprites;
+	public List<string> catSpriteNames;
+
 	public List<Recipe> recipies;
-	public List<GameObject> catEmployees;
-	public List<GameObject> catToys;
+	public List<ChefData> chefs;
+	public List<WaiterData> waiters;
 
 	void Awake()
 	{
@@ -34,6 +33,13 @@ public class PlayerData : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		catSprites = new List<Sprite>(Resources.LoadAll<Sprite>("cats"));
+		catSpriteNames = new List<string>();
+		foreach (Sprite s in catSprites)
+		{
+			catSpriteNames.Add(s.name);
+		}
 	}
 
 	void OnApplicationQuit()
@@ -48,10 +54,8 @@ public class PlayerData : MonoBehaviour
 
 		SaveData data = new SaveData();
 		data.money = playerMoney;
-		data.utensils = utensils;
-		data.ingredients = ingredients;
-		data.catEmployees = catEmployees;
-		data.catToys = catToys;
+		data.chefs = chefs;
+		data.waiters = waiters;
 
 		formatter.Serialize(file, data);
 
@@ -69,10 +73,8 @@ public class PlayerData : MonoBehaviour
 			SaveData data = (SaveData) formatter.Deserialize(file);
 
 			playerMoney = data.money;
-			utensils = data.utensils;
-			ingredients = data.ingredients;
-			catEmployees = data.catEmployees;
-			catToys = data.catToys;
+			chefs = data.chefs;
+			waiters = data.waiters;
 
 			file.Close();
 		}
@@ -80,13 +82,30 @@ public class PlayerData : MonoBehaviour
 		else
 		{
 			playerMoney = 100;
-			
-			//starting ingreds are carrots and lettuce
-			ingredients = new List<Ingredients>();
-			ingredients.Add(Ingredients.Carrot);
-			ingredients.Add(Ingredients.Lettuce);
+			chefs = new List<ChefData>();
+			waiters = new List<WaiterData>();
 		}
 	}
+
+	public Sprite GetCatSprite(string spriteName)
+	{
+		return catSprites[catSpriteNames.IndexOf(spriteName)];
+	}
+
+	public void PrintEmployees()
+	{
+		Debug.Log("Chefs:");
+		foreach (ChefData c in chefs)
+		{
+			Debug.Log(c.ToString());
+		}
+		Debug.Log("Waiters:");
+		foreach (WaiterData w in waiters)
+		{
+			Debug.Log(w.ToString());
+		}
+	}
+
 }
 
 //stores all the data that the game has to keep track of between levels
@@ -96,19 +115,11 @@ class SaveData {
 	//the money the player currently has; will carry over from level to level
 	public int money;
 
-	//the setup of the restaurant
-	public List<int> utensils;
-
-	//the ingredients that can be used for the level
-	public List<Ingredients> ingredients;
-
 	//recipies that are unlocked
 	public List<Recipe> recipies;
 
-	//cat employees and toys for the catfe levels
-	public List<GameObject> catEmployees;
-	public List<GameObject> catToys;
-
+	public List<ChefData> chefs;
+	public List<WaiterData> waiters;
 	//any other game objects that will be saved...
 
 
