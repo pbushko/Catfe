@@ -560,8 +560,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0, y: 375}
-  m_Spacing: {x: 350, y: 30}
+  m_CellSize: {x: 375, y: 350}
+  m_Spacing: {x: 0, y: 30}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!114 &69132430
@@ -614,7 +614,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -4.5, y: 0}
-  m_SizeDelta: {x: -8.9, y: -636}
+  m_SizeDelta: {x: -8.9, y: -638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &69614659
 GameObject:
@@ -726,7 +726,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -4.5, y: 0}
-  m_SizeDelta: {x: -8.9, y: -573}
+  m_SizeDelta: {x: -8.9, y: -638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87857405
 MonoBehaviour:
@@ -743,12 +743,12 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 30
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0, y: 375}
-  m_Spacing: {x: 350, y: 30}
+  m_CellSize: {x: 400, y: 400}
+  m_Spacing: {x: 0, y: 30}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!114 &87857406
@@ -1912,7 +1912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.9868164, y: 2.6800756}
+  m_AnchoredPosition: {x: 5.9868164, y: 2.6800842}
   m_SizeDelta: {x: -269.4945, y: -17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366272474
@@ -3225,7 +3225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.9868164, y: 2.6800756}
+  m_AnchoredPosition: {x: 5.9868164, y: 2.6800842}
   m_SizeDelta: {x: -269.4945, y: -17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699075735
@@ -3759,9 +3759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2e24161e8ac4f43bcd8470895eb78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChefInfoPrefab: {fileID: 1937695474267730, guid: 55bdf8598808b2f46b40852848c4c5f0,
+  ChefInfoPrefab: {fileID: 1586105539096294, guid: 55bdf8598808b2f46b40852848c4c5f0,
     type: 2}
-  WaiterInfoPrefab: {fileID: 1257431868118394, guid: e61cd8c01f66a9b41b90b352ace245bb,
+  WaiterInfoPrefab: {fileID: 1740203303984806, guid: e61cd8c01f66a9b41b90b352ace245bb,
     type: 2}
   ChefPanel: {fileID: 87857403}
   WaiterPanel: {fileID: 69132427}

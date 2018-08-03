@@ -74,6 +74,36 @@ public class CatInventory : MonoBehaviour {
 		}
 	}
 
+	public void LayOffChefCat(GameObject c)
+	{
+		//going through and finding the chef to lay off, remove them from the player's list of cats
+		for (int i = 0; i < chefStats.Count; i++)
+		{
+			//if these objects are the same, then we can safely remove them
+			if (GameObject.ReferenceEquals(c, chefStats[i]))
+			{
+				chefdata.RemoveAt(i);
+				chefStats.RemoveAt(i);
+				Destroy(c);
+			}
+		}	
+	}
+
+	public void LayOffWaiterCat(GameObject c)
+	{
+		//going through and finding the chef to lay off, remove them from the player's list of cats
+		for (int i = 0; i < waiterStats.Count; i++)
+		{
+			//if these objects are the same, then we can safely remove them
+			if (GameObject.ReferenceEquals(c, waiterStats[i]))
+			{
+				waiterdata.RemoveAt(i);
+				waiterStats.RemoveAt(i);
+				Destroy(c);
+			}
+		}	
+	}
+
 	void Update()
 	{
 		

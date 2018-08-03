@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public enum RestaurantType { Catfe, Pizzaria, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
@@ -65,6 +66,11 @@ public class WaiterData
 	//the amount this cat makes per hour
 	public int income;
 
+	//the time the cat started training and the time the cat's training should end
+	public DateTime trainStartTime;
+	public DateTime trainEndTime;
+	public bool isTraining;
+
 	//constructor
 	public WaiterData(string n, int r, List<string> s, int i)
 	{
@@ -72,6 +78,7 @@ public class WaiterData
 		rarity = r;
 		//when initializing the waiter, it will always have been trained 0 times
 		timesTrained = 0;
+		isTraining = false;
 		sprites = s;
 		income = i;
 	}

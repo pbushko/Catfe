@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class WaiterCatRecruitStats : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	public Text name;
 	public Text rarity;
 	public Text income;
+	public Text trainings;
 
 	public Image body;
 	public Image face;
@@ -20,12 +22,44 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		ResetData(data);
 	}
 
+	void Update()
+	{
+		//if the cat is training, check the time it was training with the current time and upgrade if enough has passed
+		if (data.isTraining && DateTime.Compare(DateTime.Now, data.trainEndTime) > 0)
+		{
+			data.timesTrained++;
+			switch (data.rarity)
+			{
+				case 0:
+					data.income += 10*data.timesTrained;
+					break;
+				case 1:
+					data.income += 20*data.timesTrained;
+					break;
+				case 2:
+					data.income += 40*data.timesTrained;
+					break;
+				case 3:
+					data.income += 75*data.timesTrained;
+					break;
+				default:
+					break;
+			}
+			ResetData(data);
+			data.isTraining = !data.isTraining;
+		}
+	}
+
 	public void ResetData(WaiterData newData)
 	{
 		data = newData;
 		name.text = newData.name;
 		rarity.text = "Rarity: " + newData.rarity;
 		income.text = "Income: " + newData.income;
+		if (trainings != null)
+		{
+			trainings.text = "Times Trained: " + newData.timesTrained;
+		}
 		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[0]);
 		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[1]);
 	}
@@ -38,4 +72,19 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		CatInventory.catInv.ResetWaiterInv();
 	}
 	
+	public void LayOff()
+	{
+		CatInventory.catInv.LayOffWaiterCat(gameObject);
+	}
+
+	public void Train()
+	{
+		if (data.isTraining || data.timesTrained >= 10)
+		{
+			return;
+		}
+		data.isTraining = true;
+		//currently just takes 5 sec to train
+		data.trainEndTime = DateTime.Now.AddSeconds(5.0);
+	}
 }
