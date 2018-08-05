@@ -17,7 +17,6 @@ public class Waiter : MonoBehaviour {
 		waiter = EmployeeGenerator.GenerateWaiter();
 		body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
 		face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
-		Debug.Log(waiter.ToString());
 	}
 	
 	// Update is called once per frame

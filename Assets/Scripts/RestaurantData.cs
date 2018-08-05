@@ -28,14 +28,40 @@ public class RestaurantData
 	public float starProgress;
 
 	//the time the restaurant was opened to get idle income
-	public long timeOpened;
+	public DateTime timeOpened;
 
 	//the last time the minigame was played in the restaurant
-	public long timeMinigamePlayed;
+	public DateTime timeMinigamePlayed;
 
 	//keeps track of the number of minigames completed in that shop
 	//used to determine if the restaurant can be level up or not
 	public int minigamesCompleted;
+
+	public RestaurantData(RestaurantType rt)
+	{
+		tables = new List<int>();
+		type = rt;
+		waiters = new List<WaiterData>();
+		chefs = new List<ChefData>();
+		decor = new List<DecorationData>();
+		stars = 0;
+		starProgress = 0f;
+		minigamesCompleted = 0;
+	}
+
+	public void PrintEmployees()
+	{
+		Debug.Log("Waiters: ");
+		foreach (WaiterData w in waiters)
+		{
+			Debug.Log(w.ToString());
+		}
+		Debug.Log("Chefs: ");
+		foreach (ChefData c in chefs)
+		{
+			Debug.Log(c.ToString());
+		}
+	}
 	
 }
 
@@ -117,6 +143,11 @@ public class ChefData
 	//the best dish type the chef makes
 	public List<RestaurantType> specialties;
 
+	//the time the cat started training and the time the cat's training should end
+	public DateTime trainStartTime;
+	public DateTime trainEndTime;
+	public bool isTraining;
+
 	//constructor
 	public ChefData(string n, int r, List<string> s, int i, List<RestaurantType> sp)
 	{
@@ -126,6 +157,7 @@ public class ChefData
 		timesTrained = 0;
 		sprites = s;
 		income = i;
+		isTraining = false;
 		specialties = sp;
 	}
 

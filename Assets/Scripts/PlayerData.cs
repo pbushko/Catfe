@@ -12,12 +12,15 @@ public class PlayerData : MonoBehaviour
 
 	public int playerMoney;
 
+	//public GameObject obj;
+
 	public List<Sprite> catSprites;
 	public List<string> catSpriteNames;
 
 	public List<Recipe> recipies;
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
+	public List<RestaurantData> restaurants;
 
 	void Awake()
 	{
@@ -56,6 +59,7 @@ public class PlayerData : MonoBehaviour
 		data.money = playerMoney;
 		data.chefs = chefs;
 		data.waiters = waiters;
+		data.restaurants = restaurants;
 
 		formatter.Serialize(file, data);
 
@@ -75,6 +79,13 @@ public class PlayerData : MonoBehaviour
 			playerMoney = data.money;
 			chefs = data.chefs;
 			waiters = data.waiters;
+			restaurants = data.restaurants;
+
+			if(restaurants == null || restaurants.Count == 0)
+			{
+				Cafe temp = new Cafe();
+				temp.NewGameRestaurantChoice();		
+			}
 
 			file.Close();
 		}
@@ -84,7 +95,13 @@ public class PlayerData : MonoBehaviour
 			playerMoney = 100;
 			chefs = new List<ChefData>();
 			waiters = new List<WaiterData>();
+			restaurants = new List<RestaurantData>();
+
+			Cafe temp = new Cafe();
+			temp.NewGameRestaurantChoice();	
+			//Cafe.NewGameRestaurantChoice();	
 		}
+		restaurants = new List<RestaurantData>();	
 	}
 
 	public Sprite GetCatSprite(string spriteName)
@@ -120,6 +137,7 @@ class SaveData {
 
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
+	public List<RestaurantData> restaurants;
 	//any other game objects that will be saved...
 
 

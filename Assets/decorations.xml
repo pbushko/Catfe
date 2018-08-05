@@ -1,57 +1,106 @@
 <decorations>
-    <decor name = "French Cat" location = "wall" star_level = 5 >
-        <desc text = "This cat was drawn like a french cat." restaurant_type = "Catfe" atmosphere = 10 price = 1000000 >
-    </decor>
-    <decor name = "KATT" location = "wall" star_level = 3 >
-        <desc text = "KATT." restaurant_type = "Catfe" atmosphere = 8 price = 100000 >
-    </decor>
-    <decor name = "Plastic Catnip Plant" location = "floor" star_level = 0 >
-        <desc text = "A fake plant, but still gets the cats riled up." restaurant_type = "Catfe" atmosphere = 1 price = 500 >
-    </decor>
-    <decor name = "Catnip Plant" location = "floor" star_level = 3 >
-        <desc text = "Fresh catnip!" restaurant_type = "Catfe" atmosphere = 4 price = 50000 >
-    </decor>
-    <decor name = "Fish Statue" location = "floor" star_level = 2 >
-        <desc text = "Makes the restaurant a bit more fishy." restaurant_type = "Catfe" atmosphere = 2 price = 1000 >
-    </decor>
-    <decor name = "Fish Fountain" location = "floor" star_level = 4 >
-        <desc text = "Gives the place a nice atmosphere." restaurant_type = "Catfe" atmosphere = 5 price = 10000 >
-    </decor>
-    <decor name = "Fish Wallpaper" location = "wallpaper" star_level = 2 >
-        <desc text = "Cute fish for your wall." restaurant_type = "Catfe" atmosphere = 2 price = 1500 >
-    </decor>
-    <decor name = "Talking Bass" location = "wall" star_level = 2 >
-        <desc text = "Let's hope it doesn't become a singing bass." restaurant_type = "Catfe" atmosphere = 3 price = 3000 >
-    </decor>
-    <decor name = "Golden Cat Statue" location = "floor" star_level = 4 >
-        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
-    </decor>
-    <decor name = "Cat Food Can" location = "table" star_level = >
-        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
-    </decor>
-    <decor name = "Fish Lamp" location = "table" star_level = >
-        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
-    </decor>
-    <decor name = "Catnip Mouse" location = "table" star_level = >
-        <desc text = "" restaurant_type = "Catfe" atmosphere = price = >
-    </decor>
-    <decor name = "Candle" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
-    <decor name = "" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
-    <decor name = "" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
-    <decor name = "" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
-    <decor name = "" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
-    <decor name = "" location = "" star_level = >
-        <desc text = "" restaurant_type = "" atmosphere = price = >
-    </decor>
+    <table>
+        <star level="0">
+            <decor id="13" name="Candle" text="Standard candle" atmosphere="1" price="100"/>
+        </star>
+        <star level="1">
+            <decor id="17" name="Plastic Flower" text="" atmosphere="2" price="500"/>
+            <decor id="18" name="Plastic Bouquet" text="" atmosphere="3" price="2000"/>
+            <decor id="31" name="Fake Candle" text="" atmosphere="" price=""/>
+        </star>
+        <star level="2">
+            <decor id="10" name="Cat Food Can Candle" text="Looks and smells like cat food." atmosphere="4" price=""/>
+            <decor id="28" name="Pizza Scented Candle" text="Only comes in cheese pizza scent." atmosphere="4" price=""/>
+            <decor id="29" name="Marshmallow Chick Sented Candle" text="Don't eat this one!" atmosphere="4" price=""/>
+        </star>
+        <star level="3">
+            <decor id="11" name="Fish Lamp" text="" atmosphere="5" price=""/>
+            <decor id="12" name="Catnip Mouse" text="" atmosphere="5" price=""/>
+        </star>
+        <star level="4">
+            <decor id="19" name="Crystal Vase" text="" atmosphere="7" price=""/>
+            <decor id="30" name="Candle on a Lace Doily" text="" atmosphere="" price=""/>
+        </star>
+        <star level="5">
+            <decor id="20" name="Crystal Vase with Roses" text="" atmosphere="8" price=""/>
+            <decor id="21" name="Mini Golden Cat Statue" text="" atmosphere="10" price=""/>
+            <decor id="22" name="Priceless Sculpture" text="" atmosphere="11" price="1500000"/>
+        </star>
+    </table>  
 
+    <wall>
+        <star level="0">
+            <decor id="23" name="Empty Frame" text="Is it art?" atmosphere="1" price="100"/>
+        </star>
+        <star level="1">
+            <decor id="24" name="Used Happy Birthday Banner" text="" atmosphere="" price=""/>
+            <decor id="32" name="Cat University Flag" text="" atmosphere="" price=""/>
+            <decor id="33" name="Tie-Dye Tapestry" text="" atmosphere="" price=""/>
+            <decor id="34" name="Floral Tapestry" text="" atmosphere="" price=""/>
+            <decor id="35" name="City Map" text="" atmosphere="" price=""/>
+        </star>
+        <star level="2">
+            <decor id="14" name="Neon Cat Head" text="" atmosphere="" price=""/>
+            <decor id="15" name="Neon Fish" text="" atmosphere="" price=""/>
+        </star>
+        <star level="3">
+            <decor id="8" name="Talking Bass" text="Let's hope it doesn't become a singing bass." atmosphere="5" price="3000"/>
+        </star>
+        <star level="4">
+            <decor id="2" name="KATT" text="KATT." atmosphere="7" price="100000"/>
+        </star>
+        <star level="5">
+            <decor id="1" name="French Cat" text="This cat was drawn like a french cat." atmosphere="11" price="1000000"/>
+            <decor id="16" name="Golden Talking Bass" text="The ultimate singing sensation" atmosphere="10" price="500000"/>
+        </star>
+    </wall>
+
+    <wallpaper>
+        <star level="0">
+            <decor id="25" name="White Paint" text="Better to see a moving red dot on." atmosphere="1" price="100"/>
+        </star>
+        <star level="1">
+            <decor id="38" name="Striped Wallpaper" text="" atmosphere="" price=""/>
+        </star>
+        <star level="2">
+            <decor id="7" name="Fish Wallpaper" text="Cute fish for your wall." atmosphere="2" price="1500"/>
+        </star>
+        <star level="3">
+            <decor id="39" name="Cat Fur Wall" text="No cats were harmed in the making of this wall." atmosphere="" price=""/>
+        </star>
+        <star level="4">
+
+        </star>
+        <star level="5">
+
+        </star>
+    </wallpaper>
+
+    <floor>
+        <star level="0">
+            <decor id="3" name="Plastic Catnip Plant" text="A fake plant, but still gets the cats riled up." atmosphere="1" price="500"/>
+        </star>
+        <star level="1">
+            <decor id="26" name="Second-Hand Trash Can" text="Appeals to some." atmosphere="1" price=""/>
+            <decor id="36" name="New Trash Can" text="A marginally better decoration than the Second-Hand Trash Can." atmosphere="2" price=""/>
+        </star>
+        <star level="2">
+            <decor id="5" name="Fish Statue" text="Makes the restaurant a bit more fishy." atmosphere="2" price="1000"/>
+            <decor id="37" name="Claw Machine" text="Doesn't work anymore, but the prizes are cute!" atmosphere="" price=""/>
+        </star>
+        <star level="3">
+            <decor id="4" name="Catnip Plant" text="Fresh catnip!" atmosphere="4" price="50000"/>
+        </star>
+        <star level="4">
+            <decor id="6" name="Fish Fountain" text="Gives the place a nice atmosphere." atmosphere="5" price="10000"/>
+            <decor id="9" name="Golden Cat Statue" text="" atmosphere="" price=""/>
+        </star>
+        <star level="5">
+            <decor id="27" name="Koi Pond" text="Covered with glass to keep the fish safe." atmosphere="" price=""/>
+        </star>
+    </floor>    
+            
+                    
+        <decor id="" name="" text="" atmosphere="" price=""/>
+ 
 </decorations>

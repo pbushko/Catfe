@@ -12,13 +12,14 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	public Text rarity;
 	public Text income;
 	public Text trainings;
+	public Text trainingTimeLeft;
 
 	public Image body;
 	public Image face;
 
 	// Use this for initialization
 	void Start () {
-		data = EmployeeGenerator.GenerateWaiter();
+		//data = EmployeeGenerator.GenerateWaiter();
 		ResetData(data);
 	}
 
@@ -47,6 +48,15 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 			}
 			ResetData(data);
 			data.isTraining = !data.isTraining;
+		}
+		else if (data.isTraining)
+		{
+			TimeSpan timeLeft = data.trainEndTime.Subtract(DateTime.Now);
+			trainingTimeLeft.text = "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+		}
+		else if (trainingTimeLeft != null)
+		{
+			trainingTimeLeft.text = "Finished training!";
 		}
 	}
 
@@ -84,7 +94,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 			return;
 		}
 		data.isTraining = true;
-		//currently just takes 5 sec to train
-		data.trainEndTime = DateTime.Now.AddSeconds(5.0);
+		float time = 5.0f + 10.0f * data.timesTrained;
+		data.trainEndTime = DateTime.Now.AddSeconds(time);
 	}
 }

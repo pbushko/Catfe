@@ -17,7 +17,6 @@ public class Chef : MonoBehaviour {
 		chef = EmployeeGenerator.GenerateChef();
 		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
 		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
-		Debug.Log(chef.ToString());
 	}
 	
 	// Update is called once per frame
