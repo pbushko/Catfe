@@ -7,30 +7,43 @@
             <decor id="17" name="Plastic Flower" text="" atmosphere="2" price="500"/>
             <decor id="18" name="Plastic Bouquet" text="" atmosphere="3" price="2000"/>
             <decor id="31" name="Fake Candle" text="" atmosphere="" price=""/>
+            <decor id="40" name="Diner Salt and Pepper Shakers" text="" atmosphere="" price=""/>
+            <decor id="43" name="Butter Pats" text="" atmosphere="" price=""/>
+            <decor id="44" name="Sweetener Rack" text="Contains the fan favoites: yellow, blue, and pink packets." atmosphere="" price=""/>
+            <decor id="46" name="Paper Placemats" text="Offers minimal table protection." atmosphere="" price=""/>
+            <decor id="51" name="Extra Water Jug" text="" atmosphere="" price=""/>
         </star>
         <star level="2">
             <decor id="10" name="Cat Food Can Candle" text="Looks and smells like cat food." atmosphere="4" price=""/>
             <decor id="28" name="Pizza Scented Candle" text="Only comes in cheese pizza scent." atmosphere="4" price=""/>
             <decor id="29" name="Marshmallow Chick Sented Candle" text="Don't eat this one!" atmosphere="4" price=""/>
+            <decor id="41" name="Salt and Pepper Grinders" text="" atmosphere="" price=""/>
+            <decor id="47" name="Plastic Placemats" text="" atmosphere="" price=""/>
         </star>
         <star level="3">
             <decor id="11" name="Fish Lamp" text="" atmosphere="5" price=""/>
             <decor id="12" name="Catnip Mouse" text="" atmosphere="5" price=""/>
+            <decor id="45" name="Drink Menu" text="Rated E for everyone." atmosphere="" price=""/>
+            <decor id="48" name="Floral Placemats" text="" atmosphere="" price=""/>
         </star>
         <star level="4">
             <decor id="19" name="Crystal Vase" text="" atmosphere="7" price=""/>
             <decor id="30" name="Candle on a Lace Doily" text="" atmosphere="" price=""/>
+            <decor id="42" name="S&P" text="What all the celebrity chefs use." atmosphere="" price=""/>
+            <decor id="49" name="Gold Trim Placemats" text="" atmosphere="" price=""/>
+            <decor id="52" name="Fancy Cat Drinking Fountain" text="Keeps the fresh water circulating." atmosphere="" price=""/>
         </star>
         <star level="5">
             <decor id="20" name="Crystal Vase with Roses" text="" atmosphere="8" price=""/>
             <decor id="21" name="Mini Golden Cat Statue" text="" atmosphere="10" price=""/>
             <decor id="22" name="Priceless Sculpture" text="" atmosphere="11" price="1500000"/>
+            <decor id="50" name="Artisan Diamond Encrusted Placemats" text="" atmosphere="" price=""/>
         </star>
     </table>  
 
     <wall>
         <star level="0">
-            <decor id="23" name="Empty Frame" text="Is it art?" atmosphere="1" price="100"/>
+            <decor id="23" name="Stock Photo" text="Look at how happy that family is!" atmosphere="1" price="100"/>
         </star>
         <star level="1">
             <decor id="24" name="Used Happy Birthday Banner" text="" atmosphere="" price=""/>
@@ -42,9 +55,11 @@
         <star level="2">
             <decor id="14" name="Neon Cat Head" text="" atmosphere="" price=""/>
             <decor id="15" name="Neon Fish" text="" atmosphere="" price=""/>
+            <decor id="54" name="Local Artist's Work" text="" atmosphere="" price=""/>
         </star>
         <star level="3">
             <decor id="8" name="Talking Bass" text="Let's hope it doesn't become a singing bass." atmosphere="5" price="3000"/>
+            <decor id="53" name="Stained Glass Cat" text="" atmosphere="" price=""/>
         </star>
         <star level="4">
             <decor id="2" name="KATT" text="KATT." atmosphere="7" price="100000"/>

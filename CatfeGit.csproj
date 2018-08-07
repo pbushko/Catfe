@@ -333,7 +333,9 @@
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Recipes.cs" />
+    <Compile Include="Assets\Scripts\Restaurant.cs" />
     <Compile Include="Assets\Scripts\RestaurantData.cs" />
+    <Compile Include="Assets\Scripts\RestaurantInventoryPanel.cs" />
     <Compile Include="Assets\Scripts\RestaurantMain.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
     <Compile Include="Assets\Scripts\Waiter.cs" />
@@ -342,6 +344,7 @@
   <ItemGroup>
     <None Include="Assets\cat_names.txt" />
     <None Include="Assets\decorations.xml" />
+    <None Include="Assets\recipies.xml" />
     <None Include="Assets\special_cat_names.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />

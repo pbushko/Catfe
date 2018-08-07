@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public enum RestaurantType { Catfe, Pizzaria, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
+public enum RestaurantType { Catfe, Italian, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
 
 //the class to store the data for each store you own
 [System.Serializable]
@@ -36,6 +36,8 @@ public class RestaurantData
 	//keeps track of the number of minigames completed in that shop
 	//used to determine if the restaurant can be level up or not
 	public int minigamesCompleted;
+
+	public int location;
 
 	public RestaurantData(RestaurantType rt)
 	{

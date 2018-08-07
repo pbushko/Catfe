@@ -12,8 +12,6 @@ public class PlayerData : MonoBehaviour
 
 	public int playerMoney;
 
-	//public GameObject obj;
-
 	public List<Sprite> catSprites;
 	public List<string> catSpriteNames;
 
@@ -21,6 +19,8 @@ public class PlayerData : MonoBehaviour
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
+
+	public GameObject activeRestaurant;
 
 	void Awake()
 	{
@@ -101,7 +101,7 @@ public class PlayerData : MonoBehaviour
 			temp.NewGameRestaurantChoice();	
 			//Cafe.NewGameRestaurantChoice();	
 		}
-		restaurants = new List<RestaurantData>();	
+		//restaurants = new List<RestaurantData>();	
 	}
 
 	public Sprite GetCatSprite(string spriteName)

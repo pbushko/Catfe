@@ -35,11 +35,7 @@ public class Cafe : MonoBehaviour
             if (hit.collider)
             {
                 //Vector3 loc = hit.collider.transform.position;
-                if (hit.collider.tag == "RestaurantSpace")
-                {
-                    hit.collider.GetComponent<SpriteRenderer>().sprite = restaurantToPlace;
-                    toShow = false;
-                }
+                
             }
         }
 	}

@@ -13,6 +13,7 @@ TagManager:
   - noButton
   - levelButton
   - RestaurantSpace
+  - Restaurant
   layers:
   - Default
   - TransparentFX

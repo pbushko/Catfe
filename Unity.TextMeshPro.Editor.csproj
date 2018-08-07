@@ -406,6 +406,7 @@
   <ItemGroup>
     <None Include="Assets\cat_names.txt" />
     <None Include="Assets\decorations.xml" />
+    <None Include="Assets\recipies.xml" />
     <None Include="Assets\special_cat_names.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
