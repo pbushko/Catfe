@@ -10,15 +10,30 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	public GameObject chefPanel;
 	public GameObject waiterPanel;
 
+	//these hold the slots the waiters/chefs will be viewed in, but not the buttons
+	private List<GameObject> chefSlots;
+	private List<GameObject> waiterSlots;
+
 	private int activeChefs;
 	private int activeWaiters;
 
 	// Use this for initialization
 	void Start () {
 		inv = this;
-		Debug.Log(chefPanel.transform.childCount);
+		//Debug.Log(chefPanel.transform.childCount);
 		activeChefs = 0;
 		activeWaiters = 0;
+		chefSlots = new List<GameObject>();
+		waiterSlots = new List<GameObject>();
+
+		for(int i = 0; i < chefPanel.transform.childCount - 1; i++)
+		{
+			chefSlots.Add(chefPanel.transform.GetChild(i).gameObject);
+		}
+		for(int i = 0; i < waiterPanel.transform.childCount - 1; i++)
+		{
+			waiterSlots.Add(waiterPanel.transform.GetChild(i).gameObject);
+		}
 	}
 	
 	// Update is called once per frame
@@ -28,6 +43,10 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public void AddChef(ChefData c)
 	{
+		chefSlots[activeChefs].SetActive(true);
+		chefSlots[activeChefs].GetComponent<ChefCatRecruitStats>().ResetData(c);
+		
+
 		activeChefs++;
 		CheckChefPanelCount();
 	}
@@ -42,7 +61,18 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	{
 		activeChefs = c.Count;
 
-
+		for (int i = 0; i < Variables.MAX_CHEFS_IN_RESTAURANT; i++)
+		{
+			//if there are not enough chefs to put in slots, make sure the extra slots are deactivated
+			if (i >= c.Count)
+			{
+				chefSlots[i].SetActive(false);
+			}
+			else
+			{
+				chefSlots[i].GetComponent<ChefCatRecruitStats>().ResetData(c[i]);
+			}
+		}
 		//make sure the add a new chef button is only available when it should be
 		CheckChefPanelCount();
 	}

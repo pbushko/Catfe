@@ -53,6 +53,10 @@ public class RestaurantData
 
 	public void PrintEmployees()
 	{
+		if (waiters.Count == 0 && chefs.Count == 0)
+		{
+			Debug.Log("No employees!");
+		}
 		Debug.Log("Waiters: ");
 		foreach (WaiterData w in waiters)
 		{

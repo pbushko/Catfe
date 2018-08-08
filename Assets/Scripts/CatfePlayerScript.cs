@@ -3,24 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum States {InsideRestaurant, CityMap, InventoryMenu, RecruitingMenu, InvToRestaurant, NewRestaurantMenu};
+
 public class CatfePlayerScript : MonoBehaviour {
 
 	public static CatfePlayerScript script;
 
+	//used to make new restaurants
 	public GameObject newRestaurantPrefab;
 	public GameObject newRestaurantCanvas;
 	public GameObject restaurantLocationsParent;
 	private List<Vector3> restaurantLocations;
 
+	//the city and everything in it
+	public GameObject city;
+	//the inside of a restaurant
+	public GameObject insideRestaurant;
+
+	//the different canvases to manage cats
+	public GameObject chefRecruitment;
+	public GameObject waiterRecruitment;
+	public GameObject catInventory;
+
+
+	//the current state of the program
+	public States currentState;
+	//to get us back to the last state we were in from the menus
+	public States lastState;
+
 	//to pull up the inventory of the restaurant
 	public GameObject restaurantPanel;
+	public RestaurantInventoryPanel invPanelScript;
 
 	public List<Sprite> restaurantSprites;
 	public List<string> restaurantSpriteNames;
 
 	private Vector3 location;
-
-	private bool choosing;
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +57,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			restaurantLocations.Add(restaurantLocationsParent.transform.GetChild(i).position);
 		}
 		SetUpRestaurants();
-		choosing = false;
+		//currentState = States.CityMap;
 	}
 
 	private static bool FindFronts(Sprite s)
@@ -49,24 +67,62 @@ public class CatfePlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!choosing && Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.up);
-            if (hit.collider)
+            Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
+            if (hit)
             {
-				if (hit.collider.tag == "RestaurantSpace")
+				if (currentState == States.CityMap && hit.tag == "RestaurantSpace")
                 {
 					//make a new restaurant when you click on an empty space
                     newRestaurantCanvas.SetActive(true);
-					choosing = true;
-					location = hit.collider.transform.position;
+					location = hit.transform.position;
+					lastState = currentState;
+					currentState = States.NewRestaurantMenu;
                 }
-				if (hit.collider.tag == "Restaurant")
+				else if (currentState == States.CityMap && hit.tag == "Restaurant")
                 {
 					//checking the inventory of the restaurant you are clicking on
+					PlayerData.playerData.activeRestaurant = hit.gameObject;
 					restaurantPanel.SetActive(true);
+					RestaurantData r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data;
+					invPanelScript.SetChefs(r.chefs);
+					r.PrintEmployees();
+					invPanelScript.SetWaiters(r.waiters);
+					lastState = currentState;
+					currentState = States.InvToRestaurant;
                 }
+				else if (hit.tag == "Recruit Chefs")
+				{
+					chefRecruitment.SetActive(true);
+					currentState = States.RecruitingMenu;
+				}
+				else if (hit.tag == "Recruit Waiters")
+				{
+					waiterRecruitment.SetActive(true);
+					currentState = States.RecruitingMenu;
+				}
+				else if (hit.tag == "Cat Inventory")
+				{
+					catInventory.SetActive(true);
+					CatInventory.catInv.ResetChefInv();
+					CatInventory.catInv.ResetWaiterInv();
+					currentState = States.InventoryMenu;
+				}
+				else if (hit.tag == "Location Switch")
+				{
+					city.SetActive(!city.activeSelf);
+					insideRestaurant.SetActive(!insideRestaurant.activeSelf);
+					if (city.activeSelf)
+					{
+						currentState = States.CityMap;
+					}
+					else
+					{
+						currentState = States.InsideRestaurant;
+					}
+				}
 			}
 		}
 	}
@@ -93,7 +149,8 @@ public class CatfePlayerScript : MonoBehaviour {
 		newRest.GetComponent<Restaurant>().data.location = loc;
 		newRest.GetComponent<Restaurant>().data.type = r;
 		PlayerData.playerData.restaurants.Add(newRest.GetComponent<Restaurant>().data);
-		choosing = false;
+		lastState = currentState;
+		currentState = States.CityMap;
 	}
 
 	//loading in all the restaurants we own
@@ -104,6 +161,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			GameObject newRest = (GameObject)Instantiate(newRestaurantPrefab);
 			newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r.type);
 			newRest.transform.position = restaurantLocations[r.location];
+			newRest.transform.SetParent(city.transform);
 		}
 	}
 
@@ -136,6 +194,33 @@ public class CatfePlayerScript : MonoBehaviour {
 				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
 				break;
 		}
+	}
+
+	//remove the cat from the inventory and into the restaurant's workers
+	public void MoveCatToRestaurant(ChefData c, WaiterData w)
+	{
+		Restaurant r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>();
+		PlayerData.playerData.restaurants.Remove(r.data);
+		if (c != null)
+		{
+			r.data.chefs.Add(c);
+			PlayerData.playerData.chefs.Remove(c);
+			invPanelScript.AddChef(c);
+		}
+		if (w != null)
+		{
+			r.data.waiters.Add(w);
+			PlayerData.playerData.waiters.Remove(w);
+			invPanelScript.AddWaiter(w);
+		}
+		PlayerData.playerData.restaurants.Add(r.data);
+		lastState = currentState;
+		currentState = States.CityMap;
+	}
+
+	public void ToLastState()
+	{
+		currentState = lastState;
 	}
 
 }

@@ -14,6 +14,10 @@ TagManager:
   - levelButton
   - RestaurantSpace
   - Restaurant
+  - Recruit Chefs
+  - Recruit Waiters
+  - Cat Inventory
+  - Location Switch
   layers:
   - Default
   - TransparentFX

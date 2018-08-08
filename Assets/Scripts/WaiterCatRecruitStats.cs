@@ -97,4 +97,10 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		float time = 5.0f + 10.0f * data.timesTrained;
 		data.trainEndTime = DateTime.Now.AddSeconds(time);
 	}
+
+	public void AddCatToRestaurant()
+	{
+		CatfePlayerScript.script.MoveCatToRestaurant(null, data);
+	}
+
 }
