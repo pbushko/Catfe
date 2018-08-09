@@ -63,15 +63,8 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 		for (int i = 0; i < Variables.MAX_CHEFS_IN_RESTAURANT; i++)
 		{
-			//if there are not enough chefs to put in slots, make sure the extra slots are deactivated
-			if (i >= c.Count)
-			{
-				chefSlots[i].SetActive(false);
-			}
-			else
-			{
-				chefSlots[i].GetComponent<ChefCatRecruitStats>().ResetData(c[i]);
-			}
+			chefSlots[i].SetActive(true);
+			chefSlots[i].GetComponent<ChefCatRecruitStats>().ResetData(c[i]);
 		}
 		//make sure the add a new chef button is only available when it should be
 		CheckChefPanelCount();
@@ -86,7 +79,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	//if we are already at the max number of chefs, disable the button that hires more
 	public void CheckChefPanelCount()
 	{
-		if (activeChefs > Variables.MAX_CHEFS_IN_RESTAURANT)
+		if (activeChefs >= Variables.MAX_CHEFS_IN_RESTAURANT)
 		{
 			//the button will always be at the end of the layout, so it will be the last child
 			chefPanel.transform.GetChild(chefPanel.transform.childCount - 1).gameObject.SetActive(false);

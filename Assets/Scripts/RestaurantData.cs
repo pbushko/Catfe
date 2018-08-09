@@ -57,15 +57,18 @@ public class RestaurantData
 		{
 			Debug.Log("No employees!");
 		}
-		Debug.Log("Waiters: ");
-		foreach (WaiterData w in waiters)
+		else
 		{
-			Debug.Log(w.ToString());
-		}
-		Debug.Log("Chefs: ");
-		foreach (ChefData c in chefs)
-		{
-			Debug.Log(c.ToString());
+			Debug.Log("Waiters: ");
+			foreach (WaiterData w in waiters)
+			{
+				Debug.Log(w.ToString());
+			}
+			Debug.Log("Chefs: ");
+			foreach (ChefData c in chefs)
+			{
+				Debug.Log(c.ToString());
+			}
 		}
 	}
 	
