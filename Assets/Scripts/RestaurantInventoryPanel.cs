@@ -45,7 +45,6 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	{
 		chefSlots[activeChefs].SetActive(true);
 		chefSlots[activeChefs].GetComponent<ChefCatRecruitStats>().ResetData(c);
-		
 
 		activeChefs++;
 		CheckChefPanelCount();
@@ -53,6 +52,9 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public void AddWaiter(WaiterData w)
 	{
+		waiterSlots[activeWaiters].SetActive(true);
+		waiterSlots[activeWaiters].GetComponent<WaiterCatRecruitStats>().ResetData(w);
+
 		activeWaiters++;
 		CheckWaiterPanelCount();
 	}
@@ -63,8 +65,15 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 		for (int i = 0; i < Variables.MAX_CHEFS_IN_RESTAURANT; i++)
 		{
-			chefSlots[i].SetActive(true);
-			chefSlots[i].GetComponent<ChefCatRecruitStats>().ResetData(c[i]);
+			if(i >= activeChefs)
+			{
+				chefSlots[i].SetActive(false);
+			}
+			else
+			{
+				chefSlots[i].SetActive(true);
+				chefSlots[i].GetComponent<ChefCatRecruitStats>().ResetData(c[i]);
+			}
 		}
 		//make sure the add a new chef button is only available when it should be
 		CheckChefPanelCount();
@@ -73,6 +82,18 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	public void SetWaiters(List<WaiterData> w)
 	{
 		activeWaiters = w.Count;
+		for (int i = 0; i < Variables.MAX_WAITERS_IN_RESTAURANT; i++)
+		{
+			if(i >= activeWaiters)
+			{
+				waiterSlots[i].SetActive(false);
+			}
+			else
+			{
+				waiterSlots[i].SetActive(true);
+				waiterSlots[i].GetComponent<WaiterCatRecruitStats>().ResetData(w[i]);
+			}
+		}
 		CheckWaiterPanelCount();
 	}
 
@@ -101,5 +122,10 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 		{
 			waiterPanel.transform.GetChild(waiterPanel.transform.childCount - 1).gameObject.SetActive(true);
 		}
+	}
+
+	public void Open()
+	{
+		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().Open();
 	}
 }

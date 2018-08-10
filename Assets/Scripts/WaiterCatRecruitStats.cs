@@ -11,16 +11,20 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	public Text name;
 	public Text rarity;
 	public Text income;
+	public Text price;
 	public Text trainings;
 	public Text trainingTimeLeft;
 
 	public Image body;
 	public Image face;
 
+	private int trainingCost;
+
 	// Use this for initialization
 	void Start () {
 		//data = EmployeeGenerator.GenerateWaiter();
 		ResetData(data);
+		trainingCost = 100;
 	}
 
 	void Update()
@@ -66,6 +70,10 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		name.text = newData.name;
 		rarity.text = "Rarity: " + newData.rarity;
 		income.text = "Income: " + newData.income;
+		if (price != null)
+		{
+			price.text = "Price: " + 100 * (data.rarity + 1);
+		}
 		if (trainings != null)
 		{
 			trainings.text = "Times Trained: " + newData.timesTrained;
@@ -76,10 +84,19 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 
 	public void RecruitWaiter()
 	{
-		//check if there is enough money... for now, auto buy
-		PlayerData.playerData.waiters.Add(data);
-		CatInventory.catInv.AddCat(null, data);
-		CatInventory.catInv.ResetWaiterInv();
+		//check if there is enough money, the cost is 100 * rarity + 1
+		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
+		{
+			PlayerData.playerData.playerMoney -= 100 * (data.rarity + 1);
+			MoneyTracker.ChangeMoneyCount();
+			PlayerData.playerData.waiters.Add(data);
+			CatInventory.catInv.AddCat(null, data);
+			CatInventory.catInv.ResetWaiterInv();
+		}
+		else
+		{
+			Debug.Log("Not enough money!");
+		}
 	}
 	
 	public void LayOff()
@@ -89,10 +106,12 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 
 	public void Train()
 	{
-		if (data.isTraining || data.timesTrained >= 10)
+		if (data.isTraining || data.timesTrained >= 10 || PlayerData.playerData.playerMoney < trainingCost)
 		{
 			return;
 		}
+		PlayerData.playerData.playerMoney -= trainingCost;
+		MoneyTracker.ChangeMoneyCount();
 		data.isTraining = true;
 		float time = 5.0f + 10.0f * data.timesTrained;
 		data.trainEndTime = DateTime.Now.AddSeconds(time);
@@ -101,6 +120,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	public void AddCatToRestaurant()
 	{
 		CatfePlayerScript.script.MoveCatToRestaurant(null, data);
+		Destroy(gameObject);
 	}
 
 }

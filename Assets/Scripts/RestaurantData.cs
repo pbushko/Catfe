@@ -28,7 +28,9 @@ public class RestaurantData
 	public float starProgress;
 
 	//the time the restaurant was opened to get idle income
-	public DateTime timeOpened;
+	public bool isOpen;
+	public DateTime timeToClose;
+	public int storedIncome;
 
 	//the last time the minigame was played in the restaurant
 	public DateTime timeMinigamePlayed;
@@ -70,6 +72,21 @@ public class RestaurantData
 				Debug.Log(c.ToString());
 			}
 		}
+	}
+
+	//this is income per min, based on the current employees
+	public int GetTotalIncome()
+	{
+		int totalIncome = 0;
+		foreach (WaiterData w in waiters)
+		{
+			totalIncome += w.income;
+		}
+		foreach (ChefData c in chefs)
+		{
+			totalIncome += c.income;
+		}
+		return totalIncome;
 	}
 	
 }

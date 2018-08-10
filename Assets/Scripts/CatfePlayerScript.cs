@@ -81,8 +81,9 @@ public class CatfePlayerScript : MonoBehaviour {
 					restaurantPanel.SetActive(true);
 					RestaurantData r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data;
 					invPanelScript.SetChefs(r.chefs);
-					r.PrintEmployees();
 					invPanelScript.SetWaiters(r.waiters);
+					PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().CollectMoney();
+					MoneyTracker.ChangeMoneyCount();
 					lastState = currentState;
 					currentState = States.InvToRestaurant;
                 }
@@ -168,8 +169,8 @@ public class CatfePlayerScript : MonoBehaviour {
 			newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r.type);
 			//setting the data of this restaurant to be the saved data.
 			newRest.GetComponent<Restaurant>().data = r;
-			newRest.transform.position = restaurantLocations[r.location];
 			newRest.transform.SetParent(city.transform);
+			newRest.transform.position = new Vector3(restaurantLocations[r.location].x, restaurantLocations[r.location].y, restaurantLocations[r.location].z - 0.2f);
 		}
 	}
 
@@ -208,20 +209,18 @@ public class CatfePlayerScript : MonoBehaviour {
 	public void MoveCatToRestaurant(ChefData c, WaiterData w)
 	{
 		Restaurant r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>();
-		PlayerData.playerData.restaurants.Remove(r.data);
 		if (c != null)
 		{
 			r.data.chefs.Add(c);
-			//PlayerData.playerData.chefs.Remove(c);
+			PlayerData.playerData.chefs.Remove(c);
 			invPanelScript.AddChef(c);
 		}
 		if (w != null)
 		{
 			r.data.waiters.Add(w);
-			//PlayerData.playerData.waiters.Remove(w);
+			PlayerData.playerData.waiters.Remove(w);
 			invPanelScript.AddWaiter(w);
 		}
-		PlayerData.playerData.restaurants.Add(r.data);
 		lastState = currentState;
 		currentState = States.CityMap;
 	}
