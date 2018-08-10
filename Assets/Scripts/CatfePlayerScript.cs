@@ -25,15 +25,15 @@ public class CatfePlayerScript : MonoBehaviour {
 	public GameObject chefRecruitment;
 	public GameObject waiterRecruitment;
 	public GameObject catInventory;
-
-	//the current state of the program
-	public States currentState;
-	//to get us back to the last state we were in from the menus
-	public States lastState;
-
 	//to pull up the inventory of the restaurant
 	public GameObject restaurantPanel;
 	public RestaurantInventoryPanel invPanelScript;
+
+	//the current state of the program
+	public States currentState;
+
+	//to load in the restaurant's objects when you go in it
+	public GameObject waiterSpots;
 
 	public List<Sprite> restaurantSprites;
 	public List<string> restaurantSpriteNames;
@@ -84,49 +84,56 @@ public class CatfePlayerScript : MonoBehaviour {
 					invPanelScript.SetChefs(r.chefs);
 					invPanelScript.SetWaiters(r.waiters);
 					PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().CollectMoney();
-					lastState = currentState;
-					currentState = States.InvToRestaurant;
                 }
 				else if (currentState == States.CityMap && hit.tag == "RestaurantSpace")
                 {
 					//make a new restaurant when you click on an empty space
                     newRestaurantCanvas.SetActive(true);
 					location = hit.transform.position;
-					lastState = currentState;
-					currentState = States.NewRestaurantMenu;
                 }
 				else if (hit.tag == "Recruit Chefs")
 				{
 					chefRecruitment.SetActive(true);
-					currentState = States.RecruitingMenu;
 				}
 				else if (hit.tag == "Recruit Waiters")
 				{
 					waiterRecruitment.SetActive(true);
-					currentState = States.RecruitingMenu;
 				}
 				else if (hit.tag == "Cat Inventory")
 				{
 					catInventory.SetActive(true);
 					CatInventory.catInv.ResetChefInv();
 					CatInventory.catInv.ResetWaiterInv();
-					currentState = States.InventoryMenu;
 				}
 				else if (hit.tag == "Location Switch")
 				{
 					city.SetActive(!city.activeSelf);
 					insideRestaurant.SetActive(!insideRestaurant.activeSelf);
-					if (city.activeSelf)
-					{
-						currentState = States.CityMap;
-					}
-					else
-					{
-						currentState = States.InsideRestaurant;
-					}
+					currentState = States.CityMap;
 				}
 			}
 		}
+	}
+
+	public void EnterRestaurant()
+	{
+		city.SetActive(false);
+		insideRestaurant.SetActive(true);
+		List<WaiterData> ws = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters;
+		for (int i = 0; i < waiterSpots.transform.childCount; i++)
+		{
+			GameObject child = waiterSpots.transform.GetChild(i).gameObject;
+			if (i >= ws.Count)
+			{
+				child.SetActive(false);
+			}
+			else
+			{
+				child.SetActive(true);
+				child.GetComponent<Waiter>().RefreshWaiter(ws[i]);
+			}
+		}
+		currentState = States.InsideRestaurant;
 	}
 
 	public bool IsCanvasActive()
@@ -156,7 +163,6 @@ public class CatfePlayerScript : MonoBehaviour {
 		newRest.GetComponent<Restaurant>().data.location = loc;
 		newRest.GetComponent<Restaurant>().data.type = r;
 		PlayerData.playerData.restaurants.Add(newRest.GetComponent<Restaurant>().data);
-		lastState = currentState;
 		currentState = States.CityMap;
 	}
 
@@ -221,13 +227,6 @@ public class CatfePlayerScript : MonoBehaviour {
 			PlayerData.playerData.waiters.Remove(w);
 			invPanelScript.AddWaiter(w);
 		}
-		lastState = currentState;
-		currentState = States.CityMap;
-	}
-
-	public void ToLastState()
-	{
-		currentState = lastState;
 	}
 
 }

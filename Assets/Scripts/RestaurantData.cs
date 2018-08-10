@@ -261,4 +261,6 @@ public class DecorationData
 	//the amount it contributes to the atmosphere
 	public int atmosphere;
 
+	public string sprite;
+
 }

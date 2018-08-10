@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Waiter : MonoBehaviour {
 
-	WaiterData waiter;
+	public WaiterData waiter;
 	float m_fill;
 
 	public SpriteRenderer body;
@@ -14,9 +14,9 @@ public class Waiter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_fill = 0;
-		waiter = EmployeeGenerator.GenerateWaiter();
-		body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
-		face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
+		//waiter = EmployeeGenerator.GenerateWaiter();
+		//body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
+		//face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
 	}
 	
 	// Update is called once per frame
@@ -37,6 +37,13 @@ public class Waiter : MonoBehaviour {
 		}
 		*/
 	
+	}
+
+	public void RefreshWaiter(WaiterData newData)
+	{
+		waiter = newData;
+		body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
 	}
 
 }

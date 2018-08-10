@@ -90,25 +90,9 @@ public class EmployeeGenerator {
 	private static RestaurantType GetRandomRestaurantType()
 	{
 		int i = (int) RestaurantType.NumOfRestaurantTypes;
-		int n = 0;	//keeps track of the current enum we're checking
-		float rand = Random.Range(0f, 1.0f);
-		float interval = 1f/i;
-		float cur = interval;
+		int rand = UnityEngine.Random.Range(0, i);
 
-		//going through the different restaurant types
-		while (n < i)
-		{
-			//start by checking if the random num is less than the smallest interval and slowly building up
-			if (rand < cur)
-			{
-				return (RestaurantType)n;
-			}
-			//if not in the range, try the next enum range
-			n++;
-			cur += interval;
-		}
-		//if for some reason nothing was found, just return the catfe type
-		return RestaurantType.Catfe;
+		return (RestaurantType)rand;
 	}
 
 	private static void GenerateSprites()

@@ -85,10 +85,18 @@ public class ChefCatRecruitStats : MonoBehaviour {
 
 	public void RecruitChef()
 	{
-		//check if there is enough money... for now, auto buy
-		PlayerData.playerData.chefs.Add(data);
-		CatInventory.catInv.AddCat(data, null);
-		CatInventory.catInv.ResetChefInv();
+		//check if there is enough money, the cost is 100 * rarity + 1
+		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
+		{
+			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
+			PlayerData.playerData.chefs.Add(data);
+			CatInventory.catInv.AddCat(data, null);
+			CatInventory.catInv.ResetChefInv();
+		}
+		else
+		{
+			Debug.Log("Not enough money!");
+		}
 	}
 
 	public void LayOff()
