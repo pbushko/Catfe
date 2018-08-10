@@ -211,6 +211,45 @@ public class ChefData
 		return s;
 	}
 
+	public void AddRandomRestaurantType()
+	{
+		int i = (int) RestaurantType.NumOfRestaurantTypes;
+		i -= specialties.Count; //need to subtract the number of specialties we currently have
+		//if we already have all the restaurant types, don't add anything
+		if (i == 0)
+		{
+			return;
+		}
+		int n = 0;	//keeps track of the enum we want from the random number
+		//to get a random int that we will check from; if it returns j, we will get the jth specialty that we don't already have
+		int rand = UnityEngine.Random.Range(0, i);
+		int cur = 0; //the current index we're looking at
+
+		//going through the different restaurant types
+		while (n <= rand)
+		{
+			//if we already have this type, then move onto the next one
+			if (specialties.Contains((RestaurantType)cur))
+			{
+				cur++;
+			}
+			//if we don't have this type, see if it's in the position that was randomly picked
+			else if (n == rand)
+			{
+				Debug.Log((RestaurantType)cur);
+				specialties.Add((RestaurantType)cur);
+				return;
+			}
+			//otherwise, increment n since we passed one candidate
+			else
+			{
+				n++;
+				cur++;
+			}
+		}
+
+	}
+
 }
 
 [System.Serializable]

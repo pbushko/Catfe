@@ -87,8 +87,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		//check if there is enough money, the cost is 100 * rarity + 1
 		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
 		{
-			PlayerData.playerData.playerMoney -= 100 * (data.rarity + 1);
-			MoneyTracker.ChangeMoneyCount();
+			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
 			PlayerData.playerData.waiters.Add(data);
 			CatInventory.catInv.AddCat(null, data);
 			CatInventory.catInv.ResetWaiterInv();
@@ -110,8 +109,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		{
 			return;
 		}
-		PlayerData.playerData.playerMoney -= trainingCost;
-		MoneyTracker.ChangeMoneyCount();
+		MoneyTracker.ChangeMoneyCount(-trainingCost);
 		data.isTraining = true;
 		float time = 5.0f + 10.0f * data.timesTrained;
 		data.trainEndTime = DateTime.Now.AddSeconds(time);

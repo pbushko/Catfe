@@ -61,14 +61,6 @@ public class PlayerData : MonoBehaviour
 		data.waiters = waiters;
 		data.restaurants = restaurants;
 
-		/*
-		Debug.Log("Saved Employees:");
-		foreach (RestaurantData r in data.restaurants)
-		{
-			r.PrintEmployees();
-		}
-		*/
-
 		formatter.Serialize(file, data);
 
 		file.Close();

@@ -18,10 +18,13 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	public Image body;
 	public Image face;
 
+	private int trainingCost;
+
 	// Use this for initialization
 	void Start () {
 		//data = EmployeeGenerator.GenerateChef();
 		ResetData(data);
+		trainingCost = 100;
 	}
 
 	void Update()
@@ -46,6 +49,10 @@ public class ChefCatRecruitStats : MonoBehaviour {
 					break;
 				default:
 					break;
+			}
+			if (data.timesTrained % 10 == 0)
+			{
+				data.AddRandomRestaurantType();
 			}
 			ResetData(data);
 			data.isTraining = !data.isTraining;
@@ -89,15 +96,17 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		CatInventory.catInv.LayOffChefCat(gameObject);
 	}
 
+	//training will increase the income of the cat; every 10th training will award a chef specialty, rarer cats can train more
 	public void Train()
 	{
-		if (data.isTraining || data.timesTrained >= 10)
+		if (data.isTraining || data.timesTrained >= (10 * (data.rarity + 1))  || PlayerData.playerData.playerMoney < trainingCost)
 		{
 			return;
 		}
+		MoneyTracker.ChangeMoneyCount(-trainingCost);
 		data.isTraining = true;
 		float time = 5.0f + 10.0f * data.timesTrained;
-		data.trainEndTime = DateTime.Now.AddSeconds(time);
+		data.trainEndTime = DateTime.Now.AddSeconds(1.0f);
 	}
 
 	public void AddCatToRestaurant()

@@ -15,8 +15,8 @@ public class Restaurant : MonoBehaviour {
 	private float openTime = 5.0f;
 
 	// Use this for initialization
-	void Start () {
-
+	void Start () 
+	{
 		if (DateTime.Compare(DateTime.Now, data.timeToClose) > 0 && data.storedIncome != 0)
 		{
 			text.text = "Money to Collect: " + data.storedIncome;
@@ -34,7 +34,8 @@ public class Restaurant : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (data.isOpen && DateTime.Compare(DateTime.Now, data.timeToClose) > 0)
 		{
 			text.text = "Money to Collect: " + data.storedIncome;
@@ -50,11 +51,18 @@ public class Restaurant : MonoBehaviour {
 	//open the restaurant to allow you to make money
 	public void Open()
 	{
-		//data.timeOpened = DateTime.Now;
-		CollectMoney();
-		data.timeToClose = DateTime.Now.AddSeconds(5.0f);
-		data.storedIncome = (int)((float)data.GetTotalIncome() *  (openTime/60f));
-		data.isOpen = true;
+		//can't open the shop if there is not at least 1 chef and 1 waiter
+		if (data.chefs.Count >= 1 && data.waiters.Count >= 1)
+		{
+			CollectMoney();
+			data.timeToClose = DateTime.Now.AddSeconds(5.0f);
+			data.storedIncome = (int)((float)data.GetTotalIncome() *  (openTime/60f));
+			data.isOpen = true;
+		}
+		else
+		{
+			Debug.Log("Need at least 1 chef and 1 waiter before you can open shop!");
+		}
 	}
 
 	//collect the money from the shop
@@ -64,7 +72,7 @@ public class Restaurant : MonoBehaviour {
 		//adding up the income/min
 		if (!data.isOpen)
 		{
-			PlayerData.playerData.playerMoney += data.storedIncome;
+			MoneyTracker.ChangeMoneyCount(data.storedIncome);
 			data.storedIncome = 0;
 			text.text = "Not Open";
 		}

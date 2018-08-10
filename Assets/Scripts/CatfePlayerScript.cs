@@ -26,7 +26,6 @@ public class CatfePlayerScript : MonoBehaviour {
 	public GameObject waiterRecruitment;
 	public GameObject catInventory;
 
-
 	//the current state of the program
 	public States currentState;
 	//to get us back to the last state we were in from the menus
@@ -42,7 +41,8 @@ public class CatfePlayerScript : MonoBehaviour {
 	private Vector3 location;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		script = this;
 		restaurantSprites = new List<Sprite>(Resources.LoadAll<Sprite>("RestaurantOutsides"));
 		restaurantSprites = restaurantSprites.FindAll(FindFronts);
@@ -58,7 +58,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			restaurantLocations.Add(restaurantLocationsParent.transform.GetChild(i).position);
 		}
 		SetUpRestaurants();
-		//currentState = States.CityMap;
+		currentState = States.CityMap;
 	}
 
 	private static bool FindFronts(Sprite s)
@@ -67,7 +67,8 @@ public class CatfePlayerScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (!IsCanvasActive() && Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -83,7 +84,6 @@ public class CatfePlayerScript : MonoBehaviour {
 					invPanelScript.SetChefs(r.chefs);
 					invPanelScript.SetWaiters(r.waiters);
 					PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().CollectMoney();
-					MoneyTracker.ChangeMoneyCount();
 					lastState = currentState;
 					currentState = States.InvToRestaurant;
                 }

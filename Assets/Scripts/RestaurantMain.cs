@@ -154,8 +154,7 @@ public class RestaurantMain : MonoBehaviour {
 
 	public static void AddMoney(int n)
 	{
-		PlayerData.playerData.playerMoney += n;
-		MoneyTracker.ChangeMoneyCount();
+		MoneyTracker.ChangeMoneyCount(n);
 	}
 
 	public static Sprite GetUpgradeSprite(Sprite sprite)

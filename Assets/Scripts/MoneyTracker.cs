@@ -15,8 +15,9 @@ public class MoneyTracker : MonoBehaviour
         moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
 	}
 
-    public static void ChangeMoneyCount()
+    public static void ChangeMoneyCount(int i)
     {
+        PlayerData.playerData.playerMoney += i;
         moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
     }
 }
