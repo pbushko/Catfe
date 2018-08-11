@@ -14,9 +14,9 @@ public class Chef : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_fill = 0;
-		chef = EmployeeGenerator.GenerateChef();
-		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
-		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
+		//chef = EmployeeGenerator.GenerateChef();
+		//body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
+		//face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
 	}
 	
 	// Update is called once per frame
@@ -37,4 +37,12 @@ public class Chef : MonoBehaviour {
 		}
 		*/
 	}
+
+	public void RefreshChef(ChefData newData)
+	{
+		chef = newData;
+		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
+		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
+	}
+
 }

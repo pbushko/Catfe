@@ -34,6 +34,7 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	//to load in the restaurant's objects when you go in it
 	public GameObject waiterSpots;
+	public GameObject chefSpot;
 
 	public List<Sprite> restaurantSprites;
 	public List<string> restaurantSpriteNames;
@@ -119,6 +120,7 @@ public class CatfePlayerScript : MonoBehaviour {
 	{
 		city.SetActive(false);
 		insideRestaurant.SetActive(true);
+		//loading in the waiters in the back
 		List<WaiterData> ws = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters;
 		for (int i = 0; i < waiterSpots.transform.childCount; i++)
 		{
@@ -132,6 +134,17 @@ public class CatfePlayerScript : MonoBehaviour {
 				child.SetActive(true);
 				child.GetComponent<Waiter>().RefreshWaiter(ws[i]);
 			}
+		}
+		//loading in a chef
+		List<ChefData> c = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.chefs;
+		if (c.Count > 0)
+		{
+			chefSpot.SetActive(true);
+			chefSpot.GetComponent<Chef>().RefreshChef(c[0]);
+		}
+		else
+		{
+			chefSpot.SetActive(false);
 		}
 		currentState = States.InsideRestaurant;
 	}

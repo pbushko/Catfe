@@ -15,8 +15,8 @@ public class RestaurantMain : MonoBehaviour {
 	public GameObject utensilLine;
 
 	private State currentState;
-	private PlayerScript playerScript;
-	private CustomerGenerator customerGenerator;
+	public PlayerScript playerScript;
+	public CustomerGenerator customerGenerator;
 
 	private static List<Sprite> m_utensilSprites;
 	private static List<string> m_utensilSpriteNames;
@@ -54,9 +54,14 @@ public class RestaurantMain : MonoBehaviour {
 
 		popUpText.enabled = false;
 
+		//this is temporary
+		ingredients = new List<Ingredients>();
+		ingredients.Add(Ingredients.Lettuce);
+		ingredients.Add(Ingredients.Chicken);
+		ingredients.Add(Ingredients.Carrot);
+		ingredients.Add(Ingredients.Beef);
+
 		//the game is paused in the upgrades state
-		playerScript = GameObject.Find("Cat").GetComponent<PlayerScript>();
-        customerGenerator = GameObject.Find("Customer Line").GetComponent<CustomerGenerator>();
 		Pause();
 
 		foreach (Sprite s in m_utensilSprites)
