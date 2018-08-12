@@ -19,7 +19,6 @@ public class RestaurantData
 	//keeps track of your employees currently at the restaurant
 	public List<WaiterData> waiters;
 	public List<ChefData> chefs;
-
 	//the decor in the shop
 	public List<DecorationData> decor;
 
@@ -34,10 +33,11 @@ public class RestaurantData
 
 	//the last time the minigame was played in the restaurant
 	public DateTime timeMinigamePlayed;
-
 	//keeps track of the number of minigames completed in that shop
 	//used to determine if the restaurant can be level up or not
 	public int minigamesCompleted;
+	//the state of the kitchen for the minigame
+	public List<CookingUtensil> utensils;
 
 	public int location;
 
@@ -48,6 +48,7 @@ public class RestaurantData
 		waiters = new List<WaiterData>();
 		chefs = new List<ChefData>();
 		decor = new List<DecorationData>();
+		utensils = new List<CookingUtensil>();
 		stars = 0;
 		starProgress = 0f;
 		minigamesCompleted = 0;

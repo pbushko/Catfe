@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerScript : MonoBehaviour
 {
     //stores what the player will be doing.  can contain both ingreds and cookinguten

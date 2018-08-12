@@ -20,6 +20,8 @@ public class CatfePlayerScript : MonoBehaviour {
 	public GameObject city;
 	//the inside of a restaurant
 	public GameObject insideRestaurant;
+	//the buttons that will keep moving you in and out of the restaurant
+	public GameObject buttons;
 
 	//the different canvases to manage cats
 	public GameObject chefRecruitment;
@@ -40,6 +42,8 @@ public class CatfePlayerScript : MonoBehaviour {
 	public List<string> restaurantSpriteNames;
 
 	private Vector3 location;
+
+	public GameObject minigameItems;
 
 	// Use this for initialization
 	void Start () 
@@ -112,6 +116,13 @@ public class CatfePlayerScript : MonoBehaviour {
 					insideRestaurant.SetActive(!insideRestaurant.activeSelf);
 					currentState = States.CityMap;
 				}
+				//start the minigame if you click on the chef
+				else if (hit.tag == "Chef Cat")
+				{
+					minigameItems.SetActive(true);
+					insideRestaurant.SetActive(false);
+					buttons.SetActive(false);
+				}
 			}
 		}
 	}
@@ -120,6 +131,7 @@ public class CatfePlayerScript : MonoBehaviour {
 	{
 		city.SetActive(false);
 		insideRestaurant.SetActive(true);
+		buttons.SetActive(true);
 		//loading in the waiters in the back
 		List<WaiterData> ws = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters;
 		for (int i = 0; i < waiterSpots.transform.childCount; i++)

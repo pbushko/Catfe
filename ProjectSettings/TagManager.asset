@@ -18,6 +18,7 @@ TagManager:
   - Recruit Waiters
   - Cat Inventory
   - Location Switch
+  - Chef Cat
   layers:
   - Default
   - TransparentFX

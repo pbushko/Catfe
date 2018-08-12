@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public enum State {upgrades, popup, gameplay}
 
@@ -14,7 +15,7 @@ public class RestaurantMain : MonoBehaviour {
 
 	public GameObject utensilLine;
 
-	private State currentState;
+	public State currentState;
 	public PlayerScript playerScript;
 	public CustomerGenerator customerGenerator;
 
@@ -27,16 +28,16 @@ public class RestaurantMain : MonoBehaviour {
 	private Vector3 m_utensilLinePosition;
 
 	public static List<Ingredients> ingredients;
-	//cooking utensil prefabs
-	public static List<GameObject> utensils;
-	public GameObject defaultKnife;
-	public GameObject defaultStove;
 
 	public GameObject popUp;
-	public GameObject curPopUp;
 	public Text popUpText;
 
 	private Collider2D curUtensil;
+
+	private DateTime minigameEndTime;
+	public Text minigameTimeLeft;
+
+	public GameObject minigameItems;
 
 	// Use this for initialization
 	void Start () {
@@ -79,7 +80,7 @@ public class RestaurantMain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0))
+		if (currentState != State.gameplay && Input.GetMouseButtonDown(0))
 		{
 			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
@@ -110,7 +111,6 @@ public class RestaurantMain : MonoBehaviour {
 						CookingUtensilsScript temp = curUtensil.GetComponent<CookingUtensilsScript>();
 						if (PlayerData.playerData.playerMoney >= temp.GetUpgradeCost())
 						{
-							AddMoney(temp.GetUpgradeCost() * -1);
 							temp.Upgrade();
 							curUtensil = null;
 						}
@@ -122,7 +122,20 @@ public class RestaurantMain : MonoBehaviour {
 					}
 				}
 			}
-		}	
+		}
+		else if (currentState == State.gameplay && DateTime.Compare(DateTime.Now, minigameEndTime) > 0)
+		{
+			minigameTimeLeft.text = "time up!";
+			currentState = State.upgrades;
+			Pause();
+			minigameItems.SetActive(false);
+			CatfePlayerScript.script.EnterRestaurant();
+		}
+		else if (currentState == State.gameplay)
+		{
+			TimeSpan timeLeft = minigameEndTime.Subtract(DateTime.Now);
+			minigameTimeLeft.text = "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+		}
 		
 	}
 
@@ -132,12 +145,12 @@ public class RestaurantMain : MonoBehaviour {
 		if (t)
 		{
 			popUpText.enabled = true;
-			curPopUp = (GameObject)Instantiate(popUp);
+			popUp.SetActive(true);
 		}
 		else
 		{
 			popUpText.enabled = false;
-			Destroy(curPopUp);
+			popUp.SetActive(false);
 		}
 	}
 
@@ -147,14 +160,23 @@ public class RestaurantMain : MonoBehaviour {
         customerGenerator.enabled = !customerGenerator.enabled;
     }
 
-	public void FinishedUpgrades() {
+	public void FinishedUpgrades() 
+	{
 		currentState = State.gameplay;
 		Destroy(GameObject.Find("UpgradesFinishedButton"));
 		setPopUp(false);
 		Pause();
-		//adding the upgrades purchased to the save file, doesn't auto save it here
-		//only saves once the level has been completed
-		//PlayerData.playerData.utensils = utensils;
+
+		//need to set the newly upgraded utensils to be saved
+		List<CookingUtensil> cs = new List<CookingUtensil>();
+		for (int i = 0; i < utensilLine.transform.childCount; i++)
+		{
+			cs.Add(utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>().utensil);
+		}
+		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils = cs;
+
+		//setting the timer for the minigame, just 10s for now
+		minigameEndTime = DateTime.Now.AddSeconds(10f);
 	}
 
 	public static void AddMoney(int n)
@@ -222,47 +244,27 @@ public class RestaurantMain : MonoBehaviour {
 
 	private void setUtensils()
 	{
-		bool first = false;
-
-		CookingUtensilsScript temp2 = defaultStove.GetComponent<CookingUtensilsScript>();
-		//if this is the first time we are opening the kitchen, then we need to use the defaults
-		if (utensils == null)
+		List<CookingUtensil> cs = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils;
+		//set each kitchen utensil based on what the restaurant has
+		for (int i = 0; i < cs.Count; i++)
 		{
-			first = true;
-			utensils = new List<GameObject>();
-			utensils.Add(defaultKnife);
-			CookingUtensilsScript temp = defaultStove.GetComponent<CookingUtensilsScript>();
-
-			temp.SetUtensil(CookingTools.Stove);
-
-			utensils.Add(defaultStove);
-
-			
-		}
-		//setting each box
-		for(int i = 0; i < utensils.Count; i++)
-		{
-			/*
-			if (first && i == 1)
+			if (i > utensilLine.transform.childCount)
 			{
-				CookingUtensilsScript temp = utensils[1].GetComponent<CookingUtensilsScript>();
-
-				Debug.Log(temp.GetUpgradeCost());
-				
-				temp.SetUtensil(CookingTools.Stove);
-				//i++;
-			}*/
-			GameObject utensil = (GameObject)Instantiate(utensils[i]);
-
-			CookingUtensilsScript temp3 = utensil.GetComponent<CookingUtensilsScript>();
-
-			//setting the location
-			utensil.transform.SetParent(utensilLine.transform);
-
-			utensil.transform.position = 
-            	new Vector3(m_utensilLinePosition.x + (i * Variables.UTENSIL_OFFSET), m_utensilLinePosition.y, m_utensilLinePosition.z);
-			
+				i = cs.Count;
+			}
+			else
+			{
+				CookingUtensilsScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>();
+				u.utensil = cs[i];
+				//getting the correct upgrade number for the utensil
+				int j = 0;
+				while (u.utensil.upgradeNum >= j)
+				{
+					u.Upgrade();
+				}
+			}
 		}
+		//if there are no utensils, use the default ones, which will be done automatically
 	}
 
 }

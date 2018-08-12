@@ -5,24 +5,21 @@ using UnityEngine;
 [System.Serializable]
 public class CookingUtensil {
 
-	public CookingTools utensil = CookingTools.Knife;
+	public CookingTools utensil;
 
-    public int upgradeCost;
+    public int upgradeCost = 10;
 
     //the current upgrade of the utensil
-    public int upgradeNum;
+    public int upgradeNum = 0;
 
-    public float cookTime;
+    public float cookTime = 5f;
 
-    public SpriteRenderer objectSprite;
-
-	public CookingUtensil(CookingTools c, int uc, int un, float ct, SpriteRenderer s)
+	public CookingUtensil(CookingTools c, int uc, int un, float ct)
 	{
 		utensil = c;
 		upgradeCost = uc;
 		upgradeNum = un;
 		cookTime = ct;
-		objectSprite = s;
 	}
 
 	public void SetUtensil(CookingTools c)

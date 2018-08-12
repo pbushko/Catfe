@@ -8,17 +8,17 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public CookingUtensil utensil;
 
+    public SpriteRenderer objectSprite;
+
     public void OnClick()
     {
-        Debug.Log(utensil.utensil);
         PlayerScript.AddCookingToolToPlayerQueue(utensil.utensil, loader, utensil.cookTime);
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        utensil = new CookingUtensil(utensil.utensil, 10, 0, 1f, GetComponent<SpriteRenderer>());
-        
+
     }
 	
 	// Update is called once per frame
@@ -29,10 +29,11 @@ public class CookingUtensilsScript : MonoBehaviour {
 
     public void Upgrade()
     {
+        MoneyTracker.ChangeMoneyCount(-utensil.upgradeCost);
         utensil.upgradeNum++;
         utensil.cookTime /= 2;
         utensil.upgradeCost *= 5;
-        utensil.objectSprite.sprite = RestaurantMain.GetUpgradeSprite(utensil.objectSprite.sprite);
+        objectSprite.sprite = RestaurantMain.GetUpgradeSprite(objectSprite.sprite);
         Debug.Log("upgraded!");
     }
 
@@ -46,11 +47,4 @@ public class CookingUtensilsScript : MonoBehaviour {
         return utensil.cookTime;
     }
 
-    public void SetUtensil(CookingTools c)
-    {
-        utensil.utensil = c;
-        Debug.Log(utensil.utensil);
-        //utensil.upgradeCost++;
-       
-    }
 }

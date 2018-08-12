@@ -329,7 +329,6 @@
     <Compile Include="Assets\Scripts\LoadingBar.cs" />
     <Compile Include="Assets\Scripts\MoneyTracker.cs" />
     <Compile Include="Assets\Scripts\NewRestaurantCreation.cs" />
-    <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Recipes.cs" />
