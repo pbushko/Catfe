@@ -6,8 +6,10 @@ public class Customer : MonoBehaviour
 {
     public Recipe m_order;
     public int m_number;
-    private float m_patience = 15f;
+    public float m_patience = 15f;
     public int m_heartCount = 3;
+    public Sprite body;
+    public Sprite face;
 
     public Recipe GetOrder()
     {

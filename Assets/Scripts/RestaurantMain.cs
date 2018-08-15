@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public enum State {upgrades, popup, gameplay}
+public enum State {upgrades, popup, gameplay, finished}
 
 public class RestaurantMain : MonoBehaviour {
 
@@ -31,6 +31,7 @@ public class RestaurantMain : MonoBehaviour {
 
 	public GameObject popUp;
 	public Text popUpText;
+	public GameObject UpgradesFinishedButton;
 
 	private Collider2D curUtensil;
 
@@ -39,11 +40,12 @@ public class RestaurantMain : MonoBehaviour {
 
 	public GameObject minigameItems;
 
+	public GameObject cat;
+	private Vector3 catStartingPos;
+
 	// Use this for initialization
 	void Start () {
 		restMain = this;
-		//always start the scene with buying upgrades
-		currentState = State.upgrades;
 
 		m_utensilSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Kitchen Utensils"));
 		m_utensilSpriteNames = new List<string>();
@@ -62,6 +64,8 @@ public class RestaurantMain : MonoBehaviour {
 		ingredients.Add(Ingredients.Carrot);
 		ingredients.Add(Ingredients.Beef);
 
+		catStartingPos = cat.transform.position;
+
 		//the game is paused in the upgrades state
 		Pause();
 
@@ -74,13 +78,26 @@ public class RestaurantMain : MonoBehaviour {
             m_ingredientSpriteNames.Add(s.name);
         }
 
+		Reset();
+	}
+
+	public void Reset()
+	{
+		//always start the scene with buying upgrades
+		currentState = State.upgrades;
+		cat.transform.position = catStartingPos;
 		setIngredientBoxes();
 		setUtensils();
+		playerScript.Reset();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentState != State.gameplay && Input.GetMouseButtonDown(0))
+		if (currentState == State.finished)
+		{
+			Reset();
+		}
+		else if (currentState != State.gameplay && Input.GetMouseButtonDown(0))
 		{
 			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
@@ -126,7 +143,7 @@ public class RestaurantMain : MonoBehaviour {
 		else if (currentState == State.gameplay && DateTime.Compare(DateTime.Now, minigameEndTime) > 0)
 		{
 			minigameTimeLeft.text = "time up!";
-			currentState = State.upgrades;
+			currentState = State.finished;
 			Pause();
 			minigameItems.SetActive(false);
 			CatfePlayerScript.script.EnterRestaurant();
@@ -163,7 +180,7 @@ public class RestaurantMain : MonoBehaviour {
 	public void FinishedUpgrades() 
 	{
 		currentState = State.gameplay;
-		Destroy(GameObject.Find("UpgradesFinishedButton"));
+		UpgradesFinishedButton.SetActive(false);
 		setPopUp(false);
 		Pause();
 
@@ -176,7 +193,7 @@ public class RestaurantMain : MonoBehaviour {
 		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils = cs;
 
 		//setting the timer for the minigame, just 10s for now
-		minigameEndTime = DateTime.Now.AddSeconds(10f);
+		minigameEndTime = DateTime.Now.AddSeconds(30f);
 	}
 
 	public static void AddMoney(int n)
@@ -200,6 +217,23 @@ public class RestaurantMain : MonoBehaviour {
 		else
 		{
 			return sprite;
+		}
+	}
+
+	//takes the type of the cooking utensil and the number of times it was upgraded
+	public static Sprite GetCookingUtenSprite(CookingTools c, int i)
+	{
+		switch (c)
+		{
+			case CookingTools.Knife:
+				return m_utensilSprites[m_utensilSpriteNames.IndexOf("Knife_" + i)];
+				break;
+			case CookingTools.Stove:
+				return m_utensilSprites[m_utensilSpriteNames.IndexOf("Oven_" + i)];
+				break;
+			default:
+				return m_utensilSprites[m_utensilSpriteNames.IndexOf("Knife_0")];
+				break;
 		}
 	}
 
@@ -245,26 +279,43 @@ public class RestaurantMain : MonoBehaviour {
 	private void setUtensils()
 	{
 		List<CookingUtensil> cs = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils;
+		UpgradesFinishedButton.SetActive(true);
 		//set each kitchen utensil based on what the restaurant has
-		for (int i = 0; i < cs.Count; i++)
+		if (cs != null)
 		{
-			if (i > utensilLine.transform.childCount)
+			for (int i = 0; i < cs.Count; i++)
 			{
-				i = cs.Count;
-			}
-			else
-			{
-				CookingUtensilsScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>();
-				u.utensil = cs[i];
-				//getting the correct upgrade number for the utensil
-				int j = 0;
-				while (u.utensil.upgradeNum >= j)
+				//if for some reason too much is saved, make sure we only go through possible things
+				if (i > utensilLine.transform.childCount)
 				{
-					u.Upgrade();
+					i = cs.Count;
+				}
+				else
+				{
+					CookingUtensilsScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>();
+					u.utensil = cs[i];
+					//getting the right sprite to show
+					if(cs[i].upgradeNum > 3)
+					{
+						cs[i].upgradeNum = 3;
+					}
+					u.SetSprite(GetCookingUtenSprite(cs[i].utensil, cs[i].upgradeNum));
 				}
 			}
 		}
-		//if there are no utensils, use the default ones, which will be done automatically
+		//if there are no utensils, use the default ones, a knife and a stove
+		else 
+		{
+			CookingUtensilsScript u = utensilLine.transform.GetChild(0).gameObject.GetComponent<CookingUtensilsScript>();
+			u.utensil = new CookingUtensil(CookingTools.Knife);
+			u.SetSprite(GetCookingUtenSprite(CookingTools.Knife, 0));
+			cs.Add(u.utensil);
+			
+			u = utensilLine.transform.GetChild(1).gameObject.GetComponent<CookingUtensilsScript>();
+			u.utensil = new CookingUtensil(CookingTools.Stove);
+			u.SetSprite(GetCookingUtenSprite(CookingTools.Stove, 0));
+			cs.Add(u.utensil);
+		}
 	}
 
 }

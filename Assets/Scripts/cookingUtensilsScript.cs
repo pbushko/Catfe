@@ -34,7 +34,6 @@ public class CookingUtensilsScript : MonoBehaviour {
         utensil.cookTime /= 2;
         utensil.upgradeCost *= 5;
         objectSprite.sprite = RestaurantMain.GetUpgradeSprite(objectSprite.sprite);
-        Debug.Log("upgraded!");
     }
 
     public int GetUpgradeCost()
@@ -45,6 +44,11 @@ public class CookingUtensilsScript : MonoBehaviour {
     public float GetCookTime()
     {
         return utensil.cookTime;
+    }
+
+    public void SetSprite(Sprite s)
+    {
+        objectSprite.sprite = s;
     }
 
 }

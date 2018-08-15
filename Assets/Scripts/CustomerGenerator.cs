@@ -14,6 +14,7 @@ public class CustomerGenerator : MonoBehaviour {
     private static Vector3 m_linePosition;
     private static List<GameObject> m_customers;
     private List<Sprite> m_customerSprites;
+    private static int m_customerCount;
 
     // Use this for initialization
     void Start ()
@@ -22,13 +23,19 @@ public class CustomerGenerator : MonoBehaviour {
         m_customerSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Patrons"));
         m_countdown = 1.0f;
         m_linePosition = customerLine.transform.position;
+        //loading in all the customers from the line
+        for (int i = 0; i < customerLine.transform.childCount; i++)
+        {
+            m_customers.Add(customerLine.transform.GetChild(i).gameObject);
+        }
+        m_customerCount = 0;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         //make a new customer appear if we are not at the max # of customers
-        if (m_customers.Count < Variables.MAX_CUSTOMERS)
+        if (m_customerCount < Variables.MAX_CUSTOMERS)
         {
             m_countdown -= Time.deltaTime;
 
@@ -41,7 +48,7 @@ public class CustomerGenerator : MonoBehaviour {
         }
 
         //update the patience of all the customers and make ones leave if they run out
-        for (int i = 0; i < m_customers.Count; i++)
+        for (int i = 0; i < m_customerCount; i++)
         {
             Customer c = m_customers[i].GetComponent<Customer>();
             int heartsLeft = c.UpdatePatience();
@@ -52,13 +59,14 @@ public class CustomerGenerator : MonoBehaviour {
             }
             else if (heartsLeft <= 3)
             {
-                m_customers[i].transform.GetChild(2).transform.GetChild(heartsLeft).GetComponent<SpriteRenderer>().sprite = null;
+                m_customers[i].transform.GetChild(2).transform.GetChild(heartsLeft).GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 	}
 
     private void AddCustomer()
     {
+        /*
         //trying to make the customer prefab button get into line
         GameObject c = (GameObject)Instantiate(buttonPrefab);
         c.transform.SetParent(customerLine.transform);
@@ -88,6 +96,39 @@ public class CustomerGenerator : MonoBehaviour {
         }
 
         m_customers.Add(c);
+        */
+
+        //getting the customer that will be next in line
+        GameObject newCustomer = m_customers[m_customerCount];
+        Customer c = newCustomer.GetComponent<Customer>();
+
+        //setting the info for the customer
+        c.m_number = m_customerCount;
+        c.m_order = PlayerScript.GetRandomRecipe();
+        newCustomer.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerScript.GetFoodSprite(c.m_order);
+
+        //setting the customer's body sprites
+        int rand = Random.Range(0, 2);
+        Sprite body = m_customerSprites[rand];
+        Sprite face = m_customerSprites[Random.Range(2, 4)];
+        c.body = body;
+        c.face = face;
+        newCustomer.GetComponent<SpriteRenderer>().sprite = body;
+        newCustomer.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = face;
+
+        //changing the patience
+        if (rand == 1)
+        {
+            c.m_heartCount += rand;
+        }
+        else
+        {
+            c.transform.GetChild(2).transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        m_customerCount++;
+        newCustomer.SetActive(true);
+
     }
 
     public static Customer GetCustomer(int n)
@@ -97,17 +138,16 @@ public class CustomerGenerator : MonoBehaviour {
 
     public static void RemoveCustomer(int n)
     {
-        GameObject button = m_customers[n];
-        m_customers.Remove(m_customers[n]);
-        if (m_customers.Count > 0)
+        if (m_customerCount - 1 > 0)
         {
-            ShiftPositions();
+            ShiftPositions(n);
         }
-        Destroy(button);   
+        m_customerCount--;
     }
 
-    private static void ShiftPositions()
+    private static void ShiftPositions(int n)
     {
+        /*
         //just setting the 1st customer's position to the start of the line
         m_customers[0].transform.position = m_linePosition;
         m_customers[0].GetComponent<Customer>().SetCustomerNumber(0);
@@ -119,12 +159,43 @@ public class CustomerGenerator : MonoBehaviour {
             if (m_customers[i].transform.position.x > m_customers[i-1].transform.position.x + Variables.CUSTOMER_OFFSET)
             {
                 //change all of the positions for the remaining buttons
-                while (i < m_customers.Count)
+                while (i < m_customerCount)
                 {
                     m_customers[i].GetComponent<Customer>().SetCustomerNumber(i);
                     m_customers[i].transform.position = GetNewPosition(m_customers[i]);
                     i++;
                 }
+            }
+        }*/
+        //going up the row from the one removed to change the data
+        for (int i = n; n < m_customerCount; i++)
+        {
+            Customer cur = m_customers[n].GetComponent<Customer>();
+            Customer next = m_customers[n+1].GetComponent<Customer>();
+            cur = next;
+            SetCustomerSprites(m_customers[n], next);
+        }
+    }
+
+    private static void SetCustomerSprites(GameObject g, Customer c)
+    {
+        //setting the order
+        g.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerScript.GetFoodSprite(c.m_order);
+        //setting the body
+        g.GetComponent<SpriteRenderer>().sprite = c.body;
+        //setting the face
+        g.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = c.face;
+        //setting the patience/hearts
+        for (int i = 0; i < 4; i++)
+        {
+            //if this heart should be there, set it to show
+            if (i < c.m_heartCount)
+            {
+                g.transform.GetChild(2).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                g.transform.GetChild(2).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }

@@ -63,6 +63,18 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    //to reset the minigame after it's been done more than once
+    public void Reset() 
+    {
+        m_playerQueue = new Queue();
+        m_loaders = new Queue<LoadingBar>();
+        m_cookTimes = new Queue<float>();
+        m_locations = new Queue<Vector3>();
+        m_needsToMove = false;
+        m_itemsInHand = new List<Ingredients>();
+        ChangePlateInHand(null);
+    }
+
 	// Update is called once per frame
 	void Update ()
     {

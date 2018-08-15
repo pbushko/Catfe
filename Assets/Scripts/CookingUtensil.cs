@@ -14,6 +14,14 @@ public class CookingUtensil {
 
     public float cookTime = 5f;
 
+	public CookingUtensil(CookingTools c)
+	{
+		utensil = c;
+		upgradeCost = 10;
+		upgradeNum = 0;
+		cookTime = 5f;
+	}
+
 	public CookingUtensil(CookingTools c, int uc, int un, float ct)
 	{
 		utensil = c;
