@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Xml;
 
 public enum Ingredients { Carrot, Lettuce, Potato, Beef, Chicken, Milk, none };
 public enum CookingTools { Knife, Oven, Stove, Blender, none };
@@ -9,6 +9,10 @@ public enum Dishes { CarrotSalad, ChickenAndBeef, CarrotSoup, none };
 
 //a recipe object; stores what is needed for each recipe
 public class Recipe {
+
+    private int idNum;
+
+    private string itemType;
 
     private string recipeName;
 
@@ -29,6 +33,26 @@ public class Recipe {
         ingredients = i;
         utensils = c;
         price = p;
+    }
+
+    public Recipe(XmlNode recipe, string type)
+    {
+        if (recipe.Attributes["id"].Value != "")
+        {
+            idNum = int.Parse(recipe.Attributes["id"].Value);
+        }
+        recipeName = recipe.Attributes["name"].Value;
+        if (recipe.Attributes["price"].Value != "")
+        {
+            price = int.Parse(recipe.Attributes["price"].Value);
+        }
+
+        itemType = type;
+    }
+
+    public string ToString()
+    {
+        return "id: " + idNum + " name: " + recipeName + " price: " + price + " type: " + itemType;
     }
 
     public string GetRecipeName()

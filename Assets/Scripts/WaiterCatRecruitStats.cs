@@ -22,7 +22,10 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//data = EmployeeGenerator.GenerateWaiter();
+		if (data == null)
+		{
+			data = EmployeeGenerator.GenerateWaiter();
+		}
 		ResetData(data);
 		trainingCost = 100;
 	}

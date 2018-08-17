@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Xml;
 
 [System.Serializable]
 public enum RestaurantType { Catfe, Italian, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
@@ -256,6 +257,12 @@ public class ChefData
 [System.Serializable]
 public class DecorationData
 {
+	public int id;
+
+	public string name;
+
+	public string description;
+
 	//cost to buy this decoration
 	public int cost;
 
@@ -263,5 +270,28 @@ public class DecorationData
 	public int atmosphere;
 
 	public string sprite;
+
+	public DecorationData(XmlNode d)
+	{
+		if (d.Attributes["id"].Value != "")
+        {
+            id = int.Parse(d.Attributes["id"].Value);
+        }
+        name = d.Attributes["name"].Value;
+		description = d.Attributes["text"].Value;
+        if (d.Attributes["price"].Value != "")
+        {
+            cost = int.Parse(d.Attributes["price"].Value);
+        }
+		if (d.Attributes["atmosphere"].Value != "")
+        {
+            atmosphere = int.Parse(d.Attributes["atmosphere"].Value);
+        }
+	}
+
+	public string ToString()
+	{
+		return "id: " + id + " name: " + name + " price: " + cost + " atmosp: " + atmosphere + "\n" +description;
+	}
 
 }

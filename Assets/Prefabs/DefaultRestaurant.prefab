@@ -171,7 +171,7 @@ TextMesh:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538019251276086}
   m_Text: Wow
-  m_OffsetZ: 0
+  m_OffsetZ: -2
   m_CharacterSize: 0.18
   m_LineSpacing: 1
   m_Anchor: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
     isOpen: 0
     storedIncome: 0
     minigamesCompleted: 0
+    utensils: []
     location: 0
   title: {fileID: 212989423587791978}
   text: {fileID: 102662172609441582}

@@ -22,7 +22,10 @@ public class ChefCatRecruitStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//data = EmployeeGenerator.GenerateChef();
+		if (data == null)
+		{
+			data = EmployeeGenerator.GenerateChef();
+		}
 		ResetData(data);
 		trainingCost = 100;
 	}

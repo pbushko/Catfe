@@ -126,16 +126,20 @@ public class EmployeeGenerator {
 		//only do this if not done before
 		if(names == null)
 		{
-			StreamReader stream = new StreamReader(file_path);
-		
+			TextAsset txt = (TextAsset)Resources.Load("cat_names", typeof(TextAsset));
+			string allNames = txt.ToString();
+
 			names = new List<string>();
-			//add each name to the names list
-			while(!stream.EndOfStream)
+			using (System.IO.StringReader reader = new System.IO.StringReader(allNames))
 			{
-				names.Add(stream.ReadLine()); 
+				string name;
+				name = reader.ReadLine();
+				while (name != null)
+				{
+					names.Add(name);
+					name = reader.ReadLine();
+				}
 			}
-			//clcose the stream once we have finished reading everything in it
-			stream.Close( );  
 		}
 	}
 

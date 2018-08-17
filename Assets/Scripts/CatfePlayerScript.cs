@@ -95,6 +95,7 @@ public class CatfePlayerScript : MonoBehaviour {
 					//make a new restaurant when you click on an empty space
                     newRestaurantCanvas.SetActive(true);
 					location = hit.transform.position;
+					hit.enabled = false;
                 }
 				else if (hit.tag == "Recruit Chefs")
 				{
@@ -187,6 +188,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 		newRest.GetComponent<Restaurant>().data.location = loc;
 		newRest.GetComponent<Restaurant>().data.type = r;
+		newRest.transform.SetParent(restaurantLocationsParent.transform);
 		PlayerData.playerData.restaurants.Add(newRest.GetComponent<Restaurant>().data);
 		currentState = States.CityMap;
 	}

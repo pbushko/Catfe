@@ -43,6 +43,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public void AddChef(ChefData c)
 	{
+		chefSlots[activeChefs].GetComponent<ChefCatRecruitStats>().data = c;
 		chefSlots[activeChefs].SetActive(true);
 		chefSlots[activeChefs].GetComponent<ChefCatRecruitStats>().ResetData(c);
 
@@ -52,6 +53,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public void AddWaiter(WaiterData w)
 	{
+		waiterSlots[activeWaiters].GetComponent<WaiterCatRecruitStats>().data = w;
 		waiterSlots[activeWaiters].SetActive(true);
 		waiterSlots[activeWaiters].GetComponent<WaiterCatRecruitStats>().ResetData(w);
 

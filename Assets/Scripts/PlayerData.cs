@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Xml;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -15,7 +16,11 @@ public class PlayerData : MonoBehaviour
 	public List<Sprite> catSprites;
 	public List<string> catSpriteNames;
 
-	public List<Recipe> recipies;
+	//these are just things to load in every time the game opens
+	public List<Recipe> recipes;
+	public List<DecorationData> allDecor;
+
+	//lists of things to save
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
@@ -43,6 +48,8 @@ public class PlayerData : MonoBehaviour
 		{
 			catSpriteNames.Add(s.name);
 		}
+		LoadRecipes();
+		LoadDecor();
 	}
 
 	void OnApplicationQuit()
@@ -76,7 +83,7 @@ public class PlayerData : MonoBehaviour
 
 			SaveData data = (SaveData) formatter.Deserialize(file);
 
-			playerMoney = data.money;
+			playerMoney = 1000;
 			chefs = data.chefs;
 			waiters = data.waiters;
 			restaurants = data.restaurants;
@@ -92,7 +99,6 @@ public class PlayerData : MonoBehaviour
 		//otherwise, load the base data
 		else
 		{
-			playerMoney = 100;
 			chefs = new List<ChefData>();
 			waiters = new List<WaiterData>();
 			restaurants = new List<RestaurantData>();
@@ -119,6 +125,70 @@ public class PlayerData : MonoBehaviour
 		foreach (WaiterData w in waiters)
 		{
 			Debug.Log(w.ToString());
+		}
+	}
+
+	private void LoadRecipes()
+	{
+		TextAsset recipiesText = (TextAsset)Resources.Load("recipes", typeof(TextAsset));
+
+		if (recipiesText != null)
+		{
+			XmlDocument recipesXml = new XmlDocument();
+			recipesXml.LoadXml(recipiesText.text);
+
+			recipes = new List<Recipe>();
+
+			foreach (XmlNode type in recipesXml.SelectSingleNode("recipes").SelectNodes("foodType"))
+			{
+				foreach(XmlNode star in type.SelectNodes("star"))
+				{
+					foreach (XmlNode recipe in star.SelectNodes("recipe"))
+					{
+						recipes.Add(new Recipe(recipe, type.Attributes["type"].Value));
+					}
+				}
+			}
+			foreach (Recipe r in recipes)
+			{
+				//Debug.Log(r.ToString());
+			}
+		}
+		else
+		{
+			Debug.Log("Couldn't load the recipes.");
+		}
+	}
+
+	private void LoadDecor()
+	{
+		TextAsset decorText = (TextAsset)Resources.Load("decorations", typeof(TextAsset));
+
+		if (decorText != null)
+		{
+			XmlDocument decorsXml = new XmlDocument();
+			decorsXml.LoadXml(decorText.text);
+
+			allDecor = new List<DecorationData>();
+
+			foreach (XmlNode type in decorsXml.SelectSingleNode("decorations").SelectNodes("type"))
+			{
+				foreach(XmlNode star in type.SelectNodes("star"))
+				{
+					foreach (XmlNode decor in star.SelectNodes("decor"))
+					{
+						allDecor.Add(new DecorationData(decor));
+					}
+				}
+			}
+			foreach (DecorationData d in allDecor)
+			{
+				Debug.Log(d.ToString());
+			}
+		}
+		else
+		{
+			Debug.Log("Couldn't load the decor.");
 		}
 	}
 

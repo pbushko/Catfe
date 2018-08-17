@@ -1,0 +1,199 @@
+<recipes>
+    <foodType type="drinks">
+        <star level="0">
+            <recipe id="0" name="Instant Coffee" text="" price="9">
+                <ingredient name="Water"/>
+                <ingredient name="Instant Coffee"/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="1" name="Brewed Coffee" text="" price="">
+                <ingredient name="Water"/>
+                <ingredient name="Ground Coffee"/>
+                <cookingTool name="Coffee Maker"/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="2" name="Tea" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="3" name="Iced Tea" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="4" name="Ice Water" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="5" name="Orange Juice" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="1">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="2">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="3">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="4">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="5">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+    </foodType>
+
+    <foodType type="meals">
+        <star level="0">
+            <recipe id="6" name="Frozen Pizza" text="" price="">
+                <ingredient name="Frozen Pizza"/>
+                <cookingTool name="Oven"/>
+                <restaurantType type="Italian"/>
+            </recipe>
+            <recipe id="8" name="Plain Pasta" text="" price="">
+                <ingredient name="Pasta"/>
+                <ingredient name="Water"/>
+                <cookingTool name="Stove"/>
+                <restaurantType type="Italian"/>
+            </recipe>
+            <recipe id="7" name="Toast" text="" price="">
+                <ingredient name="Bread"/>
+                <cookingTool name="Oven"/>
+                <restaurantType type="Catfe"/>
+            </recipe>
+            <recipe id="9" name="Baked Fries" text="" price="">
+                <ingredient name="Potato"/>
+                <cookingTool name="Oven"/>
+                <restaurantType type="Burger"/>
+            </recipe>
+        </star>
+        <star level="1">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="2">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="3">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="4">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="5">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+    </foodType>
+
+    <foodType type="desserts">
+        <star level="0">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="1">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="2">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="3">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="4">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+        <star level="5">
+            <recipe id="" name="" text="" price="">
+                <ingredient name=""/>
+                <ingredient name=""/>
+                <cookingTool name=""/>
+                <restaurantType type=""/>
+            </recipe>
+        </star>
+    </foodType>
+</recipes>

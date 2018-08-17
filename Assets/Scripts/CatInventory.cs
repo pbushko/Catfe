@@ -29,15 +29,16 @@ public class CatInventory : MonoBehaviour {
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
         	cat.transform.SetParent(ChefPanel.transform);
+			cat.GetComponent<ChefCatRecruitStats>().data = c;
 			chefStats.Add(cat);
 		}
 		foreach (WaiterData w in waiterdata)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
         	cat.transform.SetParent(WaiterPanel.transform);
+			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 			waiterStats.Add(cat);
 		}
-		
 	}
 
 	public void ResetChefInv()
@@ -63,14 +64,14 @@ public class CatInventory : MonoBehaviour {
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
         	cat.transform.SetParent(ChefPanel.transform);
 			chefStats.Add(cat);
-			ResetChefInv();
+			cat.GetComponent<ChefCatRecruitStats>().data = c;
 		}
 		else if (w != null)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
         	cat.transform.SetParent(WaiterPanel.transform);
 			waiterStats.Add(cat);
-			ResetWaiterInv();
+			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 		}
 	}
 
