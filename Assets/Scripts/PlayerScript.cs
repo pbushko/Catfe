@@ -199,7 +199,6 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(c);
         m_loaders.Enqueue(l);
         m_cookTimes.Enqueue(n);
-        Debug.Log(n);
     }
 
     public static void AddCustomerToPlayerQueue(int i)

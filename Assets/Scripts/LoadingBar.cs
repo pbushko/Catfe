@@ -37,6 +37,7 @@ public class LoadingBar : MonoBehaviour
             if (m_fill <= 1f)
             {
                 m_fill += 0.01f/m_time;
+                //Debug.Log(m_fill);
             }
             else
             {

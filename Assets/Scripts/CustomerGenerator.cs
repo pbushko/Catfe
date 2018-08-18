@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class CustomerGenerator : MonoBehaviour {
 
     public GameObject customerLine;
-    public GameObject buttonPrefab;
 
     private float m_countdown;
     private Customer m_temp;
 
-    private static Vector3 m_linePosition;
     private static List<GameObject> m_customers;
     private List<Sprite> m_customerSprites;
     private static int m_customerCount;
@@ -22,7 +20,7 @@ public class CustomerGenerator : MonoBehaviour {
         m_customers = new List<GameObject>();
         m_customerSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Patrons"));
         m_countdown = 1.0f;
-        m_linePosition = customerLine.transform.position;
+
         //loading in all the customers from the line
         for (int i = 0; i < customerLine.transform.childCount; i++)
         {
@@ -63,6 +61,19 @@ public class CustomerGenerator : MonoBehaviour {
             }
         }
 	}
+
+    //resetting the customer line for when the minigame is accessed
+    public void Reset()
+    {
+        m_customerCount = 0;
+        if (m_customers != null)
+        {
+            foreach(GameObject c in m_customers)
+            {
+                c.SetActive(false);
+            }
+        }
+    }
 
     private void AddCustomer()
     {
@@ -110,8 +121,7 @@ public class CustomerGenerator : MonoBehaviour {
         {
             ShiftPositions(n);
         }
-        m_customers[m_customerCount].SetActive(false);
-        
+        m_customers[m_customerCount].SetActive(false);   
     }
 
     private static void ShiftPositions(int n)
@@ -155,10 +165,5 @@ public class CustomerGenerator : MonoBehaviour {
         }
     }
 
-    //helper function for shiftPosition()
-    private static Vector3 GetNewPosition(GameObject c)
-    {
-        return new Vector3(c.transform.position.x - Variables.CUSTOMER_OFFSET, c.transform.position.y - Variables.CUSTOMER_OFFSET, c.transform.position.z);
-    }
 
 }

@@ -89,6 +89,7 @@ public class RestaurantMain : MonoBehaviour {
 		setIngredientBoxes();
 		setUtensils();
 		playerScript.Reset();
+		customerGenerator.Reset();
 	}
 	
 	// Update is called once per frame
@@ -281,7 +282,7 @@ public class RestaurantMain : MonoBehaviour {
 		List<CookingUtensil> cs = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils;
 		UpgradesFinishedButton.SetActive(true);
 		//set each kitchen utensil based on what the restaurant has
-		if (cs != null)
+		if (cs != null && cs.Count > 0)
 		{
 			for (int i = 0; i < cs.Count; i++)
 			{
@@ -300,6 +301,7 @@ public class RestaurantMain : MonoBehaviour {
 						cs[i].upgradeNum = 3;
 					}
 					u.SetSprite(GetCookingUtenSprite(cs[i].utensil, cs[i].upgradeNum));
+					u.loader.PickUpPlate();
 				}
 			}
 		}
@@ -310,11 +312,13 @@ public class RestaurantMain : MonoBehaviour {
 			u.utensil = new CookingUtensil(CookingTools.Knife);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Knife, 0));
 			cs.Add(u.utensil);
+			u.loader.PickUpPlate();
 			
 			u = utensilLine.transform.GetChild(1).gameObject.GetComponent<CookingUtensilsScript>();
 			u.utensil = new CookingUtensil(CookingTools.Stove);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Stove, 0));
 			cs.Add(u.utensil);
+			u.loader.PickUpPlate();
 		}
 	}
 

@@ -12,14 +12,14 @@ public class CookingUtensil {
     //the current upgrade of the utensil
     public int upgradeNum = 0;
 
-    public float cookTime = 200f;
+    public float cookTime = 1f;
 
 	public CookingUtensil(CookingTools c)
 	{
 		utensil = c;
 		upgradeCost = 10;
 		upgradeNum = 0;
-		cookTime = 200f;
+		cookTime = 1f;
 	}
 
 	public CookingUtensil(CookingTools c, int uc, int un, float ct)
