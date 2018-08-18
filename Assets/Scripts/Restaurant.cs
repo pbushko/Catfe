@@ -9,7 +9,9 @@ public class Restaurant : MonoBehaviour {
 
 	public SpriteRenderer title;
 
-	public TextMesh text;
+	public TextMesh openText;
+
+	public GameObject stars;
 
 	//the time the restaurant is open, in sec
 	private float openTime = 5.0f;
@@ -17,19 +19,26 @@ public class Restaurant : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		//setting the star level on the restaurant
+		for (int i = 0; i < data.stars; i++)
+		{
+			stars.transform.GetChild(i).gameObject.SetActive(true);
+		}
+
+		//setting the text for if the stor is open or not
 		if (DateTime.Compare(DateTime.Now, data.timeToClose) > 0 && data.storedIncome != 0)
 		{
-			text.text = "Money to Collect: " + data.storedIncome;
+			openText.text = "Money to Collect: " + data.storedIncome;
 			data.isOpen = false;
 		}
 		else if(data.isOpen)
 		{
 			TimeSpan timeLeft = data.timeToClose.Subtract(DateTime.Now);
-			text.text = "Open for another " + "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+			openText.text = "Open for another " + "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
 		}
 		else
 		{
-			text.text = "Not Open";
+			openText.text = "Not Open";
 		}
 	}
 	
@@ -38,13 +47,13 @@ public class Restaurant : MonoBehaviour {
 	{
 		if (data.isOpen && DateTime.Compare(DateTime.Now, data.timeToClose) > 0)
 		{
-			text.text = "Money to Collect: " + data.storedIncome;
+			openText.text = "Money to Collect: " + data.storedIncome;
 			data.isOpen = false;
 		}
 		else if(data.isOpen)
 		{
 			TimeSpan timeLeft = data.timeToClose.Subtract(DateTime.Now);
-			text.text = "Open for another " + "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+			openText.text = "Open for another " + "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
 		}
 	}
 
@@ -58,6 +67,7 @@ public class Restaurant : MonoBehaviour {
 			data.timeToClose = DateTime.Now.AddSeconds(5.0f);
 			data.storedIncome = (int)((float)data.GetTotalIncome() *  (openTime/60f));
 			data.isOpen = true;
+			data.starProgress += 0.4f;
 		}
 		else
 		{
@@ -74,8 +84,19 @@ public class Restaurant : MonoBehaviour {
 		{
 			MoneyTracker.ChangeMoneyCount(data.storedIncome);
 			data.storedIncome = 0;
-			text.text = "Not Open";
+			openText.text = "Not Open";
+			if (data.stars < Variables.MAX_STAR_LEVEL && data.starProgress > 1)
+			{
+				data.starProgress -= 1;
+				AddStar();
+			}
 		}
+	}
+
+	public void AddStar()
+	{
+		stars.transform.GetChild(data.stars).gameObject.SetActive(true);
+		data.stars++;
 	}
 
 }

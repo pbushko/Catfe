@@ -19,4 +19,5 @@ static class Variables
     //the max amount of chefs and waiters that can be in any given restaurant at a time
     public static int MAX_CHEFS_IN_RESTAURANT = 1;
     public static int MAX_WAITERS_IN_RESTAURANT = 3;
+    public static int MAX_STAR_LEVEL = 5;
 }

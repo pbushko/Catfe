@@ -199,6 +199,7 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(c);
         m_loaders.Enqueue(l);
         m_cookTimes.Enqueue(n);
+        Debug.Log(n);
     }
 
     public static void AddCustomerToPlayerQueue(int i)
@@ -208,7 +209,7 @@ public class PlayerScript : MonoBehaviour
 
     Recipe GetRecipe(Ingredients[] items, CookingTools uten)
     {
-        foreach (Recipe r in m_recipes)
+        foreach (Recipe r in PlayerData.playerData.recipes)
         {
             if (r.SameRecipe(items, uten))
             {

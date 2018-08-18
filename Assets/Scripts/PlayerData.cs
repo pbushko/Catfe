@@ -183,7 +183,7 @@ public class PlayerData : MonoBehaviour
 			}
 			foreach (DecorationData d in allDecor)
 			{
-				Debug.Log(d.ToString());
+				//Debug.Log(d.ToString());
 			}
 		}
 		else

@@ -17,6 +17,9 @@ public class Recipe {
     private string recipeName;
 
     private Ingredients[] ingredients;
+
+    private List<Ingredients> ingreds;
+
     //the utensils have an order; like needing to chop up food before putting it into the oven
     private CookingTools utensils;
 
@@ -47,12 +50,77 @@ public class Recipe {
             price = int.Parse(recipe.Attributes["price"].Value);
         }
 
+        ingreds = new List<Ingredients>();
+        foreach (XmlNode ingred in recipe.SelectNodes("ingredient"))
+        {
+            if (ingred.Attributes["name"].Value != "")
+            {
+                ingreds.Add(GetXmlIngredient(ingred.Attributes["name"].Value));
+            }
+        }
+        
+        utensils = GetXmlCookingTool(recipe.SelectSingleNode("cookingTool").Attributes["name"].Value);
+
+        ingredients = ingreds.ToArray();
+
         itemType = type;
+    }
+
+    private Ingredients GetXmlIngredient(string s)
+    {
+        switch (s)
+        {
+            case "Carrot":
+                return Ingredients.Carrot;
+                break;
+                
+            case "Lettuce":
+                return Ingredients.Lettuce;
+                break;
+
+            case "Chicken":
+                return Ingredients.Chicken;
+                break;
+
+            case "Beef":
+                return Ingredients.Beef;
+                break;
+
+            default:
+                return Ingredients.Carrot;
+                break;
+        }
+    }
+
+    private CookingTools GetXmlCookingTool(string s)
+    {
+        switch (s)
+        {
+            case "Knife":
+                return CookingTools.Knife;
+                break;
+            case "Oven":
+                return CookingTools.Oven;
+                break;
+            case "Stove":
+                return CookingTools.Stove;
+                break;
+            default:
+                return CookingTools.Knife;
+                break;
+        }
     }
 
     public string ToString()
     {
-        return "id: " + idNum + " name: " + recipeName + " price: " + price + " type: " + itemType;
+        string s = "id: " + idNum + " name: " + recipeName + " price: " + price + " type: " + itemType;
+        s += "\ningredients: ";
+        foreach (Ingredients i in ingredients)
+        {
+            s += "\n" + i;
+        }
+        s += "\nCooking tool: " + utensils;
+        return s;
     }
 
     public string GetRecipeName()

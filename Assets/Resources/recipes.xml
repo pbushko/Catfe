@@ -105,10 +105,21 @@
             </recipe>
         </star>
         <star level="1">
-            <recipe id="" name="" text="" price="">
-                <ingredient name=""/>
-                <ingredient name=""/>
-                <cookingTool name=""/>
+            <recipe id="" name="Carrot Salad" text="" price="7">
+                <ingredient name="Carrot"/>
+                <ingredient name="Lettuce"/>
+                <cookingTool name="Knife"/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="" name="Carrot Soup" text="" price="5">
+                <ingredient name="Carrot"/>
+                <cookingTool name="Stove"/>
+                <restaurantType type=""/>
+            </recipe>
+            <recipe id="" name="Beef and Chicken" text="" price="10">
+                <ingredient name="Beef"/>
+                <ingredient name="Chicken"/>
+                <cookingTool name="Stove"/>
                 <restaurantType type=""/>
             </recipe>
         </star>
