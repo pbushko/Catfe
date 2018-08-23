@@ -8,52 +8,43 @@ public class CatInventory : MonoBehaviour {
 
 	public GameObject ChefInfoPrefab;
 	public GameObject WaiterInfoPrefab;
+	public GameObject DecorInfoPrefab;
 
 	public GameObject ChefPanel;
 	public GameObject WaiterPanel;
+	public GameObject DecorPanel;
 
 	private List<GameObject> chefStats;
 	private List<GameObject> waiterStats;
-	private List<ChefData> chefdata;
-	private List<WaiterData> waiterdata;
+	private List<GameObject> decor;
 
 	// Use this for initialization
 	//populate the list with the current cats in your inventory
 	void Start () {
 		catInv = this;
-		chefdata = PlayerData.playerData.chefs;
-		waiterdata = PlayerData.playerData.waiters;
 		chefStats = new List<GameObject>();
 		waiterStats = new List<GameObject>();
-		foreach (ChefData c in chefdata)
+		decor = new List<GameObject>();
+		foreach (ChefData c in PlayerData.playerData.chefs)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
         	cat.transform.SetParent(ChefPanel.transform);
 			cat.GetComponent<ChefCatRecruitStats>().data = c;
 			chefStats.Add(cat);
 		}
-		foreach (WaiterData w in waiterdata)
+		foreach (WaiterData w in PlayerData.playerData.waiters)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
         	cat.transform.SetParent(WaiterPanel.transform);
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 			waiterStats.Add(cat);
 		}
-	}
-
-	public void ResetChefInv()
-	{
-		for (int i = 0; i < chefStats.Count; i++)
+		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
 		{
-			chefStats[i].GetComponent<ChefCatRecruitStats>().ResetData(chefdata[i]);
-		}
-	}
-
-	public void ResetWaiterInv()
-	{
-		for (int i = 0; i < waiterStats.Count; i++)
-		{
-			waiterStats[i].GetComponent<WaiterCatRecruitStats>().ResetData(waiterdata[i]);
+			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+			dec.transform.SetParent(DecorPanel);
+			dec.GetComponent<Decoration>().data = d;
+			decor.Add(dec);
 		}
 	}
 
@@ -83,7 +74,7 @@ public class CatInventory : MonoBehaviour {
 			//if these objects are the same, then we can safely remove them
 			if (GameObject.ReferenceEquals(c, chefStats[i]))
 			{
-				chefdata.RemoveAt(i);
+				PlayerData.playerData.chefs.RemoveAt(i);
 				chefStats.RemoveAt(i);
 				Destroy(c);
 			}
@@ -98,7 +89,7 @@ public class CatInventory : MonoBehaviour {
 			//if these objects are the same, then we can safely remove them
 			if (GameObject.ReferenceEquals(c, waiterStats[i]))
 			{
-				waiterdata.RemoveAt(i);
+				PlayerData.playerData.waiters.RemoveAt(i);
 				waiterStats.RemoveAt(i);
 				Destroy(c);
 			}

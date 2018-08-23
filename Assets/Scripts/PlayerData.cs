@@ -24,8 +24,11 @@ public class PlayerData : MonoBehaviour
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
+	public List<DecorationData> purchasedDecor;
 
 	public GameObject activeRestaurant;
+
+	public GameObject decorToBuy;
 
 	void Awake()
 	{
@@ -50,6 +53,7 @@ public class PlayerData : MonoBehaviour
 		}
 		LoadRecipes();
 		LoadDecor();
+		SetDecorToBuy();
 	}
 
 	void OnApplicationQuit()
@@ -67,6 +71,7 @@ public class PlayerData : MonoBehaviour
 		data.chefs = chefs;
 		data.waiters = waiters;
 		data.restaurants = restaurants;
+		data.purchasedDecor = purchasedDecor;
 
 		formatter.Serialize(file, data);
 
@@ -87,6 +92,7 @@ public class PlayerData : MonoBehaviour
 			chefs = data.chefs;
 			waiters = data.waiters;
 			restaurants = data.restaurants;
+			purchasedDecor = data.purchasedDecor;
 
 			if(restaurants == null || restaurants.Count == 0)
 			{
@@ -102,10 +108,13 @@ public class PlayerData : MonoBehaviour
 			chefs = new List<ChefData>();
 			waiters = new List<WaiterData>();
 			restaurants = new List<RestaurantData>();
+			purchasedDecor = new List<DecorationData>();
 
 			Cafe temp = new Cafe();
 			temp.NewGameRestaurantChoice();
 		}
+		//purchasedDecor = new List<DecorationData>();
+		
 		//restaurants = new List<RestaurantData>();	
 	}
 
@@ -149,10 +158,10 @@ public class PlayerData : MonoBehaviour
 					}
 				}
 			}
-			foreach (Recipe r in recipes)
+			/*foreach (Recipe r in recipes)
 			{
-				//Debug.Log(r.ToString());
-			}
+				Debug.Log(r.ToString());
+			}*/
 		}
 		else
 		{
@@ -181,10 +190,10 @@ public class PlayerData : MonoBehaviour
 					}
 				}
 			}
-			foreach (DecorationData d in allDecor)
+			/*foreach (DecorationData d in allDecor)
 			{
-				//Debug.Log(d.ToString());
-			}
+				Debug.Log(d.ToString());
+			}*/
 		}
 		else
 		{
@@ -192,7 +201,17 @@ public class PlayerData : MonoBehaviour
 		}
 	}
 
+	//used to populate the store with its decor items
+	public void SetDecorToBuy()
+	{
+		for (int i = 0; i < decorToBuy.transform.childCount; i++)
+		{
+			decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];
+		}
+	}
+
 }
+
 
 //stores all the data that the game has to keep track of between levels
 [System.Serializable]
@@ -207,6 +226,7 @@ class SaveData {
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
+	public List<DecorationData> purchasedDecor;
 	//any other game objects that will be saved...
 
 

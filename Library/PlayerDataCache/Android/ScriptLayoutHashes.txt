@@ -134,14 +134,14 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 0a9d139a45cd10b2e628d48f17a174b3 Assembly-CSharp.dll:.LevelButtonData
 2959a9e2cf0a4e7ad6338bc14168e352 Assembly-CSharp.dll:.CatInventory
 ec103d76c29146351b3b57932a2c70e7 Assembly-CSharp.dll:.Chef
-379cf8ed0d004939089a9e9369d03ea2 Assembly-CSharp.dll:.Restaurant
+ac519e13ba38f94e1fc1fab4d9d85c93 Assembly-CSharp.dll:.Restaurant
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
-fbaa644c1101412323b1a9826ce09435 Assembly-CSharp.dll:.LoadingBar
+049c861d59e9b123799a7f1061432e07 Assembly-CSharp.dll:.LoadingBar
 486cd95c82d8305219c352c06b776e1f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 eaf0bcdb10d442a4029d615f41d09957 Unity.TextMeshPro.dll:TMPro.TextContainer
 93948ae43b9137cd3a6df1a507fd4bc4 Assembly-CSharp.dll:.RestaurantMain
 cecf74a4a014467f492fa5579fb4b397 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
-d007ac6d15e7d88b3fa58d04345e9b25 Assembly-CSharp.dll:.CustomerGenerator
+4c68850e0e310ec16db265b3028e33e9 Assembly-CSharp.dll:.CustomerGenerator
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 0f27c39183b9eb95eba0a228bea28273 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -180,7 +180,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 a9046c1fa34f6366382ac88ef1b9fe19 Assembly-CSharp.dll:.Cafe
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-321e84136e6248305f85bb2177dc90f9 Assembly-CSharp.dll:.PlayerData
+7663ca4f73bb9326067a5dc6dce2bfab Assembly-CSharp.dll:.PlayerData
 757dda907586f3d4e9e5cb6a5eab9b8a Assembly-CSharp.dll:.ChefCatRecruitStats
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro

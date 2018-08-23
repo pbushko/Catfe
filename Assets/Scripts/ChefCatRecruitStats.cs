@@ -94,7 +94,6 @@ public class ChefCatRecruitStats : MonoBehaviour {
 			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
 			PlayerData.playerData.chefs.Add(data);
 			CatInventory.catInv.AddCat(data, null);
-			CatInventory.catInv.ResetChefInv();
 		}
 		else
 		{
@@ -124,5 +123,11 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	{
 		CatfePlayerScript.script.MoveCatToRestaurant(data, null);
 		Destroy(gameObject);
+	}
+
+	public void RemoveCatFromRestaurant()
+	{
+		CatInventory.catInv.AddCat(data, null);
+		gameObject.SetActive(false);
 	}
 }

@@ -23,6 +23,13 @@ public class CatfePlayerScript : MonoBehaviour {
 	//the buttons that will keep moving you in and out of the restaurant
 	public GameObject buttons;
 
+	//used to buy recipes and decor
+	public GameObject storeConfirmation;
+	public GameObject storeCanvas;
+	public Recipe recipeToPurchase;
+	public DecorationData decorToPurchase;
+	public GameObject decorInfoPrefab;
+
 	//the different canvases to manage cats
 	public GameObject chefRecruitment;
 	public GameObject waiterRecruitment;
@@ -108,8 +115,6 @@ public class CatfePlayerScript : MonoBehaviour {
 				else if (hit.tag == "Cat Inventory")
 				{
 					catInventory.SetActive(true);
-					CatInventory.catInv.ResetChefInv();
-					CatInventory.catInv.ResetWaiterInv();
 				}
 				else if (hit.tag == "Location Switch")
 				{
@@ -123,6 +128,11 @@ public class CatfePlayerScript : MonoBehaviour {
 					minigameItems.SetActive(true);
 					insideRestaurant.SetActive(false);
 					buttons.SetActive(false);
+				}
+				//opening the store for decor and recipes
+				else if (hit.tag == "Store")
+				{
+					storeCanvas.SetActive(true);
 				}
 			}
 		}
@@ -164,7 +174,7 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public bool IsCanvasActive()
 	{
-		return chefRecruitment.activeSelf || waiterRecruitment.activeSelf || catInventory.activeSelf || restaurantPanel.activeSelf;
+		return chefRecruitment.activeSelf || waiterRecruitment.activeSelf || catInventory.activeSelf || restaurantPanel.activeSelf || storeCanvas.activeSelf;
 	}
 
 	public void MakeNewRestaurant(RestaurantType r)
@@ -254,6 +264,51 @@ public class CatfePlayerScript : MonoBehaviour {
 			PlayerData.playerData.waiters.Remove(w);
 			invPanelScript.AddWaiter(w);
 		}
+		catInventory.SetActive(false);
+	}
+
+	public void MoveCatToInv(ChefData c, WaiterData w)
+	{
+		Restaurant r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>();
+		if (c != null)
+		{
+			r.data.chefs.Remove(c);
+			PlayerData.playerData.chefs.Add(c);
+		}
+		if (w != null)
+		{
+			r.data.waiters.Add(w);
+			PlayerData.playerData.waiters.Remove(w);
+			invPanelScript.AddWaiter(w);
+		}
+		
+	}
+
+	public void ReadyPurchase(DecorationData d, Recipe r)
+	{
+		storeConfirmation.SetActive(true);
+		if (d != null)
+		{
+			decorToPurchase = d;
+			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(d);
+		}
+		
+	}
+
+	//will be called by the storPurchaseConfirmer
+	public void PurchaseItem(bool b)
+	{
+		if (b)
+		{
+			//add the decor to the user's inventory
+			if (decorToPurchase != null)
+			{
+				PlayerData.playerData.purchasedDecor.Add(decorToPurchase);
+			}
+		}
+		//clear the possible items it's purchasing; this is done whether or not the item is purchased
+		decorToPurchase = null;
+		recipeToPurchase = null;
 	}
 
 }

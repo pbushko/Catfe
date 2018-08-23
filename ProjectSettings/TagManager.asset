@@ -19,6 +19,7 @@ TagManager:
   - Cat Inventory
   - Location Switch
   - Chef Cat
+  - Store
   layers:
   - Default
   - TransparentFX

@@ -93,7 +93,6 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
 			PlayerData.playerData.waiters.Add(data);
 			CatInventory.catInv.AddCat(null, data);
-			CatInventory.catInv.ResetWaiterInv();
 		}
 		else
 		{
