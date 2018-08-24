@@ -28,21 +28,21 @@ public class CatInventory : MonoBehaviour {
 		foreach (ChefData c in PlayerData.playerData.chefs)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
-        	cat.transform.SetParent(ChefPanel.transform);
+        	cat.transform.SetParent(ChefPanel.transform, false);
 			cat.GetComponent<ChefCatRecruitStats>().data = c;
 			chefStats.Add(cat);
 		}
 		foreach (WaiterData w in PlayerData.playerData.waiters)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
-        	cat.transform.SetParent(WaiterPanel.transform);
+        	cat.transform.SetParent(WaiterPanel.transform, false);
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 			waiterStats.Add(cat);
 		}
 		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
 		{
 			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-			dec.transform.SetParent(DecorPanel);
+			dec.transform.SetParent(DecorPanel.transform, false);
 			dec.GetComponent<Decoration>().data = d;
 			decor.Add(dec);
 		}
@@ -53,17 +53,26 @@ public class CatInventory : MonoBehaviour {
 		if (c != null)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
-        	cat.transform.SetParent(ChefPanel.transform);
+        	cat.transform.SetParent(ChefPanel.transform, false);
+			PlayerData.playerData.chefs.Add(c);
 			chefStats.Add(cat);
 			cat.GetComponent<ChefCatRecruitStats>().data = c;
 		}
 		else if (w != null)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
-        	cat.transform.SetParent(WaiterPanel.transform);
+        	cat.transform.SetParent(WaiterPanel.transform, false);
 			waiterStats.Add(cat);
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 		}
+	}
+
+	public void AddDecor(DecorationData d)
+	{
+			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+			dec.transform.SetParent(DecorPanel.transform, false);
+			dec.GetComponent<Decoration>().data = d;
+			decor.Add(dec);
 	}
 
 	public void LayOffChefCat(GameObject c)
@@ -96,9 +105,21 @@ public class CatInventory : MonoBehaviour {
 		}	
 	}
 
-	void Update()
+	//put the add to restaurant button on the cats
+	public void ReadyAddToRestaurant()
 	{
-		
+		foreach(GameObject c in chefStats)
+		{
+			c.GetComponent<ChefCatRecruitStats>().SetRestaurantButton();
+		}
+	}
+	
+	public void RemoveAddToRestaurant()
+	{
+		foreach(GameObject c in chefStats)
+		{
+			c.GetComponent<ChefCatRecruitStats>().RemoveRestaurantButton();
+		}
 	}
 
 }

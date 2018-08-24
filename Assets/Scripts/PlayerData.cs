@@ -204,6 +204,7 @@ public class PlayerData : MonoBehaviour
 	//used to populate the store with its decor items
 	public void SetDecorToBuy()
 	{
+		Debug.Log(decorToBuy.transform.childCount);
 		for (int i = 0; i < decorToBuy.transform.childCount; i++)
 		{
 			decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];

@@ -255,7 +255,6 @@ public class CatfePlayerScript : MonoBehaviour {
 		if (c != null)
 		{
 			r.data.chefs.Add(c);
-			PlayerData.playerData.chefs.Remove(c);
 			invPanelScript.AddChef(c);
 		}
 		if (w != null)
@@ -304,6 +303,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			if (decorToPurchase != null)
 			{
 				PlayerData.playerData.purchasedDecor.Add(decorToPurchase);
+				CatInventory.catInv.AddDecor(decorToPurchase);
 			}
 		}
 		//clear the possible items it's purchasing; this is done whether or not the item is purchased

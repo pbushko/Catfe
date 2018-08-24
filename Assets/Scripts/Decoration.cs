@@ -8,8 +8,8 @@ public class Decoration : MonoBehaviour {
 	public DecorationData data;
 
 	public Text name;
-	//public Text starLevel;
-	//public Text atmosphere;
+	public Text starLevel;
+	public Text atmosphere;
 	public Text cost;
 	//public Text description;
 
@@ -17,7 +17,18 @@ public class Decoration : MonoBehaviour {
 	void Start () {
 		//set up the info to appear in the shop menu
 		name.text = data.name;
-		cost.text = "" + data.cost;
+		if(cost != null)
+		{
+			cost.text = "" + data.cost;
+		}
+		if(starLevel != null)
+		{
+			starLevel.text = "StarLevel: "; //need to add data.starLevel;
+		}
+		if(atmosphere != null)
+		{
+			atmosphere.text = "Atmosphere: " + data.atmosphere;
+		}
 	}
 	
 	// Update is called once per frame

@@ -7,6 +7,8 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public static RestaurantInventoryPanel inv;
 
+	public GameObject newChefButton;
+
 	public GameObject chefPanel;
 	public GameObject waiterPanel;
 
@@ -99,17 +101,60 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 		CheckWaiterPanelCount();
 	}
 
+	public void RemoveCat(GameObject c)
+	{
+		//checking if the cat was a chef or waiter
+		for (int i = 0; i < activeChefs; i++)
+		{
+			if (GameObject.ReferenceEquals(c, chefSlots[i]))
+			{
+				activeChefs--;
+				//removing the chef from the restaurant's saved inventory
+				PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.chefs.RemoveAt(i);
+
+				if (activeChefs == i)
+				{
+					c.SetActive(false);
+				}
+				else
+				{
+					//need to shift the active cats down a slot if there are any others
+					for (int j = i + 1; j < activeChefs+1; j++)
+					{
+						//if the next slot is active, move its data down
+						if (chefSlots[j].activeSelf)
+						{
+							chefSlots[j-1].GetComponent<ChefCatRecruitStats>().ResetData(chefSlots[j].GetComponent<ChefCatRecruitStats>().data);
+						}
+						//if not, just set the previous slot to inactive
+						else
+						{
+							chefSlots[j-1].SetActive(false);
+						}
+						if (j == activeChefs)
+						{
+							chefSlots[j].SetActive(false);
+						}
+					}
+				}
+				CheckChefPanelCount();
+				return;
+			}
+		}
+		
+	}
+
 	//if we are already at the max number of chefs, disable the button that hires more
 	public void CheckChefPanelCount()
 	{
 		if (activeChefs >= Variables.MAX_CHEFS_IN_RESTAURANT)
 		{
 			//the button will always be at the end of the layout, so it will be the last child
-			chefPanel.transform.GetChild(chefPanel.transform.childCount - 1).gameObject.SetActive(false);
+			newChefButton.SetActive(false);
 		}
 		else
 		{
-			chefPanel.transform.GetChild(chefPanel.transform.childCount - 1).gameObject.SetActive(true);
+			newChefButton.SetActive(true);
 		}
 	}
 

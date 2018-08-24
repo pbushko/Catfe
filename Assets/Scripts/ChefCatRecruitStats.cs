@@ -15,6 +15,10 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	public Text specialties;
 	public Text trainingTimeLeft;
 
+	public Button trainingButton;
+	public Button addToRestaurantButton;
+	public Button layOffButton;
+
 	public Image body;
 	public Image face;
 
@@ -64,10 +68,12 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		{
 			TimeSpan timeLeft = data.trainEndTime.Subtract(DateTime.Now);
 			trainingTimeLeft.text = "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+			trainingButton.interactable = false;
 		}
 		else if (trainingTimeLeft != null)
 		{
-			trainingTimeLeft.text = "Finished training!";
+			trainingTimeLeft.text = "Train!";
+			trainingButton.interactable = true;
 		}
 	}
 
@@ -92,7 +98,6 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
 		{
 			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
-			PlayerData.playerData.chefs.Add(data);
 			CatInventory.catInv.AddCat(data, null);
 		}
 		else
@@ -103,6 +108,7 @@ public class ChefCatRecruitStats : MonoBehaviour {
 
 	public void LayOff()
 	{
+		RestaurantInventoryPanel.inv.RemoveCat(gameObject);
 		CatInventory.catInv.LayOffChefCat(gameObject);
 	}
 
@@ -116,18 +122,33 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		MoneyTracker.ChangeMoneyCount(-trainingCost);
 		data.isTraining = true;
 		float time = 5.0f + 10.0f * data.timesTrained;
-		data.trainEndTime = DateTime.Now.AddSeconds(1.0f);
+		data.trainEndTime = DateTime.Now.AddSeconds(time);
+		trainingButton.interactable = false;
 	}
 
 	public void AddCatToRestaurant()
 	{
 		CatfePlayerScript.script.MoveCatToRestaurant(data, null);
-		Destroy(gameObject);
+		CatInventory.catInv.LayOffChefCat(gameObject);
 	}
 
 	public void RemoveCatFromRestaurant()
 	{
 		CatInventory.catInv.AddCat(data, null);
-		gameObject.SetActive(false);
+		RestaurantInventoryPanel.inv.RemoveCat(gameObject);
+	}
+
+	public void SetRestaurantButton()
+	{
+		addToRestaurantButton.gameObject.SetActive(true);
+		layOffButton.gameObject.SetActive(false);
+		trainingButton.gameObject.SetActive(false);
+	}
+
+	public void RemoveRestaurantButton()
+	{
+		addToRestaurantButton.gameObject.SetActive(false);
+		layOffButton.gameObject.SetActive(true);
+		trainingButton.gameObject.SetActive(true);
 	}
 }

@@ -125,6 +125,8 @@ public class WaiterData
 	public DateTime trainEndTime;
 	public bool isTraining;
 
+	public int catNumber;
+
 	//constructor
 	public WaiterData(string n, int r, List<string> s, int i)
 	{
@@ -175,6 +177,8 @@ public class ChefData
 	public DateTime trainStartTime;
 	public DateTime trainEndTime;
 	public bool isTraining;
+
+	public int catNumber;
 
 	//constructor
 	public ChefData(string n, int r, List<string> s, int i, List<RestaurantType> sp)

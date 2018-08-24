@@ -814,6 +814,9 @@ MonoBehaviour:
   trainings: {fileID: 114250351584933518}
   specialties: {fileID: 114465330210429398}
   trainingTimeLeft: {fileID: 114736034636372672}
+  trainingButton: {fileID: 114663121908658100}
+  addToRestaurantButton: {fileID: 114235521363788622}
+  layOffButton: {fileID: 114322129232044920}
   body: {fileID: 114927126110847524}
   face: {fileID: 114550593032150572}
 --- !u!114 &114736034636372672

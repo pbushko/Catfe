@@ -24,6 +24,7 @@ c200a47d2adb44c63386fdab18a470b2 Assembly-CSharp.dll:.Waiter
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CatfeCustomer
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.LevelSelect
 f6637497451c9a030c421de4a1ad5cdb Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
+c51dccb39281c09f62607ce3ac0e8666 Assembly-CSharp.dll:.Decoration
 b14b4630cc47b6e9ea8a644551a6a8cc Unity.TextMeshPro.dll:TMPro.TMP_Text
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 486cd95c82d8305219c352c06b776e1f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -132,7 +133,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 8c28e085666d5b7a693c816c6a8f06a8 Assembly-CSharp.dll:.CatToyScript
 0a9d139a45cd10b2e628d48f17a174b3 Assembly-CSharp.dll:.LevelButtonData
-2959a9e2cf0a4e7ad6338bc14168e352 Assembly-CSharp.dll:.CatInventory
+b5bdf6963a115022d00517dbf1d99e4d Assembly-CSharp.dll:.CatInventory
 ec103d76c29146351b3b57932a2c70e7 Assembly-CSharp.dll:.Chef
 ac519e13ba38f94e1fc1fab4d9d85c93 Assembly-CSharp.dll:.Restaurant
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
@@ -180,12 +181,13 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 a9046c1fa34f6366382ac88ef1b9fe19 Assembly-CSharp.dll:.Cafe
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-7663ca4f73bb9326067a5dc6dce2bfab Assembly-CSharp.dll:.PlayerData
+ac2cfe17515dcaaff6fb76b61fbc13cc Assembly-CSharp.dll:.PlayerData
 757dda907586f3d4e9e5cb6a5eab9b8a Assembly-CSharp.dll:.ChefCatRecruitStats
+219914bc907836508c9ab5a9a788322e Assembly-CSharp.dll:.StorePurchaseConfirmer
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.CatfeCustomerGenerator
 d6766538b34b8063ba1f20bed314ef6e Assembly-CSharp.dll:.CookingUtensilsScript
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
-56a71e7dda01d28fa0da3bf7647719bf Assembly-CSharp.dll:.CatfePlayerScript
+3c89af5d4e6b9ade6e0ddd35f2c1ac97 Assembly-CSharp.dll:.CatfePlayerScript
