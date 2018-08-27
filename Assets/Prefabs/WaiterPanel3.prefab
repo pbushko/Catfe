@@ -418,6 +418,9 @@ MonoBehaviour:
   price: {fileID: 0}
   trainings: {fileID: 114858647211530690}
   trainingTimeLeft: {fileID: 114480291344095392}
+  trainingButton: {fileID: 114253261550188448}
+  addToRestaurantButton: {fileID: 114463299229479456}
+  layOffButton: {fileID: 114628299001789704}
   body: {fileID: 114987305958566328}
   face: {fileID: 114765456749577168}
 --- !u!114 &114326825839493444

@@ -275,6 +275,8 @@ public class DecorationData
 
 	public string sprite;
 
+	public int numInInventory;
+
 	public DecorationData(XmlNode d)
 	{
 		if (d.Attributes["id"].Value != "")

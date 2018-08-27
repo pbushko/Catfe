@@ -260,7 +260,6 @@ public class CatfePlayerScript : MonoBehaviour {
 		if (w != null)
 		{
 			r.data.waiters.Add(w);
-			PlayerData.playerData.waiters.Remove(w);
 			invPanelScript.AddWaiter(w);
 		}
 		catInventory.SetActive(false);
@@ -276,9 +275,8 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 		if (w != null)
 		{
-			r.data.waiters.Add(w);
-			PlayerData.playerData.waiters.Remove(w);
-			invPanelScript.AddWaiter(w);
+			r.data.waiters.Remove(w);
+			PlayerData.playerData.waiters.Add(w);
 		}
 		
 	}
@@ -302,13 +300,38 @@ public class CatfePlayerScript : MonoBehaviour {
 			//add the decor to the user's inventory
 			if (decorToPurchase != null)
 			{
-				PlayerData.playerData.purchasedDecor.Add(decorToPurchase);
-				CatInventory.catInv.AddDecor(decorToPurchase);
+				int dup = FindDuplicateIndex();
+				if (dup != -1)
+				{
+					//Debug.Log("duplicate purchased");
+					CatInventory.catInv.AddToDecorCount(dup);
+				}
+				//if the decoration is not in your inventory yet
+				else
+				{
+					PlayerData.playerData.purchasedDecor.Add(decorToPurchase);
+					CatInventory.catInv.AddDecor(decorToPurchase);
+				}
 			}
 		}
 		//clear the possible items it's purchasing; this is done whether or not the item is purchased
 		decorToPurchase = null;
 		recipeToPurchase = null;
+	}
+
+	//helper function to find duplicate decorations for a purchase; returns the index of the duplicate
+	private int FindDuplicateIndex()
+	{
+		List<DecorationData> pur = PlayerData.playerData.purchasedDecor;
+		for (int i = 0; i < pur.Count; i++)
+		{
+			if(pur[i].id == decorToPurchase.id)
+			{
+				return i;
+			}
+		}
+		//if this is reached, there was no match
+		return -1;
 	}
 
 }

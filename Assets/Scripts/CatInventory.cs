@@ -69,10 +69,12 @@ public class CatInventory : MonoBehaviour {
 
 	public void AddDecor(DecorationData d)
 	{
-			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-			dec.transform.SetParent(DecorPanel.transform, false);
-			dec.GetComponent<Decoration>().data = d;
-			decor.Add(dec);
+		GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+		dec.transform.SetParent(DecorPanel.transform, false);
+		//as the first purchase, there will always only be one in the inventory
+		d.numInInventory = 1;
+		dec.GetComponent<Decoration>().data = d;
+		decor.Add(dec);
 	}
 
 	public void LayOffChefCat(GameObject c)
@@ -112,6 +114,10 @@ public class CatInventory : MonoBehaviour {
 		{
 			c.GetComponent<ChefCatRecruitStats>().SetRestaurantButton();
 		}
+		foreach(GameObject w in waiterStats)
+		{
+			w.GetComponent<WaiterCatRecruitStats>().SetRestaurantButton();
+		}
 	}
 	
 	public void RemoveAddToRestaurant()
@@ -120,6 +126,15 @@ public class CatInventory : MonoBehaviour {
 		{
 			c.GetComponent<ChefCatRecruitStats>().RemoveRestaurantButton();
 		}
+		foreach(GameObject w in waiterStats)
+		{
+			w.GetComponent<WaiterCatRecruitStats>().RemoveRestaurantButton();
+		}
+	}
+
+	public void AddToDecorCount(int i)
+	{
+		decor[i].GetComponent<Decoration>().AddSameDecorationToInv();
 	}
 
 }

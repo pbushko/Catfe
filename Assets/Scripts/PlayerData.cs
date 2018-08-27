@@ -113,7 +113,10 @@ public class PlayerData : MonoBehaviour
 			Cafe temp = new Cafe();
 			temp.NewGameRestaurantChoice();
 		}
-		//purchasedDecor = new List<DecorationData>();
+		if (purchasedDecor == null)
+		{
+			purchasedDecor = new List<DecorationData>();
+		}
 		
 		//restaurants = new List<RestaurantData>();	
 	}
@@ -204,7 +207,7 @@ public class PlayerData : MonoBehaviour
 	//used to populate the store with its decor items
 	public void SetDecorToBuy()
 	{
-		Debug.Log(decorToBuy.transform.childCount);
+		//Debug.Log(decorToBuy.transform.childCount);
 		for (int i = 0; i < decorToBuy.transform.childCount; i++)
 		{
 			decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];

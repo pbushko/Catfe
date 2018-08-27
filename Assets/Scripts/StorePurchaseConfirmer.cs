@@ -34,7 +34,7 @@ public class StorePurchaseConfirmer : MonoBehaviour {
 
 	public void CompletePurchase()
 	{
-		Debug.Log("purchased!");
+		//Debug.Log("purchased!");
 		CatfePlayerScript.script.PurchaseItem(true);
 		gameObject.SetActive(false);
 	}

@@ -11,12 +11,15 @@ public class Decoration : MonoBehaviour {
 	public Text starLevel;
 	public Text atmosphere;
 	public Text cost;
-	//public Text description;
+	public Text numInInventoryText;
 
 	// Use this for initialization
 	void Start () {
 		//set up the info to appear in the shop menu
-		name.text = data.name;
+		if (name != null)
+		{
+			name.text = data.name;
+		}
 		if(cost != null)
 		{
 			cost.text = "" + data.cost;
@@ -29,11 +32,21 @@ public class Decoration : MonoBehaviour {
 		{
 			atmosphere.text = "Atmosphere: " + data.atmosphere;
 		}
+		if(numInInventoryText != null)
+		{
+			numInInventoryText.text = "x" + data.numInInventory;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void AddSameDecorationToInv()
+	{
+		data.numInInventory++;
+		numInInventoryText.text = "x" + data.numInInventory;
 	}
 
 	public void OnCLick()

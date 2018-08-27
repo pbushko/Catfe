@@ -141,6 +141,43 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 				return;
 			}
 		}
+		for (int i = 0; i < activeWaiters; i++)
+		{
+			if (GameObject.ReferenceEquals(c, waiterSlots[i]))
+			{
+				activeWaiters--;
+				//removing the chef from the restaurant's saved inventory
+				PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters.RemoveAt(i);
+
+				if (activeWaiters == i)
+				{
+					c.SetActive(false);
+				}
+				else
+				{
+					//need to shift the active cats down a slot if there are any others
+					for (int j = i + 1; j < activeWaiters+1; j++)
+					{
+						//if the next slot is active, move its data down
+						if (waiterSlots[j].activeSelf)
+						{
+							waiterSlots[j-1].GetComponent<WaiterCatRecruitStats>().ResetData(waiterSlots[j].GetComponent<WaiterCatRecruitStats>().data);
+						}
+						//if not, just set the previous slot to inactive
+						else
+						{
+							waiterSlots[j-1].SetActive(false);
+						}
+						if (j == activeChefs)
+						{
+							waiterSlots[j].SetActive(false);
+						}
+					}
+				}
+				CheckWaiterPanelCount();
+				return;
+			}
+		}
 		
 	}
 

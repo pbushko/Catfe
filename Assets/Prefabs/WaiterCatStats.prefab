@@ -728,12 +728,16 @@ MonoBehaviour:
     sprites: []
     income: 0
     isTraining: 0
+    catNumber: 0
   name: {fileID: 114444149024878568}
   rarity: {fileID: 114421964691053524}
   income: {fileID: 114420887922210412}
   price: {fileID: 0}
   trainings: {fileID: 114257189989746528}
   trainingTimeLeft: {fileID: 114050954774100450}
+  trainingButton: {fileID: 114638256597615680}
+  addToRestaurantButton: {fileID: 114593321822519194}
+  layOffButton: {fileID: 114181718505416484}
   body: {fileID: 114985795759602818}
   face: {fileID: 114481719290312544}
 --- !u!114 &114638256597615680
