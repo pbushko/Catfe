@@ -25,8 +25,6 @@ public class PlayerScript : MonoBehaviour
     //stores all the recipes
     private static List<Recipe> m_recipes = new List<Recipe>();
 
-    private Recipe m_slop = new Recipe("Slop", null, CookingTools.none, 0);
-
     private static SpriteRenderer m_plate;
 
     // Use this for initialization
@@ -38,23 +36,7 @@ public class PlayerScript : MonoBehaviour
         m_nextLocation = transform.position;
         m_needsToMove = false;
 
-        Ingredients[] i = new Ingredients[1];
-
-        //for the first recipe
-        i[0] = Ingredients.Carrot;
-
-        Ingredients[] otherI = new Ingredients[2];
-        Ingredients[] otherII = new Ingredients[2];
-
-        otherI[0] = Ingredients.Lettuce;
-        otherI[1] = Ingredients.Carrot;
-
-        //loading all of the recipes; this will have to be done on a level-by level basis
-        m_recipes.Add(new Recipe("Carrot Salad", otherI, CookingTools.Knife, 5));
-        m_recipes.Add(new Recipe("Carrot Soup", i, CookingTools.Stove, 6));
-        otherII[0] = Ingredients.Beef;
-        otherII[1] = Ingredients.Chicken;
-        m_recipes.Add(new Recipe("Beef and Chicken", otherII, CookingTools.Stove, 10));
+        m_recipes = PlayerData.playerData.minigameRecipes;
 
         //Adding the food names to allow us to search for the sprite
         foreach (Sprite s in m_foods)
@@ -215,7 +197,7 @@ public class PlayerScript : MonoBehaviour
                 return r;
             }
         }
-        return m_slop;
+        return PlayerData.playerData.slop;
     }
 
     public void ThrowPlateAway()

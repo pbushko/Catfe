@@ -18,6 +18,8 @@ public class PlayerData : MonoBehaviour
 
 	//these are just things to load in every time the game opens
 	public List<Recipe> recipes;
+	public List<Recipe> minigameRecipes;
+	public Recipe slop;
 	public List<DecorationData> allDecor;
 
 	//lists of things to save
@@ -144,6 +146,8 @@ public class PlayerData : MonoBehaviour
 	{
 		TextAsset recipiesText = (TextAsset)Resources.Load("recipes", typeof(TextAsset));
 
+		minigameRecipes = new List<Recipe>();
+
 		if (recipiesText != null)
 		{
 			XmlDocument recipesXml = new XmlDocument();
@@ -157,7 +161,16 @@ public class PlayerData : MonoBehaviour
 				{
 					foreach (XmlNode recipe in star.SelectNodes("recipe"))
 					{
-						recipes.Add(new Recipe(recipe, type.Attributes["type"].Value));
+						Recipe r = new Recipe(recipe, type.Attributes["type"].Value);
+						if (r.idNum == 10 || r.idNum == 11 || r.idNum == 12)
+						{
+							minigameRecipes.Add(r);
+						}
+						if (r.idNum == 13)
+						{
+							slop = r;
+						}
+						recipes.Add(r);
 					}
 				}
 			}
@@ -187,9 +200,10 @@ public class PlayerData : MonoBehaviour
 			{
 				foreach(XmlNode star in type.SelectNodes("star"))
 				{
+					int starLevel = int.Parse(star.Attributes["level"].Value);
 					foreach (XmlNode decor in star.SelectNodes("decor"))
 					{
-						allDecor.Add(new DecorationData(decor));
+						allDecor.Add(new DecorationData(decor, starLevel));
 					}
 				}
 			}

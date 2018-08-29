@@ -8,37 +8,29 @@ public enum CookingTools { Knife, Oven, Stove, Blender, none };
 public enum Dishes { CarrotSalad, ChickenAndBeef, CarrotSoup, none };
 
 //a recipe object; stores what is needed for each recipe
-public class Recipe {
+[System.Serializable]
+public class Recipe 
+{
+    public int idNum;
 
-    private int idNum;
+    public string itemType;
 
-    private string itemType;
+    public string recipeName;
 
-    private string recipeName;
-
-    private Ingredients[] ingredients;
-
-    private List<Ingredients> ingreds;
+    public List<Ingredients> ingredients;
 
     //the utensils have an order; like needing to chop up food before putting it into the oven
-    private CookingTools utensils;
+    public CookingTools utensils;
 
-    private Dishes dish;
+    public Dishes dish;
 
-    private int price;
+    public int price;
 
-    private RestaurantType foodType;
+    public RestaurantType foodType;
 
-    //the constructor to make a new recipe
-    public Recipe(string name, Ingredients[] i, CookingTools c, int p)
-    {
-        recipeName = name;
-        ingredients = i;
-        utensils = c;
-        price = p;
-    }
+	public string sprite;
 
-    public Recipe(XmlNode recipe, string type)
+	public Recipe(XmlNode recipe, string type)
     {
         if (recipe.Attributes["id"].Value != "")
         {
@@ -50,18 +42,21 @@ public class Recipe {
             price = int.Parse(recipe.Attributes["price"].Value);
         }
 
-        ingreds = new List<Ingredients>();
+        ingredients = new List<Ingredients>();
         foreach (XmlNode ingred in recipe.SelectNodes("ingredient"))
         {
             if (ingred.Attributes["name"].Value != "")
             {
-                ingreds.Add(GetXmlIngredient(ingred.Attributes["name"].Value));
+                ingredients.Add(GetXmlIngredient(ingred.Attributes["name"].Value));
             }
+        }
+        //this is used to make the slop's ingredients null
+        if (ingredients.Count == 0)
+        {
+            ingredients = null;
         }
         
         utensils = GetXmlCookingTool(recipe.SelectSingleNode("cookingTool").Attributes["name"].Value);
-
-        ingredients = ingreds.ToArray();
 
         itemType = type;
     }
@@ -106,7 +101,7 @@ public class Recipe {
                 return CookingTools.Stove;
                 break;
             default:
-                return CookingTools.Knife;
+                return CookingTools.none;
                 break;
         }
     }
@@ -130,7 +125,7 @@ public class Recipe {
 
     public Ingredients[] GetIngredients()
     {
-        return ingredients;
+        return ingredients.ToArray();
     }
 
     public CookingTools GetUtensils()
@@ -145,7 +140,7 @@ public class Recipe {
 
     private bool SameIngredients(Ingredients[] ins)
     {
-        int inLen = ingredients.Length;
+        int inLen = ingredients.Count;
         int j;
         //if there aren't the same amount of ingredients, it can't be the same recipe
         if (ins.Length != inLen)
@@ -182,7 +177,7 @@ public class Recipe {
 
     public static bool CompareRecipe(Recipe r1, Recipe r2)
     {
-        return r1.GetRecipeName() == r2.GetRecipeName();
+        return r1.idNum == r2.idNum;
     }
 
 }

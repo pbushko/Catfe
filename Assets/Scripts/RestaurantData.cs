@@ -76,6 +76,16 @@ public class RestaurantData
 		}
 	}
 
+	public void PrintAll()
+	{
+		PrintEmployees();
+		Debug.Log("Decor:");
+		foreach (DecorationData d in decor)
+		{
+			Debug.Log(d.ToString());
+		}
+	}
+
 	//this is income per min, based on the current employees
 	public int GetTotalIncome()
 	{
@@ -267,6 +277,8 @@ public class DecorationData
 
 	public string description;
 
+	public int starLevel;
+
 	//cost to buy this decoration
 	public int cost;
 
@@ -277,7 +289,7 @@ public class DecorationData
 
 	public int numInInventory;
 
-	public DecorationData(XmlNode d)
+	public DecorationData(XmlNode d, int s)
 	{
 		if (d.Attributes["id"].Value != "")
         {
@@ -293,11 +305,119 @@ public class DecorationData
         {
             atmosphere = int.Parse(d.Attributes["atmosphere"].Value);
         }
+		starLevel = s;
 	}
 
 	public string ToString()
 	{
 		return "id: " + id + " name: " + name + " price: " + cost + " atmosp: " + atmosphere + "\n" +description;
 	}
+
+}
+
+
+public class RecipeData
+{
+    public int idNum;
+
+    public string itemType;
+
+    public string recipeName;
+
+    public List<Ingredients> ingredients;
+
+    //the utensils have an order; like needing to chop up food before putting it into the oven
+    public CookingTools utensils;
+
+    public Dishes dish;
+
+    public int price;
+
+    public RestaurantType foodType;
+
+	public string sprite;
+
+	public RecipeData(XmlNode recipe, string type)
+    {
+        if (recipe.Attributes["id"].Value != "")
+        {
+            idNum = int.Parse(recipe.Attributes["id"].Value);
+        }
+        recipeName = recipe.Attributes["name"].Value;
+        if (recipe.Attributes["price"].Value != "")
+        {
+            price = int.Parse(recipe.Attributes["price"].Value);
+        }
+
+        ingredients = new List<Ingredients>();
+        foreach (XmlNode ingred in recipe.SelectNodes("ingredient"))
+        {
+            if (ingred.Attributes["name"].Value != "")
+            {
+                ingredients.Add(GetXmlIngredient(ingred.Attributes["name"].Value));
+            }
+        }
+        
+        utensils = GetXmlCookingTool(recipe.SelectSingleNode("cookingTool").Attributes["name"].Value);
+
+        itemType = type;
+    }
+
+    private Ingredients GetXmlIngredient(string s)
+    {
+        switch (s)
+        {
+            case "Carrot":
+                return Ingredients.Carrot;
+                break;
+                
+            case "Lettuce":
+                return Ingredients.Lettuce;
+                break;
+
+            case "Chicken":
+                return Ingredients.Chicken;
+                break;
+
+            case "Beef":
+                return Ingredients.Beef;
+                break;
+
+            default:
+                return Ingredients.Carrot;
+                break;
+        }
+    }
+
+    private CookingTools GetXmlCookingTool(string s)
+    {
+        switch (s)
+        {
+            case "Knife":
+                return CookingTools.Knife;
+                break;
+            case "Oven":
+                return CookingTools.Oven;
+                break;
+            case "Stove":
+                return CookingTools.Stove;
+                break;
+            default:
+                return CookingTools.Knife;
+                break;
+        }
+    }
+
+    public string ToString()
+    {
+        string s = "id: " + idNum + " name: " + recipeName + " price: " + price + " type: " + itemType;
+        s += "\ningredients: ";
+        foreach (Ingredients i in ingredients)
+        {
+            s += "\n" + i;
+        }
+        s += "\nCooking tool: " + utensils;
+        return s;
+    }
 
 }

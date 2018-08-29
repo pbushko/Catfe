@@ -89,6 +89,7 @@ public class CatInventory : MonoBehaviour {
 				chefStats.RemoveAt(i);
 				Destroy(c);
 			}
+			return;
 		}	
 	}
 
@@ -104,7 +105,29 @@ public class CatInventory : MonoBehaviour {
 				waiterStats.RemoveAt(i);
 				Destroy(c);
 			}
-		}	
+			return;
+		}
+	}
+
+	public void RemoveDecoration(GameObject d)
+	{
+		for (int i = 0; i < decor.Count; i++)
+		{
+			//if these objects are the same, then we can safely remove them
+			if (GameObject.ReferenceEquals(d, decor[i]))
+			{
+				Decoration toRemove = d.GetComponent<Decoration>();
+
+				//only fully remove the item from the inv if the inv count reaches 0
+				if (toRemove.data.numInInventory <= 0)
+				{
+					PlayerData.playerData.purchasedDecor.RemoveAt(i);
+					decor.RemoveAt(i);
+					Destroy(d);
+				}
+				return;
+			}
+		}
 	}
 
 	//put the add to restaurant button on the cats
@@ -118,6 +141,10 @@ public class CatInventory : MonoBehaviour {
 		{
 			w.GetComponent<WaiterCatRecruitStats>().SetRestaurantButton();
 		}
+		foreach(GameObject d in decor)
+		{
+			d.GetComponent<Decoration>().SetAddToRestaurant();
+		}
 	}
 	
 	public void RemoveAddToRestaurant()
@@ -129,6 +156,10 @@ public class CatInventory : MonoBehaviour {
 		foreach(GameObject w in waiterStats)
 		{
 			w.GetComponent<WaiterCatRecruitStats>().RemoveRestaurantButton();
+		}
+		foreach(GameObject d in decor)
+		{
+			d.GetComponent<Decoration>().RemoveAddToRestaurant();
 		}
 	}
 

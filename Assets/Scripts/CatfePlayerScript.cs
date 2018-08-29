@@ -134,6 +134,11 @@ public class CatfePlayerScript : MonoBehaviour {
 				{
 					storeCanvas.SetActive(true);
 				}
+				else if (hit.tag == "Decoration Space")
+				{
+					catInventory.SetActive(true);
+					CatInventory.catInv.ReadyAddToRestaurant();
+				}
 			}
 		}
 	}
@@ -214,6 +219,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			newRest.GetComponent<Restaurant>().data = r;
 			newRest.transform.SetParent(city.transform);
 			newRest.transform.position = new Vector3(restaurantLocations[r.location].x, restaurantLocations[r.location].y, restaurantLocations[r.location].z - 0.2f);
+			//r.PrintAll();
 		}
 	}
 

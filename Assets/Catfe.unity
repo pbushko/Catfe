@@ -1240,7 +1240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &69306591
 Transform:
   m_ObjectHideFlags: 0
@@ -9319,7 +9319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &672565705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13184,7 +13184,7 @@ GameObject:
   - component: {fileID: 926469252}
   m_Layer: 0
   m_Name: TableDecoration
-  m_TagString: Untagged
+  m_TagString: Decoration Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13226,6 +13226,7 @@ MonoBehaviour:
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
   numInInventoryText: {fileID: 0}
+  addToRestaurantButton: {fileID: 0}
 --- !u!61 &926469253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13907,106 +13908,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224752880552704100, guid: 0d5d5b7e9c756234ab70e9b25df69f5e,
     type: 2}
   m_PrefabInternal: {fileID: 594993823}
---- !u!1001 &1001528356
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1613623613}
-    m_Modifications:
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 155
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 290
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4f949cbf070ea0548b7e4828a456887b, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!224 &1006478613 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224752880552704100, guid: 0d5d5b7e9c756234ab70e9b25df69f5e,
@@ -16363,7 +16264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1183772530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17260,7 +17161,7 @@ GameObject:
   - component: {fileID: 1253349304}
   m_Layer: 0
   m_Name: FloorDecoration
-  m_TagString: Untagged
+  m_TagString: Decoration Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17302,6 +17203,7 @@ MonoBehaviour:
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
   numInInventoryText: {fileID: 0}
+  addToRestaurantButton: {fileID: 0}
 --- !u!61 &1253349305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18516,7 +18418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1335984450
 Transform:
   m_ObjectHideFlags: 0
@@ -23045,15 +22947,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2017624831}
+  m_Children: []
   m_Father: {fileID: 2082387483}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.0000892407, y: 0.00003637657}
-  m_SizeDelta: {x: 0, y: 120}
+  m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1613623614
 MonoBehaviour:
@@ -25346,7 +25247,7 @@ GameObject:
   - component: {fileID: 1755895763}
   m_Layer: 0
   m_Name: WallDecoration
-  m_TagString: Untagged
+  m_TagString: Decoration Space
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25388,6 +25289,7 @@ MonoBehaviour:
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
   numInInventoryText: {fileID: 0}
+  addToRestaurantButton: {fileID: 0}
 --- !u!61 &1755895764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28746,11 +28648,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017427344}
   m_CullTransparentMesh: 0
---- !u!224 &2017624831 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224469801106333416, guid: 4f949cbf070ea0548b7e4828a456887b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1001528356}
 --- !u!1 &2020225111
 GameObject:
   m_ObjectHideFlags: 0

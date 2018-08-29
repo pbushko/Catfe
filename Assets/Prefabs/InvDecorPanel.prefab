@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114538347023351704}
   - component: {fileID: 114231184087497336}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MoveToShopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.047058824}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.2509804}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -207,7 +207,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114961402872220978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114965791511905032}
+        m_MethodName: MoveDecorationToRestaurant
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114713058044598632
@@ -334,6 +345,7 @@ MonoBehaviour:
     id: 0
     name: 
     description: 
+    starLevel: 0
     cost: 0
     atmosphere: 0
     sprite: 
@@ -343,6 +355,7 @@ MonoBehaviour:
   atmosphere: {fileID: 114749210713454738}
   cost: {fileID: 0}
   numInInventoryText: {fileID: 114974062240895826}
+  addToRestaurantButton: {fileID: 114538347023351704}
 --- !u!114 &114971599560431456
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -28,6 +28,7 @@ public class StorePurchaseConfirmer : MonoBehaviour {
 			name.text = d.name;
 			atmosphere.text = "Atmosphere: " + d.atmosphere;
 			cost.text = "Cost: " + d.cost;
+			starLevel.text = "Star level: " + d.starLevel;
 			description.text = d.description;
 		}
 	}
