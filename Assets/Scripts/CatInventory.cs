@@ -197,4 +197,11 @@ public class CatInventory : MonoBehaviour {
 		decor[i].GetComponent<Decoration>().AddSameDecorationToInv();
 	}
 
+	public void DeactivateAll() {
+		ChefPanel.SetActive(false);
+		WaiterPanel.SetActive(false);
+		DecorPanel.SetActive(false);
+		RecipePanel.SetActive(false);
+	}
+
 }
