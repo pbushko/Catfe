@@ -6,6 +6,7 @@ using System.Xml;
 
 [System.Serializable]
 public enum RestaurantType { Catfe, Italian, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
+public enum DecorationLocation { Wall, Floor, Table };
 
 //the class to store the data for each store you own
 [System.Serializable]
@@ -289,7 +290,9 @@ public class DecorationData
 
 	public int numInInventory;
 
-	public DecorationData(XmlNode d, int s)
+	public DecorationLocation location;
+
+	public DecorationData(XmlNode d, int s, string loc)
 	{
 		if (d.Attributes["id"].Value != "")
         {
@@ -305,12 +308,33 @@ public class DecorationData
         {
             atmosphere = int.Parse(d.Attributes["atmosphere"].Value);
         }
+		sprite = d.Attributes["image"].Value;
 		starLevel = s;
+		location = LocationFromString(loc);
+	}
+
+	private DecorationLocation LocationFromString(string s)
+	{
+		switch (s)
+		{
+			case "Wall":
+				return DecorationLocation.Wall;
+				break;
+			case "Floor":
+				return DecorationLocation.Floor;
+				break;
+			case "Table":
+				return DecorationLocation.Table;
+				break;
+			default:
+				return DecorationLocation.Wall;
+				break;
+		}
 	}
 
 	public string ToString()
 	{
-		return "id: " + id + " name: " + name + " price: " + cost + " atmosp: " + atmosphere + "\n" +description;
+		return "id: " + id + " name: " + name + " price: " + cost + " atmosp: " + atmosphere + "Location: " + location + "\n" +description;
 	}
 
 }

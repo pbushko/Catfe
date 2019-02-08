@@ -99,4 +99,26 @@ public class Restaurant : MonoBehaviour {
 		data.stars++;
 	}
 
+	public bool AddDecoration(DecorationData d)
+	{
+		//go through the decor and see if it will be replacing something, or not
+		foreach (DecorationData decData in data.decor)
+		{
+			if (decData.location == d.location)
+			{
+				Debug.Log("Replaced " + decData.ToString());
+				data.decor.Remove(decData);
+				CatfePlayerScript.script.SetDecorationSprites();
+			}
+		}
+		//we add the new decor here whether or not a decoration is being replaced
+		data.decor.Add(d);
+		return true;
+	}
+
+	public void SetDecorationSprites()
+	{
+
+	}
+
 }

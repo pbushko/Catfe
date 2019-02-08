@@ -122,12 +122,29 @@
                 <cookingTool name="Stove"/>
                 <restaurantType type=""/>
             </recipe>
+            <recipe id="33" name="Burger" text="" price="">
+                <ingredient name="Meat"/>
+                <ingredient name="Bread"/>
+                <ingredient name="Cheese"/>
+                <cookingTool name="Grill"/>
+                <restaurantType type="Burger"/>
+            </recipe>
+            <recipe id="34" name="Hot Dog" text="" price="">
+                <ingredient name="Meat"/>
+                <ingredient name="Bread"/>
+                <cookingTool name="Grill"/>
+                <restaurantType type="Burger"/>
+            </recipe>
+            <recipe id="35" name="Baked Potato" text="" price="">
+                <ingredient name="Potato"/>s
+                <ingredient name="Cheese"/>
+                <cookingTool name="Oven"/>
+                <restaurantType type="Burger"/>
+            </recipe>
         </star>
         <star level="2">
-            <recipe id="" name="" text="" price="">
-                <ingredient name=""/>
-                <ingredient name=""/>
-                <cookingTool name=""/>
+            <recipe id="13" name="Slop" text="" price="">
+                <cookingTool name="none"/>
                 <restaurantType type=""/>
             </recipe>
         </star>

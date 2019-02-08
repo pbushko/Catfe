@@ -9,14 +9,17 @@ public class CatInventory : MonoBehaviour {
 	public GameObject ChefInfoPrefab;
 	public GameObject WaiterInfoPrefab;
 	public GameObject DecorInfoPrefab;
+	public GameObject RecipeInfoPrefab;
 
 	public GameObject ChefPanel;
 	public GameObject WaiterPanel;
 	public GameObject DecorPanel;
+	public GameObject RecipePanel;
 
 	private List<GameObject> chefStats;
 	private List<GameObject> waiterStats;
 	private List<GameObject> decor;
+	private List<GameObject> recipes;
 
 	// Use this for initialization
 	//populate the list with the current cats in your inventory
@@ -25,6 +28,7 @@ public class CatInventory : MonoBehaviour {
 		chefStats = new List<GameObject>();
 		waiterStats = new List<GameObject>();
 		decor = new List<GameObject>();
+		recipes = new List<GameObject>();
 		foreach (ChefData c in PlayerData.playerData.chefs)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
@@ -46,6 +50,13 @@ public class CatInventory : MonoBehaviour {
 			dec.GetComponent<Decoration>().data = d;
 			decor.Add(dec);
 		}
+		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
+		{
+			GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
+			recipe.transform.SetParent(RecipePanel.transform, false);
+			recipe.GetComponent<RecipePanelData>().data = r;
+			recipes.Add(recipe);
+		}
 	}
 
 	public void AddCat(ChefData c, WaiterData w)
@@ -62,6 +73,8 @@ public class CatInventory : MonoBehaviour {
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
         	cat.transform.SetParent(WaiterPanel.transform, false);
+			//LOOK HERE, WHY IS IT ADDING THE CHEF CAT TO PLAYER DATA ABOVE BUT NOT HERE?
+			PlayerData.playerData.waiters.Add(w);
 			waiterStats.Add(cat);
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 		}
@@ -75,6 +88,14 @@ public class CatInventory : MonoBehaviour {
 		d.numInInventory = 1;
 		dec.GetComponent<Decoration>().data = d;
 		decor.Add(dec);
+	}
+
+	public void AddRecipe(Recipe r)
+	{
+		GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
+		recipe.transform.SetParent(RecipePanel.transform, false);
+		recipe.GetComponent<RecipePanelData>().data = r;
+		recipes.Add(recipe);
 	}
 
 	public void LayOffChefCat(GameObject c)
@@ -145,6 +166,10 @@ public class CatInventory : MonoBehaviour {
 		{
 			d.GetComponent<Decoration>().SetAddToRestaurant();
 		}
+		foreach(GameObject r in recipes)
+		{
+			r.GetComponent<RecipePanelData>().SetAddToRestaurant();
+		}
 	}
 	
 	public void RemoveAddToRestaurant()
@@ -160,6 +185,10 @@ public class CatInventory : MonoBehaviour {
 		foreach(GameObject d in decor)
 		{
 			d.GetComponent<Decoration>().RemoveAddToRestaurant();
+		}
+		foreach(GameObject r in recipes)
+		{
+			r.GetComponent<RecipePanelData>().RemoveAddToRestaurant();
 		}
 	}
 

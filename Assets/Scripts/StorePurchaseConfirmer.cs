@@ -8,6 +8,7 @@ public class StorePurchaseConfirmer : MonoBehaviour {
 	public Text name;
 	public Text starLevel;
 	public Text atmosphere;
+	public Text restaurantType;
 	public Text cost;
 	public Text description;
 
@@ -21,15 +22,25 @@ public class StorePurchaseConfirmer : MonoBehaviour {
 		
 	}
 
-	public void UpdateText(DecorationData d)
+	public void UpdateText(DecorationData d, Recipe r)
 	{
 		if (d != null)
 		{
 			name.text = d.name;
 			atmosphere.text = "Atmosphere: " + d.atmosphere;
+			restaurantType.text = "";
 			cost.text = "Cost: " + d.cost;
 			starLevel.text = "Star level: " + d.starLevel;
 			description.text = d.description;
+		}
+		if (r != null)
+		{
+			name.text = r.recipeName;
+			atmosphere.text = "";
+			restaurantType.text = "Restaurant Type: " + r.foodType;
+			cost.text = "Cost: " + r.cost;
+			starLevel.text = "Star level: " + r.starLevel;
+			description.text = r.description;
 		}
 	}
 

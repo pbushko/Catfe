@@ -27,10 +27,15 @@ public class PlayerData : MonoBehaviour
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
 	public List<DecorationData> purchasedDecor;
+	public List<Recipe> purchasedRecipes;
 
 	public GameObject activeRestaurant;
 
 	public GameObject decorToBuy;
+	public GameObject recipesToBuy;
+
+	private static List<Sprite> m_foods;
+    private static List<string> m_foodNames = new List<string>();
 
 	void Awake()
 	{
@@ -53,9 +58,17 @@ public class PlayerData : MonoBehaviour
 		{
 			catSpriteNames.Add(s.name);
 		}
+		//loading the food sprites
+		m_foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
+		//Adding the food names to allow us to search for the sprite
+        foreach (Sprite s in m_foods)
+        {
+            m_foodNames.Add(s.name);
+        }
 		LoadRecipes();
 		LoadDecor();
 		SetDecorToBuy();
+		SetRecipesToBuy();
 	}
 
 	void OnApplicationQuit()
@@ -157,11 +170,13 @@ public class PlayerData : MonoBehaviour
 
 			foreach (XmlNode type in recipesXml.SelectSingleNode("recipes").SelectNodes("foodType"))
 			{
+				string mealType = type.Attributes["type"].Value;
 				foreach(XmlNode star in type.SelectNodes("star"))
 				{
+					int starLevel = int.Parse(star.Attributes["level"].Value);
 					foreach (XmlNode recipe in star.SelectNodes("recipe"))
 					{
-						Recipe r = new Recipe(recipe, type.Attributes["type"].Value);
+						Recipe r = new Recipe(recipe, mealType, starLevel);
 						if (r.idNum == 10 || r.idNum == 11 || r.idNum == 12)
 						{
 							minigameRecipes.Add(r);
@@ -198,12 +213,13 @@ public class PlayerData : MonoBehaviour
 
 			foreach (XmlNode type in decorsXml.SelectSingleNode("decorations").SelectNodes("type"))
 			{
+				string location = type.Attributes["type"].Value;
 				foreach(XmlNode star in type.SelectNodes("star"))
 				{
 					int starLevel = int.Parse(star.Attributes["level"].Value);
 					foreach (XmlNode decor in star.SelectNodes("decor"))
 					{
-						allDecor.Add(new DecorationData(decor, starLevel));
+						allDecor.Add(new DecorationData(decor, starLevel, location));
 					}
 				}
 			}
@@ -221,12 +237,35 @@ public class PlayerData : MonoBehaviour
 	//used to populate the store with its decor items
 	public void SetDecorToBuy()
 	{
-		//Debug.Log(decorToBuy.transform.childCount);
 		for (int i = 0; i < decorToBuy.transform.childCount; i++)
 		{
 			decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];
 		}
 	}
+
+	public void SetRecipesToBuy()
+	{
+		for (int i = 0; i < recipesToBuy.transform.childCount; i++)
+		{
+			recipesToBuy.transform.GetChild(i).GetComponent<RecipePanelData>().data = recipes[i];
+		}
+	}
+
+	public static Sprite GetFoodSprite(Recipe food)
+    {
+        if (food != null)
+        {
+            //need to find the food and then return its sprite if possible
+            int i = m_foodNames.IndexOf(food.GetRecipeName());
+            //compare against -1 since that is returned when not found
+            if (i != -1)
+            {
+                return m_foods[i];
+            }
+        }
+        //return no image if no match
+        return m_foods[m_foodNames.IndexOf("None")];
+    }
 
 }
 

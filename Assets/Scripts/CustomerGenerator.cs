@@ -145,7 +145,7 @@ public class CustomerGenerator : MonoBehaviour {
     private static void SetCustomerSprites(GameObject g, Customer c)
     {
         //setting the order
-        g.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerScript.GetFoodSprite(c.m_order);
+        g.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerData.GetFoodSprite(c.m_order);
         //setting the body
         g.GetComponent<SpriteRenderer>().sprite = c.body;
         //setting the face

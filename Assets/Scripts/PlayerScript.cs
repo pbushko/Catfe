@@ -17,9 +17,6 @@ public class PlayerScript : MonoBehaviour
     //stores the items CURRENTLY in the player's hand; this doesn't count any items that are in the queue
     private List<Ingredients> m_itemsInHand = new List<Ingredients>();
 
-    private static List<Sprite> m_foods;
-    private static List<string> m_foodNames = new List<string>();
-
     private static Recipe m_plateInHand = null;
 
     //stores all the recipes
@@ -30,19 +27,12 @@ public class PlayerScript : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        m_foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
         m_plate = GameObject.Find("plate").GetComponent<SpriteRenderer>();
 
         m_nextLocation = transform.position;
         m_needsToMove = false;
 
         m_recipes = PlayerData.playerData.minigameRecipes;
-
-        //Adding the food names to allow us to search for the sprite
-        foreach (Sprite s in m_foods)
-        {
-            m_foodNames.Add(s.name);
-        }
     }
 
     //to reset the minigame after it's been done more than once
@@ -127,7 +117,7 @@ public class PlayerScript : MonoBehaviour
                     Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool);
 
                     //either putting a recipe in or finding what we should get from clicking on the utensil
-                    loader.Loading(time, GetFoodSprite(r), r);
+                    loader.Loading(time, PlayerData.GetFoodSprite(r), r);
 
                     m_itemsInHand.Clear();
                 }
@@ -158,16 +148,7 @@ public class PlayerScript : MonoBehaviour
     private static void ChangePlateInHand(Recipe r)
     {
         m_plateInHand = r;
-        m_plate.sprite = GetFoodSprite(r);
-    }
-
-    public static Sprite GetFoodSprite(Recipe food)
-    {
-        if (food != null)
-        {
-            return m_foods[m_foodNames.IndexOf(food.GetRecipeName())];
-        }
-        return m_foods[m_foodNames.IndexOf("None")];
+        m_plate.sprite = PlayerData.GetFoodSprite(r);
     }
 
     //allows the buttons from the crates/cooking utens to be added into the player queue

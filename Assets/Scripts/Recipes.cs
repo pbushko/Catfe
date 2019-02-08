@@ -24,13 +24,20 @@ public class Recipe
 
     public Dishes dish;
 
+    //the price the customer will pay for it
     public int price;
+    //the cost to buy the recipe
+    public int cost;
+
+    public int starLevel;
 
     public RestaurantType foodType;
 
 	public string sprite;
 
-	public Recipe(XmlNode recipe, string type)
+    public string description;
+
+	public Recipe(XmlNode recipe, string type, int star)
     {
         if (recipe.Attributes["id"].Value != "")
         {
@@ -55,6 +62,8 @@ public class Recipe
         {
             ingredients = null;
         }
+
+        starLevel = star;
         
         utensils = GetXmlCookingTool(recipe.SelectSingleNode("cookingTool").Attributes["name"].Value);
 
@@ -165,7 +174,8 @@ public class Recipe
         //if everything was found, return true
         return true;
     }
-        
+    
+    //checks if the ingredients picked up by the player and the cooking tool used matches this recipe
     public bool SameRecipe(Ingredients[] ins, CookingTools c)
     {
         if (c == utensils)

@@ -13,36 +13,46 @@ public class Decoration : MonoBehaviour {
 	public Text cost;
 	public Text numInInventoryText;
 
-	public Button addToRestaurantButton;
+	//the image renderer of the decoration to go on the panael
+	public Image sprite;
+
+	public GameObject addToRestaurantButton;
 
 	// Use this for initialization
 	void Start () {
 		//set up the info to appear in the shop menu
+		if (data != null)
+		{
+			ResetData(data);
+		}
+	}
+
+	public void ResetData(DecorationData newData)
+	{
 		if (name != null)
 		{
-			name.text = data.name;
+			name.text = newData.name;
 		}
 		if(cost != null)
 		{
-			cost.text = "" + data.cost;
+			cost.text = "" + newData.cost;
 		}
 		if(starLevel != null)
 		{
-			starLevel.text = "StarLevel: " + data.starLevel;
+			starLevel.text = "StarLevel: " + newData.starLevel;
 		}
 		if(atmosphere != null)
 		{
-			atmosphere.text = "Atmosphere: " + data.atmosphere;
+			atmosphere.text = "Atmosphere: " + newData.atmosphere;
 		}
 		if(numInInventoryText != null)
 		{
-			numInInventoryText.text = "x" + data.numInInventory;
+			numInInventoryText.text = "x" + newData.numInInventory;
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		if(sprite != null)
+		{
+			sprite.sprite = CatfePlayerScript.script.GetDecorationSprite(newData.sprite);
+		}
 	}
 
 	public void AddSameDecorationToInv()
@@ -60,23 +70,21 @@ public class Decoration : MonoBehaviour {
 
 	public void MoveDecorationToRestaurant()
 	{
-		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.decor.Add(data);
-		RemoveDecorationFromInv();
+		//will only remove from inv if the transfer was successful
+		if (PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().AddDecoration(data))
+		{
+			RemoveDecorationFromInv();
+		}
 	}
 
 	public void SetAddToRestaurant()
 	{
-		addToRestaurantButton.gameObject.SetActive(true);
+		addToRestaurantButton.SetActive(true);
 	}
 
 	public void RemoveAddToRestaurant()
 	{
-		addToRestaurantButton.gameObject.SetActive(false);
-	}
-
-	public void OnAddToRestaurantClick()
-	{
-
+		addToRestaurantButton.SetActive(false);
 	}
 
 	public void OnCLick()

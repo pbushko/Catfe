@@ -76,7 +76,7 @@ public class LoadingBar : MonoBehaviour
     {
         if (m_finished)
         {
-            foodRenderer.sprite = PlayerScript.GetFoodSprite(null);
+            foodRenderer.sprite = PlayerData.GetFoodSprite(null);
             m_finished = false;
             return m_recipe;
         }

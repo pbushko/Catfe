@@ -38,7 +38,7 @@ public class CatfePlayerScript : MonoBehaviour {
 	public GameObject restaurantPanel;
 	public RestaurantInventoryPanel invPanelScript;
 
-	//the current state of the program
+	//the current state of the program, might just remove this
 	public States currentState;
 
 	//to load in the restaurant's objects when you go in it
@@ -47,6 +47,10 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public List<Sprite> restaurantSprites;
 	public List<string> restaurantSpriteNames;
+
+	public List<Sprite> decorationSprites;
+	public List<string> decorationSpriteNames;
+	public GameObject decorationLocations;
 
 	private Vector3 location;
 
@@ -63,6 +67,14 @@ public class CatfePlayerScript : MonoBehaviour {
 		{
 			restaurantSpriteNames.Add(s.name);
 		}
+
+		decorationSprites = new List<Sprite>(Resources.LoadAll<Sprite>("catToys"));
+		decorationSpriteNames = new List<string>();
+		foreach (Sprite s in decorationSprites)
+		{
+			decorationSpriteNames.Add(s.name);
+		}
+
 		//getting all of the locations that the restaurant can be in
 		restaurantLocations = new List<Vector3>();
 		for (int i = 0; i < restaurantLocationsParent.transform.childCount; i++)
@@ -104,18 +116,6 @@ public class CatfePlayerScript : MonoBehaviour {
 					location = hit.transform.position;
 					hit.enabled = false;
                 }
-				else if (hit.tag == "Recruit Chefs")
-				{
-					chefRecruitment.SetActive(true);
-				}
-				else if (hit.tag == "Recruit Waiters")
-				{
-					waiterRecruitment.SetActive(true);
-				}
-				else if (hit.tag == "Cat Inventory")
-				{
-					catInventory.SetActive(true);
-				}
 				else if (hit.tag == "Location Switch")
 				{
 					city.SetActive(!city.activeSelf);
@@ -136,8 +136,13 @@ public class CatfePlayerScript : MonoBehaviour {
 				}
 				else if (hit.tag == "Decoration Space")
 				{
+					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
 					catInventory.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
+				}
+				else if (hit.tag == "Recipe Space")
+				{
+
 				}
 			}
 		}
@@ -175,6 +180,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			chefSpot.SetActive(false);
 		}
 		currentState = States.InsideRestaurant;
+		SetDecorationSprites();
 	}
 
 	public bool IsCanvasActive()
@@ -225,33 +231,24 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public Sprite GetRestaurantOutside(RestaurantType r)
 	{
+		string typeName = "";
+		//only some of these have been implemented so far
 		switch(r)
 		{
 			case RestaurantType.Catfe:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
+				typeName = "Catfe";
 				break;
 			case RestaurantType.Italian:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Pizza")];
-				break;
-			case RestaurantType.Sandwich:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
+				typeName = "Pizza";
 				break;
 			case RestaurantType.Burger:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Burger")];
-				break;
-			case RestaurantType.Asian:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
-				break;
-			case RestaurantType.Indian:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
-				break;
-			case RestaurantType.Bakery:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
+				typeName = "Burger";
 				break;
 			default:
-				return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + "Catfe")];
+				typeName = "Catfe";
 				break;
 		}
+		return restaurantSprites[restaurantSpriteNames.IndexOf(Variables.RESTAURANT_SPRITE_STRING + typeName)];
 	}
 
 	//remove the cat from the inventory and into the restaurant's workers
@@ -293,9 +290,13 @@ public class CatfePlayerScript : MonoBehaviour {
 		if (d != null)
 		{
 			decorToPurchase = d;
-			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(d);
+			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(d, null);
 		}
-		
+		if (r != null)
+		{
+			recipeToPurchase = r;
+			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(null, r);
+		}
 	}
 
 	//will be called by the storPurchaseConfirmer
@@ -319,6 +320,10 @@ public class CatfePlayerScript : MonoBehaviour {
 					CatInventory.catInv.AddDecor(decorToPurchase);
 				}
 			}
+			if (recipeToPurchase != null)
+			{
+
+			}
 		}
 		//clear the possible items it's purchasing; this is done whether or not the item is purchased
 		decorToPurchase = null;
@@ -338,6 +343,34 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 		//if this is reached, there was no match
 		return -1;
+	}
+
+	public void SetDecorationSprites()
+	{
+		List<DecorationData> decorations = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.decor;
+		for (int i = 0; i < decorations.Count; i++)
+		{
+			//find the sprite in the list
+			for (int j = 0; j < decorationSpriteNames.Count; j++)
+			{
+				//if the sprite name is found, insert the sprite into the next slot
+				if (decorationSpriteNames[j] == decorations[i].sprite)
+				{
+					decorationLocations.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = decorationSprites[j];
+					j = decorationSpriteNames.Count;
+				}
+				//if the sprite was not found, just set it to a different one
+				else if (j == decorationSpriteNames.Count - 1)
+				{
+					decorationLocations.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().sprite = decorationSprites[1];
+				}
+			}
+		}
+	}
+
+	public Sprite GetDecorationSprite(string s)
+	{
+		return decorationSprites[decorationSpriteNames.IndexOf(s)];
 	}
 
 }
