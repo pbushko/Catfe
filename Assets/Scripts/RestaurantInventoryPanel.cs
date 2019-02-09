@@ -110,7 +110,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 			{
 				activeChefs--;
 				//removing the chef from the restaurant's saved inventory
-				PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.chefs.RemoveAt(i);
+				CatfePlayerScript.script.activeRestaurant.data.chefs.RemoveAt(i);
 
 				if (activeChefs == i)
 				{
@@ -147,7 +147,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 			{
 				activeWaiters--;
 				//removing the chef from the restaurant's saved inventory
-				PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters.RemoveAt(i);
+				CatfePlayerScript.script.activeRestaurant.data.waiters.RemoveAt(i);
 
 				if (activeWaiters == i)
 				{
@@ -210,6 +210,6 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 
 	public void Open()
 	{
-		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().Open();
+		CatfePlayerScript.script.activeRestaurant.Open();
 	}
 }

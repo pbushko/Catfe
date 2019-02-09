@@ -86,7 +86,7 @@ public class RestaurantMain : MonoBehaviour {
 		//always start the scene with buying upgrades
 		currentState = State.upgrades;
 		cat.transform.position = catStartingPos;
-		cat.GetComponent<Chef>().RefreshChef(PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.chefs[0]); 
+		cat.GetComponent<Chef>().RefreshChef(CatfePlayerScript.script.activeRestaurant.data.chefs[0]); 
 		setIngredientBoxes();
 		setUtensils();
 		playerScript.Reset();
@@ -193,7 +193,7 @@ public class RestaurantMain : MonoBehaviour {
 		{
 			cs.Add(utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>().utensil);
 		}
-		PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils = cs;
+		CatfePlayerScript.script.activeRestaurant.data.utensils = cs;
 
 		//setting the timer for the minigame, just 10s for now
 		minigameEndTime = DateTime.Now.AddSeconds(30f);
@@ -281,7 +281,7 @@ public class RestaurantMain : MonoBehaviour {
 
 	private void setUtensils()
 	{
-		List<CookingUtensil> cs = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.utensils;
+		List<CookingUtensil> cs = CatfePlayerScript.script.activeRestaurant.data.utensils;
 		UpgradesFinishedButton.SetActive(true);
 		//set each kitchen utensil based on what the restaurant has
 		if (cs != null && cs.Count > 0)
@@ -303,7 +303,7 @@ public class RestaurantMain : MonoBehaviour {
 						cs[i].upgradeNum = 3;
 					}
 					u.SetSprite(GetCookingUtenSprite(cs[i].utensil, cs[i].upgradeNum));
-					u.loader.PickUpPlate();
+					u.PickUpPlate();
 				}
 			}
 		}
@@ -314,13 +314,13 @@ public class RestaurantMain : MonoBehaviour {
 			u.utensil = new CookingUtensil(CookingTools.Knife);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Knife, 0));
 			cs.Add(u.utensil);
-			u.loader.PickUpPlate();
+			u.PickUpPlate();
 			
 			u = utensilLine.transform.GetChild(1).gameObject.GetComponent<CookingUtensilsScript>();
 			u.utensil = new CookingUtensil(CookingTools.Stove);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Stove, 0));
 			cs.Add(u.utensil);
-			u.loader.PickUpPlate();
+			u.PickUpPlate();
 		}
 	}
 

@@ -58,6 +58,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Utensils
+    uniqueID: 4151508241
+    locked: 0
   - name: Body
     uniqueID: 3855100887
     locked: 0

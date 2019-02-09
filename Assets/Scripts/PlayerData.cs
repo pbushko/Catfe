@@ -29,8 +29,6 @@ public class PlayerData : MonoBehaviour
 	public List<DecorationData> purchasedDecor;
 	public List<Recipe> purchasedRecipes;
 
-	public GameObject activeRestaurant;
-
 	public GameObject decorToBuy;
 	public GameObject recipesToBuy;
 
@@ -189,10 +187,6 @@ public class PlayerData : MonoBehaviour
 					}
 				}
 			}
-			/*foreach (Recipe r in recipes)
-			{
-				Debug.Log(r.ToString());
-			}*/
 		}
 		else
 		{
@@ -223,10 +217,6 @@ public class PlayerData : MonoBehaviour
 					}
 				}
 			}
-			/*foreach (DecorationData d in allDecor)
-			{
-				Debug.Log(d.ToString());
-			}*/
 		}
 		else
 		{
@@ -285,6 +275,5 @@ class SaveData {
 	public List<RestaurantData> restaurants;
 	public List<DecorationData> purchasedDecor;
 	//any other game objects that will be saved...
-
 
 }

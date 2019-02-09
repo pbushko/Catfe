@@ -6,9 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     //stores what the player will be doing.  can contain both ingreds and cookinguten
     private static Queue m_playerQueue = new Queue();
-    //stores the LoadingBar for the utensils
-    private static Queue<LoadingBar> m_loaders = new Queue<LoadingBar>();
-    private static Queue<float> m_cookTimes = new Queue<float>();
+
     //stores the location of the next thing in the queue so the cat can move to it
     private static Queue<Vector3> m_locations = new Queue<Vector3>();
     private static Vector3 m_nextLocation;
@@ -39,8 +37,6 @@ public class PlayerScript : MonoBehaviour
     public void Reset() 
     {
         m_playerQueue = new Queue();
-        m_loaders = new Queue<LoadingBar>();
-        m_cookTimes = new Queue<float>();
         m_locations = new Queue<Vector3>();
         m_needsToMove = false;
         m_itemsInHand = new List<Ingredients>();
@@ -61,11 +57,6 @@ public class PlayerScript : MonoBehaviour
                 {
                     hit.collider.GetComponent<BoxScript>().OnClick();
                     m_locations.Enqueue(new Vector3(loc.x, loc.y + 2, loc.z));
-                }
-                else if(hit.collider.tag == "utensil")
-                {
-                    hit.collider.GetComponent<CookingUtensilsScript>().OnClick();
-                    m_locations.Enqueue(new Vector3(loc.x - 0.5f, loc.y - 1, loc.z));
                 }
                 else if(hit.collider.tag == "customer")
                 {
@@ -95,29 +86,27 @@ public class PlayerScript : MonoBehaviour
                 m_itemsInHand.Add((Ingredients)m_playerQueue.Dequeue());
             }
             //"using" the kitchen utensil.  must check if the recipe exists
-            else if (m_playerQueue.Peek().GetType() == typeof(CookingTools))
+            else if (m_playerQueue.Peek().GetType() == typeof(CookingUtensilsScript))
             {
-                CookingTools tool = (CookingTools)m_playerQueue.Dequeue();
-                LoadingBar loader = m_loaders.Dequeue();
-                float time = m_cookTimes.Dequeue();
+                CookingUtensilsScript tool = (CookingUtensilsScript)m_playerQueue.Dequeue();
 
                 //if there is a plate for us to pick up.
-                if (loader.HasPlate())
+                if (tool.HasPlate())
                 {
                     //can only pick up the plate if there is no other plate in our hand
                     if (m_plateInHand == null)
                     {
                         //we picked up a plate
-                        ChangePlateInHand(loader.PickUpPlate());
+                        ChangePlateInHand(tool.PickUpPlate());
                     }
                 }
                 //if no plate, we will place the recipe as long as we have items to cook and there is nothing on the stove
                 else if (m_itemsInHand.Count > 0)
                 {
-                    Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool);
+                    Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool.utensil.utensil);
 
                     //either putting a recipe in or finding what we should get from clicking on the utensil
-                    loader.Loading(time, PlayerData.GetFoodSprite(r), r);
+                    tool.Loading(PlayerData.GetFoodSprite(r), r);
 
                     m_itemsInHand.Clear();
                 }
@@ -157,11 +146,9 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(i);
     }
 
-    public static void AddCookingToolToPlayerQueue(CookingTools c, LoadingBar l, float n)
+    public static void AddCookingToolToPlayerQueue(CookingUtensilsScript c)
     {
         m_playerQueue.Enqueue(c);
-        m_loaders.Enqueue(l);
-        m_cookTimes.Enqueue(n);
     }
 
     public static void AddCustomerToPlayerQueue(int i)
@@ -206,6 +193,10 @@ public class PlayerScript : MonoBehaviour
     public static Recipe GetRandomRecipe()
     {
         return m_recipes[Random.Range(0, m_recipes.Count)];
+    }
+
+    public static void AddLocation(Vector3 v) {
+        m_locations.Enqueue(v);
     }
 
 }

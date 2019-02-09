@@ -49,6 +49,8 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public GameObject minigameItems;
 
+	public Restaurant activeRestaurant;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -85,9 +87,6 @@ public class CatfePlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) {
-				Debug.Log("UI");
-			}
 		if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -97,20 +96,17 @@ public class CatfePlayerScript : MonoBehaviour {
 				if (hit.tag == "Restaurant")
                 {
 					//checking the inventory of the restaurant you are clicking on
-					PlayerData.playerData.activeRestaurant = hit.gameObject;
+					activeRestaurant = hit.gameObject.GetComponent<Restaurant>();
 					restaurantPanel.SetActive(true);
-					Debug.Log("meow");
-					RestaurantData r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data;
-					invPanelScript.SetChefs(r.chefs);
-					invPanelScript.SetWaiters(r.waiters);
-					PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().CollectMoney();
+					invPanelScript.SetChefs(activeRestaurant.data.chefs);
+					invPanelScript.SetWaiters(activeRestaurant.data.waiters);
+					activeRestaurant.CollectMoney();
                 }
 				else if (hit.tag == "RestaurantSpace")
                 {
 					//make a new restaurant when you click on an empty space
                     newRestaurantCanvas.SetActive(true);
 					location = hit.transform.position;
-					Debug.Log("meow");
 					hit.enabled = false;
                 }
 				//start the minigame if you click on the chef
@@ -140,7 +136,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		insideRestaurant.SetActive(true);
 		buttons.SetActive(true);
 		//loading in the waiters in the back
-		List<WaiterData> ws = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.waiters;
+		List<WaiterData> ws = activeRestaurant.data.waiters;
 		for (int i = 0; i < waiterSpots.transform.childCount; i++)
 		{
 			GameObject child = waiterSpots.transform.GetChild(i).gameObject;
@@ -155,7 +151,7 @@ public class CatfePlayerScript : MonoBehaviour {
 			}
 		}
 		//loading in a chef
-		List<ChefData> c = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.chefs;
+		List<ChefData> c = activeRestaurant.data.chefs;
 		if (c.Count > 0)
 		{
 			chefSpot.SetActive(true);
@@ -233,15 +229,14 @@ public class CatfePlayerScript : MonoBehaviour {
 	//remove the cat from the inventory and into the restaurant's workers
 	public void MoveCatToRestaurant(ChefData c, WaiterData w)
 	{
-		Restaurant r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>();
 		if (c != null)
 		{
-			r.data.chefs.Add(c);
+			activeRestaurant.data.chefs.Add(c);
 			invPanelScript.AddChef(c);
 		}
 		if (w != null)
 		{
-			r.data.waiters.Add(w);
+			activeRestaurant.data.waiters.Add(w);
 			invPanelScript.AddWaiter(w);
 		}
 		catInventory.SetActive(false);
@@ -249,15 +244,14 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public void MoveCatToInv(ChefData c, WaiterData w)
 	{
-		Restaurant r = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>();
 		if (c != null)
 		{
-			r.data.chefs.Remove(c);
+			activeRestaurant.data.chefs.Remove(c);
 			PlayerData.playerData.chefs.Add(c);
 		}
 		if (w != null)
 		{
-			r.data.waiters.Remove(w);
+			activeRestaurant.data.waiters.Remove(w);
 			PlayerData.playerData.waiters.Add(w);
 		}
 		
@@ -326,7 +320,7 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public void SetDecorationSprites()
 	{
-		List<DecorationData> decorations = PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().data.decor;
+		List<DecorationData> decorations = activeRestaurant.data.decor;
 		for (int i = 0; i < decorations.Count; i++)
 		{
 			//find the sprite in the list

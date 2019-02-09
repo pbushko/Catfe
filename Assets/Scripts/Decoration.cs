@@ -71,7 +71,7 @@ public class Decoration : MonoBehaviour {
 	public void MoveDecorationToRestaurant()
 	{
 		//will only remove from inv if the transfer was successful
-		if (PlayerData.playerData.activeRestaurant.GetComponent<Restaurant>().AddDecoration(data))
+		if (CatfePlayerScript.script.activeRestaurant.AddDecoration(data))
 		{
 			RemoveDecorationFromInv();
 		}
