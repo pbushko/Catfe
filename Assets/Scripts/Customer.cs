@@ -34,6 +34,10 @@ public class Customer : MonoBehaviour
     public void OnClick()
     {
         PlayerScript.AddCustomerToPlayerQueue(m_number);
+        //to get every time since the customers can move, but this still might need to be
+        //fixed later
+        Vector3 loc = gameObject.transform.position;
+        PlayerScript.AddLocation(new Vector3(loc.x - 5, loc.y + 1, loc.z));
     }
 
     public int UpdatePatience() 

@@ -61,15 +61,14 @@ public class PlayerScript : MonoBehaviour
                 else if(hit.collider.tag == "customer")
                 {
                     hit.collider.GetComponent<Customer>().OnClick();
-                    m_locations.Enqueue(new Vector3(loc.x - 5, loc.y + 1, loc.z));
                 }
             }
-            //setting the player to move if there is only one location to go to
-            if (!m_needsToMove && m_locations.Count == 1)
-            {
-                m_nextLocation = m_locations.Dequeue();
-                m_needsToMove = true;
-            }
+        }
+        //setting the player to move if there is only one location to go to
+        if (!m_needsToMove && m_locations.Count >= 1)
+        {
+            m_nextLocation = m_locations.Dequeue();
+            m_needsToMove = true;
         }
 
         //if enough time has passed, put the next item in the queue into the player's hand
@@ -176,12 +175,7 @@ public class PlayerScript : MonoBehaviour
 
     public static void GivePlateToCustomer(Recipe order, int n)
     {
-        if (m_plateInHand == null)
-        {
-            return;
-        }
-
-        if (Recipe.CompareRecipe(m_plateInHand, order))
+        if (m_plateInHand != null && Recipe.CompareRecipe(m_plateInHand, order))
         {
             RestaurantMain.AddMoney(m_plateInHand.GetPrice());
             ChangePlateInHand(null);
