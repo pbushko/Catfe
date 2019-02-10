@@ -37,6 +37,7 @@ public class Recipe
 
     public string description;
 
+    //getting the recipe from the xml file
 	public Recipe(XmlNode recipe, string type, int star)
     {
         if (recipe.Attributes["id"].Value != "")
