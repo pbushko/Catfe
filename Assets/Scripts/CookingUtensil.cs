@@ -7,12 +7,12 @@ public class CookingUtensil {
 
 	public CookingTools utensil;
 
-    private int upgradeCost = 10;
+    public int upgradeCost = 10;
 
     //the current upgrade of the utensil
-    private int upgradeNum = 0;
+    public int upgradeNum = 0;
 
-    private float cookTime = 1f;
+    public float cookTime = 1f;
 
 	public CookingUtensil(CookingTools c)
 	{
