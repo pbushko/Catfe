@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a92353ff70404e74cb8167842c6e9d9e
+timeCreated: 1501445913
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Journey Black
+  fontNames:
+  - Journey Black
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

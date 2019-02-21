@@ -12,12 +12,12 @@ public class MoneyTracker : MonoBehaviour
     {
         moneyText = GetComponent<Text>();
 
-        moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
+        moneyText.text = "" + PlayerData.playerData.playerMoney;
 	}
 
     public static void ChangeMoneyCount(int i)
     {
         PlayerData.playerData.playerMoney += i;
-        moneyText.text = "Money: $" + PlayerData.playerData.playerMoney;
+        moneyText.text = "" + PlayerData.playerData.playerMoney;
     }
 }

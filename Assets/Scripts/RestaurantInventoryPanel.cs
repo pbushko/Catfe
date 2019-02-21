@@ -67,7 +67,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	{
 		activeChefs = c.Count;
 
-		for (int i = 0; i < Variables.MAX_CHEFS_IN_RESTAURANT; i++)
+		for (int i = 1; i < Variables.MAX_CHEFS_IN_RESTAURANT; i++)
 		{
 			if(i >= activeChefs)
 			{
@@ -86,7 +86,7 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 	public void SetWaiters(List<WaiterData> w)
 	{
 		activeWaiters = w.Count;
-		for (int i = 0; i < Variables.MAX_WAITERS_IN_RESTAURANT; i++)
+		for (int i = 1; i < Variables.MAX_WAITERS_IN_RESTAURANT; i++)
 		{
 			if(i >= activeWaiters)
 			{
