@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CatRecruiter : MonoBehaviour {
 
@@ -16,16 +17,26 @@ public class CatRecruiter : MonoBehaviour {
 	public ChefCatRecruitStats cat5;
 	public ChefCatRecruitStats cat6;
 
+	private DateTime refreshTime;
+	public Text refreshTimeText;
+
 
 	// Use this for initialization
 	void Start () {
 		RefreshWaiterCats();
 		RefreshChefCats();
+		refreshTime = DateTime.Now.AddSeconds(30f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//update the counter for time until a refresh
+		TimeSpan timeLeft = refreshTime.Subtract(DateTime.Now);
+		refreshTimeText.text = "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
+		if (DateTime.Compare(DateTime.Now, refreshTime) > 0) {
+			RefreshWaiterCats();
+			RefreshChefCats();
+		}
 	}
 
 	public void RefreshWaiterCats()
@@ -41,6 +52,7 @@ public class CatRecruiter : MonoBehaviour {
 		cat2.ResetData(waiters[1]);
 		cat3.ResetData(waiters[2]);
 
+		refreshTime = DateTime.Now.AddSeconds(30f);
 	}
 
 	public void RefreshChefCats()
@@ -56,5 +68,6 @@ public class CatRecruiter : MonoBehaviour {
 		cat5.ResetData(chefs[1]);
 		cat6.ResetData(chefs[2]);
 
+		refreshTime = DateTime.Now.AddSeconds(30f);
 	}
 }

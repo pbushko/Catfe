@@ -4117,6 +4117,7 @@ MonoBehaviour:
   cat4: {fileID: 1437971892}
   cat5: {fileID: 1650247037}
   cat6: {fileID: 937458531}
+  refreshTimeText: {fileID: 5110454663136808823}
 --- !u!114 &1350086001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7385,6 +7386,18 @@ PrefabInstance:
       objectReference: {fileID: 1135705071}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e1eb6d7c1e84537b4eed3f55afd1bc, type: 3}
+--- !u!114 &5110454663136808823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3083878378958961798, guid: 49e1eb6d7c1e84537b4eed3f55afd1bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 5110454663136808822}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6888898229625265169
 PrefabInstance:
   m_ObjectHideFlags: 0
