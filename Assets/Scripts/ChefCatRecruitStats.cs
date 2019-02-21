@@ -112,6 +112,11 @@ public class ChefCatRecruitStats : MonoBehaviour {
 		CatInventory.catInv.LayOffChefCat(gameObject);
 	}
 
+	public void RemoveFromInv()
+	{
+		CatInventory.catInv.LayOffChefCat(gameObject);
+	}
+
 	//training will increase the income of the cat; every 10th training will award a chef specialty, rarer cats can train more
 	public void Train()
 	{

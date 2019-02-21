@@ -111,6 +111,11 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 		CatInventory.catInv.LayOffWaiterCat(gameObject);
 	}
 
+	public void RemoveFromInv()
+	{
+		CatInventory.catInv.LayOffWaiterCat(gameObject);
+	}
+
 	public void Train()
 	{
 		if (data.isTraining || data.timesTrained >= 10 || PlayerData.playerData.playerMoney < trainingCost)
