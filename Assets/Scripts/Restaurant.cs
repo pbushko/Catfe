@@ -76,13 +76,14 @@ public class Restaurant : MonoBehaviour {
 	}
 
 	//collect the money from the shop
-	public void CollectMoney()
+	public int CollectMoney()
 	{
 		//the money will be the time spent open * the added income of ever cat working there
 		//adding up the income/min
 		if (!data.isOpen)
 		{
 			MoneyTracker.ChangeMoneyCount(data.storedIncome);
+			int toRet = data.storedIncome;
 			data.storedIncome = 0;
 			openText.text = "Not Open";
 			if (data.stars < Variables.MAX_STAR_LEVEL && data.starProgress > 1)
@@ -90,7 +91,9 @@ public class Restaurant : MonoBehaviour {
 				data.starProgress -= 1;
 				AddStar();
 			}
+			return toRet;
 		}
+		return 0;
 	}
 
 	public void AddStar()

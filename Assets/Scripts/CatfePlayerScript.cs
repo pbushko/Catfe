@@ -97,10 +97,14 @@ public class CatfePlayerScript : MonoBehaviour {
                 {
 					//checking the inventory of the restaurant you are clicking on
 					activeRestaurant = hit.gameObject.GetComponent<Restaurant>();
-					restaurantPanel.SetActive(true);
-					invPanelScript.SetChefs(activeRestaurant.data.chefs);
-					invPanelScript.SetWaiters(activeRestaurant.data.waiters);
-					activeRestaurant.CollectMoney();
+					//if you are collecting money, don't open the cnavas for the restaurant
+					if (activeRestaurant.CollectMoney() == 0) 
+					{
+						restaurantPanel.SetActive(true);
+						invPanelScript.SetChefs(activeRestaurant.data.chefs);
+						invPanelScript.SetWaiters(activeRestaurant.data.waiters);
+					}
+					
                 }
 				else if (hit.tag == "RestaurantSpace")
                 {

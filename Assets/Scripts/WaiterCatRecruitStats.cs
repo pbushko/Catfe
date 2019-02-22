@@ -133,6 +133,7 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 	{
 		CatfePlayerScript.script.MoveCatToRestaurant(null, data);
 		CatInventory.catInv.LayOffWaiterCat(gameObject);
+		CatInventory.catInv.RemoveAddToRestaurant();
 	}
 
 	public void RemoveCatFromRestaurant()

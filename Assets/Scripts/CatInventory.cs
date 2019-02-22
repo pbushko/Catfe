@@ -109,8 +109,8 @@ public class CatInventory : MonoBehaviour {
 				PlayerData.playerData.chefs.RemoveAt(i);
 				chefStats.RemoveAt(i);
 				Destroy(c);
+				return;
 			}
-			return;
 		}	
 	}
 
@@ -125,8 +125,8 @@ public class CatInventory : MonoBehaviour {
 				PlayerData.playerData.waiters.RemoveAt(i);
 				waiterStats.RemoveAt(i);
 				Destroy(c);
+				return;
 			}
-			return;
 		}
 	}
 
