@@ -21,6 +21,7 @@ public class PlayerData : MonoBehaviour
 	public List<Recipe> minigameRecipes;
 	public Recipe slop;
 	public List<DecorationData> allDecor;
+	public List<GameObject> allNotPurchasedDecorGameObjects;
 
 	//lists of things to save
 	public List<ChefData> chefs;
@@ -30,6 +31,7 @@ public class PlayerData : MonoBehaviour
 	public List<Recipe> purchasedRecipes;
 
 	public GameObject decorToBuy;
+	public GameObject decorSlots;
 	public GameObject recipesToBuy;
 
 	private static List<Sprite> m_foods;
@@ -227,9 +229,27 @@ public class PlayerData : MonoBehaviour
 	//used to populate the store with its decor items
 	public void SetDecorToBuy()
 	{
-		for (int i = 0; i < decorToBuy.transform.childCount; i++)
+		allNotPurchasedDecorGameObjects = new List<GameObject>();
+		foreach (DecorationData d in allDecor)
 		{
-			decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];
+			//decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];
+			//making the decor panel and populating it
+			bool wasFound = false;
+			foreach (DecorationData pd in purchasedDecor)
+			{
+				if (d.IsEqual(pd))
+				{
+					wasFound = true;
+					break;
+				}
+			}
+			if (!wasFound)
+			{
+				GameObject newDecor = (GameObject)Instantiate(decorToBuy);
+				newDecor.GetComponent<Decoration>().ResetData(d);
+				newDecor.transform.SetParent(decorSlots.transform);
+				allNotPurchasedDecorGameObjects.Add(newDecor);
+			}
 		}
 	}
 

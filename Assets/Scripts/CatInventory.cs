@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
 public class CatInventory : MonoBehaviour {
 
@@ -21,6 +23,8 @@ public class CatInventory : MonoBehaviour {
 	private List<GameObject> decor;
 	private List<GameObject> recipes;
 
+	private List<GameObject> notPurchasedDecor;
+
 	// Use this for initialization
 	//populate the list with the current cats in your inventory
 	void Start () {
@@ -29,6 +33,8 @@ public class CatInventory : MonoBehaviour {
 		waiterStats = new List<GameObject>();
 		decor = new List<GameObject>();
 		recipes = new List<GameObject>();
+		notPurchasedDecor = PlayerData.playerData.allNotPurchasedDecorGameObjects;
+
 		foreach (ChefData c in PlayerData.playerData.chefs)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
@@ -49,6 +55,7 @@ public class CatInventory : MonoBehaviour {
 			dec.transform.SetParent(DecorPanel.transform, false);
 			dec.GetComponent<Decoration>().data = d;
 			decor.Add(dec);
+
 		}
 		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
 		{
@@ -203,5 +210,36 @@ public class CatInventory : MonoBehaviour {
 		DecorPanel.SetActive(false);
 		RecipePanel.SetActive(false);
 	}
+
+	public void SortAZ()
+    {
+        List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
+		List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
+		for (int i = 0; i < purchasedSorted.Count; i++) {
+			purchasedSorted[i].transform.SetSiblingIndex(i);
+		}
+		for (int i = 0; i < notPurchasedSorted.Count; i++) {
+			notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
+		}
+
+		List<GameObject> purchasedSorted = recipes.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
+    }
+
+    public static void SortLowHigh(List<GameObject> toSort)
+    {
+        
+    }
+
+    public static void SortHighLow(List<GameObject> toSort)
+    {
+        
+    }
+
+    public static void SortType(List<GameObject> toSort)
+    {
+        if (toSort.Count != 0) {
+            toSort[0].GetComponent<Decoration>();
+        }
+    }
 
 }

@@ -29,6 +29,7 @@ public class Decoration : MonoBehaviour {
 
 	public void ResetData(DecorationData newData)
 	{
+		data = newData;
 		if (name != null)
 		{
 			name.text = newData.name;

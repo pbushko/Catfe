@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\CustomerGenerator.cs" />
      <Compile Include="Assets\Scripts\Decoration.cs" />
      <Compile Include="Assets\Scripts\EmployeeGenerator.cs" />
+     <Compile Include="Assets\Scripts\InventorySortingScript.cs" />
      <Compile Include="Assets\Scripts\MoneyTracker.cs" />
      <Compile Include="Assets\Scripts\NewRestaurantCreation.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />

@@ -332,6 +332,10 @@ public class DecorationData
 		}
 	}
 
+	public bool IsEqual(DecorationData d) {
+		return this.name == d.name;
+	}
+
 	public string ToString()
 	{
 		return "id: " + id + " name: " + name + " price: " + cost + " atmosp: " + atmosphere + "Location: " + location + "\n" +description;
