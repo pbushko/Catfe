@@ -33,6 +33,7 @@ public class PlayerData : MonoBehaviour
 	public GameObject decorToBuy;
 	public GameObject decorSlots;
 	public GameObject recipesToBuy;
+	public GameObject recipeSlots;
 
 	private static List<Sprite> m_foods;
     private static List<string> m_foodNames = new List<string>();
@@ -255,9 +256,16 @@ public class PlayerData : MonoBehaviour
 
 	public void SetRecipesToBuy()
 	{
-		for (int i = 0; i < recipesToBuy.transform.childCount; i++)
+		/*for (int i = 0; i < recipesToBuy.transform.childCount; i++)
 		{
 			recipesToBuy.transform.GetChild(i).GetComponent<RecipePanelData>().data = recipes[i];
+		} */
+		foreach (Recipe r in recipes)
+		{
+			GameObject newRecipe = (GameObject)Instantiate(recipesToBuy);
+			newRecipe.GetComponent<RecipePanelData>().ResetData(r);
+			newRecipe.transform.SetParent(recipeSlots.transform);
+			//allNotPurchasedDecorGameObjects.Add(newDecor);
 		}
 	}
 
