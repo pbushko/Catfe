@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 public class CatInventory : MonoBehaviour {
 
@@ -222,20 +223,38 @@ public class CatInventory : MonoBehaviour {
 			notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
 		}
 
-		List<GameObject> purchasedSorted = recipes.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
     }
 
-    public static void SortLowHigh(List<GameObject> toSort)
+    public void SortLowHigh(List<GameObject> toSort)
     {
-        
+        List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+        List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+        for (int i = 0; i < purchasedSorted.Count; i++) {
+	        purchasedSorted[i].transform.SetSiblingIndex(i);
+        }
+        for (int i = 0; i < notPurchasedSorted.Count; i++) {
+	        notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
+        }
+
     }
 
-    public static void SortHighLow(List<GameObject> toSort)
+    public void SortHighLow(List<GameObject> toSort)
     {
-        
+	    List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+	    purchasedSorted.Reverse();
+	    List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+	    for (int i = 0; i < purchasedSorted.Count; i++) {
+		    purchasedSorted[i].transform.SetSiblingIndex(i);
+	    }
+	    for (int i = 0; i < notPurchasedSorted.Count; i++) {
+		    notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
+	    }
+
+	    notPurchasedSorted.Reverse();
+
     }
 
-    public static void SortType(List<GameObject> toSort)
+    public void SortType(List<GameObject> toSort)
     {
         if (toSort.Count != 0) {
             toSort[0].GetComponent<Decoration>();
