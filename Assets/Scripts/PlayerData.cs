@@ -23,6 +23,8 @@ public class PlayerData : MonoBehaviour
 	public List<DecorationData> allDecor;
 	public List<GameObject> allNotPurchasedDecorGameObjects;
 
+	public List<GameObject> allNotPurchasedRecipeGameObjects;
+
 	//lists of things to save
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
@@ -265,7 +267,7 @@ public class PlayerData : MonoBehaviour
 			GameObject newRecipe = (GameObject)Instantiate(recipesToBuy);
 			newRecipe.GetComponent<RecipePanelData>().ResetData(r);
 			newRecipe.transform.SetParent(recipeSlots.transform);
-			//allNotPurchasedDecorGameObjects.Add(newDecor);
+			allNotPurchasedDecorGameObjects.Add(newRecipe);
 		}
 	}
 

@@ -9,6 +9,8 @@ public class CatInventory : MonoBehaviour {
 
 	public static CatInventory catInv;
 
+	public Dropdown sortCategories;
+
 	public GameObject ChefInfoPrefab;
 	public GameObject WaiterInfoPrefab;
 	public GameObject DecorInfoPrefab;
@@ -212,6 +214,27 @@ public class CatInventory : MonoBehaviour {
 		RecipePanel.SetActive(false);
 	}
 
+	public void SortChoice() 
+	{
+		//Debug.Log("")
+		if (sortCategories.options[sortCategories.value].text == "Price: Low to High")
+		{
+			SortLowHigh();
+		}
+		else if (sortCategories.options[sortCategories.value].text == "Price: High to Low")
+		{
+			SortHighLow();
+		}
+		else if (sortCategories.options[sortCategories.value].text == "A -> Z")
+		{
+			SortAZ();
+		}
+		else if (sortCategories.options[sortCategories.value].text == "Type")
+		{
+			SortType();
+		}
+	}
+
 	public void SortAZ()
     {
         List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
@@ -223,12 +246,22 @@ public class CatInventory : MonoBehaviour {
 			notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
 		}
 
+		List<GameObject> purchasedSortedRecipes = PlayerData.playerData.allNotPurchasedDecorGameObjects.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.recipeName).ToList();
+		//List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
+		for (int i = 0; i < purchasedSortedRecipes.Count; i++) {
+			purchasedSortedRecipes[i].transform.SetSiblingIndex(i);
+		}
+		/*
+		for (int i = 0; i < notPurchasedSorted.Count; i++) {
+			notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
+		}*/
+
     }
 
-    public void SortLowHigh(List<GameObject> toSort)
+    public void SortLowHigh()
     {
-        List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
-        List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+        List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
+        List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
         for (int i = 0; i < purchasedSorted.Count; i++) {
 	        purchasedSorted[i].transform.SetSiblingIndex(i);
         }
@@ -238,11 +271,12 @@ public class CatInventory : MonoBehaviour {
 
     }
 
-    public void SortHighLow(List<GameObject> toSort)
+    public void SortHighLow()
     {
-	    List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+	    List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
 	    purchasedSorted.Reverse();
-	    List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Decoration>().data.cost).ToList();
+	    List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
+		notPurchasedSorted.Reverse();
 	    for (int i = 0; i < purchasedSorted.Count; i++) {
 		    purchasedSorted[i].transform.SetSiblingIndex(i);
 	    }
@@ -250,14 +284,17 @@ public class CatInventory : MonoBehaviour {
 		    notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
 	    }
 
-	    notPurchasedSorted.Reverse();
-
     }
 
-    public void SortType(List<GameObject> toSort)
+    public void SortType()
     {
-        if (toSort.Count != 0) {
-            toSort[0].GetComponent<Decoration>();
+		List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.location).ToList();
+        List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.location).ToList();
+        for (int i = 0; i < purchasedSorted.Count; i++) {
+	        purchasedSorted[i].transform.SetSiblingIndex(i);
+        }
+        for (int i = 0; i < notPurchasedSorted.Count; i++) {
+	        notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
         }
     }
 
