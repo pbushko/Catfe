@@ -267,7 +267,7 @@ public class PlayerData : MonoBehaviour
 			GameObject newRecipe = (GameObject)Instantiate(recipesToBuy);
 			newRecipe.GetComponent<RecipePanelData>().ResetData(r);
 			newRecipe.transform.SetParent(recipeSlots.transform);
-			allNotPurchasedDecorGameObjects.Add(newRecipe);
+			allNotPurchasedRecipeGameObjects.Add(newRecipe);
 		}
 	}
 
