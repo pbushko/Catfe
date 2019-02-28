@@ -1,0 +1,31 @@
+<outfits>
+    <type type="head">
+        <star level="0">
+
+        </star>
+        <star level="1">
+
+        </star>
+        <star level="2">
+
+        </star>
+        <star level="3">
+
+        </star>
+        <star level="4">
+
+        </star>
+        <star level="5">
+
+        </star>
+    </type>  
+
+    <type type="body">
+        <outfit id="" name="" text="" atmosphere="" price="" image=""/>
+    </type>
+
+    <type type="feet">
+
+    </type>
+ 
+</outfits>
