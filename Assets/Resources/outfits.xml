@@ -1,31 +1,38 @@
 <outfits>
     <type type="head">
-        <star level="0">
-
-        </star>
-        <star level="1">
-
-        </star>
-        <star level="2">
-
-        </star>
-        <star level="3">
-
-        </star>
-        <star level="4">
-
-        </star>
-        <star level="5">
-
-        </star>
+        <outfit id="0" name="Baseball Hat" text="Makes you look 10% sportier." price="100" image=""/>
+        <outfit id="1" name="Fedora" text="Ma'cat." price="5000" image=""/>
+        <outfit id="2" name="Glasses" text="" price="" image=""/>
+        <outfit id="3" name="Monocle" text="" price="" image=""/>
+        <outfit id="4" name="Crown" text="" price="" image=""/>
+        <outfit id="5" name="Tiara" text="" price="" image=""/>
+        <outfit id="6" name="Earmuffs" text="" price="" image=""/>
+        <outfit id="7" name="Flower" text="" price="" image=""/>
+        <outfit id="8" name="Cat Ear Headband" text="" price="" image=""/>
+        <outfit id="9" name="Sunglasses" text="" price="" image=""/>
+        <outfit id="10" name="Mouse" text="" price="" image=""/>
+        <outfit id="11" name="Small Cat" text="" price="" image=""/>
+        <outfit id="12" name="Cowboy Hat" text="" price="" image=""/>
+        <outfit id="13" name="Blep" text="" price="" image=""/>
+        <outfit id="14" name="Single Tooth" text="" price="" image=""/>
+        <outfit id="15" name="Vampire Fangs" text="" price="" image=""/>
     </type>  
 
     <type type="body">
-        <outfit id="" name="" text="" atmosphere="" price="" image=""/>
+        <outfit id="16" name="Red Cape" text="" price="" image=""/>
+        <outfit id="17" name="Cowboy Vest" text="" price="" image=""/>
+        <outfit id="18" name="Cat Apron" text="" price="" image=""/>
+        <outfit id="19" name="Brown Belt" text="" price="" image=""/>
+        <outfit id="20" name="Pearl Necklace" text="" price="" image=""/>
+        <outfit id="21" name="Catfe T-Shirt" text="" price="" image=""/>
     </type>
 
     <type type="feet">
-
+        <outfit id="22" name="Jelly Bracelets" text="" price="" image=""/>
+        <outfit id="23" name="Cowboy Boots" text="" price="" image=""/>
+        <outfit id="24" name="White Sneakers" text="" price="" image=""/>
+        <outfit id="25" name="Clogs" text="" price="" image=""/>
+        <outfit id="26" name="Night Slippers" text="" price="" image=""/>
     </type>
  
 </outfits>
