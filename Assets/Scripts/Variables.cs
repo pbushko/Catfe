@@ -20,4 +20,6 @@ static class Variables
     public static int MAX_CHEFS_IN_RESTAURANT = 2;
     public static int MAX_WAITERS_IN_RESTAURANT = 3;
     public static int MAX_STAR_LEVEL = 5;
+
+    public static int MAX_UTENSIL_UPGRADE = 2;
 }

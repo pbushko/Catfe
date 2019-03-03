@@ -33,7 +33,7 @@ public class RestaurantMain : MonoBehaviour {
 	public Text popUpText;
 	public GameObject UpgradesFinishedButton;
 
-	private Collider2D curUtensil;
+	private CookingUtensilScript curUtensil;
 
 	private DateTime minigameEndTime;
 	public Text minigameTimeLeft;
@@ -112,9 +112,10 @@ public class RestaurantMain : MonoBehaviour {
 					if(hit.tag == "utensil")
 					{
 						//will go into choosing to upgrade or not on the popup
-						currentState = State.popup;
+						/*currentState = State.popup;
 						setPopUp(true);
 						curUtensil = hit;
+						*/
 					}
 				}
 				if (currentState == State.popup)
@@ -128,10 +129,9 @@ public class RestaurantMain : MonoBehaviour {
 					else if (hit.tag == "yesButton")
 					{
 						currentState = State.upgrades;
-						CookingUtensilScript temp = curUtensil.GetComponent<CookingUtensilScript>();
-						if (PlayerData.playerData.playerMoney >= temp.GetUpgradeCost())
+						if (PlayerData.playerData.playerMoney >= curUtensil.GetUpgradeCost())
 						{
-							temp.Upgrade();
+							curUtensil.Upgrade();
 							curUtensil = null;
 						}
 						else
@@ -157,6 +157,13 @@ public class RestaurantMain : MonoBehaviour {
 			minigameTimeLeft.text = "min: " + timeLeft.Minutes + " sec: " + timeLeft.Seconds;
 		}
 		
+	}
+
+	public void UtensilUpgradeClicked(CookingUtensilScript c)
+	{
+		currentState = State.popup;
+		setPopUp(true);
+		curUtensil = c;
 	}
 
 	//either enable or disable to popup

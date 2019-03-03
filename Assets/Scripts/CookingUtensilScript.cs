@@ -25,9 +25,21 @@ public class CookingUtensilScript : MonoBehaviour
 
     public void OnClick()
     {
-        PlayerScript.AddCookingToolToPlayerQueue(this);
-        Vector3 loc = gameObject.transform.position;
-        PlayerScript.AddLocation(new Vector3(loc.x - 0.5f, loc.y - 1, loc.z));
+        if (RestaurantMain.restMain.currentState == State.upgrades) 
+        {
+            if (utensil.upgradeNum >= Variables.MAX_UTENSIL_UPGRADE) {
+                Debug.Log("It is the max upgrade already!");
+            }
+            else {
+                RestaurantMain.restMain.UtensilUpgradeClicked(this);
+            }
+        }
+        else if (RestaurantMain.restMain.currentState == State.gameplay)
+        {
+            PlayerScript.AddCookingToolToPlayerQueue(this);
+            Vector3 loc = gameObject.transform.position;
+            PlayerScript.AddLocation(new Vector3(loc.x - 0.5f, loc.y - 1, loc.z));
+        }
     }
 
 	// Use this for initialization
