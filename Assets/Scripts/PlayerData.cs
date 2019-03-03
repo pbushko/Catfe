@@ -38,6 +38,7 @@ public class PlayerData : MonoBehaviour
 	public GameObject recipeSlots;
 
 	private static List<Sprite> m_foods;
+
     private static List<string> m_foodNames = new List<string>();
 
 	void Awake()

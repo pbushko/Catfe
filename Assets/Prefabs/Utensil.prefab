@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 6888898229660696100}
   - component: {fileID: 6888898229660696101}
   - component: {fileID: 6888898229660696098}
-  - component: {fileID: 6888898229660696099}
+  - component: {fileID: 5835114711226771529}
   m_Layer: 0
   m_Name: Utensil
   m_TagString: utensil
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6888898229660696099}
+      - m_Target: {fileID: 5835114711226771529}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -311,7 +311,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6888898229660696099
+--- !u!114 &5835114711226771529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6888898229660696097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8bc41ee51ef2364ca5016c21f776a42, type: 3}
+  m_Script: {fileID: 11500000, guid: f788e51580d2017468146c35d126b4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   utensil:

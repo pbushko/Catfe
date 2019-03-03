@@ -8,8 +8,11 @@ public class Customer : MonoBehaviour
     public int m_number;
     public float m_patience = 15f;
     public int m_heartCount = 3;
-    public Sprite body;
-    public Sprite face;
+    public SpriteRenderer body;
+    public SpriteRenderer face;
+    public SpriteRenderer order;
+    public List<SpriteRenderer> ingreds;
+    public SpriteRenderer cookingUten;
 
     public Recipe GetOrder()
     {
@@ -58,6 +61,30 @@ public class Customer : MonoBehaviour
     public int GetPatience()
     {
         return (int) m_patience;
+    }
+
+    public void SetOrderSprites(Recipe r)
+    {
+        m_order = r;
+        order.sprite = PlayerData.GetFoodSprite(r);
+        for (int i = 0; i < ingreds.Count; i++)
+        {
+            //if there are fewer ingredients than sprites to list
+            if (i >= r.ingredients.Count) {
+                ingreds[i].enabled = false;
+            }
+            else {
+                ingreds[i].enabled = true;
+                ingreds[i].sprite = RestaurantMain.restMain.GetIngredientSprite(r.ingredients[i]);
+            }
+        }
+        cookingUten.sprite = RestaurantMain.restMain.GetCookingUtenSprite(r.utensils, 0);
+    }
+
+    public void SetBodySprites(Sprite bodySprite, Sprite faceSprite) 
+    {
+        body.sprite = bodySprite;
+        face.sprite = faceSprite;
     }
 
 }

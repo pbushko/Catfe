@@ -12,6 +12,7 @@ public class CustomerGenerator : MonoBehaviour {
 
     private static List<GameObject> m_customers;
     private List<Sprite> m_customerSprites;
+    private List<Sprite> m_ingredientSprites;
     private static int m_customerCount;
 
     // Use this for initialization
@@ -57,7 +58,7 @@ public class CustomerGenerator : MonoBehaviour {
             }
             else if (heartsLeft <= 3)
             {
-                m_customers[i].transform.GetChild(2).transform.GetChild(heartsLeft).GetComponent<SpriteRenderer>().enabled = false;
+                m_customers[i].transform.GetChild(3).transform.GetChild(heartsLeft).GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 	}
@@ -82,15 +83,14 @@ public class CustomerGenerator : MonoBehaviour {
         Customer c = newCustomer.GetComponent<Customer>();
 
         //setting the info for the customer
-        c.m_number = m_customerCount;
-        c.m_order = PlayerScript.GetRandomRecipe();
+        c.SetCustomerNumber(m_customerCount);
+        c.SetOrderSprites(PlayerScript.GetRandomRecipe());
 
         //setting the customer's body sprites
         int rand = Random.Range(0, 2);
         Sprite body = m_customerSprites[rand];
         Sprite face = m_customerSprites[Random.Range(2, 4)];
-        c.body = body;
-        c.face = face;
+        c.SetBodySprites(body, face);
         
         //changing the patience
         if (rand == 1)
@@ -99,7 +99,7 @@ public class CustomerGenerator : MonoBehaviour {
         }
         else
         {
-            c.transform.GetChild(2).transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
+            c.transform.GetChild(3).transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
         }
 
         SetCustomerSprites(newCustomer, c);
@@ -132,11 +132,10 @@ public class CustomerGenerator : MonoBehaviour {
             Customer cur = m_customers[i].GetComponent<Customer>();
             Customer next = m_customers[i+1].GetComponent<Customer>();
 
-            cur.m_order = next.m_order;
             cur.m_patience = next.m_patience;
             cur.m_heartCount = next.m_heartCount;
-            cur.body = next.body;
-            cur.face = next.face;
+            cur.SetBodySprites(next.body.sprite, next.face.sprite);
+            cur.SetOrderSprites(next.m_order);
 
             SetCustomerSprites(m_customers[i], next);
         }
@@ -144,23 +143,17 @@ public class CustomerGenerator : MonoBehaviour {
 
     private static void SetCustomerSprites(GameObject g, Customer c)
     {
-        //setting the order
-        g.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerData.GetFoodSprite(c.m_order);
-        //setting the body
-        g.GetComponent<SpriteRenderer>().sprite = c.body;
-        //setting the face
-        g.transform.GetChild(3).GetComponent<SpriteRenderer>().sprite = c.face;
         //setting the patience/hearts
         for (int i = 0; i < 4; i++)
         {
             //if this heart should be there, set it to show
             if (i < c.m_heartCount)
             {
-                g.transform.GetChild(2).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                g.transform.GetChild(3).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
             else
             {
-                g.transform.GetChild(2).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                g.transform.GetChild(3).transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }

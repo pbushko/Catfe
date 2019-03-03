@@ -55,7 +55,7 @@ public class PlayerScript : MonoBehaviour
                 Vector3 loc = hit.collider.transform.position;
                 if (hit.collider.tag == "ingredients")
                 {
-                    hit.collider.GetComponent<BoxScript>().OnClick();
+                    hit.collider.GetComponent<IngredientBoxScript>().OnClick();
                     m_locations.Enqueue(new Vector3(loc.x, loc.y + 2, loc.z));
                 }
                 else if(hit.collider.tag == "customer")
@@ -85,9 +85,9 @@ public class PlayerScript : MonoBehaviour
                 m_itemsInHand.Add((Ingredients)m_playerQueue.Dequeue());
             }
             //"using" the kitchen utensil.  must check if the recipe exists
-            else if (m_playerQueue.Peek().GetType() == typeof(CookingUtensilsScript))
+            else if (m_playerQueue.Peek().GetType() == typeof(CookingUtensilScript))
             {
-                CookingUtensilsScript tool = (CookingUtensilsScript)m_playerQueue.Dequeue();
+                CookingUtensilScript tool = (CookingUtensilScript)m_playerQueue.Dequeue();
 
                 //if there is a plate for us to pick up.
                 if (tool.HasPlate())
@@ -145,7 +145,7 @@ public class PlayerScript : MonoBehaviour
         m_playerQueue.Enqueue(i);
     }
 
-    public static void AddCookingToolToPlayerQueue(CookingUtensilsScript c)
+    public static void AddCookingToolToPlayerQueue(CookingUtensilScript c)
     {
         m_playerQueue.Enqueue(c);
     }

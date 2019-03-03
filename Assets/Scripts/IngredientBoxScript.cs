@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxScript : MonoBehaviour {
-
+public class IngredientBoxScript : MonoBehaviour
+{
     public Ingredients ingredient;
 
     // Use this for initialization

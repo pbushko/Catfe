@@ -128,7 +128,7 @@ public class RestaurantMain : MonoBehaviour {
 					else if (hit.tag == "yesButton")
 					{
 						currentState = State.upgrades;
-						CookingUtensilsScript temp = curUtensil.GetComponent<CookingUtensilsScript>();
+						CookingUtensilScript temp = curUtensil.GetComponent<CookingUtensilScript>();
 						if (PlayerData.playerData.playerMoney >= temp.GetUpgradeCost())
 						{
 							temp.Upgrade();
@@ -191,7 +191,7 @@ public class RestaurantMain : MonoBehaviour {
 		List<CookingUtensil> cs = new List<CookingUtensil>();
 		for (int i = 0; i < utensilLine.transform.childCount; i++)
 		{
-			cs.Add(utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>().utensil);
+			cs.Add(utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilScript>().utensil);
 		}
 		CatfePlayerScript.script.activeRestaurant.data.utensils = cs;
 
@@ -224,7 +224,7 @@ public class RestaurantMain : MonoBehaviour {
 	}
 
 	//takes the type of the cooking utensil and the number of times it was upgraded
-	public static Sprite GetCookingUtenSprite(CookingTools c, int i)
+	public Sprite GetCookingUtenSprite(CookingTools c, int i)
 	{
 		switch (c)
 		{
@@ -252,31 +252,36 @@ public class RestaurantMain : MonoBehaviour {
 			box.transform.SetParent(ingredientLine.transform);
 
 			//setting the ingredient
-			box.GetComponent<BoxScript>().ingredient = ingredients[i];
+			box.GetComponent<IngredientBoxScript>().ingredient = ingredients[i];
 			box.transform.position = 
             	new Vector3(m_ingredientLinePosition.x + (i * Variables.INGREDIENT_OFFSET), m_ingredientLinePosition.y, m_ingredientLinePosition.z);
 
 			SpriteRenderer s = box.transform.GetChild(0).GetComponent<SpriteRenderer>();
 			//setting the sprite
-			switch (ingredients[i]) 
+			s.sprite = GetIngredientSprite(ingredients[i]);
+		}
+	}
+
+	public Sprite GetIngredientSprite(Ingredients i)
+	{
+		switch (i)
 			{
 				case Ingredients.Carrot:
-					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
+					return m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
 					break;
 				case Ingredients.Lettuce:
-					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Lettuce")];
+					return m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Lettuce")];
 					break;
 				case Ingredients.Beef:
-					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Beef")];
+					return m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Beef")];
 					break;
 				case Ingredients.Chicken:
-					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Chicken")];
+					return m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Chicken")];
 					break;
 				default:
-					s.sprite = m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
+					return m_ingredientSprites[m_ingredientSpriteNames.IndexOf("Carrot")];
 					break;
 			}
-		}
 	}
 
 	private void setUtensils()
@@ -295,7 +300,7 @@ public class RestaurantMain : MonoBehaviour {
 				}
 				else
 				{
-					CookingUtensilsScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilsScript>();
+					CookingUtensilScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilScript>();
 					u.utensil = cs[i];
 					//getting the right sprite to show
 					if(cs[i].upgradeNum > 3)
@@ -310,13 +315,13 @@ public class RestaurantMain : MonoBehaviour {
 		//if there are no utensils, use the default ones, a knife and a stove
 		else 
 		{
-			CookingUtensilsScript u = utensilLine.transform.GetChild(0).gameObject.GetComponent<CookingUtensilsScript>();
+			CookingUtensilScript u = utensilLine.transform.GetChild(0).gameObject.GetComponent<CookingUtensilScript>();
 			u.utensil = new CookingUtensil(CookingTools.Knife);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Knife, 0));
 			cs.Add(u.utensil);
 			u.PickUpPlate();
 			
-			u = utensilLine.transform.GetChild(1).gameObject.GetComponent<CookingUtensilsScript>();
+			u = utensilLine.transform.GetChild(1).gameObject.GetComponent<CookingUtensilScript>();
 			u.utensil = new CookingUtensil(CookingTools.Stove);
 			u.SetSprite(GetCookingUtenSprite(CookingTools.Stove, 0));
 			cs.Add(u.utensil);

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CookingUtensilsScript : MonoBehaviour {
-
+public class CookingUtensilScript : MonoBehaviour
+{
     public CookingUtensil utensil;
 
     public Image objectSprite;
@@ -121,5 +121,4 @@ public class CookingUtensilsScript : MonoBehaviour {
         m_fill = 0f;
         m_foregroundImage.fillAmount = m_fill;
     }
-
 }
