@@ -18,8 +18,6 @@ public class CatfePlayerScript : MonoBehaviour {
 	public GameObject city;
 	//the inside of a restaurant
 	public GameObject insideRestaurant;
-	//the buttons that will keep moving you in and out of the restaurant
-	public GameObject buttons;
 
 	//used to buy recipes and decor
 	public GameObject storeConfirmation;
@@ -118,13 +116,17 @@ public class CatfePlayerScript : MonoBehaviour {
 				{
 					minigameItems.SetActive(true);
 					insideRestaurant.SetActive(false);
-					buttons.SetActive(false);
 				}
 				else if (hit.tag == "Decoration Space")
 				{
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
 					catInventory.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
+				}
+				else if (hit.tag == "Exit Door")
+				{
+					insideRestaurant.SetActive(false);
+					city.SetActive(true);
 				}
 				else if (hit.tag == "Recipe Space")
 				{
@@ -138,7 +140,6 @@ public class CatfePlayerScript : MonoBehaviour {
 	{
 		city.SetActive(false);
 		insideRestaurant.SetActive(true);
-		buttons.SetActive(true);
 		//loading in the waiters in the back
 		List<WaiterData> ws = activeRestaurant.data.waiters;
 		for (int i = 0; i < waiterSpots.transform.childCount; i++)

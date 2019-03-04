@@ -21,6 +21,7 @@ TagManager:
   - Chef Cat
   - Store
   - Decoration Space
+  - Exit Door
   layers:
   - Default
   - TransparentFX
