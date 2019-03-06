@@ -4243,8 +4243,7 @@ MonoBehaviour:
   insideRestaurant: {fileID: 69306590}
   storeConfirmation: {fileID: 403902290}
   storeCanvas: {fileID: 918460851}
-  restDecorPanel: {fileID: 6651357328853354076, guid: 4597954987136416eb809c9aa6425ec9,
-    type: 3}
+  restDecorPanel: {fileID: 1920154560}
   recipeToPurchase:
     idNum: 0
     itemType: 
@@ -7414,6 +7413,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_MaxRayIntersections: 0
+--- !u!1 &1920154560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6651357328853354076, guid: 4597954987136416eb809c9aa6425ec9,
+    type: 3}
+  m_PrefabInstance: {fileID: 261629388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1932601562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4867685603064186, guid: 0ba8a377ac429264bb52e6727c30ad15,
