@@ -133,6 +133,7 @@ public class CatInventory : MonoBehaviour {
 	{
 		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
 		{
+			Debug.Log(d);
 			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
 			dec.transform.SetParent(DecorInvPanel.transform, false);
 			dec.GetComponent<Decoration>().data = d;
@@ -140,6 +141,7 @@ public class CatInventory : MonoBehaviour {
 
 		}
 	}
+	// Puts either chef or waiter cat into player's inventory; one of the inputs should be null
 	public void AddCat(ChefData c, WaiterData w)
 	{
 		if (c != null)
