@@ -1173,6 +1173,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -266.85
       objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1920154560}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138951200744038154, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890102985332957917, guid: 4597954987136416eb809c9aa6425ec9,
+        type: 3}
+      propertyPath: m_Name
+      value: Back
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4597954987136416eb809c9aa6425ec9, type: 3}
 --- !u!1 &312069480
