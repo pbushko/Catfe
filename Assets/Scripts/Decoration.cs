@@ -13,7 +13,7 @@ public class Decoration : MonoBehaviour {
 	public Text cost;
 	public Text numInInventoryText;
 
-	//the image renderer of the decoration to go on the panael
+	//the image renderer of the decoration to go on the panel
 	public Image sprite;
 
 	public GameObject addToRestaurantButton;

@@ -1,11 +1,26 @@
 fileFormatVersion: 2
 guid: 6643b6afe57f52541b11fd473cdd1377
-timeCreated: 1529532500
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - newRestaurantPrefab: {instanceID: 0}
+  - newRestaurantCanvas: {instanceID: 0}
+  - restaurantLocationsParent: {instanceID: 0}
+  - city: {instanceID: 0}
+  - insideRestaurant: {instanceID: 0}
+  - storeConfirmation: {instanceID: 0}
+  - storeCanvas: {instanceID: 0}
+  - decorPanel: {fileID: 672565704, guid: 23e03596ec440e64e9a1a8b2122cd2ad, type: 3}
+  - decorInfoPrefab: {instanceID: 0}
+  - catInventory: {instanceID: 0}
+  - restaurantPanel: {instanceID: 0}
+  - invPanelScript: {instanceID: 0}
+  - waiterSpots: {instanceID: 0}
+  - chefSpot: {instanceID: 0}
+  - decorationLocations: {instanceID: 0}
+  - minigameItems: {instanceID: 0}
+  - activeRestaurant: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

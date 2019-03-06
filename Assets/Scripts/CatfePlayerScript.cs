@@ -22,6 +22,7 @@ public class CatfePlayerScript : MonoBehaviour {
 	//used to buy recipes and decor
 	public GameObject storeConfirmation;
 	public GameObject storeCanvas;
+	public GameObject restDecorPanel;
 	public Recipe recipeToPurchase;
 	public DecorationData decorToPurchase;
 	public GameObject decorInfoPrefab;
@@ -104,9 +105,9 @@ public class CatfePlayerScript : MonoBehaviour {
 					}
 					
                 }
+				//make a new restaurant when you click on an empty space
 				else if (hit.tag == "RestaurantSpace")
                 {
-					//make a new restaurant when you click on an empty space
                     newRestaurantCanvas.SetActive(true);
 					location = hit.transform.position;
 					hit.enabled = false;
@@ -117,12 +118,14 @@ public class CatfePlayerScript : MonoBehaviour {
 					minigameItems.SetActive(true);
 					insideRestaurant.SetActive(false);
 				}
+				// let player place a decoration if they click on a decor space
 				else if (hit.tag == "Decoration Space")
 				{
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
-					catInventory.SetActive(true);
+					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
 				}
+				// lets player leave restaurant if they click door
 				else if (hit.tag == "Exit Door")
 				{
 					insideRestaurant.SetActive(false);

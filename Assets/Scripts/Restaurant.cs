@@ -102,6 +102,7 @@ public class Restaurant : MonoBehaviour {
 		data.stars++;
 	}
 
+	// Puts decoration into restaurant (can replace)
 	public bool AddDecoration(DecorationData d)
 	{
 		//go through the decor and see if it will be replacing something, or not
