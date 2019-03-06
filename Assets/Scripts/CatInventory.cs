@@ -20,6 +20,7 @@ public class CatInventory : MonoBehaviour {
 	public GameObject WaiterPanel;
 	public GameObject DecorPanel;
 	public GameObject RecipePanel;
+	public GameObject DecorInvPanel;
 
 	private List<GameObject> chefStats;
 	private List<GameObject> waiterStats;
@@ -29,7 +30,8 @@ public class CatInventory : MonoBehaviour {
 	private List<GameObject> notPurchasedDecor;
 
 	// Use this for initialization
-	//populate the list with the current cats in your inventory
+	// populates the lists with the current chefs, waiters, decor, recipes and outfits in your inventory
+	// Also, populates other screens on the start
 	void Start () {
 		catInv = this;
 		chefStats = new List<GameObject>();
@@ -38,7 +40,7 @@ public class CatInventory : MonoBehaviour {
 		recipes = new List<GameObject>();
 		notPurchasedDecor = PlayerData.playerData.allNotPurchasedDecorGameObjects;
 
-		foreach (ChefData c in PlayerData.playerData.chefs)
+		/*foreach (ChefData c in PlayerData.playerData.chefs)
 		{
 			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
         	cat.transform.SetParent(ChefPanel.transform, false);
@@ -58,18 +60,86 @@ public class CatInventory : MonoBehaviour {
 			dec.transform.SetParent(DecorPanel.transform, false);
 			dec.GetComponent<Decoration>().data = d;
 			decor.Add(dec);
+			//COPY EACH TO NEW OBJ AND THEN SET THE COPY'S PARENT TO THE NEW GRIDVIEW FOR DECOR TILE
+
 
 		}
 		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
 		{
 			GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
-			recipe.transform.SetParent(RecipePanel.transform, false);
+			recipe.transform.SetParent(RecipePanel.transform, false);			
 			recipe.GetComponent<RecipePanelData>().data = r;
 			recipes.Add(recipe);
-		}
+		}*/
+		StartChefs(chefStats);
+		StartWaiters(waiterStats);
+		StartDecor(decor);
+		StartRecipes(recipes);
+		//StartDecorSpacePurchased();
 		SortAZ();
 	}
 
+	// Initialization of owned chefs
+	public void StartChefs(List<GameObject> chefStats)
+	{
+		foreach (ChefData c in PlayerData.playerData.chefs)
+		{
+			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
+			cat.transform.SetParent(ChefPanel.transform, false);
+			cat.GetComponent<ChefCatRecruitStats>().data = c;
+			chefStats.Add(cat);
+		}
+	}
+	
+	//Initialization of owned waiters
+	public void StartWaiters(List<GameObject> waiterStats)
+	{
+		foreach (WaiterData w in PlayerData.playerData.waiters)
+		{
+			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
+			cat.transform.SetParent(WaiterPanel.transform, false);
+			cat.GetComponent<WaiterCatRecruitStats>().data = w;
+			waiterStats.Add(cat);
+		}
+	}
+	
+	//Initialization of owned decor
+	public void StartDecor(List<GameObject> decor)
+	{
+		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
+		{
+			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+			dec.transform.SetParent(DecorPanel.transform, false);
+			dec.GetComponent<Decoration>().data = d;
+			decor.Add(dec);
+
+		}
+	}
+	
+	//Initialization of owned recipes
+	public void StartRecipes(List<GameObject> recipes)
+	{
+		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
+		{
+			GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
+			recipe.transform.SetParent(RecipePanel.transform, false);			
+			recipe.GetComponent<RecipePanelData>().data = r;
+			recipes.Add(recipe);
+		}
+	}
+
+	// Initialization of owned decor into decor tile popup
+	public void StartDecorSpacePurchased()
+	{
+		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
+		{
+			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+			dec.transform.SetParent(DecorInvPanel.transform, false);
+			dec.GetComponent<Decoration>().data = d;
+			//decor.Add(dec);
+
+		}
+	}
 	public void AddCat(ChefData c, WaiterData w)
 	{
 		if (c != null)

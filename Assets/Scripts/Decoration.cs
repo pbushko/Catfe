@@ -75,6 +75,7 @@ public class Decoration : MonoBehaviour {
 		if (CatfePlayerScript.script.activeRestaurant.AddDecoration(data))
 		{
 			RemoveDecorationFromInv();
+			
 		}
 	}
 

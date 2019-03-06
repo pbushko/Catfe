@@ -124,6 +124,7 @@ public class CatfePlayerScript : MonoBehaviour {
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
+					CatInventory.catInv.StartDecorSpacePurchased();
 				}
 				// lets player leave restaurant if they click door
 				else if (hit.tag == "Exit Door")
