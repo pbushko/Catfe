@@ -151,6 +151,8 @@ public class CatInventory : MonoBehaviour {
 				case DecorationLocation.Floor:
 					dec.transform.SetParent(DecorInvFloorPanel.transform, false);
 					break;
+				default:
+					break;
 			}
 		}
 	}

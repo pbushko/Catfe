@@ -617,6 +617,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -1369,6 +1370,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -2769,6 +2771,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -3915,6 +3918,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -4045,6 +4049,7 @@ MonoBehaviour:
   restWallDecorPanel: {fileID: 7691355073852418544}
   restTableDecorPanel: {fileID: 167118131}
   restFloorDecorPanel: {fileID: 1162157193}
+  restDecorPanel: {fileID: 6651357330159649174}
   recipeToPurchase:
     idNum: 0
     itemType: 
@@ -4745,6 +4750,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -6643,6 +6649,7 @@ MonoBehaviour:
   starLevel: {fileID: 0}
   atmosphere: {fileID: 0}
   cost: {fileID: 0}
+  type: {fileID: 0}
   numInInventoryText: {fileID: 0}
   sprite: {fileID: 0}
   addToRestaurantButton: {fileID: 0}
@@ -10125,6 +10132,12 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6651357330159649174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1570216738278428, guid: 21611ea0a40234c448ee14d0f84cfd2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2609733474591429263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6888898229625265169
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -127,6 +127,8 @@ public class CatfePlayerScript : MonoBehaviour {
 					Debug.Log("wall space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
 					restWallDecorPanel.SetActive(true);
+					restTableDecorPanel.SetActive(false);
+					restFloorDecorPanel.SetActive(false);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
 				}
@@ -134,7 +136,9 @@ public class CatfePlayerScript : MonoBehaviour {
 				{
 					Debug.Log("Table space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restWallDecorPanel.SetActive(false);
 					restTableDecorPanel.SetActive(true);
+					restFloorDecorPanel.SetActive(false);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
 					//CatInventory.catInv.StartDecorSpacePurchased();
@@ -143,6 +147,8 @@ public class CatfePlayerScript : MonoBehaviour {
 				{
 					Debug.Log("floor space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restWallDecorPanel.SetActive(false);
+					restTableDecorPanel.SetActive(false);
 					restFloorDecorPanel.SetActive(true);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
