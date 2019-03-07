@@ -20,7 +20,10 @@ public class CatInventory : MonoBehaviour {
 	public GameObject WaiterPanel;
 	public GameObject DecorPanel;
 	public GameObject RecipePanel;
-	public GameObject DecorInvPanel;
+	public GameObject DecorInvWallPanel;
+	public GameObject DecorInvTablePanel;
+	public GameObject DecorInvFloorPanel;
+
 
 	private List<GameObject> chefStats;
 	private List<GameObject> waiterStats;
@@ -75,7 +78,8 @@ public class CatInventory : MonoBehaviour {
 		StartWaiters(waiterStats);
 		StartDecor(decor);
 		StartRecipes(recipes);
-		StartDecorSpacePurchased();
+		StartDecorPlacementSpace();
+		//StartDecorSpacePurchased();
 		Debug.Log("yeeeeet");
 		SortChoice();
 	}
@@ -130,18 +134,54 @@ public class CatInventory : MonoBehaviour {
 	}
 
 	// Initialization of owned decor into decor tile popup
-	public void StartDecorSpacePurchased()
+	public void StartDecorPlacementSpace()
 	{
 		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
 		{
 			Debug.Log(d);
-			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-			dec.transform.SetParent(DecorInvPanel.transform, false);
+			GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
 			dec.GetComponent<Decoration>().data = d;
-			//decor.Add(dec);
-
+			switch (d.location) {
+				case DecorationLocation.Wall:
+					dec.transform.SetParent(DecorInvWallPanel.transform, false);
+					break;
+				case DecorationLocation.Table:
+					dec.transform.SetParent(DecorInvTablePanel.transform, false);
+					break;
+				case DecorationLocation.Floor:
+					dec.transform.SetParent(DecorInvFloorPanel.transform, false);
+					break;
+			}
 		}
 	}
+//	// Initialization of owned decor into decor tile popup
+//	public void StartTableSpace()
+//	{
+//		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
+//		{
+//			if (d.location == DecorationLocation.Table) {
+//				Debug.Log(d);
+//				GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
+//				dec.transform.SetParent(DecorInvTablePanel.transform, false);
+//				dec.GetComponent<Decoration>().data = d;
+//				//decor.Add(dec);
+//			}
+//		}
+//	}
+//	// Initialization of owned decor into decor tile popup
+//	public void StartFloorSpace()
+//	{
+//		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
+//		{
+//			if (d.location == DecorationLocation.Floor) {
+//				Debug.Log(d);
+//				GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
+//				dec.transform.SetParent(DecorInvFloorPanel.transform, false);
+//				dec.GetComponent<Decoration>().data = d;
+//				//decor.Add(dec);
+//			}
+//		}
+//	}
 	// Puts either chef or waiter cat into player's inventory; one of the inputs should be null
 	public void AddCat(ChefData c, WaiterData w)
 	{

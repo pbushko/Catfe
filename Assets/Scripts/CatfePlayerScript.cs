@@ -22,6 +22,9 @@ public class CatfePlayerScript : MonoBehaviour {
 	//used to buy recipes and decor
 	public GameObject storeConfirmation;
 	public GameObject storeCanvas;
+	public GameObject restWallDecorPanel;
+	public GameObject restTableDecorPanel;
+	public GameObject restFloorDecorPanel;
 	public GameObject restDecorPanel;
 	public Recipe recipeToPurchase;
 	public DecorationData decorToPurchase;
@@ -121,21 +124,26 @@ public class CatfePlayerScript : MonoBehaviour {
 				// let player place a decoration if they click on a decor space
 				else if (hit.tag == "Wall Decoration Space")
 				{
+					Debug.Log("wall space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restWallDecorPanel.SetActive(true);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
-					//CatInventory.catInv.StartDecorSpacePurchased();
 				}
 				else if (hit.tag == "Table Decoration Space")
 				{
+					Debug.Log("Table space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restTableDecorPanel.SetActive(true);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
 					//CatInventory.catInv.StartDecorSpacePurchased();
 				}
 				else if (hit.tag == "Floor Decoration Space")
 				{
+					Debug.Log("floor space");
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restFloorDecorPanel.SetActive(true);
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
 					//CatInventory.catInv.StartDecorSpacePurchased();

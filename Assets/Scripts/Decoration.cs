@@ -11,6 +11,7 @@ public class Decoration : MonoBehaviour {
 	public Text starLevel;
 	public Text atmosphere;
 	public Text cost;
+	public Text type;
 	public Text numInInventoryText;
 
 	//the image renderer of the decoration to go on the panel
@@ -34,23 +35,28 @@ public class Decoration : MonoBehaviour {
 		{
 			name.text = newData.name;
 		}
-		if(cost != null)
+		if (cost != null)
 		{
 			cost.text = "" + newData.cost;
 		}
-		if(starLevel != null)
+		if (starLevel != null)
 		{
 			starLevel.text = "StarLevel: " + newData.starLevel;
 		}
-		if(atmosphere != null)
+		if (atmosphere != null)
 		{
 			atmosphere.text = "Atmosphere: " + newData.atmosphere;
 		}
-		if(numInInventoryText != null)
+
+		if (type != null)
+		{
+			type.text = "Type: " + newData.location;
+		}
+		if (numInInventoryText != null)
 		{
 			numInInventoryText.text = "x" + newData.numInInventory;
 		}
-		if(sprite != null)
+		if (sprite != null)
 		{
 			sprite.sprite = CatfePlayerScript.script.GetDecorationSprite(newData.sprite);
 		}

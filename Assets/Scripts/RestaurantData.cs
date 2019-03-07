@@ -289,7 +289,7 @@ public class DecorationData
 	public string sprite;
 
 	public int numInInventory;
-
+	
 	public DecorationLocation location;
 
 	public DecorationData(XmlNode d, int s, string loc)
