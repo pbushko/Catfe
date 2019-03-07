@@ -119,12 +119,26 @@ public class CatfePlayerScript : MonoBehaviour {
 					insideRestaurant.SetActive(false);
 				}
 				// let player place a decoration if they click on a decor space
-				else if (hit.tag == "Decoration Space")
+				else if (hit.tag == "Wall Decoration Space")
 				{
 					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
 					restDecorPanel.SetActive(true);
 					CatInventory.catInv.ReadyAddToRestaurant();
-					CatInventory.catInv.StartDecorSpacePurchased();
+					//CatInventory.catInv.StartDecorSpacePurchased();
+				}
+				else if (hit.tag == "Table Decoration Space")
+				{
+					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restDecorPanel.SetActive(true);
+					CatInventory.catInv.ReadyAddToRestaurant();
+					//CatInventory.catInv.StartDecorSpacePurchased();
+				}
+				else if (hit.tag == "Floor Decoration Space")
+				{
+					Debug.Log(hit.GetComponent<Decoration>().data.ToString());
+					restDecorPanel.SetActive(true);
+					CatInventory.catInv.ReadyAddToRestaurant();
+					//CatInventory.catInv.StartDecorSpacePurchased();
 				}
 				// lets player leave restaurant if they click door
 				else if (hit.tag == "Exit Door")
@@ -273,6 +287,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		{
 			decorToPurchase = d;
 			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(d, null);
+			
 		}
 		if (r != null)
 		{
@@ -281,7 +296,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 	}
 
-	//will be called by the storPurchaseConfirmer
+	//will be called by the storePurchaseConfirmer
 	public void PurchaseItem(bool b)
 	{
 		if (b)

@@ -89,8 +89,10 @@ public class Decoration : MonoBehaviour {
 		addToRestaurantButton.SetActive(false);
 	}
 
-	public void OnCLick()
+	public void OnClick()
 	{
 		CatfePlayerScript.script.ReadyPurchase(data, null);
+		CatfePlayerScript.script.PurchaseItem(true);
+		CatInventory.catInv.SortChoice();
 	}
 }

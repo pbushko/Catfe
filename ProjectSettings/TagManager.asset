@@ -22,6 +22,9 @@ TagManager:
   - Store
   - Decoration Space
   - Exit Door
+  - Wall Decoration Space
+  - Table Decoration Space
+  - Floor Decoration Space
   layers:
   - Default
   - TransparentFX
