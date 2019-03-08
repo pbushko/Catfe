@@ -294,19 +294,19 @@ public class CatfePlayerScript : MonoBehaviour {
 		
 	}
 
-	public void ReadyPurchase(DecorationData d, Recipe r)
+	public void ReadyPurchase(GameObject prefab, DecorationData d, Recipe r)
 	{
 		storeConfirmation.SetActive(true);
 		if (d != null)
 		{
 			decorToPurchase = d;
-			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(d, null);
+			storeConfirmation.GetComponent<ConfirmationPopup>().SetDecorationText(prefab, d);
 			
 		}
 		if (r != null)
 		{
 			recipeToPurchase = r;
-			storeConfirmation.GetComponent<StorePurchaseConfirmer>().UpdateText(null, r);
+			//storeConfirmation.GetComponent<ConfirmationPopup>().UpdateText(null, r);
 		}
 	}
 

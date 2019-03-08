@@ -80,7 +80,6 @@ public class CatInventory : MonoBehaviour {
 		StartRecipes(recipes);
 		StartDecorPlacementSpace();
 		//StartDecorSpacePurchased();
-		Debug.Log("yeeeeet");
 		SortChoice();
 	}
 
@@ -138,7 +137,6 @@ public class CatInventory : MonoBehaviour {
 	{
 		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
 		{
-			Debug.Log(d);
 			GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
 			dec.GetComponent<Decoration>().data = d;
 			switch (d.location) {
@@ -332,7 +330,6 @@ public class CatInventory : MonoBehaviour {
 
 	public void SortChoice() 
 	{
-		Debug.Log("yeeeeet2");
 		switch(sortCategories.options[sortCategories.value].text)
 		{
 			case("Price: Low to High"):
@@ -355,7 +352,6 @@ public class CatInventory : MonoBehaviour {
 
 	private void SortAZ()
     {
-	    Debug.Log("yeeeeetAZ");
 
         List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
 		List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
@@ -375,7 +371,6 @@ public class CatInventory : MonoBehaviour {
 
     private void SortLowHigh()
     {
-	    Debug.Log("yeeeeetLowHigh");
 
         List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
         List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
@@ -395,7 +390,6 @@ public class CatInventory : MonoBehaviour {
 
     private void SortHighLow()
     {
-	    Debug.Log("yeeeeetHighLow");
 
 	    List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.cost).ToList();
 	    purchasedSorted.Reverse();
@@ -418,7 +412,6 @@ public class CatInventory : MonoBehaviour {
 
     private void SortType()
     {
-	    Debug.Log("yeeeeet2Slow");
 
 		List<GameObject> purchasedSorted = decor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.location).ToList();
         List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetComponent<Decoration>().data.location).ToList();

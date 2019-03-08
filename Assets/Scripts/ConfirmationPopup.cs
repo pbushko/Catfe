@@ -14,10 +14,13 @@ public class ConfirmationPopup : MonoBehaviour
     public TextMeshProUGUI upgradeCost;
     public TextMeshProUGUI upgradeCookTime;
 
+    private int cost;
+    private GameObject toDeactivate;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,12 +29,38 @@ public class ConfirmationPopup : MonoBehaviour
         
     }
 
-    public void SetDecorationText(DecorationData d)
+    public void SetDecorationText(GameObject pref, DecorationData d)
     {
         decorName.text = "" + d.name;
         decorCost.text = "Cost: " + d.cost;
         decorAtmosphere.text = "Atmosphere: " + d.atmosphere;
         decorLocation.text = "Location: " + d.location;
         decorDescription.text = "" + d.description;
+        toDeactivate = pref;
+        cost = d.cost;
     }
+
+    public void CompletePurchase()
+	{
+        //if the player doesn't have enough money, don't purchase it
+        if (PlayerData.playerData.playerMoney < cost) {
+            Debug.Log("Not enough money!");
+        }
+        else {
+            Debug.Log("" + PlayerData.playerData.playerMoney + " cost: " + cost);
+            CatfePlayerScript.script.PurchaseItem(true);
+            CatInventory.catInv.SortChoice();
+            MoneyTracker.ChangeMoneyCount(-cost);
+            toDeactivate.SetActive(false);
+            gameObject.SetActive(false);
+        }
+	}
+
+	public void RejectPurchase()
+	{
+        Debug.Log("" + PlayerData.playerData.playerMoney + " cost: " + cost);
+		CatfePlayerScript.script.PurchaseItem(false);
+		gameObject.SetActive(false);
+	}
+
 }

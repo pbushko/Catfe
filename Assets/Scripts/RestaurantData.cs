@@ -317,13 +317,13 @@ public class DecorationData
 	{
 		switch (s)
 		{
-			case "Wall":
+			case "wall":
 				return DecorationLocation.Wall;
 				break;
-			case "Floor":
+			case "floor":
 				return DecorationLocation.Floor;
 				break;
-			case "Table":
+			case "table":
 				return DecorationLocation.Table;
 				break;
 			default:
