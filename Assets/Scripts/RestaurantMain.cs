@@ -309,6 +309,7 @@ public class RestaurantMain : MonoBehaviour {
 				{
 					CookingUtensilScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilScript>();
 					u.utensil = cs[i];
+					Debug.Log("" + cs[i].utensil);
 					//getting the right sprite to show
 					if(cs[i].upgradeNum > 3)
 					{

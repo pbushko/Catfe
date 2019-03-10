@@ -53,6 +53,8 @@ public class CatfePlayerScript : MonoBehaviour {
 
 	public Restaurant activeRestaurant;
 
+	private int fingerID = -1;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -80,6 +82,13 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 		SetUpRestaurants();
 	}
+	
+	private void Awake()
+	{
+		#if !UNITY_EDITOR
+			fingerID = 0; 
+		#endif
+	}
 
 	private static bool FindFronts(Sprite s)
 	{
@@ -89,7 +98,7 @@ public class CatfePlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
+		if (!EventSystem.current.IsPointerOverGameObject(fingerID) && Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D hit = Physics2D.Raycast(mousePos, Vector2.up).collider;
