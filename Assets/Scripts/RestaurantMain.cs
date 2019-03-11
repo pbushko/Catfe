@@ -301,7 +301,7 @@ public class RestaurantMain : MonoBehaviour {
 			for (int i = 0; i < cs.Count; i++)
 			{
 				//if for some reason too much is saved, make sure we only go through possible things
-				if (i > utensilLine.transform.childCount)
+				if (i >= utensilLine.transform.childCount)
 				{
 					i = cs.Count;
 				}
@@ -309,7 +309,6 @@ public class RestaurantMain : MonoBehaviour {
 				{
 					CookingUtensilScript u = utensilLine.transform.GetChild(i).gameObject.GetComponent<CookingUtensilScript>();
 					u.utensil = cs[i];
-					Debug.Log("" + cs[i].utensil);
 					//getting the right sprite to show
 					if(cs[i].upgradeNum > 3)
 					{
