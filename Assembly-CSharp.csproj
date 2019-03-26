@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\NewRestaurantCreation.cs" />
      <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\PremiumMoneyTracker.cs" />
      <Compile Include="Assets\Scripts\RecipePanelData.cs" />
      <Compile Include="Assets\Scripts\Recipes.cs" />
      <Compile Include="Assets\Scripts\Restaurant.cs" />

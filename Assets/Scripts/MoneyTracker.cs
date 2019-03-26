@@ -20,4 +20,5 @@ public class MoneyTracker : MonoBehaviour
         PlayerData.playerData.playerMoney += i;
         moneyText.text = "" + PlayerData.playerData.playerMoney;
     }
+
 }
