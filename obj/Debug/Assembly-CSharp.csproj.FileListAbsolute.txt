@@ -1,0 +1,2 @@
+/Users/huckzou/Desktop/cos448/Catfe/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/huckzou/Desktop/cos448/Catfe/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
