@@ -106,8 +106,9 @@ public class Restaurant : MonoBehaviour {
 	public bool AddDecoration(DecorationData d)
 	{
 		//go through the decor and see if it will be replacing something, or not
-		foreach (DecorationData decData in data.decor)
+		for (int i = 0; i < data.decor.Count; i++)
 		{
+			DecorationData decData = data.decor[i];
 			if (decData.location == d.location)
 			{
 				Debug.Log("Replaced " + decData.ToString());
