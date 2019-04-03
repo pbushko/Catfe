@@ -70,8 +70,8 @@ public class PlayerData : MonoBehaviour
             m_foodNames.Add(s.name);
         }
 		LoadRecipes();
-		LoadDecor();
-		SetDecorToBuy();
+		//LoadDecor();
+		//SetDecorToBuy();
 		SetRecipesToBuy();
 	}
 
@@ -90,7 +90,7 @@ public class PlayerData : MonoBehaviour
 		data.chefs = chefs;
 		data.waiters = waiters;
 		data.restaurants = restaurants;
-		data.purchasedDecor = purchasedDecor;
+		//data.purchasedDecor = purchasedDecor;
 
 		formatter.Serialize(file, data);
 
@@ -111,7 +111,7 @@ public class PlayerData : MonoBehaviour
 			chefs = data.chefs;
 			waiters = data.waiters;
 			restaurants = data.restaurants;
-			purchasedDecor = data.purchasedDecor;
+			//purchasedDecor = data.purchasedDecor;
 
 			if(restaurants == null || restaurants.Count == 0)
 			{
@@ -127,14 +127,10 @@ public class PlayerData : MonoBehaviour
 			chefs = new List<ChefData>();
 			waiters = new List<WaiterData>();
 			restaurants = new List<RestaurantData>();
-			purchasedDecor = new List<DecorationData>();
+			//purchasedDecor = new List<DecorationData>();
 
 			Cafe temp = new Cafe();
 			temp.NewGameRestaurantChoice();
-		}
-		if (purchasedDecor == null)
-		{
-			purchasedDecor = new List<DecorationData>();
 		}
 		
 		//restaurants = new List<RestaurantData>();	
@@ -304,7 +300,7 @@ class SaveData {
 	public List<ChefData> chefs;
 	public List<WaiterData> waiters;
 	public List<RestaurantData> restaurants;
-	public List<DecorationData> purchasedDecor;
+	//public List<DecorationData> purchasedDecor;
 	//any other game objects that will be saved...
 
 }

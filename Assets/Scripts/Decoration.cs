@@ -97,6 +97,6 @@ public class Decoration : MonoBehaviour {
 
 	public void OnClick()
 	{
-		CatfePlayerScript.script.ReadyPurchase(gameObject, data, null);
+		CatfePlayerScript.script.ReadyPurchase(data, null);
 	}
 }

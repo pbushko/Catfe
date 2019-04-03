@@ -1,0 +1,720 @@
+{
+    "CatalogVersion": "Decorations",
+	"Catalog": [
+        {
+            "ItemId": "13",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Candle",
+	        "Description": "Standard candle",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"1\",\"starLevel\":\"0\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":100},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "17",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Plastic Flower",
+	        "Description": "",
+            "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"2\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":500},
+	        "ItemImageUrl": "ball"
+        },
+        {
+            "ItemId": "18",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Plastic Bouquet",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"3\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":2000},
+	        "ItemImageUrl": "yarn"
+        },
+        {
+            "ItemId": "31",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fake Candle",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "40",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Diner Salt and Pepper Shakers",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "43",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Butter Pats",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "44",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Sweetener Rack",
+	        "Description": "Contains the fan favoites: yellow, blue, and pink packets.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "46",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Paper Placemats",
+	        "Description": "Offers minimal table protection.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "51",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Extra Water Jug",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "10",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Cat Food Can Candle",
+	        "Description": "Looks and smells like cat food.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"4\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "28",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Pizza Scented Candle",
+	        "Description": "Only comes in cheese pizza scent.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"4\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "29",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Marshmallow Chick Scented Candle",
+	        "Description": "Don't eat this one!",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"4\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "41",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Salt and Pepper Grinders",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "47",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Plastic Placemats",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "11",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fish Lamp",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"5\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "12",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Catnip Mouse",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"5\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "45",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Drink Menu",
+	        "Description": "Rated E for everyone.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "48",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Floral Placemats",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "19",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Crystal Vase",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"7\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "30",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Candle on a Lace Doily",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "42",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "SnP",
+	        "Description": "What all the celebrity chefs use.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "49",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Gold Trim Placemats",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "52",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fancy Cat Drinking Fountain",
+	        "Description": "Keeps the fresh water circulating.",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "20",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Crystal Vase with Roses",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"8\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "21",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Mini Golden Cat Statue",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"10\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "22",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Priceless Sculpture",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"11\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":1500000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "50",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Artisan Diamond Encrusted Placemats",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"table\",\"atmosphere\":\"\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "23",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Stock Photo",
+	        "Description": "Look at how happy that family is!",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"1\",\"starLevel\":\"0\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":100},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "24",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Used Happy Birthday Banner",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "32",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Cat University Flag",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "33",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Tie-Dye Tapestry",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "34",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Floral Tapestry",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "35",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "City Map",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "14",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Neon Cat Head",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "15",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Neon Fish",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "54",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Local Artist's Work",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "8",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Talking Bass",
+	        "Description": "Let's hope it doesn't become a singing bass.",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"5\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":3000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "53",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Stained Glass Cat",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "2",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "KATT",
+	        "Description": "KATT.",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"7\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":100000},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "1",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "French Cat",
+	        "Description": "This cat was drawn like a french cat.",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"11\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":1000000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "16",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Golden Talking Bass",
+	        "Description": "The ultimate singing sensation",
+	        "CustomData": "
+	        {\"type\":\"wall\",\"atmosphere\":\"10\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":500000},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "25",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "White Paint",
+	        "Description": "Better to see a moving red dot on.",
+	        "CustomData": "
+	        {\"type\":\"wallpaper\",\"atmosphere\":\"1\",\"starLevel\":\"0\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":100},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "38",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Striped Wallpaper",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"wallpaper\",\"atmosphere\":\"\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+
+        },
+        {
+            "ItemId": "7",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fish Wallpaper",
+	        "Description": "Cute fish for your wall.",
+	        "CustomData": "
+	        {\"type\":\"wallpaper\",\"atmosphere\":\"2\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":1500},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "39",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Cat Fur Wall",
+	        "Description": "No cats were harmed in the making of this wall.",
+	        "CustomData": "
+	        {\"type\":\"wallpaper\",\"atmosphere\":\"\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "3",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Plastic Catnip Plant",
+	        "Description": "A fake plant, but still gets the cats riled up.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"1\",\"starLevel\":\"0\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":500},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "26",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Second-Hand Trash Can",
+	        "Description": "Appeals to some.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"1\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "36",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "New Trash Can",
+	        "Description": "A marginally better decoration than the Second-Hand Trash Can.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"2\",\"starLevel\":\"1\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "5",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fish Statue",
+	        "Description": "Makes the restaurant a bit more fishy.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"2\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":1000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "37",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Claw Machine",
+	        "Description": "Doesn't work anymore, but the prizes are cute!",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"\",\"starLevel\":\"2\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "4",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Catnip Plant",
+	        "Description": "Fresh catnip!",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"4\",\"starLevel\":\"3\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":50000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "6",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Fish Fountain",
+	        "Description": "Gives the place a nice atmosphere.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"5\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM":10000},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "9",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Golden Cat Statue",
+	        "Description": "",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"\",\"starLevel\":\"4\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        },
+        {
+            "ItemId": "27",
+	        "ItemClass": null,
+			"CatalogVersion":"Decorations",
+			"DisplayName": "Koi Pond",
+	        "Description": "Covered with glass to keep the fish safe.",
+	        "CustomData": "
+	        {\"type\":\"floor\",\"atmosphere\":\"\",\"starLevel\":\"5\"}
+			",
+			"IsStackable": true,
+	        "VirtualCurrencyPrices":{"NM": 0},
+	        "ItemImageUrl": ""
+        }
+         
+    ]
+}

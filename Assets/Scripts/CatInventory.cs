@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System.Runtime.InteropServices;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class CatInventory : MonoBehaviour {
 
@@ -14,6 +16,7 @@ public class CatInventory : MonoBehaviour {
 	public GameObject ChefInfoPrefab;
 	public GameObject WaiterInfoPrefab;
 	public GameObject DecorInfoPrefab;
+	public GameObject DecorPref;
 	public GameObject RecipeInfoPrefab;
 
 	public GameObject ChefPanel;
@@ -41,7 +44,7 @@ public class CatInventory : MonoBehaviour {
 		waiterStats = new List<GameObject>();
 		decor = new List<GameObject>();
 		recipes = new List<GameObject>();
-		notPurchasedDecor = PlayerData.playerData.allNotPurchasedDecorGameObjects;
+		notPurchasedDecor = new List<GameObject>();
 
 		/*foreach (ChefData c in PlayerData.playerData.chefs)
 		{
@@ -57,16 +60,6 @@ public class CatInventory : MonoBehaviour {
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 			waiterStats.Add(cat);
 		}
-		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
-		{
-			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-			dec.transform.SetParent(DecorPanel.transform, false);
-			dec.GetComponent<Decoration>().data = d;
-			decor.Add(dec);
-			//COPY EACH TO NEW OBJ AND THEN SET THE COPY'S PARENT TO THE NEW GRIDVIEW FOR DECOR TILE
-
-
-		}
 		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
 		{
 			GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
@@ -76,11 +69,10 @@ public class CatInventory : MonoBehaviour {
 		}*/
 		StartChefs(chefStats);
 		StartWaiters(waiterStats);
-		StartDecor(decor);
+		//StartDecor(decor);
 		StartRecipes(recipes);
-		StartDecorPlacementSpace();
+		//StartDecorPlacementSpace();
 		//StartDecorSpacePurchased();
-		SortChoice();
 	}
 
 	// Initialization of owned chefs
@@ -154,34 +146,7 @@ public class CatInventory : MonoBehaviour {
 			}
 		}
 	}
-//	// Initialization of owned decor into decor tile popup
-//	public void StartTableSpace()
-//	{
-//		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
-//		{
-//			if (d.location == DecorationLocation.Table) {
-//				Debug.Log(d);
-//				GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
-//				dec.transform.SetParent(DecorInvTablePanel.transform, false);
-//				dec.GetComponent<Decoration>().data = d;
-//				//decor.Add(dec);
-//			}
-//		}
-//	}
-//	// Initialization of owned decor into decor tile popup
-//	public void StartFloorSpace()
-//	{
-//		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
-//		{
-//			if (d.location == DecorationLocation.Floor) {
-//				Debug.Log(d);
-//				GameObject dec = (GameObject) Instantiate(DecorInfoPrefab);
-//				dec.transform.SetParent(DecorInvFloorPanel.transform, false);
-//				dec.GetComponent<Decoration>().data = d;
-//				//decor.Add(dec);
-//			}
-//		}
-//	}
+
 	// Puts either chef or waiter cat into player's inventory; one of the inputs should be null
 	public void AddCat(ChefData c, WaiterData w)
 	{
@@ -422,5 +387,60 @@ public class CatInventory : MonoBehaviour {
 	        notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
         }
     }
+
+	public void GetPlayFabDecor()
+	{
+		Dictionary<string, int> ownedItems = new Dictionary<string, int>();
+		//getting the user's inventory
+		GetUserInventoryRequest request = new GetUserInventoryRequest();
+        PlayFabClientAPI.GetUserInventory(request, result => {			
+			foreach (ItemInstance i in result.Inventory)
+			{
+				//getting the count
+				int count = 1;
+				if (ownedItems.TryGetValue(i.ItemId, out count))
+				{
+					ownedItems[i.ItemId] = count + 1;
+				}
+				//making a new entry if not in it
+				else
+				{
+					ownedItems.Add(i.ItemId, 1);
+				}		
+			}
+        }, error => {});
+
+		//getting the decor in the shop
+		GetCatalogItemsRequest itemRequest = new GetCatalogItemsRequest();
+		itemRequest.CatalogVersion = "Decorations";
+		PlayFabClientAPI.GetCatalogItems(itemRequest, result => {
+			List<CatalogItem> items = result.Catalog;
+			foreach (CatalogItem i in items)
+			{
+				DecorationData d = new DecorationData(i);
+				GameObject newDecor = (GameObject)Instantiate(DecorInfoPrefab);
+				bool wasAdded = false;
+				for (int j = 0; j < ownedItems.Count; j++)
+				{
+					//if the item is not owned, put it into the different prefab
+					if (ownedItems.ContainsKey(i.ItemId))
+					{
+						d.numInInventory = ownedItems[i.ItemId];
+						newDecor.transform.GetChild(5).GetComponent<Button>().onClick.AddListener(() => CatfePlayerScript.script.ReadyPurchase(d, null));
+						decor.Add(newDecor);
+						j = ownedItems.Count + 1;
+						wasAdded = true;
+					}
+				}
+				if (!wasAdded)
+				{
+					notPurchasedDecor.Add(newDecor);
+				}
+				newDecor.GetComponent<Decoration>().ResetData(d);
+				newDecor.transform.SetParent(DecorPanel.transform);
+			}
+		}, error => {}
+		);
+	}
 
 }

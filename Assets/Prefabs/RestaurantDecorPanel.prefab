@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8139259902873721609}
   - component: {fileID: 2609733474793114232}
   m_Layer: 5
-  m_Name: Ingredient Box
+  m_Name: RestaurantDecorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2609733475927758771}
   m_HandleRect: {fileID: 2609733475927758772}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2609733474556709010}
   m_HandleRect: {fileID: 2609733474556709011}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1754,7 +1754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 547.3, y: -239.11}
+  m_AnchoredPosition: {x: 1641.8999, y: -239.11}
   m_SizeDelta: {x: 1094.6, y: 478.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2609733474709526456
@@ -2503,7 +2503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015280837}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2609733475159277580
@@ -2578,7 +2578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015280837}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2609733475313066143
@@ -2814,7 +2814,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2609733474509485268}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3002,7 +3002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 547.3, y: -239.11}
+  m_AnchoredPosition: {x: 2736.5, y: -239.11}
   m_SizeDelta: {x: 1094.6, y: 478.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2609733475576761858
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2609733475045683722}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3578,7 +3578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015280837}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4201574473763209221
@@ -4480,7 +4480,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2392778653241452550}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

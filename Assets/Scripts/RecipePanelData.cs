@@ -57,7 +57,7 @@ public class RecipePanelData : MonoBehaviour {
 
 	public void OnCLick()
 	{
-		CatfePlayerScript.script.ReadyPurchase(gameObject, null, data);
+		CatfePlayerScript.script.ReadyPurchase(null, data);
 	}
 
 }

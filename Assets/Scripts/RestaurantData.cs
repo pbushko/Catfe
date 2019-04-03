@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Xml;
+using PlayFab;
+using PlayFab.ClientModels;
+using Newtonsoft.Json;
 
 [System.Serializable]
 public enum RestaurantType { Catfe, Italian, Sandwich, Burger, Asian, Indian, Bakery, NumOfRestaurantTypes };
@@ -272,7 +275,7 @@ public class ChefData
 [System.Serializable]
 public class DecorationData
 {
-	public int id;
+	public string id;
 
 	public string name;
 
@@ -296,7 +299,7 @@ public class DecorationData
 	{
 		if (d.Attributes["id"].Value != "")
         {
-            id = int.Parse(d.Attributes["id"].Value);
+            id = d.Attributes["id"].Value;
         }
         name = d.Attributes["name"].Value;
 		description = d.Attributes["text"].Value;
@@ -313,6 +316,45 @@ public class DecorationData
 		location = LocationFromString(loc);
 	}
 
+	public DecorationData(CatalogItem d)
+	{
+		id = d.ItemId;
+		name = d.DisplayName;
+		description = d.Description;
+		cost = (int)d.VirtualCurrencyPrices["NM"];
+		sprite = d.ItemImageUrl;
+
+		//getting the customdata from the object
+		var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(d.CustomData);
+		starLevel = 0;
+		atmosphere = 0;
+		if (custom["starLevel"] != "")
+		{
+			starLevel = Int32.Parse(custom["starLevel"]);
+		}
+		if (custom["atmosphere"] != "")
+		{
+			atmosphere = Int32.Parse(custom["atmosphere"]);
+		}
+		location = LocationFromString(custom["type"]);
+	}
+
+/*
+	public DecorationData(ItemInstance d)
+	{
+		id = Int32.Parse(d.ItemId);
+		name = d.DisplayName;
+		description = d.Description;
+		cost = (int)d.VirtualCurrencyPrices["NM"];
+		sprite = d.ItemImageUrl;
+
+		//getting the customdata from the object
+		var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(d.CustomData);
+		starLevel = Int32.Parse(custom["starLevel"]);
+		atmosphere = Int32.Parse(custom["atmosphere"]);
+		location = Int32.Parse(custom["type"]);
+	}
+*/
 	private DecorationLocation LocationFromString(string s)
 	{
 		switch (s)

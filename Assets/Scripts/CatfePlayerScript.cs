@@ -303,13 +303,13 @@ public class CatfePlayerScript : MonoBehaviour {
 		
 	}
 
-	public void ReadyPurchase(GameObject prefab, DecorationData d, Recipe r)
+	public void ReadyPurchase(DecorationData d, Recipe r)
 	{
 		storeConfirmation.SetActive(true);
 		if (d != null)
 		{
 			decorToPurchase = d;
-			storeConfirmation.GetComponent<ConfirmationPopup>().SetDecorationText(prefab, d);
+			storeConfirmation.GetComponent<ConfirmationPopup>().SetDecorationText(d);
 			
 		}
 		if (r != null)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class ConfirmationPopup : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class ConfirmationPopup : MonoBehaviour
 
     private int cost;
     private GameObject toDeactivate;
+    private DecorationData data;
 
     // Start is called before the first frame update
     void Start()
@@ -29,19 +32,31 @@ public class ConfirmationPopup : MonoBehaviour
         
     }
 
-    public void SetDecorationText(GameObject pref, DecorationData d)
+    public void SetDecorationText(DecorationData d)
     {
         decorName.text = "" + d.name;
         decorCost.text = "Cost: " + d.cost;
         decorAtmosphere.text = "Atmosphere: " + d.atmosphere;
         decorLocation.text = "Location: " + d.location;
         decorDescription.text = "" + d.description;
-        toDeactivate = pref;
         cost = d.cost;
+        data = d;
     }
 
     public void CompletePurchase()
 	{
+        PurchaseItemRequest request = new PurchaseItemRequest();
+        request.ItemId = "" + data.id;
+        request.CatalogVersion = "Decorations";
+        request.VirtualCurrency = "NM";
+        request.Price = data.cost;
+        PlayFabClientAPI.PurchaseItem(request, result => {
+            PlayFabLogin.GetMoney();
+            CatInventory.catInv.SortChoice();
+            gameObject.SetActive(false);
+            CatfePlayerScript.script.PurchaseItem(true);
+        }, error => {});
+        /*
         //if the player doesn't have enough money, don't purchase it
         if (PlayerData.playerData.playerMoney < cost) {
             Debug.Log("Not enough money!");
@@ -54,6 +69,8 @@ public class ConfirmationPopup : MonoBehaviour
             toDeactivate.SetActive(false);
             gameObject.SetActive(false);
         }
+        */
+        data = null;
 	}
 
 	public void RejectPurchase()
@@ -61,6 +78,7 @@ public class ConfirmationPopup : MonoBehaviour
         Debug.Log("" + PlayerData.playerData.playerMoney + " cost: " + cost);
 		CatfePlayerScript.script.PurchaseItem(false);
 		gameObject.SetActive(false);
+        data = null;
 	}
 
 }
