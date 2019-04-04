@@ -47,13 +47,13 @@ public class StorePurchaseConfirmer : MonoBehaviour {
 	public void CompletePurchase()
 	{
 		//Debug.Log("purchased!");
-		CatfePlayerScript.script.PurchaseItem(true);
+		//CatfePlayerScript.script.PurchaseItem(true);
 		gameObject.SetActive(false);
 	}
 
 	public void RejectPurchase()
 	{
-		CatfePlayerScript.script.PurchaseItem(false);
+		//CatfePlayerScript.script.PurchaseItem(false);
 		gameObject.SetActive(false);
 	}
 }

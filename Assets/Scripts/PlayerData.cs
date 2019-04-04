@@ -69,7 +69,7 @@ public class PlayerData : MonoBehaviour
         {
             m_foodNames.Add(s.name);
         }
-		LoadRecipes();
+		//LoadRecipes();
 		//LoadDecor();
 		//SetDecorToBuy();
 		SetRecipesToBuy();
@@ -155,6 +155,7 @@ public class PlayerData : MonoBehaviour
 		}
 	}
 
+/*
 	private void LoadRecipes()
 	{
 		TextAsset recipiesText = (TextAsset)Resources.Load("recipes", typeof(TextAsset));
@@ -195,6 +196,7 @@ public class PlayerData : MonoBehaviour
 			Debug.Log("Couldn't load the recipes.");
 		}
 	}
+	*/
 
 	private void LoadDecor()
 	{

@@ -25,6 +25,7 @@ public class CatInventory : MonoBehaviour {
 	public GameObject RecipePanel;
 
 	public GameObject InventoryDecorPanel;
+	public GameObject InventoryRecipePanel;
 	public GameObject DecorInvWallPanel;
 	public GameObject DecorInvTablePanel;
 	public GameObject DecorInvFloorPanel;
@@ -50,7 +51,7 @@ public class CatInventory : MonoBehaviour {
 		StartChefs(chefStats);
 		StartWaiters(waiterStats);
 		//StartDecor(decor);
-		StartRecipes(recipes);
+		//StartRecipes(recipes);
 		//StartDecorPlacementSpace();
 		//StartDecorSpacePurchased();
 	}
@@ -307,7 +308,7 @@ public class CatInventory : MonoBehaviour {
 			notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
 		}
 
-		List<GameObject> purchasedSortedRecipes = PlayerData.playerData.allNotPurchasedRecipeGameObjects.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.recipeName).ToList();
+		List<GameObject> purchasedSortedRecipes = recipes.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.recipeName).ToList();
 		for (int i = 0; i < purchasedSortedRecipes.Count; i++) {
 			purchasedSortedRecipes[i].transform.SetSiblingIndex(i);
 		}
@@ -326,7 +327,7 @@ public class CatInventory : MonoBehaviour {
 	        notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
         }
 
-		List<GameObject> purchasedSortedRecipes = PlayerData.playerData.allNotPurchasedRecipeGameObjects.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.price).ToList();
+		List<GameObject> purchasedSortedRecipes = recipes.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.price).ToList();
 		for (int i = 0; i < purchasedSortedRecipes.Count; i++) {
 			purchasedSortedRecipes[i].transform.SetSiblingIndex(i);
 		}
@@ -347,7 +348,7 @@ public class CatInventory : MonoBehaviour {
 		    notPurchasedSorted[i].transform.SetSiblingIndex(i + purchasedSorted.Count);
 	    }
 
-		List<GameObject> purchasedSortedRecipes = PlayerData.playerData.allNotPurchasedRecipeGameObjects.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.price).ToList();
+		List<GameObject> purchasedSortedRecipes = recipes.OrderBy(o=>o.transform.GetComponent<RecipePanelData>().data.price).ToList();
 		purchasedSortedRecipes.Reverse();
 		//List<GameObject> notPurchasedSorted = notPurchasedDecor.OrderBy(o=>o.transform.GetChild(0).GetComponent<Text>().text).ToList();
 		for (int i = 0; i < purchasedSortedRecipes.Count; i++) {
@@ -382,32 +383,71 @@ public class CatInventory : MonoBehaviour {
 
 		//getting the decor in the shop
 		GetCatalogItemsRequest itemRequest = new GetCatalogItemsRequest();
-		itemRequest.CatalogVersion = "Decorations";
+		itemRequest.CatalogVersion = "Items";
 		PlayFabClientAPI.GetCatalogItems(itemRequest, result => {
 			List<CatalogItem> items = result.Catalog;
 			foreach (CatalogItem i in items)
 			{
-				DecorationData d = new DecorationData(i);
-				GameObject newDecor = (GameObject)Instantiate(DecorPref);
-				//if the item is owned, make sure the correct info is there
-				if (ownedItems.ContainsKey(i.ItemId))
+				if (i.ItemClass == "Decoration")
 				{
-					d.numInInventory = (int)ownedItems[i.ItemId].RemainingUses;
-					//Debug.Log(d.numInInventory);
-					decor.Add(newDecor);
-					GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
-					inv.GetComponent<Decoration>().ResetData(d);
-					inv.transform.SetParent(InventoryDecorPanel.transform);
+					DecorationData d = new DecorationData(i);
+					GameObject newDecor = (GameObject)Instantiate(DecorPref);
+					//if the item is owned, make sure the correct info is there
+					if (ownedItems.ContainsKey(i.ItemId))
+					{
+						decor.Add(newDecor);
+						GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
+						d.numInInventory = (int)ownedItems[i.ItemId].RemainingUses;
+						inv.GetComponent<Decoration>().ResetData(d);
+						inv.transform.SetParent(InventoryDecorPanel.transform);
+					}
+					else
+					{
+						notPurchasedDecor.Add(newDecor);
+					}
+					newDecor.GetComponent<Decoration>().ResetData(d);
+					newDecor.transform.SetParent(DecorPanel.transform);
 				}
-				else
+				else if(i.ItemClass == "Recipe")
 				{
-					notPurchasedDecor.Add(newDecor);
+					Recipe d = new Recipe(i);
+					GameObject newRecipe = (GameObject)Instantiate(RecipeInfoPrefab);
+					//if the item is owned, make sure the correct info is there
+					if (ownedItems.ContainsKey(i.ItemId))
+					{
+						decor.Add(newRecipe);
+						GameObject inv = (GameObject)Instantiate(RecipeInfoPrefab);
+						inv.GetComponent<RecipePanelData>().ResetData(d);
+						inv.transform.SetParent(InventoryRecipePanel.transform);
+					}
+					//only put recipe panels in the store if they haven't been purchased
+					else
+					{
+						newRecipe.GetComponent<RecipePanelData>().ResetData(d);
+						newRecipe.transform.SetParent(RecipePanel.transform);
+						recipes.Add(newRecipe);
+					}
 				}
-				newDecor.GetComponent<Decoration>().ResetData(d);
-				newDecor.transform.SetParent(DecorPanel.transform);
 			}
 		}, error => {}
 		);
+
+	}
+
+	public void AddOwnedDecoration(DecorationData d, ItemInstance item)
+	{
+		for (int i = 0; i < notPurchasedDecor.Count; i++)
+		{
+			Decoration temp = notPurchasedDecor[i].GetComponent<Decoration>();
+			if (temp.data.IsEqual(d))
+			{
+				d.numInInventory = (int)item.RemainingUses;
+				temp.ResetData(d);
+			}
+		}
+		GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
+		inv.GetComponent<Decoration>().ResetData(d);
+		inv.transform.SetParent(InventoryDecorPanel.transform);
 	}
 
 }

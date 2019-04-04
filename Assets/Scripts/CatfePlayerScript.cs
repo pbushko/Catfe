@@ -319,37 +319,6 @@ public class CatfePlayerScript : MonoBehaviour {
 		}
 	}
 
-	//will be called by the storePurchaseConfirmer
-	public void PurchaseItem(bool b)
-	{
-		if (b)
-		{
-			//add the decor to the user's inventory
-			if (decorToPurchase != null)
-			{
-				int dup = FindDuplicateIndex();
-				if (dup != -1)
-				{
-					//Debug.Log("duplicate purchased");
-					CatInventory.catInv.AddToDecorCount(dup);
-				}
-				//if the decoration is not in your inventory yet
-				else
-				{
-					PlayerData.playerData.purchasedDecor.Add(decorToPurchase);
-					CatInventory.catInv.AddDecor(decorToPurchase);
-				}
-			}
-			if (recipeToPurchase != null)
-			{
-
-			}
-		}
-		//clear the possible items it's purchasing; this is done whether or not the item is purchased
-		decorToPurchase = null;
-		recipeToPurchase = null;
-	}
-
 	//helper function to find duplicate decorations for a purchase; returns the index of the duplicate
 	private int FindDuplicateIndex()
 	{

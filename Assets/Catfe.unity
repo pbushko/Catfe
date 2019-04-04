@@ -3949,7 +3949,7 @@ MonoBehaviour:
   restFloorDecorPanel: {fileID: 1152883130}
   restDecorPanel: {fileID: 1642180246}
   recipeToPurchase:
-    idNum: 0
+    id: 
     itemType: 
     recipeName: 
     ingredients: 
@@ -4017,7 +4017,7 @@ MonoBehaviour:
   recipes: []
   minigameRecipes: []
   slop:
-    idNum: 0
+    id: 
     itemType: 
     recipeName: 
     ingredients: 
@@ -5025,6 +5025,7 @@ MonoBehaviour:
   DecorPanel: {fileID: 1499525004}
   RecipePanel: {fileID: 2046116237}
   InventoryDecorPanel: {fileID: 753932267}
+  InventoryRecipePanel: {fileID: 1788653605}
   DecorInvWallPanel: {fileID: 177542530}
   DecorInvTablePanel: {fileID: 110430318}
   DecorInvFloorPanel: {fileID: 503604034}
@@ -7358,6 +7359,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5699566222889471137, guid: 23e03596ec440e64e9a1a8b2122cd2ad,
     type: 3}
   m_PrefabInstance: {fileID: 8536945672939383513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1788653605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 502751218087152477, guid: 2848518791e3c484cb47d067da77c25f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1859166860}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1793879502
 GameObject:

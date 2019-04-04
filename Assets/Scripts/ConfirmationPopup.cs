@@ -47,36 +47,25 @@ public class ConfirmationPopup : MonoBehaviour
 	{
         PurchaseItemRequest request = new PurchaseItemRequest();
         request.ItemId = "" + data.id;
-        request.CatalogVersion = "Decorations";
+        request.CatalogVersion = "Items";
         request.VirtualCurrency = "NM";
         request.Price = data.cost;
+        DecorationData d = data;
         PlayFabClientAPI.PurchaseItem(request, result => {
+            Debug.Log("Purchased!");
             PlayFabLogin.GetMoney();
             CatInventory.catInv.SortChoice();
             gameObject.SetActive(false);
-            CatfePlayerScript.script.PurchaseItem(true);
-        }, error => {});
-        /*
-        //if the player doesn't have enough money, don't purchase it
-        if (PlayerData.playerData.playerMoney < cost) {
-            Debug.Log("Not enough money!");
-        }
-        else {
-            Debug.Log("" + PlayerData.playerData.playerMoney + " cost: " + cost);
-            CatfePlayerScript.script.PurchaseItem(true);
-            CatInventory.catInv.SortChoice();
-            MoneyTracker.ChangeMoneyCount(-cost);
-            toDeactivate.SetActive(false);
-            gameObject.SetActive(false);
-        }
-        */
+            //result is a List<ItemInstance> object
+            CatInventory.catInv.AddOwnedDecoration(d, result.Items[0]);
+        }, error => {Debug.LogError(error.ErrorMessage);});
         data = null;
 	}
 
 	public void RejectPurchase()
 	{
         Debug.Log("" + PlayerData.playerData.playerMoney + " cost: " + cost);
-		CatfePlayerScript.script.PurchaseItem(false);
+		//CatfePlayerScript.script.PurchaseItem(false);
 		gameObject.SetActive(false);
         data = null;
 	}

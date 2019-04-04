@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
+using PlayFab;
+using PlayFab.ClientModels;
+using Newtonsoft.Json;
+using System;
 
 public enum Ingredients { Carrot, Lettuce, Potato, Beef, Chicken, Milk, none };
 public enum CookingTools { Knife, Oven, Stove, Blender, none };
@@ -11,7 +15,7 @@ public enum Dishes { CarrotSalad, ChickenAndBeef, CarrotSoup, none };
 [System.Serializable]
 public class Recipe 
 {
-    public int idNum;
+    public string id;
 
     public string itemType;
 
@@ -42,7 +46,7 @@ public class Recipe
     {
         if (recipe.Attributes["id"].Value != "")
         {
-            idNum = int.Parse(recipe.Attributes["id"].Value);
+            id = recipe.Attributes["id"].Value;
         }
         recipeName = recipe.Attributes["name"].Value;
         if (recipe.Attributes["price"].Value != "")
@@ -70,6 +74,25 @@ public class Recipe
 
         itemType = type;
     }
+
+    public Recipe(CatalogItem d)
+	{
+		id = d.ItemId;
+		recipeName = d.DisplayName;
+		description = d.Description;
+		cost = (int)d.VirtualCurrencyPrices["NM"];
+		sprite = d.ItemImageUrl;
+
+		//getting the customdata from the object
+		var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(d.CustomData);
+		starLevel = 0;
+        //Debug.Log(custom);
+		if (custom["StarLevel"] != "")
+		{
+			starLevel = Int32.Parse(custom["StarLevel"]);
+		}
+        
+	}
 
     private Ingredients GetXmlIngredient(string s)
     {
@@ -118,7 +141,7 @@ public class Recipe
 
     public string ToString()
     {
-        string s = "id: " + idNum + " name: " + recipeName + " price: " + price + " type: " + itemType;
+        string s = "id: " + id + " name: " + recipeName + " price: " + price + " type: " + itemType;
         s += "\ningredients: ";
         foreach (Ingredients i in ingredients)
         {
@@ -188,7 +211,7 @@ public class Recipe
 
     public static bool CompareRecipe(Recipe r1, Recipe r2)
     {
-        return r1.idNum == r2.idNum;
+        return r1.id == r2.id;
     }
 
 }
