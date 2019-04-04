@@ -38,6 +38,10 @@ public class Decoration : MonoBehaviour {
 		if (cost != null)
 		{
 			cost.text = "" + newData.cost;
+			if (newData.numInInventory > 0)
+			{
+				cost.text = "" + newData.cost + "\n(OWNED)";
+			}
 		}
 		if (starLevel != null)
 		{

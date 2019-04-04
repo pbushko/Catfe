@@ -1,0 +1,197 @@
+{
+    "CatalogVersion": "Recipes",
+    "Catalog": [
+        {
+			"ItemId": "0",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Instant Coffee",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Water,Instant Coffee\",\"CookingTool\":\"\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "1",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Brewed Coffee",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Water,Ground Coffee\",\"CookingTool\":\"Coffee Maker\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "2",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Tea",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \",\",\"CookingTool\":\"\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "3",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Iced Tea",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \",\",\"CookingTool\":\"\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "4",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Ice Water",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \",\",\"CookingTool\":\"\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "5",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Orange Juice",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \",\",\"CookingTool\":\"\",\"RestType\":\"\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "6",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Frozen Pizza",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Frozen Pizza\",\"CookingTool\":\"Oven\",\"RestType\":\"Italian\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "8",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Plain Pasta",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Pasta,Water\",\"CookingTool\":\"Stove\",\"RestType\":\"Italian\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "7",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Toast",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Bread\",\"CookingTool\":\"Oven\",\"RestType\":\"Catfe\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "9",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Baked Fries",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Potato\",\"CookingTool\":\"Oven\",\"RestType\":\"Burger\",\"StarLevel\":\"0\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "10",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Carrot Salad",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Carrot,Lettuce\",\"CookingTool\":\"Knife\",\"RestType\":\"\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "11",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Carrot Soup",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Carrot\",\"CookingTool\":\"Stove\",\"RestType\":\"\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "12",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Beef and Chicken",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Beef,Chicken\",\"CookingTool\":\"Stove\",\"RestType\":\"\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "33",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Burger",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Meat,Bread,Cheese\",\"CookingTool\":\"Grill\",\"RestType\":\"Burger\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "34",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Hot Dog",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Meat,Bread\",\"CookingTool\":\"Grill\",\"RestType\":\"Burger\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		},
+        {
+			"ItemId": "35",
+			"ItemClass": null,
+			"CatalogVersion": "Recipes",
+			"DisplayName": "Baked Potato",
+			"Description": "",
+			"CutsomData": "
+			{\"Ingredients\": \"Potato,Cheese\",\"CookingTool\":\"Oven\",\"RestType\":\"Burger\",\"StarLevel\":\"1\",\"FoodType\":\"Drink\"}
+			",
+            "VirtualCurrencyPrices": {"NM":9},
+			"ItemImageUrl": ""
+		}
+    ]
+}

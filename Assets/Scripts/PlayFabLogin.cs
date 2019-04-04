@@ -23,9 +23,7 @@ public class PlayFabLogin : MonoBehaviour
         var request = new LoginWithAndroidDeviceIDRequest { AndroidDeviceId = SystemInfo.deviceUniqueIdentifier, CreateAccount = true };
         request.InfoRequestParameters = infoRequestParams;
         PlayFabClientAPI.LoginWithAndroidDeviceID(request, result => {
-            MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
             OnLoginSuccess(result);
-            TestInv();
         }, OnLoginFailure);
     #endif
     #if UNITY_IOS
@@ -35,9 +33,13 @@ public class PlayFabLogin : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
-        Debug.Log("Congratulations, you made your first successful API call!");
+        //for testing the customdata of items
+        //Dictionary<string, string> i = new Dictionary<string, string>();
+        //i.Add("outfit", "{\"hat\":\"wow\",\"glasses\":\"sunglasses\"}");
+        //SetItemCutsomData(i, "891C2D292A879E29", "5055A279219519E2");
+        Debug.Log("Logged in!");
         CatInventory.catInv.GetPlayFabDecor();
-        
+        MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
     }
 
     private void OnLoginFailure(PlayFabError error)
@@ -56,21 +58,17 @@ public class PlayFabLogin : MonoBehaviour
     }
 
 
-    public static void TestInv()
+    public static void SetItemCutsomData(Dictionary<string, string> newData, string itemInstanceId, string playerId)
     {
-        Debug.Log("TestInv");
         UpdateUserInventoryItemDataRequest request = new UpdateUserInventoryItemDataRequest();
-        Dictionary<string, string> newData = new Dictionary<string, string>();
-        newData.Add("howdy", "y'all");
-        request.ItemInstanceId = "891C2D292A879E29";
+        request.ItemInstanceId = itemInstanceId;
         request.Data = newData;
-        request.PlayFabId = "5055A279219519E2";
+        request.PlayFabId = playerId;
         PlayFabServerAPI.UpdateUserInventoryItemCustomData(request, result => {
-            Debug.Log("worked!");
+            Debug.Log("data updated!");
         }, error => {
             Debug.LogError(error.ErrorMessage);
         });
     }
     
-
 }
