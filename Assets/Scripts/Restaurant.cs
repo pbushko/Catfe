@@ -7,7 +7,7 @@ public class Restaurant : MonoBehaviour {
 
 	public RestaurantData data;
 
-	public SpriteRenderer title;
+	//public SpriteRenderer title;
 
 	public TextMesh openText;
 

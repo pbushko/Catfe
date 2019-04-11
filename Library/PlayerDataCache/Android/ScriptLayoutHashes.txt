@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-/Users/huckzou/Desktop/cos448/CatFe_non_dev_apk.aab
+C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Builds/v2.apk
 SceneListBegin?
 Assets/Catfe.unity
 SceneListEnd?
@@ -28,7 +28,7 @@ d19445d998dace85eb17bd3931a6be8e Assembly-CSharp.dll:.Waiter
 ebd0fcfecda45cfd91320c470f790625 Assembly-CSharp-firstpass.dll:.IAPDemoProductUI
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 5a8eb80d10da046d62c8bb0c5ea818c8 Assembly-CSharp-firstpass.dll:UnityEngine.Purchasing.IAPButton
-ef4d7c30012220a6a6712d2a45c82a96 Assembly-CSharp.dll:.Decoration
+5479babad5285e2be35d26298335ac43 Assembly-CSharp.dll:.Decoration
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.TMP_PhoneNumberValidator
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -63,8 +63,6 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
-71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 6adf0680d8d7e110dab1c5470b12851b Editor.dll:UnityEditor.Purchasing.ObfuscatorWindow
 6adf0680d8d7e110dab1c5470b12851b Editor.dll:UnityEditor.Purchasing.ProductCatalogEditor
 6adf0680d8d7e110dab1c5470b12851b Editor.dll:UnityEditor.Purchasing.RichEditorWindow
@@ -102,6 +100,8 @@ abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.Tou
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PlayerScript
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MoneyTracker
+71bb6a6b6c8f052f948db64c7dd3ca4f Firebase.Platform.dll:Firebase.Platform.FirebaseMonoBehaviour
+045025aca7a2b4c82d9ed1e68d6d8ddc Assembly-CSharp.dll:.PlayFabLogin
 bdd4bb6c762ee98697b8b1612530e4f3 Assembly-CSharp.dll:.RestaurantInventoryPanel
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -147,15 +147,16 @@ dd7520b7d4e690e8c593273e7b9fbe80 Assembly-CSharp.dll:TMPro.Examples.TMP_TextEven
 47930f3b40e24ef5b3b5e3d9ada7097a Assembly-CSharp.dll:TMPro.Examples.Benchmark01
 3de140ce50b924569d2fadee2b2b58ae Assembly-CSharp.dll:.CatToyScript
 a318a82d5abde553e75543c7b3aba918 Assembly-CSharp-firstpass.dll:AppStoresSupport.AppStoreSettings
-6c0214772518b12eaa090ac5366ce98b Assembly-CSharp.dll:.CatInventory
+bc4e758fa86740705a60d9ad0ab425a7 Assembly-CSharp.dll:.CatInventory
 4c736fe17cc8f75d01974d942b2945f2 Assembly-CSharp.dll:.Chef
-f6030afaaf99a774326b4a989329971b Assembly-CSharp.dll:.Restaurant
+019445d4c0d8a4c7321cbd58fa76b01b Assembly-CSharp.dll:.Restaurant
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PremiumMoneyTracker
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 3375c3d749f8f4cad889721b431bdc27 Assembly-CSharp.dll:TMPro.Examples.CameraController
 e63944317d2f5958e31963668bb29158 Assembly-CSharp.dll:TMPro.Examples.VertexJitter
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
+449c2fd23f9ec50fab24faad327e34d2 Assembly-CSharp.dll:.PlayFabSharedSettings
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 3cae62e09a50c5d5aae8d0536b3d8fde Assembly-CSharp.dll:.ChatController
 ccf51e1e6226a93bf7a33d8b09b3e558 Assembly-CSharp.dll:.RestaurantMain
@@ -191,7 +192,7 @@ cf96e5f7b3d069bab453925bd41be04e UnityEngine.TestRunner.dll:UnityEngine.TestTool
 259d013faac28e8ba0aa2a7542273735 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.TestResultRendererCallback
-8b32f73088f4d3d0c98d4a451f4180ec Assembly-CSharp.dll:.Customer
+c8356984f00a5d657456aa043dd60347 Assembly-CSharp.dll:.Customer
 931f489e44eadf809e9310429c99dde5 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioListenerExtension
 fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
@@ -212,7 +213,7 @@ a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 8a874a8207a7664bdf44e61f28717254 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 fe2d355deb0ca31d59a0a7cf4d141fc3 Assembly-CSharp.dll:TMPro.Examples.Benchmark04
-a7d4330997c9546fa00d299282d67272 Assembly-CSharp.dll:.PlayerData
+02359f3fbfbeffbd4468e6dafae85194 Assembly-CSharp.dll:.PlayerData
 e6cf058ec69e4c02d6ff7a780b999ecd Assembly-CSharp.dll:.ChefCatRecruitStats
 4d16cfbaa8e821a2b370e80844a0e9bc Assembly-CSharp.dll:TMPro.Examples.TextMeshSpawner
 e63944317d2f5958e31963668bb29158 Assembly-CSharp.dll:TMPro.Examples.VertexShakeB
@@ -231,6 +232,6 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 0784d4fd5b93bd75440d01eb2fac4233 Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 8b1fe5dfdcf943fb3b72506b9f19335f Assembly-CSharp.dll:.EnvMapAnimator
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
-d2fda20db8d0f0c5f34169351155539b Assembly-CSharp.dll:.RecipePanelData
-02e28fe4d7807051a58d1b56ac223d90 Assembly-CSharp.dll:.CatfePlayerScript
+ef9cc60c83daef4501e86a9aa596f349 Assembly-CSharp.dll:.RecipePanelData
+42d41cb4b5df49fed08d8f26b46d9a44 Assembly-CSharp.dll:.CatfePlayerScript
 27e1adbff53d2875d34aee83a87ed22d Assembly-CSharp-firstpass.dll:.IAPDemo

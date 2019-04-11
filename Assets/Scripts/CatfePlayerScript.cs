@@ -217,7 +217,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		GameObject newRest = (GameObject)Instantiate(newRestaurantPrefab);
 		newRest.transform.position = location;
 		//getting the correct sprite
-		newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r);
+		//newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r);
 		//saving the location that the restaurant is in
 		int loc = -1;
 		int i = 0;
@@ -241,12 +241,14 @@ public class CatfePlayerScript : MonoBehaviour {
 		foreach(RestaurantData r in PlayerData.playerData.restaurants)
 		{
 			GameObject newRest = (GameObject)Instantiate(newRestaurantPrefab);
-			newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r.type);
+			//newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r.type);
 			//setting the data of this restaurant to be the saved data.
 			newRest.GetComponent<Restaurant>().data = r;
 			newRest.transform.SetParent(city.transform);
-			newRest.transform.position = new Vector3(restaurantLocations[r.location].x, restaurantLocations[r.location].y, restaurantLocations[r.location].z - 0.2f);
+			newRest.transform.position = new Vector3(restaurantLocations[r.location].x, restaurantLocations[r.location].y, restaurantLocations[r.location].z);
 			//r.PrintAll();
+			//removing the forsale area if there is a restaurant there
+			restaurantLocationsParent.transform.GetChild(r.location).gameObject.SetActive(false);
 		}
 	}
 
