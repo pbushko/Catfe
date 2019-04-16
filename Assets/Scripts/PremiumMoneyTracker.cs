@@ -25,4 +25,9 @@ public class PremiumMoneyTracker : MonoBehaviour
         premText.text = "" + premcur;
     }
 
+    public static void SetMoney(int amount)
+    {
+        premcur = amount;
+        premText.text = "" + premcur;
+    }
 }
