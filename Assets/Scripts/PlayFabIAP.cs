@@ -18,7 +18,8 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
     public void Start()
     {
         // Make PlayFab log in
-        Login();
+        //Login();
+        RefreshIAPItems();
     }
 
     public void OnGUI()
@@ -50,6 +51,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         }
     }
 
+/*
     // This is invoked manually on Start to initiate login ops
     private void Login()
     {
@@ -64,6 +66,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
             RefreshIAPItems();
         }, error => Debug.LogError(error.GenerateErrorReport()));
     }
+    */
 
     private void RefreshIAPItems()
     {
@@ -175,7 +178,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         return PurchaseProcessingResult.Complete;
     }
 
-    // This is invvoked manually to initiate purchase
+    // This is invoked manually to initiate purchase
     void BuyProductID(string productId)
     {
         // If IAP service has not been initialized, fail hard
@@ -190,7 +193,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
     {
         PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), result =>
         {
-            PremiumMoneyTracker.SetMoney(result.VirtualCurrency["GT"]); 
+            PremiumMoneyTracker.SetMoney(result.VirtualCurrency["PM"]); 
         },
         error => Debug.LogError(error.GenerateErrorReport()));
     }

@@ -39,6 +39,7 @@ public class PlayFabLogin : MonoBehaviour
         //SetItemCutsomData(i, "891C2D292A879E29", "5055A279219519E2");
         Debug.Log("Logged in!");
         CatInventory.catInv.GetPlayFabDecor();
+        PremiumMoneyTracker.SetMoney(result.InfoResultPayload.UserVirtualCurrency["PM"]); 
         MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
     }
 
