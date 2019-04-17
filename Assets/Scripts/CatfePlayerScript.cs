@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using PlayFab;
+using PlayFab.ClientModels;
+using PlayFab.Json;
 
 public class CatfePlayerScript : MonoBehaviour {
 
@@ -236,7 +239,7 @@ public class CatfePlayerScript : MonoBehaviour {
 
 		//adding in the restaurant into the user's inventory
 		PurchaseItemRequest request = new PurchaseItemRequest();
-        request.ItemId = "Catfe";
+        request.ItemId = "catfe";
         request.CatalogVersion = "Items";
         request.VirtualCurrency = "NM";
         request.Price = 0;

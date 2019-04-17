@@ -8,9 +8,6 @@ using UnityEngine.Purchasing;
 
 public class PlayFabIAP : MonoBehaviour, IStoreListener
 {
-    //the panel that IAPs will be put into
-    public Transform panel;
-
     //the button where the IAP info will be
     public GameObject infoButton;
 
@@ -52,27 +49,14 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
                     BuyProductID(item.ItemId);                    
                 }
                 //adding in our custom button
-                
+                GameObject newButton = (GameObject)Instantiate(infoButton);
+                newButton.transform.SetParent(gameObject.transform);
+                //newButton.GetComponent<IAPData>().SetData(item);
+                //set the on click in set data
+                //newButton.GetComponent<Button>().onClick.AddListener(() => BuyProductID(item.ItemId));
             }
         }
     }
-
-/*
-    // This is invoked manually on Start to initiate login ops
-    private void Login()
-    {
-        // Login with Android ID
-        PlayFabClientAPI.LoginWithAndroidDeviceID(new LoginWithAndroidDeviceIDRequest()
-        {
-            CreateAccount = true,
-            AndroidDeviceId = SystemInfo.deviceUniqueIdentifier
-        }, result => {
-            Debug.Log("Logged in");
-            // Refresh available items 
-            RefreshIAPItems();
-        }, error => Debug.LogError(error.GenerateErrorReport()));
-    }
-    */
 
     private void RefreshIAPItems()
     {
