@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: huck.zou@gmail.com
-  DevAccountToken: 
+  DevAccountEmail: pbushko@gmail.com
+  DevAccountToken: m834kczqur618e3zfzkw6hf1ahdcimg4ye56jmm6makudhm7teraqxi5e6m95nogdrs1bkhaj8iny9pkwbtaod3o7i3hga85e8i4td64opwo9qhwbwkae1u75t4a4sw8ghkwsm8kmn4wqfnayhiyid94h5qtcojn7t36krgcoxx4d9wd6j1ffc376nxt71ci778a8aoo
   SelectedStudio: Elby
   SdkPath: Assets/PlayFabSdk
   EdExPath: 

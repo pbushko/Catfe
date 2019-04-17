@@ -58,7 +58,6 @@ public class PlayFabLogin : MonoBehaviour
         }, error => {});
     }
 
-
     public static void SetItemCutsomData(Dictionary<string, string> newData, string itemInstanceId, string playerId)
     {
         UpdateUserInventoryItemDataRequest request = new UpdateUserInventoryItemDataRequest();

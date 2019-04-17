@@ -232,7 +232,17 @@ public class CatfePlayerScript : MonoBehaviour {
 		newRest.GetComponent<Restaurant>().data.location = loc;
 		newRest.GetComponent<Restaurant>().data.type = r;
 		newRest.transform.SetParent(restaurantLocationsParent.transform);
-		PlayerData.playerData.restaurants.Add(newRest.GetComponent<Restaurant>().data);
+		//PlayerData.playerData.restaurants.Add(newRest.GetComponent<Restaurant>().data);
+
+		//adding in the restaurant into the user's inventory
+		PurchaseItemRequest request = new PurchaseItemRequest();
+        request.ItemId = "Catfe";
+        request.CatalogVersion = "Items";
+        request.VirtualCurrency = "NM";
+        request.Price = 0;
+		PlayFabClientAPI.PurchaseItem(request, result => {
+
+        }, error => {Debug.LogError(error.ErrorMessage);});
 	}
 
 	//loading in all the restaurants we own

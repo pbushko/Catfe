@@ -44,25 +44,16 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         // Draw menu to purchase items
         foreach (var item in Catalog)
         {
-            if (item.ItemId.Contains("premium_coin_bundle"))
+            if (item.ItemClass.Contains("IAP"))
             {
                 if (GUILayout.Button("Buy " + item.DisplayName))
                 {
                     // On button click buy a product
-                    BuyProductID(item.ItemId);
-                    UpdatePremiumCurrency();
+                    BuyProductID(item.ItemId);                    
                 }
+                //adding in our custom button
+                
             }
-            else if (item.ItemId.Contains("catFoodCandle"))
-            {
-                if (GUILayout.Button("Buy " + item.DisplayName))
-                {
-                    // On button click buy a product
-                    BuyProductID(item.ItemId);
-                    //UpdatePremiumCurrency();
-                }
-            }
-
         }
     }
 
@@ -139,12 +130,6 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
     }
 
-/*
-    public void OnPurchaseSucceded(Purchase purchase)
-    {
-        OpenIAB.consumeProduct(purchase);
-    }
-*/
     // This is invoked automatically when succesful purchase is ready to be processed
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs e)
     {
@@ -152,8 +137,6 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         // delivered on application start.
         // Production code should account for such case:
         // More: https://docs.unity3d.com/ScriptReference/Purchasing.PurchaseProcessingResult.Pending.html
-
-        MoneyTracker.SetMoneyText(10);
 
         if (!IsInitialized)
         {
@@ -193,12 +176,11 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
             // Pass in the signature
             Signature = googleReceipt.PayloadData.signature
         }, result => {
-            MoneyTracker.SetMoneyText(5);
+            UpdatePremiumCurrency();
             Debug.Log("Validation successful!");
         },
            error => 
            {
-               ErrorTracker.ChangeErrorText(error.GenerateErrorReport());
                Debug.Log("Validation failed: " + error.GenerateErrorReport());}
         );
 
