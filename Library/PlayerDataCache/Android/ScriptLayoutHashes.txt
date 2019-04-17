@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-/Users/huckzou/Desktop/cos448/cafe_non_dev_apk_playfab.aab
+C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Builds/v2.3.aab
 SceneListBegin?
 Assets/Catfe.unity
 SceneListEnd?
@@ -236,3 +236,4 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 ef9cc60c83daef4501e86a9aa596f349 Assembly-CSharp.dll:.RecipePanelData
 42d41cb4b5df49fed08d8f26b46d9a44 Assembly-CSharp.dll:.CatfePlayerScript
 27e1adbff53d2875d34aee83a87ed22d Assembly-CSharp-firstpass.dll:.IAPDemo
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ErrorTracker

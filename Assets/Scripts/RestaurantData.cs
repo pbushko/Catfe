@@ -321,7 +321,13 @@ public class DecorationData
 		id = d.ItemId;
 		name = d.DisplayName;
 		description = d.Description;
-		cost = (int)d.VirtualCurrencyPrices["NM"];
+		if (id == "catFoodCandle")
+		{
+			cost = (int)d.VirtualCurrencyPrices["RM"];
+		}
+		else {
+			cost = (int)d.VirtualCurrencyPrices["NM"];
+		}
 		sprite = d.ItemImageUrl;
 
 		//getting the customdata from the object
