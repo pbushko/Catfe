@@ -8,6 +8,8 @@ using UnityEngine.Purchasing;
 
 public class PlayFabIAP : MonoBehaviour, IStoreListener
 {
+    public static PlayFabIAP play;
+
     //the button where the IAP info will be
     public GameObject infoButton;
 
@@ -22,7 +24,8 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
     {
         // Make PlayFab log in
         //Login();
-        RefreshIAPItems();
+        //RefreshIAPItems();
+        play = this;
     }
 
     public void OnGUI()
@@ -41,24 +44,27 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         // Draw menu to purchase items
         foreach (var item in Catalog)
         {
-            if (item.ItemClass.Contains("IAP"))
+            //Debug.Log(item.ItemClass);
+            if (item.ItemClass != null && item.ItemClass.Contains("IAP"))
             {
                 if (GUILayout.Button("Buy " + item.DisplayName))
                 {
                     // On button click buy a product
                     BuyProductID(item.ItemId);                    
                 }
+                /*
                 //adding in our custom button
                 GameObject newButton = (GameObject)Instantiate(infoButton);
                 newButton.transform.SetParent(gameObject.transform);
                 //newButton.GetComponent<IAPData>().SetData(item);
                 //set the on click in set data
                 //newButton.GetComponent<Button>().onClick.AddListener(() => BuyProductID(item.ItemId));
+                */
             }
         }
     }
 
-    private void RefreshIAPItems()
+    public void RefreshIAPItems()
     {
         PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result => {
             Catalog = result.Catalog;

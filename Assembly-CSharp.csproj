@@ -192,6 +192,7 @@
      <Compile Include="Assets\Scripts\Decoration.cs" />
      <Compile Include="Assets\Scripts\EmployeeGenerator.cs" />
      <Compile Include="Assets\Scripts\ErrorTracker.cs" />
+     <Compile Include="Assets\Scripts\GridLayoutResizer.cs" />
      <Compile Include="Assets\Scripts\IngredientBoxScript.cs" />
      <Compile Include="Assets\Scripts\InventorySortingScript.cs" />
      <Compile Include="Assets\Scripts\MoneyTracker.cs" />
@@ -274,29 +275,23 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
- <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Editor">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Timeline">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.multiplayer-weaver.Editor">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
@@ -309,6 +304,12 @@
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.DataPrivacy">
+ <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.XR.LegacyInputHelpers">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
@@ -534,9 +535,6 @@
  </Reference>
  <Reference Include="winrt">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>C:/Users/pbush/Documents/0 Priscilla/CatfeGit/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>

@@ -41,6 +41,7 @@ public class PlayFabLogin : MonoBehaviour
         CatInventory.catInv.GetPlayFabDecor();
         PremiumMoneyTracker.SetMoney(result.InfoResultPayload.UserVirtualCurrency["PM"]); 
         MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
+        PlayFabIAP.play.RefreshIAPItems();
     }
 
     private void OnLoginFailure(PlayFabError error)
