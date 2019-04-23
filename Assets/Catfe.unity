@@ -5176,19 +5176,6 @@ MonoBehaviour:
   restTableDecorPanel: {fileID: 441540693}
   restFloorDecorPanel: {fileID: 1152883130}
   restDecorPanel: {fileID: 1642180246}
-  recipeToPurchase:
-    id: 
-    itemType: 
-    recipeName: 
-    ingredients: 
-    utensils: 0
-    dish: 0
-    price: 0
-    cost: 0
-    starLevel: 0
-    foodType: 0
-    sprite: 
-    description: 
   decorToPurchase:
     id: 
     name: 
@@ -5242,21 +5229,6 @@ MonoBehaviour:
   playerMoney: 500
   catSprites: []
   catSpriteNames: []
-  recipes: []
-  minigameRecipes: []
-  slop:
-    id: 
-    itemType: 
-    recipeName: 
-    ingredients: 
-    utensils: 0
-    dish: 0
-    price: 0
-    cost: 0
-    starLevel: 0
-    foodType: 0
-    sprite: 
-    description: 
   allDecor: []
   allNotPurchasedDecorGameObjects: []
   allNotPurchasedRecipeGameObjects: []
@@ -5264,7 +5236,6 @@ MonoBehaviour:
   waiters: []
   restaurants: []
   purchasedDecor: []
-  purchasedRecipes: []
   decorToBuy: {fileID: 1944712191052060, guid: 0d5d5b7e9c756234ab70e9b25df69f5e, type: 3}
   decorSlots: {fileID: 0}
   recipesToBuy: {fileID: 1553123501831926, guid: 9e36ea60417bcb7419ea4e64a396aab6,
@@ -11214,6 +11185,7 @@ MonoBehaviour:
     TitleDataKeys: []
     UserDataKeys: []
     UserReadOnlyDataKeys: []
+  iap: {fileID: 1122924374}
 --- !u!4 &2048106838
 Transform:
   m_ObjectHideFlags: 0
@@ -12860,7 +12832,7 @@ PrefabInstance:
     - target: {fileID: 7316035418173403084, guid: 23e03596ec440e64e9a1a8b2122cd2ad,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 672565705, guid: 23e03596ec440e64e9a1a8b2122cd2ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12948,7 +12920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 982490247, guid: 23e03596ec440e64e9a1a8b2122cd2ad, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4814336544323638881, guid: 23e03596ec440e64e9a1a8b2122cd2ad,
         type: 3}

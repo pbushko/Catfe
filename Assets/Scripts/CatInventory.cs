@@ -232,6 +232,7 @@ public class CatInventory : MonoBehaviour {
 		{
 			w.GetComponent<WaiterCatRecruitStats>().SetRestaurantButton();
 		}
+		/*
 		foreach(GameObject d in decor)
 		{
 			d.GetComponent<Decoration>().SetAddToRestaurant();
@@ -240,6 +241,7 @@ public class CatInventory : MonoBehaviour {
 		{
 			r.GetComponent<RecipePanelData>().SetAddToRestaurant();
 		}
+		*/
 	}
 	
 	public void RemoveAddToRestaurant()
@@ -252,6 +254,7 @@ public class CatInventory : MonoBehaviour {
 		{
 			w.GetComponent<WaiterCatRecruitStats>().RemoveRestaurantButton();
 		}
+		/*
 		foreach(GameObject d in decor)
 		{
 			d.GetComponent<Decoration>().RemoveAddToRestaurant();
@@ -260,6 +263,7 @@ public class CatInventory : MonoBehaviour {
 		{
 			r.GetComponent<RecipePanelData>().RemoveAddToRestaurant();
 		}
+		*/
 	}
 
 	public void AddToDecorCount(int i)

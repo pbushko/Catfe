@@ -84,7 +84,9 @@ public class CustomerGenerator : MonoBehaviour {
 
         //setting the info for the customer
         c.SetCustomerNumber(m_customerCount);
-        c.SetOrderSprites(PlayerScript.GetRandomRecipe());
+        Recipe r = PlayerScript.GetRandomRecipe();
+        Debug.Log(r.ToString());
+        c.SetOrderSprites(r);
 
         //setting the customer's body sprites
         int rand = Random.Range(0, 2);

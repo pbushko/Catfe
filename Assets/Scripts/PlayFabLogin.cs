@@ -4,6 +4,7 @@ using PlayFab.Events;
 using PlayFab.ClientModels;
 using PlayFab.Json;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +13,8 @@ public class PlayFabLogin : MonoBehaviour
 
     public string id;
     public PlayFab.ClientModels.GetPlayerCombinedInfoRequestParams infoRequestParams;
+
+    public PlayFabIAP iap;
 
     public void Start()
     {
@@ -41,7 +44,7 @@ public class PlayFabLogin : MonoBehaviour
         CatInventory.catInv.GetPlayFabDecor();
         PremiumMoneyTracker.SetMoney(result.InfoResultPayload.UserVirtualCurrency["PM"]); 
         MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
-        PlayFabIAP.play.RefreshIAPItems();
+        iap.RefreshIAPItems();
     }
 
     private void OnLoginFailure(PlayFabError error)
@@ -70,6 +73,30 @@ public class PlayFabLogin : MonoBehaviour
         }, error => {
             Debug.LogError(error.ErrorMessage);
         });
+    }
+
+    public static List<Recipe> GetMinigameRecipes()
+    {
+        List<Recipe> toRet = new List<Recipe>();
+        PlayFab.ClientModels.GetCatalogItemsRequest itemRequest = new PlayFab.ClientModels.GetCatalogItemsRequest();
+		itemRequest.CatalogVersion = "Items";
+		PlayFabClientAPI.GetCatalogItems(itemRequest, result => {
+			List<PlayFab.ClientModels.CatalogItem> items = result.Catalog;
+			foreach (PlayFab.ClientModels.CatalogItem i in items)
+			{
+				if(i.ItemClass == "Recipe")
+				{
+                    if (i.ItemId == "carrotSalad" || i.ItemId == "beefAndChicken" || i.ItemId == "carrotSoup")
+                    {
+					    toRet.Add(new Recipe(i));
+                        Debug.Log(i.ItemId);
+                    }
+					
+				}
+			}
+		}, error => {}
+		);
+        return toRet;
     }
     
 }

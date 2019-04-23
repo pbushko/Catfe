@@ -66,6 +66,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
 
     public void RefreshIAPItems()
     {
+        play = this;
         PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result => {
             Catalog = result.Catalog;
 

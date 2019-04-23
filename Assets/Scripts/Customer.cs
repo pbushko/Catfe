@@ -66,7 +66,12 @@ public class Customer : MonoBehaviour
     public void SetOrderSprites(Recipe r)
     {
         m_order = r;
-        order.sprite = PlayerData.GetFoodSprite(r);
+        if (r != null) {
+            order.sprite = PlayerData.GetFoodSprite(r.recipeName);
+        }
+        else {
+            order.sprite = PlayerData.GetFoodSprite("");
+        }
         for (int i = 0; i < ingreds.Count; i++)
         {
             //if there are fewer ingredients than sprites to list

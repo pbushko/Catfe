@@ -40,7 +40,7 @@ public class RecipePanelData : MonoBehaviour {
 		}
 		if (sprite != null)
         {
-            sprite.sprite = PlayerData.GetFoodSprite(newData);
+            sprite.sprite = newData.sprite;
         }
         data = newData;
     }

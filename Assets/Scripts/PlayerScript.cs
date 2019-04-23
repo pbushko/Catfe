@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
         m_nextLocation = transform.position;
         m_needsToMove = false;
 
-        m_recipes = PlayerData.playerData.minigameRecipes;
+        m_recipes = PlayFabLogin.GetMinigameRecipes();
     }
 
     //to reset the minigame after it's been done more than once
@@ -105,7 +105,7 @@ public class PlayerScript : MonoBehaviour
                     Recipe r = GetRecipe(m_itemsInHand.ToArray(), tool.utensil.utensil);
 
                     //either putting a recipe in or finding what we should get from clicking on the utensil
-                    tool.Loading(PlayerData.GetFoodSprite(r), r);
+                    tool.Loading(PlayerData.GetFoodSprite(r.recipeName), r);
 
                     m_itemsInHand.Clear();
                 }
@@ -136,7 +136,12 @@ public class PlayerScript : MonoBehaviour
     private static void ChangePlateInHand(Recipe r)
     {
         m_plateInHand = r;
-        m_plate.sprite = PlayerData.GetFoodSprite(r);
+        if (r != null) {
+            m_plate.sprite = PlayerData.GetFoodSprite(r.recipeName);
+        }
+        else {
+            m_plate.sprite = PlayerData.GetFoodSprite("");
+        }
     }
 
     //allows the buttons from the crates/cooking utens to be added into the player queue
@@ -157,7 +162,7 @@ public class PlayerScript : MonoBehaviour
 
     Recipe GetRecipe(Ingredients[] items, CookingTools uten)
     {
-        foreach (Recipe r in PlayerData.playerData.recipes)
+        foreach (Recipe r in m_recipes)
         {
             if (r.SameRecipe(items, uten))
             {

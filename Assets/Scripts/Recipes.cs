@@ -12,7 +12,6 @@ public enum CookingTools { Knife, Oven, Stove, Blender, none };
 public enum Dishes { CarrotSalad, ChickenAndBeef, CarrotSoup, none };
 
 //a recipe object; stores what is needed for each recipe
-[System.Serializable]
 public class Recipe 
 {
     public string id;
@@ -37,7 +36,7 @@ public class Recipe
 
     public RestaurantType foodType;
 
-	public string sprite;
+	public Sprite sprite;
 
     public string description;
 
@@ -81,17 +80,29 @@ public class Recipe
 		recipeName = d.DisplayName;
 		description = d.Description;
 		cost = (int)d.VirtualCurrencyPrices["NM"];
-		sprite = d.ItemImageUrl;
+		sprite = PlayerData.GetFoodSprite(d.ItemImageUrl);
 
 		//getting the customdata from the object
 		var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(d.CustomData);
 		starLevel = 0;
-        //Debug.Log(custom);
+        
 		if (custom["StarLevel"] != "")
 		{
 			starLevel = Int32.Parse(custom["StarLevel"]);
 		}
-        
+        if (custom["Ingredients"] != "")
+        {
+            ingredients = new List<Ingredients>();
+            string[] ingreds = custom["Ingredients"].Split(',');
+            foreach (string s in ingreds)
+            {
+                ingredients.Add(GetXmlIngredient(s));
+            }
+        }
+        if (custom["CookingTool"] != "")
+        {
+            utensils = GetXmlCookingTool(custom["CookingTool"]);
+        }
 	}
 
     private Ingredients GetXmlIngredient(string s)

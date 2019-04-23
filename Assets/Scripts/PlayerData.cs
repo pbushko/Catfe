@@ -37,7 +37,7 @@ public class PlayerData : MonoBehaviour
 	public GameObject recipesToBuy;
 	public GameObject recipeSlots;
 
-	private static List<Sprite> m_foods;
+	private static Dictionary<string, Dictionary<string, Sprite>> m_sprites;
 
     private static List<string> m_foodNames = new List<string>();
 
@@ -56,23 +56,27 @@ public class PlayerData : MonoBehaviour
 			Destroy(gameObject);
 		}
 
+		m_sprites = new Dictionary<string, Dictionary<string, Sprite>>();
+
 		catSprites = new List<Sprite>(Resources.LoadAll<Sprite>("cats"));
 		catSpriteNames = new List<string>();
+		Dictionary<string, Sprite> temp = new Dictionary<string, Sprite>();
 		foreach (Sprite s in catSprites)
 		{
 			catSpriteNames.Add(s.name);
+			temp.Add(s.name, s);
 		}
+		m_sprites.Add("cat", temp);
 		//loading the food sprites
-		m_foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
+		List<Sprite> m_foods = new List<Sprite>(Resources.LoadAll<Sprite>("Foods"));
 		//Adding the food names to allow us to search for the sprite
+		Dictionary<string, Sprite> foodTemp = new Dictionary<string, Sprite>();
         foreach (Sprite s in m_foods)
         {
             m_foodNames.Add(s.name);
+			foodTemp.Add(s.name, s);
         }
-		//LoadRecipes();
-		//LoadDecor();
-		//SetDecorToBuy();
-		SetRecipesToBuy();
+		m_sprites.Add("food", foodTemp);
 	}
 
 	void OnApplicationQuit()
@@ -138,7 +142,7 @@ public class PlayerData : MonoBehaviour
 
 	public Sprite GetCatSprite(string spriteName)
 	{
-		return catSprites[catSpriteNames.IndexOf(spriteName)];
+		return m_sprites["cat"][spriteName];
 	}
 
 	public void PrintEmployees()
@@ -155,135 +159,14 @@ public class PlayerData : MonoBehaviour
 		}
 	}
 
-/*
-	private void LoadRecipes()
-	{
-		TextAsset recipiesText = (TextAsset)Resources.Load("recipes", typeof(TextAsset));
-
-		minigameRecipes = new List<Recipe>();
-
-		if (recipiesText != null)
-		{
-			XmlDocument recipesXml = new XmlDocument();
-			recipesXml.LoadXml(recipiesText.text);
-
-			recipes = new List<Recipe>();
-
-			foreach (XmlNode type in recipesXml.SelectSingleNode("recipes").SelectNodes("foodType"))
-			{
-				string mealType = type.Attributes["type"].Value;
-				foreach(XmlNode star in type.SelectNodes("star"))
-				{
-					int starLevel = int.Parse(star.Attributes["level"].Value);
-					foreach (XmlNode recipe in star.SelectNodes("recipe"))
-					{
-						Recipe r = new Recipe(recipe, mealType, starLevel);
-						if (r.idNum == 10 || r.idNum == 11 || r.idNum == 12)
-						{
-							minigameRecipes.Add(r);
-						}
-						if (r.idNum == 13)
-						{
-							slop = r;
-						}
-						recipes.Add(r);
-					}
-				}
-			}
-		}
-		else
-		{
-			Debug.Log("Couldn't load the recipes.");
-		}
-	}
-	*/
-
-	private void LoadDecor()
-	{
-		TextAsset decorText = (TextAsset)Resources.Load("decorations", typeof(TextAsset));
-
-		if (decorText != null)
-		{
-			XmlDocument decorsXml = new XmlDocument();
-			decorsXml.LoadXml(decorText.text);
-
-			allDecor = new List<DecorationData>();
-
-			foreach (XmlNode type in decorsXml.SelectSingleNode("decorations").SelectNodes("type"))
-			{
-				string location = type.Attributes["type"].Value;
-				foreach(XmlNode star in type.SelectNodes("star"))
-				{
-					int starLevel = int.Parse(star.Attributes["level"].Value);
-					foreach (XmlNode decor in star.SelectNodes("decor"))
-					{
-						allDecor.Add(new DecorationData(decor, starLevel, location));
-					}
-				}
-			}
-		}
-		else
-		{
-			Debug.Log("Couldn't load the decor.");
-		}
-	}
-
-	//used to populate the store with its decor items
-	public void SetDecorToBuy()
-	{
-		allNotPurchasedDecorGameObjects = new List<GameObject>();
-		foreach (DecorationData d in allDecor)
-		{
-			//decorToBuy.transform.GetChild(i).GetComponent<Decoration>().data = allDecor[i];
-			//making the decor panel and populating it
-			bool wasFound = false;
-			foreach (DecorationData pd in purchasedDecor)
-			{
-				if (d.IsEqual(pd))
-				{
-					wasFound = true;
-					break;
-				}
-			}
-			if (!wasFound)
-			{
-				GameObject newDecor = (GameObject)Instantiate(decorToBuy);
-				newDecor.GetComponent<Decoration>().ResetData(d);
-				newDecor.transform.SetParent(decorSlots.transform);
-				allNotPurchasedDecorGameObjects.Add(newDecor);
-			}
-		}
-	}
-
-	public void SetRecipesToBuy()
-	{
-		/*for (int i = 0; i < recipesToBuy.transform.childCount; i++)
-		{
-			recipesToBuy.transform.GetChild(i).GetComponent<RecipePanelData>().data = recipes[i];
-		} */
-		foreach (Recipe r in recipes)
-		{
-			GameObject newRecipe = (GameObject)Instantiate(recipesToBuy);
-			newRecipe.GetComponent<RecipePanelData>().ResetData(r);
-			newRecipe.transform.SetParent(recipeSlots.transform);
-			allNotPurchasedRecipeGameObjects.Add(newRecipe);
-		}
-	}
-
-	public static Sprite GetFoodSprite(Recipe food)
+	public static Sprite GetFoodSprite(string s)
     {
-        if (food != null)
-        {
-            //need to find the food and then return its sprite if possible
-            int i = m_foodNames.IndexOf(food.GetRecipeName());
-            //compare against -1 since that is returned when not found
-            if (i != -1)
-            {
-                return m_foods[i];
-            }
-        }
-        //return no image if no match
-        return m_foods[m_foodNames.IndexOf("None")];
+		Sprite value;
+		if (s != null && m_sprites["food"].TryGetValue(s, out value))
+		{
+			return value;
+		}
+		return m_sprites["food"]["None"];
     }
 
 }
