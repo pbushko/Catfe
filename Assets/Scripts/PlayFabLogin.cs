@@ -16,6 +16,8 @@ public class PlayFabLogin : MonoBehaviour
 
     public PlayFabIAP iap;
 
+    public static string playerId;
+
     public void Start()
     {
         //Note: Setting title Id here can be skipped if you have set the value in Editor Extensions already.
@@ -41,6 +43,7 @@ public class PlayFabLogin : MonoBehaviour
         //i.Add("outfit", "{\"hat\":\"wow\",\"glasses\":\"sunglasses\"}");
         //SetItemCutsomData(i, "891C2D292A879E29", "5055A279219519E2");
         Debug.Log("Logged in!");
+        playerId = result.PlayFabId;
         CatInventory.catInv.GetPlayFabDecor();
         PremiumMoneyTracker.SetMoney(result.InfoResultPayload.UserVirtualCurrency["PM"]); 
         MoneyTracker.SetMoneyText(result.InfoResultPayload.UserVirtualCurrency["NM"]);
@@ -67,6 +70,10 @@ public class PlayFabLogin : MonoBehaviour
         UpdateUserInventoryItemDataRequest request = new UpdateUserInventoryItemDataRequest();
         request.ItemInstanceId = itemInstanceId;
         request.Data = newData;
+        foreach(KeyValuePair<string, string> kvp in newData)
+        {
+            Debug.Log("Key: " + kvp.Key + " Value: " + kvp.Value);
+        }
         request.PlayFabId = playerId;
         PlayFabServerAPI.UpdateUserInventoryItemCustomData(request, result => {
             Debug.Log("data updated!");

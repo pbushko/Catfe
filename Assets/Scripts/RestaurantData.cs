@@ -129,7 +129,9 @@ public class WaiterData
 	public int timesTrained;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	public List<string> sprites;
+	public Dictionary<string, string> sprites;
+
+	public Dictionary<string, string> accessorySprites;
 
 	//the amount this cat makes per hour
 	public int income;
@@ -149,8 +151,28 @@ public class WaiterData
 		//when initializing the waiter, it will always have been trained 0 times
 		timesTrained = 0;
 		isTraining = false;
-		sprites = s;
+		sprites = new Dictionary<string, string>();
+		accessorySprites = new Dictionary<string, string>();
+		sprites.Add("body", s[0]);
+		sprites.Add("face", s[1]);
+		sprites.Add("tail", "");
+		sprites.Add("shirt", "");
+		sprites.Add("pants", "");
+
+		accessorySprites.Add("hat", "");
+		accessorySprites.Add("glasses", "");
+		accessorySprites.Add("arm", "");
+		accessorySprites.Add("feet", "");
 		income = i;
+	}
+
+	public WaiterData(ItemInstance w)
+	{		
+		name = w.CustomData["name"];
+		rarity = Int32.Parse(w.CustomData["rarity"]);
+		timesTrained = Int32.Parse(w.CustomData["times_trained"]);
+		sprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(w.CustomData["main_body"]);
+		accessorySprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(w.CustomData["accessories"]);
 	}
 
 	public string ToString()
@@ -161,6 +183,20 @@ public class WaiterData
 				"Income: " + income;
 
 		return s;
+	}
+
+	public Dictionary<string, string> GetCustomDataFromWaiterData()
+	{
+		Dictionary<string, string> toRet = new Dictionary<string, string>();
+		toRet.Add("name", name);
+		toRet.Add("rarity", ""+rarity);
+		toRet.Add("times_trained", ""+timesTrained);
+
+		string basicSprites = JsonConvert.SerializeObject(sprites, Newtonsoft.Json.Formatting.Indented);
+		toRet.Add("main_body", basicSprites);
+		string accSprites = JsonConvert.SerializeObject(accessorySprites, Newtonsoft.Json.Formatting.Indented);
+		toRet.Add("accessories", accSprites);
+		return toRet;
 	}
 
 }
@@ -205,6 +241,14 @@ public class ChefData
 		income = i;
 		isTraining = false;
 		specialties = sp;
+	}
+
+
+	public ChefData(ItemInstance c)
+	{
+		//getting the customdata from the object
+		//var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["outfit"]);
+		name = c.CustomData["name"];		
 	}
 
 	public string ToString()

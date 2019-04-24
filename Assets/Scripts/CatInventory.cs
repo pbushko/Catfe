@@ -20,12 +20,15 @@ public class CatInventory : MonoBehaviour {
 	public GameObject RecipeInfoPrefab;
 
 	public GameObject ChefPanel;
-	public GameObject WaiterPanel;
 	public GameObject DecorPanel;
 	public GameObject RecipePanel;
 
 	public GameObject InventoryDecorPanel;
 	public GameObject InventoryRecipePanel;
+	public GameObject InventoryWaiterPanel;
+
+
+
 	public GameObject DecorInvWallPanel;
 	public GameObject DecorInvTablePanel;
 	public GameObject DecorInvFloorPanel;
@@ -49,9 +52,7 @@ public class CatInventory : MonoBehaviour {
 		recipes = new List<GameObject>();
 		notPurchasedDecor = new List<GameObject>();
 		StartChefs(chefStats);
-		StartWaiters(waiterStats);
-		//StartDecor(decor);
-		//StartRecipes(recipes);
+		//StartWaiters(waiterStats);
 		//StartDecorPlacementSpace();
 		//StartDecorSpacePurchased();
 	}
@@ -74,34 +75,9 @@ public class CatInventory : MonoBehaviour {
 		foreach (WaiterData w in PlayerData.playerData.waiters)
 		{
 			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
-			cat.transform.SetParent(WaiterPanel.transform, false);
+			cat.transform.SetParent(InventoryWaiterPanel.transform, false);
 			cat.GetComponent<WaiterCatRecruitStats>().data = w;
 			waiterStats.Add(cat);
-		}
-	}
-	
-	//Initialization of owned decor
-	public void StartDecor(List<GameObject> decor)
-	{
-		foreach (DecorationData d in PlayerData.playerData.purchasedDecor)
-		{
-			GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-			dec.transform.SetParent(DecorPanel.transform, false);
-			dec.GetComponent<Decoration>().data = d;
-			decor.Add(dec);
-
-		}
-	}
-	
-	//Initialization of owned recipes
-	public void StartRecipes(List<GameObject> recipes)
-	{
-		foreach (Recipe r in PlayerData.playerData.purchasedRecipes)
-		{
-			GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
-			recipe.transform.SetParent(RecipePanel.transform, false);			
-			recipe.GetComponent<RecipePanelData>().data = r;
-			recipes.Add(recipe);
 		}
 	}
 
@@ -126,46 +102,6 @@ public class CatInventory : MonoBehaviour {
 					break;
 			}
 		}
-	}
-
-	// Puts either chef or waiter cat into player's inventory; one of the inputs should be null
-	public void AddCat(ChefData c, WaiterData w)
-	{
-		if (c != null)
-		{
-			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
-        	cat.transform.SetParent(ChefPanel.transform, false);
-			PlayerData.playerData.chefs.Add(c);
-			chefStats.Add(cat);
-			cat.GetComponent<ChefCatRecruitStats>().data = c;
-		}
-		else if (w != null)
-		{
-			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
-        	cat.transform.SetParent(WaiterPanel.transform, false);
-			//LOOK HERE, WHY IS IT ADDING THE CHEF CAT TO PLAYER DATA ABOVE BUT NOT HERE?
-			PlayerData.playerData.waiters.Add(w);
-			waiterStats.Add(cat);
-			cat.GetComponent<WaiterCatRecruitStats>().data = w;
-		}
-	}
-
-	public void AddDecor(DecorationData d)
-	{
-		GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
-		dec.transform.SetParent(DecorPanel.transform, false);
-		//as the first purchase, there will always only be one in the inventory
-		d.numInInventory = 1;
-		dec.GetComponent<Decoration>().data = d;
-		decor.Add(dec);
-	}
-
-	public void AddRecipe(Recipe r)
-	{
-		GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
-		recipe.transform.SetParent(RecipePanel.transform, false);
-		recipe.GetComponent<RecipePanelData>().data = r;
-		recipes.Add(recipe);
 	}
 
 	public void LayOffChefCat(GameObject c)
@@ -273,7 +209,7 @@ public class CatInventory : MonoBehaviour {
 
 	public void DeactivateAll() {
 		ChefPanel.SetActive(false);
-		WaiterPanel.SetActive(false);
+		InventoryWaiterPanel.SetActive(false);
 		DecorPanel.SetActive(false);
 		RecipePanel.SetActive(false);
 	}
@@ -381,7 +317,14 @@ public class CatInventory : MonoBehaviour {
         PlayFabClientAPI.GetUserInventory(request, result => {			
 			foreach (ItemInstance i in result.Inventory)
 			{
-				ownedItems.Add(i.ItemId, i);
+				if (i.ItemClass == "Decoration" || i.ItemClass == "Recipe")
+				{
+					ownedItems.Add(i.ItemId, i);
+				}
+				else if (i.ItemClass == "cat")
+				{
+					AddCat(null, new WaiterData(i));
+				}
 			}
 		}, error => {});
 
@@ -392,50 +335,91 @@ public class CatInventory : MonoBehaviour {
 			List<CatalogItem> items = result.Catalog;
 			foreach (CatalogItem i in items)
 			{
-				if (i.ItemClass == "Decoration")
+				switch (i.ItemClass)
 				{
-					DecorationData d = new DecorationData(i);
-					GameObject newDecor = (GameObject)Instantiate(DecorPref);
-					//if the item is owned, make sure the correct info is there
-					if (ownedItems.ContainsKey(i.ItemId))
-					{
-						decor.Add(newDecor);
-						GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
-						d.numInInventory = (int)ownedItems[i.ItemId].RemainingUses;
-						inv.GetComponent<Decoration>().ResetData(d);
-						inv.transform.SetParent(InventoryDecorPanel.transform);
-					}
-					else
-					{
-						notPurchasedDecor.Add(newDecor);
-					}
-					newDecor.GetComponent<Decoration>().ResetData(d);
-					newDecor.transform.SetParent(DecorPanel.transform);
-				}
-				else if(i.ItemClass == "Recipe")
-				{
-					Recipe d = new Recipe(i);
-					GameObject newRecipe = (GameObject)Instantiate(RecipeInfoPrefab);
-					//if the item is owned, make sure the correct info is there
-					if (ownedItems.ContainsKey(i.ItemId))
-					{
-						decor.Add(newRecipe);
-						GameObject inv = (GameObject)Instantiate(RecipeInfoPrefab);
-						inv.GetComponent<RecipePanelData>().ResetData(d);
-						inv.transform.SetParent(InventoryRecipePanel.transform);
-					}
-					//only put recipe panels in the store if they haven't been purchased
-					else
-					{
-						newRecipe.GetComponent<RecipePanelData>().ResetData(d);
-						newRecipe.transform.SetParent(RecipePanel.transform);
+					case "Decoration":
+						DecorationData d = new DecorationData(i);
+						GameObject newDecor = (GameObject)Instantiate(DecorPref);
+						//if the item is owned, make sure the correct info is there
+						if (ownedItems.ContainsKey(i.ItemId))
+						{
+							decor.Add(newDecor);
+							GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
+							d.numInInventory = (int)ownedItems[i.ItemId].RemainingUses;
+							inv.GetComponent<Decoration>().ResetData(d);
+							inv.transform.SetParent(InventoryDecorPanel.transform);
+						}
+						else
+						{
+							notPurchasedDecor.Add(newDecor);
+						}
+						newDecor.GetComponent<Decoration>().ResetData(d);
+						newDecor.transform.SetParent(DecorPanel.transform);
+						break;
+					case "Recipe":
+						Recipe r = new Recipe(i);
+						GameObject newRecipe = (GameObject)Instantiate(RecipeInfoPrefab);
 						recipes.Add(newRecipe);
-					}
+						//if the item is owned, make sure the correct info is there
+						if (ownedItems.ContainsKey(i.ItemId))
+						{
+							newRecipe.GetComponent<RecipePanelData>().ResetData(r);
+							newRecipe.transform.SetParent(InventoryRecipePanel.transform);
+						}
+						//only put recipe panels in the store if they haven't been purchased
+						else
+						{
+							newRecipe.GetComponent<RecipePanelData>().ResetData(r);
+							newRecipe.transform.SetParent(RecipePanel.transform);
+						}
+						break;
+					case "cat":
+						//AddCat(null, new WaiterData(i.ItemInstance));
+						break;
+					default:
+						break;
 				}
 			}
 		}, error => {}
 		);
 
+	}
+
+		// Puts either chef or waiter cat into player's inventory; one of the inputs should be null
+	public void AddCat(ChefData c, WaiterData w)
+	{
+		if (c != null)
+		{
+			GameObject cat = (GameObject)Instantiate(ChefInfoPrefab);
+        	cat.transform.SetParent(ChefPanel.transform, false);
+			chefStats.Add(cat);
+			cat.GetComponent<ChefCatRecruitStats>().data = c;
+		}
+		else if (w != null)
+		{
+			GameObject cat = (GameObject)Instantiate(WaiterInfoPrefab);
+        	cat.transform.SetParent(InventoryWaiterPanel.transform, false);
+			waiterStats.Add(cat);
+			cat.GetComponent<WaiterCatRecruitStats>().data = w;
+		}
+	}
+
+	public void AddDecor(DecorationData d)
+	{
+		GameObject dec = (GameObject)Instantiate(DecorInfoPrefab);
+		dec.transform.SetParent(DecorPanel.transform, false);
+		//as the first purchase, there will always only be one in the inventory
+		d.numInInventory = 1;
+		dec.GetComponent<Decoration>().data = d;
+		decor.Add(dec);
+	}
+
+	public void AddRecipe(Recipe r)
+	{
+		GameObject recipe = (GameObject)Instantiate(RecipeInfoPrefab);
+		recipe.transform.SetParent(RecipePanel.transform, false);
+		recipe.GetComponent<RecipePanelData>().data = r;
+		recipes.Add(recipe);
 	}
 
 	public void AddOwnedDecoration(DecorationData d, ItemInstance item)

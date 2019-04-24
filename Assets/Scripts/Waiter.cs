@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Waiter : MonoBehaviour {
 
@@ -11,39 +12,37 @@ public class Waiter : MonoBehaviour {
 	public SpriteRenderer face;
 	public SpriteRenderer accessory;
 
+	public Image bodyImage;
+	public Image faceImage;
+	public Image accessoryImage;
+
+	public bool isUI;
+
 	// Use this for initialization
 	void Start () {
 		m_fill = 0;
+		RefreshWaiter(waiter);
 		//waiter = EmployeeGenerator.GenerateWaiter();
-		//body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
-		//face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		//just some testing code
-		if (m_fill <= 5.0f)
-        {
-            m_fill += 0.05f;
-        }
-		else
-		{
-			WaiterData temp = EmployeeGenerator.GenerateWaiter();
-			Debug.Log(temp.ToString());
-			body.sprite = temp.sprites[0];
-			face.sprite = temp.sprites[1];
-			m_fill = 0;
-		}
-		*/
 	
 	}
 
 	public void RefreshWaiter(WaiterData newData)
 	{
 		waiter = newData;
-		body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[0]);
-		face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites[1]);
+		if (!isUI)
+		{
+			body.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites["body"]);
+			face.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites["face"]);
+		}
+		else
+		{
+			bodyImage.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites["body"]);
+			faceImage.sprite = PlayerData.playerData.GetCatSprite(waiter.sprites["face"]);
+		}
 	}
 
 }

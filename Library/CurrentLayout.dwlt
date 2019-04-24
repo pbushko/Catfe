@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 683, y: 444}
+  m_MinSize: {x: 679, y: 444}
   m_MaxSize: {x: 12008, y: 8044}
   vertical: 0
-  controlID: 13
+  controlID: 112
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 444}
   m_MaxSize: {x: 4002, y: 8044}
   vertical: 1
-  controlID: 115
+  controlID: 113
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,10 +214,10 @@ MonoBehaviour:
     y: 0
     width: 367
     height: 731
-  m_MinSize: {x: 204, y: 344}
-  m_MaxSize: {x: 4004, y: 8044}
+  m_MinSize: {x: 200, y: 322}
+  m_MaxSize: {x: 4004, y: 8022}
   vertical: 1
-  controlID: 14
+  controlID: 70
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,24 +505,24 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 40390000
-      m_LastClickedID: 14656
-      m_ExpandedIDs: 20efffff82fbffff7e380000c2380000fa3800002c390000183a0000383a0000643a0000
+      scrollPos: {x: 0, y: 270.00092}
+      m_SelectedIDs: 8c390000
+      m_LastClickedID: 14732
+      m_ExpandedIDs: 4aefffffa4f1ffffecf1ffff44f4ffff4af4ffffc8f4ffff82fbffff7e380000b23800002c390000303900008c390000183a0000643a0000703a00001e3b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: WaiterUICatSpriteHolder
+        m_OriginalName: WaiterUICatSpriteHolder
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -150350
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 10}
       m_SearchString: 
@@ -596,20 +596,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\pbush\Documents\0 Priscilla\CatfeGit
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 128}
-    m_SelectedIDs: 98320000
-    m_LastClickedID: 12952
-    m_ExpandedIDs: 00000000142e0000c22f0000c83000001e3200006a3200007a32000098320000b0320000d2320000e832000038330000bc33000060340000283500006c3500008a3500008e350000a2350000ea350000a83600005e3700000e4b0000104b0000124b0000144b0000164b0000184b00001a4b00001c4b000000ca9a3b
+    scrollPos: {x: 0, y: 68}
+    m_SelectedIDs: a4360000
+    m_LastClickedID: 13988
+    m_ExpandedIDs: 00000000142e0000c22f0000c83000001e3200007a32000098320000b0320000d2320000e832000038330000bc33000060340000283500006c3500008a3500008e350000a2350000ea350000a83600005e3700000e4b0000104b0000124b0000144b0000164b0000184b00001a4b00001c4b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -637,7 +637,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000142e0000c22f0000c83000001e3200006a3200007a32000098320000b0320000d2320000e832000038330000bc33000060340000283500006c3500008a3500008e350000a2350000ea350000a83600005e3700000e4b0000104b0000124b0000144b0000164b0000184b00001a4b00001c4b0000
+    m_ExpandedIDs: 00000000142e0000c22f0000c83000001e3200007a32000098320000b0320000d2320000e832000038330000bc33000060340000283500006c3500008a3500008e350000a2350000ea350000a83600005e3700000e4b0000104b0000124b0000144b0000164b0000184b00001a4b00001c4b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -662,24 +662,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 8c390000
+    m_LastClickedInstanceID: 14732
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 50310000382e000000000000
+    m_ExpandedInstanceIDs: 50310000382e000000000000c8300000fc2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WaiterCatSpriteHolder
+      m_OriginalName: WaiterCatSpriteHolder
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 13470
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
@@ -689,7 +689,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 210}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_DirectoriesAreaWidth: 151
 --- !u!114 &18

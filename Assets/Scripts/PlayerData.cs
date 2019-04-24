@@ -112,7 +112,7 @@ public class PlayerData : MonoBehaviour
 			SaveData data = (SaveData) formatter.Deserialize(file);
 
 			playerMoney = 1000;
-			chefs = data.chefs;
+			//chefs = data.chefs;
 			waiters = data.waiters;
 			restaurants = data.restaurants;
 			//purchasedDecor = data.purchasedDecor;
