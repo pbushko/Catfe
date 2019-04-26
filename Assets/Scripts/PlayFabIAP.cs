@@ -4,7 +4,9 @@ using PlayFab.Json;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Purchasing;
+
 
 public class PlayFabIAP : MonoBehaviour, IStoreListener
 {
@@ -23,44 +25,30 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
     public void Start()
     {
         // Make PlayFab log in
-        //Login();
-        //RefreshIAPItems();
         play = this;
     }
 
-    public void OnGUI()
+    private void PopulateIAPItems()
     {
-        // This line just scales the UI up for high-res devices
-        // Comment it out if you find the UI too large.
-        GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(3, 3, 3));
-
-        // if we are not initialized, only draw a message 
-        if (!IsInitialized)
-        {
-            GUILayout.Label("Initializing IAP and logging in...");
-            return;
-        }
-
+        ResetIAPItems();
         // Draw menu to purchase items
         foreach (var item in Catalog)
         {
             //Debug.Log(item.ItemClass);
             if (item.ItemClass != null && item.ItemClass.Contains("IAP"))
             {
-                if (GUILayout.Button("Buy " + item.DisplayName))
-                {
-                    // On button click buy a product
-                    BuyProductID(item.ItemId);                    
-                }
-                /*
-                //adding in our custom button
                 GameObject newButton = (GameObject)Instantiate(infoButton);
                 newButton.transform.SetParent(gameObject.transform);
-                //newButton.GetComponent<IAPData>().SetData(item);
-                //set the on click in set data
-                //newButton.GetComponent<Button>().onClick.AddListener(() => BuyProductID(item.ItemId));
-                */
+                newButton.GetComponent<PlayFabIAPData>().ResetData(new IAPData(item));
             }
+        }
+    }
+
+    private void ResetIAPItems()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 
@@ -69,7 +57,11 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
         play = this;
         PlayFabClientAPI.GetCatalogItems(new GetCatalogItemsRequest(), result => {
             Catalog = result.Catalog;
-
+            if (!IsInitialized)
+            {
+                Debug.Log("IAP not initialized.");
+            }
+            PopulateIAPItems();
             // Make UnityIAP initialize
             InitializePurchasing();
         }, error => Debug.LogError(error.GenerateErrorReport()));
@@ -179,7 +171,7 @@ public class PlayFabIAP : MonoBehaviour, IStoreListener
     }
 
     // This is invoked manually to initiate purchase
-    void BuyProductID(string productId)
+    public void BuyProductID(string productId)
     {
         // If IAP service has not been initialized, fail hard
         if (!IsInitialized) throw new Exception("IAP Service is not initialized!");
