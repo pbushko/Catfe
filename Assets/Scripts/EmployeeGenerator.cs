@@ -101,14 +101,14 @@ public class EmployeeGenerator {
 		//if the body and face sprites haven't been separated yet, do that now
 		if (bodies == null || faces == null)
 		{
-			List<Sprite> temp = new List<Sprite>(Resources.LoadAll<Sprite>("cats"));
+			List<Sprite> temp = new List<Sprite>(Resources.LoadAll<Sprite>("Katt"));
 			bodies = temp.FindAll(FindBodies);
 			faces = temp.FindAll(FindFaces);
 		}
 
 		//get a random face and body to add to the cat data
-		sprites.Add(bodies[Random.Range(0, bodies.Count - 1)].name);
-		sprites.Add(faces[Random.Range(0, faces.Count - 1)].name);
+		sprites.Add(bodies[Random.Range(0, bodies.Count)].name);
+		sprites.Add(faces[Random.Range(0, faces.Count)].name);
 	}
 
 	//helper methods to separate the bodies from the faces

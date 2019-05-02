@@ -58,7 +58,7 @@ public class PlayerData : MonoBehaviour
 
 		m_sprites = new Dictionary<string, Dictionary<string, Sprite>>();
 
-		catSprites = new List<Sprite>(Resources.LoadAll<Sprite>("cats"));
+		catSprites = new List<Sprite>(Resources.LoadAll<Sprite>("Katt"));
 		catSpriteNames = new List<string>();
 		Dictionary<string, Sprite> temp = new Dictionary<string, Sprite>();
 		foreach (Sprite s in catSprites)
@@ -93,7 +93,7 @@ public class PlayerData : MonoBehaviour
 		data.money = playerMoney;
 		data.chefs = chefs;
 		data.waiters = waiters;
-		data.restaurants = restaurants;
+		//data.restaurants = restaurants;
 		//data.purchasedDecor = purchasedDecor;
 
 		formatter.Serialize(file, data);
@@ -114,14 +114,8 @@ public class PlayerData : MonoBehaviour
 			playerMoney = 1000;
 			//chefs = data.chefs;
 			waiters = data.waiters;
-			restaurants = data.restaurants;
+			//restaurants = data.restaurants;
 			//purchasedDecor = data.purchasedDecor;
-
-			if(restaurants == null || restaurants.Count == 0)
-			{
-				Cafe temp = new Cafe();
-				temp.NewGameRestaurantChoice();		
-			}
 
 			file.Close();
 		}
@@ -168,6 +162,7 @@ public class PlayerData : MonoBehaviour
 		}
 		return m_sprites["food"]["None"];
     }
+
 
 }
 

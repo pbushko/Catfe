@@ -18,14 +18,17 @@ public class CatInventory : MonoBehaviour {
 	public GameObject DecorInfoPrefab;
 	public GameObject DecorPref;
 	public GameObject RecipeInfoPrefab;
+	public GameObject OutfitPrefab;
 
 	public GameObject ChefPanel;
 	public GameObject DecorPanel;
 	public GameObject RecipePanel;
+	public GameObject OutfitPanel;
 
 	public GameObject InventoryDecorPanel;
 	public GameObject InventoryRecipePanel;
 	public GameObject InventoryWaiterPanel;
+	public GameObject InventoryOutfitPanel;
 
 
 
@@ -373,8 +376,13 @@ public class CatInventory : MonoBehaviour {
 							newRecipe.transform.SetParent(RecipePanel.transform);
 						}
 						break;
-					case "cat":
-						//AddCat(null, new WaiterData(i.ItemInstance));
+					case "outfit":
+						OutfitData o = new OutfitData(i);
+						GameObject newOutfit = (GameObject)Instantiate(OutfitPrefab);
+						//recipes.Add(newRecipe);
+						//if the item is owned, make sure the correct info is there
+						newOutfit.GetComponent<Outfits>().ResetData(o);
+						newOutfit.transform.SetParent(OutfitPanel.transform);
 						break;
 					default:
 						break;

@@ -215,7 +215,9 @@ public class ChefData
 	public int timesTrained;
 
 	//keeps the sprites for the body, face, and accessory on the cat
-	public List<string> sprites;
+	public Dictionary<string, string> sprites;
+
+	public Dictionary<string, string> accessorySprites;
 
 	//the amount this cat makes per hour
 	public int income;
@@ -237,7 +239,18 @@ public class ChefData
 		rarity = r;
 		//when initializing the chef, it will always have been trained 0 times
 		timesTrained = 0;
-		sprites = s;
+		sprites = new Dictionary<string, string>();
+		accessorySprites = new Dictionary<string, string>();
+		sprites.Add("body", s[0]);
+		sprites.Add("face", s[1]);
+		sprites.Add("tail", "");
+		sprites.Add("shirt", "");
+		sprites.Add("pants", "");
+
+		accessorySprites.Add("hat", "");
+		accessorySprites.Add("glasses", "");
+		accessorySprites.Add("arm", "");
+		accessorySprites.Add("feet", "");
 		income = i;
 		isTraining = false;
 		specialties = sp;
@@ -246,9 +259,11 @@ public class ChefData
 
 	public ChefData(ItemInstance c)
 	{
-		//getting the customdata from the object
-		//var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["outfit"]);
-		name = c.CustomData["name"];		
+		name = c.CustomData["name"];
+		rarity = Int32.Parse(c.CustomData["rarity"]);
+		timesTrained = Int32.Parse(c.CustomData["times_trained"]);
+		sprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["main_body"]);
+		accessorySprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["accessories"]);	
 	}
 
 	public string ToString()
@@ -273,6 +288,20 @@ public class ChefData
 			}
 		}
 		return s;
+	}
+
+	public Dictionary<string, string> GetCustomDataFromChefData()
+	{
+		Dictionary<string, string> toRet = new Dictionary<string, string>();
+		toRet.Add("name", name);
+		toRet.Add("rarity", ""+rarity);
+		toRet.Add("times_trained", ""+timesTrained);
+
+		string basicSprites = JsonConvert.SerializeObject(sprites, Newtonsoft.Json.Formatting.Indented);
+		toRet.Add("main_body", basicSprites);
+		string accSprites = JsonConvert.SerializeObject(accessorySprites, Newtonsoft.Json.Formatting.Indented);
+		toRet.Add("accessories", accSprites);
+		return toRet;
 	}
 
 	public void AddRandomRestaurantType()
@@ -540,4 +569,53 @@ public class RecipeData
         return s;
     }
 
+}
+
+public class OutfitData
+{
+	public string id;
+
+	public string description;
+
+	public Sprite sprite;
+
+	public string name;
+
+	public string clothingArea;
+
+	public int cost;
+
+	public OutfitData(CatalogItem d)
+	{
+		id = d.ItemId;
+		name = d.DisplayName;
+		description = d.Description;
+		cost = (int)d.VirtualCurrencyPrices["NM"];
+		sprite = PlayerData.playerData.GetCatSprite(d.ItemImageUrl);
+		clothingArea = d.Tags[0];
+
+		//getting the customdata from the object
+		/*
+		var custom = JsonConvert.DeserializeObject<Dictionary<string, string>>(d.CustomData);
+		starLevel = 0;
+        
+		if (custom["StarLevel"] != "")
+		{
+			starLevel = Int32.Parse(custom["StarLevel"]);
+		}
+        if (custom["Ingredients"] != "")
+        {
+            ingredients = new List<Ingredients>();
+            string[] ingreds = custom["Ingredients"].Split(',');
+            foreach (string s in ingreds)
+            {
+                ingredients.Add(GetXmlIngredient(s));
+            }
+        }
+        if (custom["CookingTool"] != "")
+        {
+            utensils = GetXmlCookingTool(custom["CookingTool"]);
+        }
+		*/
+	}
 }

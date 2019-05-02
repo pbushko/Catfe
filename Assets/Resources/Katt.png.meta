@@ -1,0 +1,1083 @@
+fileFormatVersion: 2
+guid: 149b2a21be4370543961541d13858647
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5076169573860321615
+    second: Katt_shirt
+  - first:
+      213: -8319766262892166551
+    second: bikini_top
+  - first:
+      213: -8029514663099587259
+    second: tube_top
+  - first:
+      213: 1012410792264832368
+    second: cowboy_hat
+  - first:
+      213: 6192756628924101567
+    second: bikini_bottom
+  - first:
+      213: -5542698847225402220
+    second: jorts
+  - first:
+      213: -4867571427711790700
+    second: belt
+  - first:
+      213: 1376082070365268375
+    second: Katt_7
+  - first:
+      213: -5704995991794017195
+    second: sunglasses
+  - first:
+      213: 5621717680444099249
+    second: glasses
+  - first:
+      213: -79258246931702081
+    second: sun_shirt
+  - first:
+      213: -2726151382497543388
+    second: small_cat
+  - first:
+      213: 3813293215911315982
+    second: Katt_12
+  - first:
+      213: -8014060988485992680
+    second: flower
+  - first:
+      213: -296187683105478535
+    second: cowboy_vest
+  - first:
+      213: 3807851389795109535
+    second: pearl_necklace
+  - first:
+      213: 763931475121133364
+    second: necklace
+  - first:
+      213: 539111051401009879
+    second: blonde_wig
+  - first:
+      213: 7845484934287036305
+    second: Katt_18
+  - first:
+      213: -3767643438424449231
+    second: earmuffs
+  - first:
+      213: 2997866423775615448
+    second: crown
+  - first:
+      213: -3009708999098727333
+    second: cape
+  - first:
+      213: 1608690951977370142
+    second: face_0
+  - first:
+      213: -3811190831696250390
+    second: Katt_24
+  - first:
+      213: 6464108238813580761
+    second: face_1
+  - first:
+      213: -1500644868721569174
+    second: fish_shirt
+  - first:
+      213: 6282172755840840206
+    second: face_2
+  - first:
+      213: 6183245763328938184
+    second: Katt_31
+  - first:
+      213: 2108986225345991911
+    second: face_3
+  - first:
+      213: 2085915908199225752
+    second: Katt_34
+  - first:
+      213: -4996282795166995404
+    second: Katt_35
+  - first:
+      213: -5782702166631147934
+    second: face_4
+  - first:
+      213: -3546577779701471521
+    second: snout
+  - first:
+      213: 1977869781729457402
+    second: sneakers
+  - first:
+      213: -4598750893193981430
+    second: coat_grey
+  - first:
+      213: 3383789166979497580
+    second: coat_orange
+  - first:
+      213: 7611278213704188133
+    second: cowboy_boots
+  - first:
+      213: 3984643361755887551
+    second: Katt_45
+  - first:
+      213: 6404293308320665456
+    second: Katt_46
+  - first:
+      213: -7530923156235859282
+    second: socks
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Katt_shirt
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 2903
+        width: 363
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d06eb35c9f4d345bc8a2d416c98442
+      internalID: -5076169573860321615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bikini_top
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 3008
+        width: 350
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ce2afa66e7e014e9f73254a9cee0f8
+      internalID: -8319766262892166551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tube_top
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 3016
+        width: 353
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7283b50bba2e473489b359322aaf41c1
+      internalID: -8029514663099587259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy_hat
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 3012
+        width: 154
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c612f97485064e64890ac063cb08f89a
+      internalID: 1012410792264832368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bikini_bottom
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 2828
+        width: 355
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6083a610ded110740ab51bc15e6b28bc
+      internalID: 6192756628924101567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorts
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 2834
+        width: 347
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d81408e629a1c844934f6d7d7b92832
+      internalID: -5542698847225402220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 2869
+        width: 362
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fc53965c8201d48930cd226727ebca
+      internalID: -4867571427711790700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_7
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 2929
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a72b76c1e9f49e48901dae394c984bb
+      internalID: 1376082070365268375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sunglasses
+      rect:
+        serializedVersion: 2
+        x: 2747
+        y: 2862
+        width: 221
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1633f7949322b0a4d9def84cfcd32b3c
+      internalID: -5704995991794017195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: glasses
+      rect:
+        serializedVersion: 2
+        x: 3152
+        y: 2877
+        width: 243
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d63216bc69583d4a89877ba0a4ca740
+      internalID: 5621717680444099249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sun_shirt
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 2497
+        width: 364
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b898aa20202ab4fadcc9c4ab5b1ebb
+      internalID: -79258246931702081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_cat
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 2758
+        width: 151
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4779f67b4032541ae2fc08c095ab62
+      internalID: -2726151382497543388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_12
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 2580
+        width: 250
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca18b0895ef18946aa34248e3f50180
+      internalID: 3813293215911315982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower
+      rect:
+        serializedVersion: 2
+        x: 3776
+        y: 2461
+        width: 119
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d992047e484d754bbcaa3b6fd021436
+      internalID: -8014060988485992680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy_vest
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 2069
+        width: 358
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8318fc5bedf1241bfe5c625082fecc
+      internalID: -296187683105478535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pearl_necklace
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 2292
+        width: 321
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eab80a173f480c419119230b9bb9a5b
+      internalID: 3807851389795109535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: necklace
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 2311
+        width: 314
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63aada804fc282346ab40d3b20d3823e
+      internalID: 763931475121133364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blonde_wig
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 2202
+        width: 484
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0200414fce140947835c2edb732ce56
+      internalID: 539111051401009879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_18
+      rect:
+        serializedVersion: 2
+        x: 3208
+        y: 2217
+        width: 162
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd1062a7cb56ec4dadc4e82d4d97f18
+      internalID: 7845484934287036305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: earmuffs
+      rect:
+        serializedVersion: 2
+        x: 3589
+        y: 2224
+        width: 365
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e18d7b8cd75f6479c34076bfb53ae9
+      internalID: -3767643438424449231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crown
+      rect:
+        serializedVersion: 2
+        x: 3728
+        y: 2022
+        width: 118
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2500d3d0c16914dad542a8d4a6176b
+      internalID: 2997866423775615448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cape
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1512
+        width: 510
+        height: 405
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 303705d0f37d22744bf3ea418c2b6a69
+      internalID: -3009708999098727333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face_0
+      rect:
+        serializedVersion: 2
+        x: 3146
+        y: 1590
+        width: 170
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2448363608a85d843a1eb162b0d62a2e
+      internalID: 1608690951977370142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_24
+      rect:
+        serializedVersion: 2
+        x: 3724
+        y: 1344
+        width: 255
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51060e169e24582459a57fda273c9b06
+      internalID: -3811190831696250390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face_1
+      rect:
+        serializedVersion: 2
+        x: 3154
+        y: 1467
+        width: 170
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8cceeb02368aa4390585f816aea6e8
+      internalID: 6464108238813580761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_shirt
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1132
+        width: 364
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29695a5b411db684c8f5e7ecb43a87be
+      internalID: -1500644868721569174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face_2
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 1356
+        width: 170
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31539e3fde94d44dbd6ad752e130869
+      internalID: 6282172755840840206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_31
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 1344
+        width: 67
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abda1c3102ce5ca4eae86728974fee3d
+      internalID: 6183245763328938184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face_3
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 1264
+        width: 170
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885cbad160ca6c54081d8cfde27703f9
+      internalID: 2108986225345991911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_34
+      rect:
+        serializedVersion: 2
+        x: 3427
+        y: 881
+        width: 162
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9155082a755c6924bb23653412ef4fdf
+      internalID: 2085915908199225752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_35
+      rect:
+        serializedVersion: 2
+        x: 3687
+        y: 909
+        width: 265
+        height: 394
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded03a5e28f08b54ca0a3ea64c199e95
+      internalID: -4996282795166995404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face_4
+      rect:
+        serializedVersion: 2
+        x: 3149
+        y: 1157
+        width: 170
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e114a8c371924f54ab5a77915943df39
+      internalID: -5782702166631147934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: snout
+      rect:
+        serializedVersion: 2
+        x: 3751
+        y: 770
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f94f5ccd3654543ba3274f530d6466
+      internalID: -3546577779701471521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sneakers
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 393
+        width: 310
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f9e3c8a1af8c44a81655be07b66f51
+      internalID: 1977869781729457402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coat_grey
+      rect:
+        serializedVersion: 2
+        x: 3050
+        y: 38
+        width: 437
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9ba23cb21dc964da7a2a63f4979bf0
+      internalID: -4598750893193981430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coat_orange
+      rect:
+        serializedVersion: 2
+        x: 3560
+        y: 40
+        width: 435
+        height: 680
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9865034cc9339044c9c40718565d2276
+      internalID: 3383789166979497580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy_boots
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 214
+        width: 310
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5097f7d12642bf4a85a1b51f1ad7c09
+      internalID: 7611278213704188133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_45
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 222
+        width: 44
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d23a8f1e5decec47b9fa5a53f18d17a
+      internalID: 3984643361755887551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Katt_46
+      rect:
+        serializedVersion: 2
+        x: 2862
+        y: 202
+        width: 45
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bdae01d3b7c6d4a975ec14cac3cc36
+      internalID: 6404293308320665456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: socks
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 63
+        width: 310
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4494228d70ace88408714f3f6a97d7b8
+      internalID: -7530923156235859282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: dff3f78edee1ce6459383e168304ceac
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

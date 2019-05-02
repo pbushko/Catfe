@@ -97,21 +97,8 @@ public class WaiterCatRecruitStats : MonoBehaviour {
 
 	public void RecruitWaiter()
 	{
-		//check if there is enough money, the cost is 100 * rarity + 1
-		/*
-		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
-		{
-			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
-			CatInventory.catInv.AddCat(null, data);
-		}
-		else
-		{
-			Debug.Log("Not enough money!");
-		}
-		*/
-
 		PurchaseItemRequest request = new PurchaseItemRequest();
-        request.ItemId = "chef_cat";
+        request.ItemId = "waiter_cat";
         request.CatalogVersion = "Items";
         request.VirtualCurrency = "NM";
         request.Price = 0;

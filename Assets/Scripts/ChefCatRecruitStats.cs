@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class ChefCatRecruitStats : MonoBehaviour {
 
@@ -88,22 +90,25 @@ public class ChefCatRecruitStats : MonoBehaviour {
 			trainings.text = "Times Trained: " + newData.timesTrained;
 		}
 		specialties.text = newData.SpecialtiesToString();
-		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[0]);
-		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites[1]);
+		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["body"]);
+		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["face"]);
 	}
 
 	public void RecruitChef()
 	{
-		//check if there is enough money, the cost is 100 * rarity + 1
-		if (PlayerData.playerData.playerMoney >= 100 * (data.rarity + 1))
-		{
-			MoneyTracker.ChangeMoneyCount(-100 * (data.rarity + 1));
-			CatInventory.catInv.AddCat(data, null);
-		}
-		else
-		{
-			Debug.Log("Not enough money!");
-		}
+		PurchaseItemRequest request = new PurchaseItemRequest();
+        request.ItemId = "chef_cat";
+        request.CatalogVersion = "Items";
+        request.VirtualCurrency = "NM";
+        request.Price = 0;
+        PlayFabClientAPI.PurchaseItem(request, result => {
+            PlayFabLogin.GetMoney();
+            //gameObject.SetActive(false);
+            //result is a List<ItemInstance> object
+			Debug.Log("got a cat!");
+			PlayFabLogin.SetItemCutsomData(data.GetCustomDataFromChefData(), result.Items[0].ItemInstanceId, PlayFabLogin.playerId);
+
+        }, error => {Debug.LogError(error.ErrorMessage);});
 	}
 
 	public void LayOff()

@@ -14,7 +14,7 @@ public class GridLayoutResizer : MonoBehaviour
     {
         width = fullPanel.rect.width;
         height = fullPanel.rect.height;
-        Vector2 newSize = new Vector2(width / 2.5f, height / 4);
+        Vector2 newSize = new Vector2(width / 3f, height / 4);
         this.gameObject.GetComponent<GridLayoutGroup>().cellSize = newSize;
     }
 

@@ -41,8 +41,8 @@ public class Chef : MonoBehaviour {
 	public void RefreshChef(ChefData newData)
 	{
 		chef = newData;
-		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[0]);
-		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites[1]);
+		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["body"]);
+		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["face"]);
 	}
 
 }
