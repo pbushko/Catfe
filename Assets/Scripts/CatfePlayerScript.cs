@@ -83,7 +83,6 @@ public class CatfePlayerScript : MonoBehaviour {
 		{
 			restaurantLocations.Add(restaurantLocationsParent.transform.GetChild(i).position);
 		}
-		SetUpRestaurants();
 	}
 	
 	private void Awake()
@@ -249,9 +248,9 @@ public class CatfePlayerScript : MonoBehaviour {
 	}
 
 	//loading in all the restaurants we own
-	private void SetUpRestaurants()
+	public void SetUpRestaurants(List<RestaurantData> rs)
 	{
-		foreach(RestaurantData r in PlayerData.playerData.restaurants)
+		foreach(RestaurantData r in rs)
 		{
 			GameObject newRest = (GameObject)Instantiate(newRestaurantPrefab);
 			//newRest.GetComponent<Restaurant>().title.sprite = GetRestaurantOutside(r.type);

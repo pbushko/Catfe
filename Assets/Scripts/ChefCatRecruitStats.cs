@@ -24,6 +24,8 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	public Image body;
 	public Image face;
 
+	public Chef spriteHolder;
+
 	private int trainingCost;
 
 	// Use this for initialization
@@ -90,8 +92,16 @@ public class ChefCatRecruitStats : MonoBehaviour {
 			trainings.text = "Times Trained: " + newData.timesTrained;
 		}
 		specialties.text = newData.SpecialtiesToString();
-		body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["body"]);
-		face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["face"]);
+		Debug.Log(newData.name + " " + newData.sprites["body"]);
+		if (spriteHolder != null)
+		{
+			spriteHolder.RefreshChef(newData);
+		}
+		else
+		{
+			body.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["body"]);
+			face.sprite = PlayerData.playerData.GetCatSprite(newData.sprites["face"]);
+		}
 	}
 
 	public void RecruitChef()
@@ -139,7 +149,7 @@ public class ChefCatRecruitStats : MonoBehaviour {
 	public void AddCatToRestaurant()
 	{
 		CatfePlayerScript.script.MoveCatToRestaurant(data, null);
-		CatInventory.catInv.LayOffChefCat(gameObject);
+		//CatInventory.catInv.LayOffChefCat(gameObject);
 		CatInventory.catInv.RemoveAddToRestaurant();
 	}
 

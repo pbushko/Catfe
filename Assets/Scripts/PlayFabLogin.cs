@@ -98,7 +98,6 @@ public class PlayFabLogin : MonoBehaviour
 					    toRet.Add(new Recipe(i));
                         Debug.Log(i.ItemId);
                     }
-					
 				}
 			}
 		}, error => {}

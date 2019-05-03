@@ -28,11 +28,11 @@ public class RestaurantInventoryPanel : MonoBehaviour {
 		chefSlots = new List<GameObject>();
 		waiterSlots = new List<GameObject>();
 
-		for(int i = 0; i < chefPanel.transform.childCount - 1; i++)
+		for(int i = 1; i < chefPanel.transform.childCount - 1; i++)
 		{
 			chefSlots.Add(chefPanel.transform.GetChild(i).gameObject);
 		}
-		for(int i = 0; i < waiterPanel.transform.childCount - 1; i++)
+		for(int i = 1; i < waiterPanel.transform.childCount - 1; i++)
 		{
 			waiterSlots.Add(waiterPanel.transform.GetChild(i).gameObject);
 		}

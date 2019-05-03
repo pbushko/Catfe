@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chef : MonoBehaviour {
 
@@ -10,6 +11,12 @@ public class Chef : MonoBehaviour {
 	public SpriteRenderer body;
 	public SpriteRenderer face;
 	public SpriteRenderer accessory;
+
+	public Image bodyImage;
+	public Image faceImage;
+	public Image accessoryImage;
+
+	public bool isUI;
 
 	// Use this for initialization
 	void Start () {
@@ -41,8 +48,16 @@ public class Chef : MonoBehaviour {
 	public void RefreshChef(ChefData newData)
 	{
 		chef = newData;
-		body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["body"]);
-		face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["face"]);
+		if (!isUI)
+		{
+			body.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["body"]);
+			face.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["face"]);
+		}
+		else
+		{
+			bodyImage.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["body"]);
+			faceImage.sprite = PlayerData.playerData.GetCatSprite(chef.sprites["face"]);
+		}
 	}
 
 }

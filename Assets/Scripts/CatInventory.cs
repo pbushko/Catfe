@@ -11,6 +11,8 @@ public class CatInventory : MonoBehaviour {
 
 	public static CatInventory catInv;
 
+	public static List<RestaurantData> restaurants;
+
 	public Dropdown sortCategories;
 
 	public GameObject ChefInfoPrefab;
@@ -317,18 +319,31 @@ public class CatInventory : MonoBehaviour {
 		Dictionary<string, ItemInstance> ownedItems = new Dictionary<string, ItemInstance>();
 		//getting the user's inventory
 		GetUserInventoryRequest request = new GetUserInventoryRequest();
-        PlayFabClientAPI.GetUserInventory(request, result => {			
+        PlayFabClientAPI.GetUserInventory(request, result => {
+			restaurants = new List<RestaurantData>();			
 			foreach (ItemInstance i in result.Inventory)
 			{
-				if (i.ItemClass == "Decoration" || i.ItemClass == "Recipe")
+				if (i.ItemClass == "cat")
+				{
+					if (i.ItemId == "waiter_cat")
+					{
+						AddCat(null, new WaiterData(i));
+					}
+					else if (i.ItemId == "chef_cat")
+					{
+						AddCat(new ChefData(i), null);
+					}
+				}
+				else if (i.ItemClass == "Restaurant")
+				{
+					restaurants.Add(new RestaurantData(i));
+				}
+				else
 				{
 					ownedItems.Add(i.ItemId, i);
 				}
-				else if (i.ItemClass == "cat")
-				{
-					AddCat(null, new WaiterData(i));
-				}
 			}
+			CatfePlayerScript.script.SetUpRestaurants(restaurants);
 		}, error => {});
 
 		//getting the decor in the shop
@@ -379,10 +394,17 @@ public class CatInventory : MonoBehaviour {
 					case "outfit":
 						OutfitData o = new OutfitData(i);
 						GameObject newOutfit = (GameObject)Instantiate(OutfitPrefab);
-						//recipes.Add(newRecipe);
 						//if the item is owned, make sure the correct info is there
-						newOutfit.GetComponent<Outfits>().ResetData(o);
-						newOutfit.transform.SetParent(OutfitPanel.transform);
+						if (ownedItems.ContainsKey(i.ItemId))
+						{
+							newOutfit.GetComponent<Outfits>().ResetData(o);
+							newOutfit.transform.SetParent(InventoryOutfitPanel.transform);
+						}
+						else
+						{
+							newOutfit.GetComponent<Outfits>().ResetData(o);
+							newOutfit.transform.SetParent(OutfitPanel.transform);
+						}
 						break;
 					default:
 						break;

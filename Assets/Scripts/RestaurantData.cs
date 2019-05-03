@@ -59,6 +59,16 @@ public class RestaurantData
 		minigamesCompleted = 0;
 	}
 
+	public RestaurantData(ItemInstance i)
+	{
+		type = RestaurantType.Catfe;
+		waiters = new List<WaiterData>();
+		chefs = new List<ChefData>();
+		decor = new List<DecorationData>();
+		utensils = new List<CookingUtensil>();
+		location = 1;
+	}
+
 	public void PrintEmployees()
 	{
 		if (waiters.Count == 0 && chefs.Count == 0)
@@ -263,7 +273,8 @@ public class ChefData
 		rarity = Int32.Parse(c.CustomData["rarity"]);
 		timesTrained = Int32.Parse(c.CustomData["times_trained"]);
 		sprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["main_body"]);
-		accessorySprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["accessories"]);	
+		accessorySprites = JsonConvert.DeserializeObject<Dictionary<string, string>>(c.CustomData["accessories"]);
+		specialties = new List<RestaurantType>();
 	}
 
 	public string ToString()
