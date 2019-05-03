@@ -47,4 +47,32 @@ public class Outfits : MonoBehaviour
 		}
 	}
 
+    public void onClick()
+    {
+        if (data.clothingArea == "hat")
+        {
+            PlayerData.playerData.areasToDress[0].sprite = data.sprite;
+        }
+        else if (data.clothingArea == "glasses")
+        {
+            PlayerData.playerData.areasToDress[1].sprite = data.sprite;
+        }
+        else if (data.clothingArea == "shirt")
+        {
+            PlayerData.playerData.areasToDress[2].sprite = data.sprite;
+        }
+        else if (data.clothingArea == "arms")
+        {
+            PlayerData.playerData.areasToDress[3].sprite = data.sprite;
+        }
+        else if (data.clothingArea == "pants")
+        {
+            PlayerData.playerData.areasToDress[4].sprite = data.sprite;
+        }
+        else if (data.clothingArea == "feet")
+        {
+            PlayerData.playerData.areasToDress[5].sprite = data.sprite;
+        }
+    }
+
 }

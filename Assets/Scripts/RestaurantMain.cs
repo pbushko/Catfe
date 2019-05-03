@@ -86,7 +86,7 @@ public class RestaurantMain : MonoBehaviour {
 		//always start the scene with buying upgrades
 		currentState = State.upgrades;
 		cat.transform.position = catStartingPos;
-		cat.GetComponent<Chef>().RefreshChef(CatfePlayerScript.script.activeRestaurant.data.chefs[0]); 
+		//cat.GetComponent<Chef>().RefreshChef(CatfePlayerScript.script.activeRestaurant.data.chefs[0]); 
 		setIngredientBoxes();
 		setUtensils();
 		playerScript.Reset();

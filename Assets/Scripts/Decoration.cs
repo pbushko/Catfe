@@ -62,7 +62,7 @@ public class Decoration : MonoBehaviour {
 		}
 		if (sprite != null)
 		{
-			sprite.sprite = CatfePlayerScript.script.GetDecorationSprite(newData.sprite);
+			sprite.sprite = PlayerData.GetDecorSprite(newData.sprite);
 		}
 	}
 

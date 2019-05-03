@@ -184,6 +184,7 @@ public class CatfePlayerScript : MonoBehaviour {
 		city.SetActive(false);
 		insideRestaurant.SetActive(true);
 		//loading in the waiters in the back
+		/*
 		List<WaiterData> ws = activeRestaurant.data.waiters;
 		for (int i = 0; i < waiterSpots.transform.childCount; i++)
 		{
@@ -199,16 +200,17 @@ public class CatfePlayerScript : MonoBehaviour {
 			}
 		}
 		//loading in a chef
-		List<ChefData> c = activeRestaurant.data.chefs;
+		//List<ChefData> c = activeRestaurant.data.chefs;
 		if (c.Count > 0)
 		{
 			chefSpot.SetActive(true);
-			chefSpot.GetComponent<Chef>().RefreshChef(c[0]);
+			//chefSpot.GetComponent<Chef>().RefreshChef(c[0]);
 		}
 		else
 		{
-			chefSpot.SetActive(false);
+			//chefSpot.SetActive(false);
 		}
+		*/
 		SetDecorationSprites();
 	}
 

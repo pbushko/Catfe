@@ -122,6 +122,9 @@ TextureImporter:
   - first:
       213: -7530923156235859282
     second: socks
+  - first:
+      213: -54169268112983242
+    second: none
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1061,6 +1064,27 @@ TextureImporter:
       bones: []
       spriteID: 4494228d70ace88408714f3f6a97d7b8
       internalID: -7530923156235859282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 1059
+        width: 731
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683dc5c1cdff8524bb50f34ca6bb156b
+      internalID: -54169268112983242
       vertices: []
       indices: 
       edges: []

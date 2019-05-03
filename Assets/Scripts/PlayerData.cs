@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Xml;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class PlayerData : MonoBehaviour
 	public GameObject decorSlots;
 	public GameObject recipesToBuy;
 	public GameObject recipeSlots;
+
+	public List<Image> areasToDress;
 
 	private static Dictionary<string, Dictionary<string, Sprite>> m_sprites;
 
@@ -77,6 +80,15 @@ public class PlayerData : MonoBehaviour
 			foodTemp.Add(s.name, s);
         }
 		m_sprites.Add("food", foodTemp);
+		//loading the decor sprites
+		List<Sprite> m_decor = new List<Sprite>(Resources.LoadAll<Sprite>("Decorations"));
+		//Adding the food names to allow us to search for the sprite
+		Dictionary<string, Sprite> decorTemp = new Dictionary<string, Sprite>();
+        foreach (Sprite s in m_decor)
+        {
+			decorTemp.Add(s.name, s);
+        }
+		m_sprites.Add("decor", decorTemp);
 	}
 
 	void OnApplicationQuit()
@@ -163,6 +175,15 @@ public class PlayerData : MonoBehaviour
 		return m_sprites["food"]["None"];
     }
 
+	public static Sprite GetDecorSprite(string s)
+	{
+		Sprite value;
+		if (s != null && m_sprites["decor"].TryGetValue(s, out value))
+		{
+			return value;
+		}
+		return m_sprites["food"]["None"];
+	}
 
 }
 

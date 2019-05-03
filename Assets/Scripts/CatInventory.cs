@@ -26,13 +26,15 @@ public class CatInventory : MonoBehaviour {
 	public GameObject DecorPanel;
 	public GameObject RecipePanel;
 	public GameObject OutfitPanel;
+	public GameObject outfitDressupPanel;
 
 	public GameObject InventoryDecorPanel;
 	public GameObject InventoryRecipePanel;
 	public GameObject InventoryWaiterPanel;
 	public GameObject InventoryOutfitPanel;
 
-
+	public List<GameObject> dressupPanels;
+	public List<GameObject> dressupPanelParents;
 
 	public GameObject DecorInvWallPanel;
 	public GameObject DecorInvTablePanel;
@@ -405,6 +407,32 @@ public class CatInventory : MonoBehaviour {
 							newOutfit.GetComponent<Outfits>().ResetData(o);
 							newOutfit.transform.SetParent(OutfitPanel.transform);
 						}
+						GameObject dress = (GameObject)Instantiate(outfitDressupPanel);
+						dress.GetComponent<Outfits>().ResetData(o);
+						if (i.Tags[0] == "shirt")
+						{
+							dress.transform.SetParent(dressupPanels[0].transform);
+						}
+						else if (i.Tags[0] == "hat")
+						{
+							dress.transform.SetParent(dressupPanels[1].transform);
+						}
+						else if (i.Tags[0] == "glasses")
+						{
+							dress.transform.SetParent(dressupPanels[2].transform);
+						}
+						else if (i.Tags[0] == "arms")
+						{
+							dress.transform.SetParent(dressupPanels[3].transform);
+						}
+						else if (i.Tags[0] == "pants")
+						{
+							dress.transform.SetParent(dressupPanels[4].transform);
+						}
+						else if (i.Tags[0] == "feet")
+						{
+							dress.transform.SetParent(dressupPanels[5].transform);
+						}
 						break;
 					default:
 						break;
@@ -466,6 +494,16 @@ public class CatInventory : MonoBehaviour {
 		GameObject inv = (GameObject)Instantiate(DecorInfoPrefab);
 		inv.GetComponent<Decoration>().ResetData(d);
 		inv.transform.SetParent(InventoryDecorPanel.transform);
+	}
+
+	public void DeactivateDressupParents()
+	{
+		foreach(GameObject entry in dressupPanelParents)
+		{
+    		// do something with entry.Value or entry.Key
+
+			entry.SetActive(false);
+		}
 	}
 
 }

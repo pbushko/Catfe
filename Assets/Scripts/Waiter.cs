@@ -21,7 +21,7 @@ public class Waiter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_fill = 0;
-		RefreshWaiter(waiter);
+		//RefreshWaiter(waiter);
 		//waiter = EmployeeGenerator.GenerateWaiter();
 	}
 	
