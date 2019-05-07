@@ -1,4 +1,4 @@
-#if NET_4_6 && !UNITY_2018_2_OR_NEWER
+#if !UNITY_2018_2_OR_NEWER
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,9 +18,9 @@ namespace PlayFab.Internal
         {
             var payload = request as byte[];
 
-            if (payload == null)
+            if (payload == null && callback != null)
             {
-                callback?.Invoke(new PlayFabError
+                callback.Invoke(new OneDsError
                 {
                     Error = PlayFabErrorCode.Unknown,
                     ErrorMessage = "Request is null."
@@ -58,12 +58,12 @@ namespace PlayFab.Internal
             www.chunkedTransfer = false;
             yield return www.SendWebRequest();
 #else
-            yield return webRequest.Send();
+            yield return www.Send();
 #endif
 
             using (www)
             {
-                OneDsUtility.ParseResponse(www.responseCode, () => www.downloadHandler.text, www.error, callback);                
+                OneDsUtility.ParseResponse(www.responseCode, () => www.downloadHandler.text, www.error, callback);
             }
         }
     }

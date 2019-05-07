@@ -1,4 +1,3 @@
-#if NET_4_6
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace PlayFab.Internal
             var webRequest = new UnityWebRequest(OneDsUtility.ONEDS_SERVICE_URL, "POST");
             webRequest.uploadHandler = new UploadHandlerRaw(request as byte[]);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
-            
+
             string currentTimestampString = Microsoft.Applications.Events.Utils.MsFrom1970().ToString();
             extraHeaders.Add("sdk-version", "OCT_C#-0.11.1.0");
 #if !UNITY_WSA && !UNITY_WP8 && !UNITY_WEBGL
@@ -42,4 +41,3 @@ namespace PlayFab.Internal
         }
     }
 }
-#endif

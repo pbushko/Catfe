@@ -1,3 +1,5 @@
+using PlayFab.Internal;
+
 namespace PlayFab.SharedModels
 {
     public class HttpResponseObject
@@ -7,17 +9,28 @@ namespace PlayFab.SharedModels
         public object data;
     }
 
-    public class PlayFabRequestCommon
+    public class PlayFabBaseModel
+    {
+        public string ToJson()
+        {
+            var json = PluginManager.GetPlugin<ISerializerPlugin>(PluginContract.PlayFab_Serializer);
+            return json.SerializeObject(this);
+        }
+    }
+
+    public interface IPlayFabInstanceApi { }
+
+    public class PlayFabRequestCommon : PlayFabBaseModel
     {
         public PlayFabAuthenticationContext AuthenticationContext;
     }
 
-    public class PlayFabResultCommon
+    public class PlayFabResultCommon : PlayFabBaseModel
     {
         public PlayFabRequestCommon Request;
         public object CustomData;
     }
-    
+
     public class PlayFabLoginResultCommon : PlayFabResultCommon
     {
         public PlayFabAuthenticationContext AuthenticationContext;
@@ -27,6 +40,6 @@ namespace PlayFab.SharedModels
     {
         public TResult Result;
         public object CustomData;
-        public PlayFabError Error;
+        public OneDsError Error;
     }
 }

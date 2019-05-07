@@ -447,6 +447,10 @@ namespace PlayFab
         CannotEnableMultiplayerServersForTitle = 1443,
         WriteAttemptedDuringExport = 1444,
         MultiplayerServerTitleQuotaCoresExceeded = 1445,
+        AutomationRuleNotFound = 1446,
+        EntityAPIKeyLimitExceeded = 1447,
+        EntityAPIKeyNotFound = 1448,
+        EntityAPIKeyOrSecretInvalid = 1449,
         MatchmakingEntityInvalid = 2001,
         MatchmakingPlayerAttributesInvalid = 2002,
         MatchmakingQueueNotFound = 2016,
@@ -465,6 +469,7 @@ namespace PlayFab
         MatchmakingRateLimitExceeded = 2054,
         MatchmakingTicketMembershipLimitExceeded = 2055,
         MatchmakingUnauthorized = 2056,
+        MatchmakingQueueLimitExceeded = 2057,
         TitleConfigNotFound = 3001,
         TitleConfigUpdateConflict = 3002,
         TitleConfigSerializationError = 3003,
@@ -477,18 +482,24 @@ namespace PlayFab
         CatalogItemIdInvalid = 4007,
         CatalogSearchParameterInvalid = 4008,
         CatalogFeatureDisabled = 4009,
-        CatalogConfigMissing = 4100,
-        CatalogConfigTooManyContentTypes = 4101,
-        CatalogConfigContentTypeTooLong = 4102,
-        CatalogConfigTooManyTags = 4103,
-        CatalogConfigTagTooLong = 4104,
+        CatalogConfigInvalid = 4010,
         ExportInvalidStatusUpdate = 5000,
         ExportInvalidPrefix = 5001,
         ExportBlobContainerDoesNotExist = 5002,
         ExportEventNameNotFound = 5003,
         ExportExportTitleIdNotFound = 5004,
         ExportCouldNotUpdate = 5005,
-        ExportInvalidStorageType = 5006
+        ExportInvalidStorageType = 5006,
+        ExportAmazonBucketDoesNotExist = 5007,
+        ExportInvalidBlobStorage = 5008,
+        ExportKustoException = 5009,
+        ExportKustoExceptionNew_SomeResources = 5010,
+        ExportKustoExceptionEdit = 5011,
+        ExportKustoConnectionFailed = 5012,
+        ExportUnknownError = 5013,
+        ExportCantEditPendingExport = 5014,
+        ExportLimitExports = 5015,
+        ExportLimitEvents = 5016
     }
 
     public class PlayFabError
@@ -529,7 +540,7 @@ namespace PlayFab
             return _tempSb.ToString();
         }
     }
-    
+
     public class PlayFabException : Exception
     {
         public readonly PlayFabExceptionCode Code;
